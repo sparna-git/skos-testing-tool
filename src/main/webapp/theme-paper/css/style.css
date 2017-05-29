@@ -1,0 +1,15 @@
+#file{
+	margin:auto; 
+	width:50%; 
+	border:1px solid #ebebe0;
+	margin-top:20px;
+	background-color:white;
+}
+.jumbotron{
+	width:50%;
+	margin:auto;
+	margin-top:150px;
+}
+body{
+	text-align:center;
+}

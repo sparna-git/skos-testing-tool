@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project-modules id="moduleCoreId" project-version="2.0">
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
   <wb-module deploy-name="validator">
     <property name="context-root" value="validator"/>
     <wb-resource deploy-path="/" source-path="src/main/webapp"/>
@@ -286,19 +285,167 @@
     <dependent-module archiveName="qSKOS-1.4.8.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/at/ac/univie/mminf/qSKOS/1.4.8/qSKOS-1.4.8.jar">
       <dependency-type>uses</dependency-type>
     </dependent-module>
-    <dependent-module archiveName="openrdf-model-1.2.5.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/openrdf-model/1.2.5/openrdf-model-1.2.5.jar">
+    <dependent-module archiveName="sesame-runtime-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-runtime/2.9.0/sesame-runtime-2.9.0.jar">
       <dependency-type>uses</dependency-type>
     </dependent-module>
-    <dependent-module archiveName="rio-1.0.10.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/rio/1.0.10/rio-1.0.10.jar">
+    <dependent-module archiveName="sesame-model-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-model/2.9.0/sesame-model-2.9.0.jar">
       <dependency-type>uses</dependency-type>
     </dependent-module>
-    <dependent-module archiveName="openrdf-repository-sail-2.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/openrdf-repository-sail/2.0.1/openrdf-repository-sail-2.0.1.jar">
+    <dependent-module archiveName="sesame-util-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-util/2.9.0/sesame-util-2.9.0.jar">
       <dependency-type>uses</dependency-type>
     </dependent-module>
-    <dependent-module archiveName="openrdf-repository-api-2.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/openrdf-repository-api/2.0.1/openrdf-repository-api-2.0.1.jar">
+    <dependent-module archiveName="sesame-repository-api-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-repository-api/2.9.0/sesame-repository-api-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-query-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-query/2.9.0/sesame-query-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-rio-api-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-rio-api/2.9.0/sesame-rio-api-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-repository-manager-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-repository-manager/2.9.0/sesame-repository-manager-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-repository-event-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-repository-event/2.9.0/sesame-repository-event-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-repository-sail-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-repository-sail/2.9.0/sesame-repository-sail-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-sail-api-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-sail-api/2.9.0/sesame-sail-api-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-queryalgebra-model-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-queryalgebra-model/2.9.0/sesame-queryalgebra-model-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-http-client-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-http-client/2.9.0/sesame-http-client-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-http-protocol-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-http-protocol/2.9.0/sesame-http-protocol-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-rio-ntriples-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-rio-ntriples/2.9.0/sesame-rio-ntriples-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-rio-datatypes-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-rio-datatypes/2.9.0/sesame-rio-datatypes-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-rio-languages-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-rio-languages/2.9.0/sesame-rio-languages-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-queryresultio-api-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-queryresultio-api/2.9.0/sesame-queryresultio-api-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-queryparser-api-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-queryparser-api/2.9.0/sesame-queryparser-api-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-queryalgebra-evaluation-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-queryalgebra-evaluation/2.9.0/sesame-queryalgebra-evaluation-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-repository-sparql-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-repository-sparql/2.9.0/sesame-repository-sparql-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-queryparser-sparql-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-queryparser-sparql/2.9.0/sesame-queryparser-sparql-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-queryresultio-sparqlxml-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-queryresultio-sparqlxml/2.9.0/sesame-queryresultio-sparqlxml-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-rio-trig-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-rio-trig/2.9.0/sesame-rio-trig-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-rio-turtle-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-rio-turtle/2.9.0/sesame-rio-turtle-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-sail-memory-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-sail-memory/2.9.0/sesame-sail-memory-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-sail-base-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-sail-base/2.9.0/sesame-sail-base-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-sail-inferencer-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-sail-inferencer/2.9.0/sesame-sail-inferencer-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-queryparser-serql-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-queryparser-serql/2.9.0/sesame-queryparser-serql-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-sail-model-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-sail-model/2.9.0/sesame-sail-model-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-repository-http-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-repository-http/2.9.0/sesame-repository-http-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-rio-binary-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-rio-binary/2.9.0/sesame-rio-binary-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-repository-contextaware-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-repository-contextaware/2.9.0/sesame-repository-contextaware-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-sail-federation-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-sail-federation/2.9.0/sesame-sail-federation-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-queryresultio-binary-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-queryresultio-binary/2.9.0/sesame-queryresultio-binary-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-queryresultio-sparqljson-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-queryresultio-sparqljson/2.9.0/sesame-queryresultio-sparqljson-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-queryresultio-text-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-queryresultio-text/2.9.0/sesame-queryresultio-text-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-repository-dataset-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-repository-dataset/2.9.0/sesame-repository-dataset-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-rio-jsonld-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-rio-jsonld/2.9.0/sesame-rio-jsonld-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-rio-nquads-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-rio-nquads/2.9.0/sesame-rio-nquads-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-rio-n3-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-rio-n3/2.9.0/sesame-rio-n3-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-rio-rdfjson-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-rio-rdfjson/2.9.0/sesame-rio-rdfjson-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-rio-rdfxml-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-rio-rdfxml/2.9.0/sesame-rio-rdfxml-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-rio-trix-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-rio-trix/2.9.0/sesame-rio-trix-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-sail-lucene-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-sail-lucene/2.9.0/sesame-sail-lucene-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-sail-lucene-api-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-sail-lucene-api/2.9.0/sesame-sail-lucene-api-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="animal-sniffer-annotations-1.14.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/codehaus/mojo/animal-sniffer-annotations/1.14/animal-sniffer-annotations-1.14.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-sail-spin-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-sail-spin/2.9.0/sesame-sail-spin-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-spin-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-spin/2.9.0/sesame-spin-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-queryrender-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-queryrender/2.9.0/sesame-queryrender-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-sail-nativerdf-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-sail-nativerdf/2.9.0/sesame-sail-nativerdf-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sesame-sail-rdbms-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-sail-rdbms/2.9.0/sesame-sail-rdbms-2.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="commons-dbcp-1.4.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/commons-dbcp/commons-dbcp/1.4/commons-dbcp-1.4.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="commons-pool-1.5.4.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/commons-pool/commons-pool/1.5.4/commons-pool-1.5.4.jar">
       <dependency-type>uses</dependency-type>
     </dependent-module>
     <wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/java"/>
     <wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
   </wb-module>
 </project-modules>

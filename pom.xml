@@ -94,29 +94,31 @@
                 <scope>provided</scope>
             </dependency>
             
-            <dependency>
-			    <groupId>org.openrdf</groupId>
-			    <artifactId>openrdf-model</artifactId>
-			    <version>1.2.5</version>
-			</dependency>
-			<!-- https://mvnrepository.com/artifact/org.openrdf/rio -->
+<!--             <dependency> -->
+<!-- 			    <groupId>org.openrdf</groupId> -->
+<!-- 			    <artifactId>openrdf-model</artifactId> -->
+<!-- 			    <version>1.2.5</version> -->
+<!-- 			</dependency> -->
+<!-- 			<dependency> -->
+<!-- 			    <groupId>org.openrdf</groupId> -->
+<!-- 			    <artifactId>rio</artifactId> -->
+<!-- 			    <version>1.0.10</version> -->
+<!-- 			</dependency> -->
+<!-- 			<dependency> -->
+<!-- 			    <groupId>org.openrdf</groupId> -->
+<!-- 			    <artifactId>openrdf-repository-sail</artifactId> -->
+<!-- 			    <version>2.0.1</version> -->
+<!-- 			</dependency> -->
+<!-- 			<dependency> -->
+<!-- 			    <groupId>org.openrdf</groupId> -->
+<!-- 			    <artifactId>openrdf-repository-api</artifactId> -->
+<!-- 			    <version>2.0.1</version> -->
+<!-- 			</dependency> -->
 			<dependency>
-			    <groupId>org.openrdf</groupId>
-			    <artifactId>rio</artifactId>
-			    <version>1.0.10</version>
-			</dependency>
-			<dependency>
-			    <groupId>org.openrdf</groupId>
-			    <artifactId>openrdf-repository-sail</artifactId>
-			    <version>2.0.1</version>
-			</dependency>
-			<!-- https://mvnrepository.com/artifact/org.openrdf/openrdf-repository-api -->
-			<dependency>
-			    <groupId>org.openrdf</groupId>
-			    <artifactId>openrdf-repository-api</artifactId>
-			    <version>2.0.1</version>
-			</dependency>
-			
+			    <groupId>org.openrdf.sesame</groupId>
+			    <artifactId>sesame-runtime</artifactId>
+			    <version>2.9.0</version>
+ 			</dependency>
 						
         </dependencies>
     </dependencyManagement>
@@ -170,26 +172,27 @@
             <groupId>at.ac.univie.mminf</groupId>
             <artifactId>qSKOS</artifactId>
         </dependency>
-        <dependency>
-			   <groupId>org.openrdf</groupId>
-			   <artifactId>openrdf-model</artifactId>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.openrdf/rio -->
-		<dependency>
-		    <groupId>org.openrdf</groupId>
-		    <artifactId>rio</artifactId>
-		</dependency>
-		<dependency>
-			    <groupId>org.openrdf</groupId>
-			    <artifactId>openrdf-repository-sail</artifactId>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.openrdf/openrdf-repository-api -->
-		<dependency>
-		    <groupId>org.openrdf</groupId>
-		    <artifactId>openrdf-repository-api</artifactId>
-		</dependency>
+<!--         <dependency> -->
+<!-- 			   <groupId>org.openrdf</groupId> -->
+<!-- 			   <artifactId>openrdf-model</artifactId> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 		    <groupId>org.openrdf</groupId> -->
+<!-- 		    <artifactId>rio</artifactId> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			    <groupId>org.openrdf</groupId> -->
+<!-- 			    <artifactId>openrdf-repository-sail</artifactId> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 		    <groupId>org.openrdf</groupId> -->
+<!-- 		    <artifactId>openrdf-repository-api</artifactId> -->
+<!-- 		</dependency> -->
 		
-
+			<dependency>
+			    <groupId>org.openrdf.sesame</groupId>
+			    <artifactId>sesame-runtime</artifactId>
+ 			</dependency>
 	</dependencies>
 
 </project>
