@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="2.0">
   <wb-module deploy-name="validator">
     <property name="context-root" value="validator"/>
     <wb-resource deploy-path="/" source-path="src/main/webapp"/>
@@ -60,7 +61,7 @@
     <dependent-module archiveName="rdf4j-rio-languages-2.2.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/eclipse/rdf4j/rdf4j-rio-languages/2.2.1/rdf4j-rio-languages-2.2.1.jar">
       <dependency-type>uses</dependency-type>
     </dependent-module>
-    <dependent-module archiveName="commons-io-2.4.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/commons-io/commons-io/2.4/commons-io-2.4.jar">
+    <dependent-module archiveName="commons-io-2.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/commons-io/commons-io/2.2/commons-io-2.2.jar">
       <dependency-type>uses</dependency-type>
     </dependent-module>
     <dependent-module archiveName="rdf4j-queryresultio-api-2.2.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/eclipse/rdf4j/rdf4j-queryresultio-api/2.2.1/rdf4j-queryresultio-api-2.2.1.jar">
@@ -285,6 +286,9 @@
     <dependent-module archiveName="qSKOS-1.4.8.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/at/ac/univie/mminf/qSKOS/1.4.8/qSKOS-1.4.8.jar">
       <dependency-type>uses</dependency-type>
     </dependent-module>
+    <dependent-module archiveName="jgrapht-jdk1.5-0.7.3.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/jgrapht/jgrapht-jdk1.5/0.7.3/jgrapht-jdk1.5-0.7.3.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
     <dependent-module archiveName="sesame-runtime-2.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/openrdf/sesame/sesame-runtime/2.9.0/sesame-runtime-2.9.0.jar">
       <dependency-type>uses</dependency-type>
     </dependent-module>
@@ -444,8 +448,10 @@
     <dependent-module archiveName="commons-pool-1.5.4.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/commons-pool/commons-pool/1.5.4/commons-pool-1.5.4.jar">
       <dependency-type>uses</dependency-type>
     </dependent-module>
+    <dependent-module archiveName="commons-fileupload-1.3.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/commons-fileupload/commons-fileupload/1.3/commons-fileupload-1.3.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
     <wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/java"/>
     <wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/resources"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
   </wb-module>
 </project-modules>

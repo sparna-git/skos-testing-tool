@@ -35,9 +35,19 @@
         <property name="order" value="1" />
     </bean>
 
-	<!-- / Basic application bootstraping -->
-   
-    
+	<bean id="multipartResolver"  
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
+    </bean>
+  	<bean id="ValidatorConfig" class="fr.sparna.validator.ValidatorConfig" factory-method="getInstance" />
+	<bean id="applicationData" class="fr.sparna.validator.ApplicationData">
+	</bean>
+	<bean class="org.springframework.web.context.support.ServletContextAttributeExporter">
+        <property name="attributes">
+            <map>
+                <entry key="applicationData" value-ref="applicationData" />
+            </map>
+        </property>
+    </bean>
     <!-- ***** Application Config ***** -->
     
     <!-- Maps the resources URL to a physical directory so that we can easily change 'themes' -->

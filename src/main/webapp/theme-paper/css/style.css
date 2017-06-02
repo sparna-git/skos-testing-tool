@@ -8,8 +8,29 @@
 .jumbotron{
 	width:50%;
 	margin:auto;
-	margin-top:150px;
-}
-body{
+	margin-top:50px;
 	text-align:center;
+}
+#TITLE{
+	text-align:center;
+	margin:auto;
+}
+
+#log{
+	background-color:white;
+	width:80%;
+	margin:auto;
+}
+
+#table{
+	width:80%;
+	margin: auto;
+	margin-top:15px;
+}
+#content{
+	border:1px solid #ebebe0;
+}
+#box{
+	
+	margin-left:20px;
 }
