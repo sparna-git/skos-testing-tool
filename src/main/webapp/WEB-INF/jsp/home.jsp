@@ -8,7 +8,7 @@
 
 <c:set var="data" value="${requestScope['fr.sparna.validator.ValidatorData']}" />
 <c:set var="applicationData" value="${applicationScope.applicationData}" />
-<c:set var="compteur" value="0" />
+<c:set var="compteur" scope="session" value="0" />
 <html>
 <head>
 
@@ -24,8 +24,8 @@
 <script type="text/javascript">
 	var choix="";
 	var compteur=0;
-	function choice(objet){
-		compteur++;
+	function choice(){
+		/*compteur++;
 		if(objet.checked === true){
 			
 			if(compteur===1){
@@ -34,10 +34,28 @@
 			}else{
 				choix+=","+objet.value;
 			}
+		}*/
+		for (i = 1; i < 26; i++) {
+			if (eval("document.formulaire.rule" + i
+					+ ".checked == true")) {
+				compteur++;
+				
+				if (compteur === 1) {
+					choix += document.getElementById('rule' + i).value;
+					
+					
+				} else if (compteur > 1) {
+					choix += '-' + document.getElementById('rule' + i).value;
+							
+				}
+				
+			}
 		}
 		
 		document.formulaire.rulesChoice.value =choix;
-		alert(document.formulaire.rulesChoice.value);
+		document.formulaire.submit();
+		//document.formulaire.file.value =document.formulaire.file.value;
+		
 	}	
 	
 	
@@ -55,7 +73,8 @@
 </style>
 </head>
 <body style="">
-		<h3 id="TITLE">Skos file validator</h3>
+<jsp:include page="header.jsp"/>
+		<h5 id="TITLE"><em>Skos file validator</em></h5>
 		<br>
 		<br>
 		<c:if test="${data.msg!=null}">
@@ -67,7 +86,7 @@
 				
 		</c:if>
 		<div class="jumbotron">
-			<form id="upload_form" action="result" method="post" name="formulaire" enctype="multipart/form-data" class="form-horizontal">
+			<form id="upload_form" action="result" method="post" onSubmit="return false" name="formulaire" enctype="multipart/form-data" class="form-horizontal">
 				
 					<div class="fileinput fileinput-new input-group" data-provides="fileinput" id="file">
 				  		<div class="form-control" data-trigger="fileinput">
@@ -78,17 +97,19 @@
 					  <span class="fileinput-exists">Change</span><input type="file" required name="file" ></span>
 					  <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
 					</div><br>
-					<button class="btn btn-info" type="submit">valider</button>
+					<button class="btn btn-info" type="submit" onclick="choice()">valider</button>
 					
 			<br><br><br>
-			<h4 id="TITLE">Choose rules to check</h4>
+			<h5 id="TITLE"><em>Choose rules to check</em></h5>
 			<div class="table-outer">
 			<table id="box">
 				<c:forEach items="${applicationData.rulesList}" var="rule">	
 					 	<tr>
 					 		<td>
-					 			
-							    <input type="checkbox" onclick="choice(this)" value="${rule}">
+					 			<c:set var="compteur" scope="session" value="${compteur+1}" />
+							    <input type="checkbox"  name="rule${compteur}"  id="rule${compteur}" value="${rule}"
+							    	<c:if test="${rule=='oc' || rule=='el'|| rule=='ml' || rule=='uc'}">checked</c:if>
+								     >
 							</td>
 							<td>${rule.label} (${rule})</td>
 						</tr>	

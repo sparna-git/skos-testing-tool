@@ -3,6 +3,8 @@ package fr.sparna.validator;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.openrdf.repository.RepositoryException;
 import org.springframework.stereotype.Controller;
@@ -19,14 +21,14 @@ public class SkosValidatorController {
 
 	@RequestMapping(value = "home")
 	public ModelAndView upload(
-			
+
 			) throws IOException{
 
 		ValidatorData data = new ValidatorData();
-		
+
 		return new ModelAndView("home", ValidatorData.KEY, data);
 	}
-	
+
 	@RequestMapping(value = "result")
 	public ModelAndView uploadResult(
 			@RequestParam(value="file", required=false) MultipartFile file,
@@ -34,17 +36,17 @@ public class SkosValidatorController {
 			) throws IOException, RepositoryException {
 
 		ValidatorData data = new ValidatorData();
-		data.extractAndSetChoice(choice);
-		
 		File newFile=null;
-		
+	
+		if(choice!=null){
+			data.extractAndSetChoice(choice);
+		}		
+
 		if(file!=null){
 			newFile=multipartToFile(file);
-			ValidateSkosFile skos=new ValidateSkosFile(choice,newFile);
+			ValidateSkosFile skos=new ValidateSkosFile(choice.replaceAll("-", ","),newFile);
 			data.setErrorList(skos.validate());
 
-		}else{
-			
 		}
 		return new ModelAndView("result", ValidatorData.KEY, data);
 	}

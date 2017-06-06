@@ -94,8 +94,8 @@
                 <scope>provided</scope>
             </dependency>
             <dependency>
-              <groupId>org.jgrapht.alg</groupId>
-			  <artifactId>jgrapht</artifactId>
+              <groupId>org.jgrapht</groupId>
+			  <artifactId>jgrapht-core</artifactId>
 			  <version>1.0.1</version>
             </dependency>
             <dependency>
@@ -206,7 +206,11 @@
  			<dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
-        </dependency>
+        	</dependency>
+        	<dependency>
+              <groupId>org.jgrapht</groupId>
+			  <artifactId>jgrapht-core</artifactId>
+            </dependency>
 	</dependencies>
 
 </project>

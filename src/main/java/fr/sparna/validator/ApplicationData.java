@@ -7,7 +7,7 @@ public class ApplicationData {
 
 	protected List<EnumRules> rulesList;
 
-
+	
 	
 	public ApplicationData() {
 		super();

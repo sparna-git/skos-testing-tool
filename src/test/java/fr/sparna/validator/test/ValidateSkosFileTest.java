@@ -13,8 +13,8 @@ public class ValidateSkosFileTest {
 
 	@Test
 	public void testValidate() throws RepositoryException {
-		ValidateSkosFile skos=new ValidateSkosFile();
-		skos.validate(new File("/home/clarvie/test.rdf"));
+		ValidateSkosFile skos=new ValidateSkosFile("ilc",new File("/home/clarvie/test.rdf"));
+		skos.validate();
 	}
 
 }

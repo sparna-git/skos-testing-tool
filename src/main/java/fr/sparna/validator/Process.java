@@ -155,18 +155,7 @@ public class Process {
 						});
 
 					}
-					/*if(issue.getResult().getData() instanceof HashMap){
-
-						HashMap preciseResult = (HashMap)issue.getResult().getData();
-						System.out.println("---"+preciseResult);
-						Collection<Resource> res=(Collection<Resource>)preciseResult.values();
-						preciseResult.values().stream().forEach(action->{
-							uri.add(action.toString());
-						});
-
-
-				}*/
-
+					
 				}
 				error.setErrorList(uri);
 				resultList.add(error);

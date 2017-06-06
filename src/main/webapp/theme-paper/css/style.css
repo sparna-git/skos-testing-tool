@@ -14,6 +14,7 @@
 #TITLE{
 	text-align:center;
 	margin:auto;
+	
 }
 
 #log{
@@ -29,8 +30,21 @@
 }
 #content{
 	border:1px solid #ebebe0;
+	background-color:white;
 }
 #box{
 	
 	margin-left:20px;
+	text-align:left;
+}
+#resultpage{
+	
+	
+	
+}
+
+#stat{
+	margin:auto;
+	width:80%;
+	
 }
