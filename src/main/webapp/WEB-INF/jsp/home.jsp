@@ -35,7 +35,7 @@
 				choix+=","+objet.value;
 			}
 		}*/
-		for (i = 1; i < 26; i++) {
+		for (i = 1; i < 27; i++) {
 			if (eval("document.formulaire.rule" + i
 					+ ".checked == true")) {
 				compteur++;
@@ -62,7 +62,7 @@
 </script>
 <style>
 	.table-outer {
-				height:200px;
+				height:140px;
 				overflow:hidden;
 		}
 			
@@ -74,9 +74,6 @@
 </head>
 <body style="">
 <jsp:include page="header.jsp"/>
-		<h5 id="TITLE"><em>Skos file validator</em></h5>
-		<br>
-		<br>
 		<c:if test="${data.msg!=null}">
 				<div class="alert alert-danger">
 					  <em>
@@ -85,9 +82,10 @@
 				</div>
 				
 		</c:if>
+		<form id="upload_form" action="result" method="post" onSubmit="return false" name="formulaire" enctype="multipart/form-data" class="form-horizontal">
 		<div class="jumbotron">
-			<form id="upload_form" action="result" method="post" onSubmit="return false" name="formulaire" enctype="multipart/form-data" class="form-horizontal">
-				
+			
+				<label for="file"><em><font size="3">Choose your file</font></em></label>
 					<div class="fileinput fileinput-new input-group" data-provides="fileinput" id="file">
 				  		<div class="form-control" data-trigger="fileinput">
 				  			<i class="glyphicon glyphicon-file fileinput-exists"></i> 
@@ -96,45 +94,40 @@
 					  <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">Select file</span>
 					  <span class="fileinput-exists">Change</span><input type="file" required name="file" ></span>
 					  <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-					</div><br>
+					</div>
+					<input name="rulesChoice" id="rulesChoice"><br>
 					<button class="btn btn-info" type="submit" onclick="choice()">valider</button>
-					
-			<br><br><br>
-			<h5 id="TITLE"><em>Choose rules to check</em></h5>
-			<div class="table-outer">
-			<table id="box">
-				<c:forEach items="${applicationData.rulesList}" var="rule">	
-					 	<tr>
-					 		<td>
-					 			<c:set var="compteur" scope="session" value="${compteur+1}" />
-							    <input type="checkbox"  name="rule${compteur}"  id="rule${compteur}" value="${rule}"
-							    	<c:if test="${rule=='oc' || rule=='el'|| rule=='ml' || rule=='uc'}">checked</c:if>
-								     >
-							</td>
-							<td>${rule.label} (${rule})</td>
-						</tr>	
-				</c:forEach>
-			</table>
-		   </div>
-		   <div><a class="toggleTableLink" id="box" href="#"><i>show/hide all rules</i></a></div>
-			<input name="rulesChoice" id="rulesChoice">
-			</form>
+			
+			
 		</div>
-		
-		<!--<textarea name="log" id="log" rows="15" class="form-control" cols="30"></textarea><c:if test="${data.errorList!=null}">
-			<c:forEach items="${data.errorList}" var="error">
-				<h5>${error.ruleName} : ${error.errorNumber}</h5>
-				<div class="alert alert-success">
-					  <em>
-					  	<c:forEach items="${error.errorList}" var="list">
-							${list}<br>
-						</c:forEach>
-					 </em>
-				</div>
-				<br>
-			</c:forEach>
-		</c:if>
-		-->
+		<div class="panel-group" id="myAccordion">
+				<div class="panel panel-default">
+	   				<div class="panel-heading">
+	   					<a class="accordion-toggle " data-toggle="collapse" data-parent="#myAccordion" href="#collapse1"><h4>Advanced options</h4></a>
+	   				</div>
+	   				<div id="collapse1" class="panel-collapse collapse in" >
+	   					<div class="panel-body">
+	   						<c:forEach items="${applicationData.rulesList}" var="rule">	
+								 	<div class="form-group">
+										<c:set var="compteur" scope="session" value="${compteur+1}" />
+										<div class="col-sm-8">
+											<input type="checkbox"  name="rule${compteur}"  id="rule${compteur}" value="${rule}"
+											<c:if test="${rule!='bl'}">checked</c:if>
+											>
+											<label class="col-sm-8">
+											<a href="${rule.link}">${rule.label} (${rule})</a>
+											</label>
+										</div>
+										
+									</div>
+							</c:forEach>
+							
+	   					</div>
+	   				</div>
+	   			</div><!-- end accordion -->
+	   			<br>
+	   	</div>
+	   	</form>
 	
 </body>
 <script type="text/javascript">
@@ -142,10 +135,7 @@
 		var newinput = document.getElementById('rulesChoice');
 		newinput.style.visibility = "hidden";
 		// add the toggle link behavior
-        $( ".toggleTableLink" ).click(function(event) {
-    		$(this).parent().prev(".table-outer").toggleClass("open");
-    		return false;
-        });
+        $( ".accordion-toggle" ).click();
 		
 	});
 </script>

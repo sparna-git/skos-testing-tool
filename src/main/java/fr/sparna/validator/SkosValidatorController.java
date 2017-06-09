@@ -33,7 +33,7 @@ public class SkosValidatorController {
 	public ModelAndView uploadResult(
 			@RequestParam(value="file", required=false) MultipartFile file,
 			@RequestParam(value="rulesChoice", required=false) String choice
-			) throws IOException, RepositoryException {
+			) throws RepositoryException {
 
 		ValidatorData data = new ValidatorData();
 		File newFile=null;
@@ -43,7 +43,16 @@ public class SkosValidatorController {
 		}		
 
 		if(file!=null){
-			newFile=multipartToFile(file);
+			try {
+				newFile=multipartToFile(file);
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				data.setMsg(e.getMessage());
+			}
 			ValidateSkosFile skos=new ValidateSkosFile(choice.replaceAll("-", ","),newFile);
 			data.setErrorList(skos.validate());
 

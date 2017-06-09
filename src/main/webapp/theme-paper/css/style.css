@@ -6,13 +6,19 @@
 	background-color:white;
 }
 .jumbotron{
-	width:50%;
+	width:40%;
 	margin:auto;
 	margin-top:50px;
+	margin-bottom:50px;
 	text-align:center;
+}
+#myAccordion{
+	width:40%;
+	margin:auto;
 }
 #TITLE{
 	text-align:center;
+	
 	margin:auto;
 	
 }
@@ -24,7 +30,7 @@
 }
 
 #table{
-	width:80%;
+	width:100%;
 	margin: auto;
 	margin-top:15px;
 }
@@ -37,14 +43,27 @@
 	margin-left:20px;
 	text-align:left;
 }
-#resultpage{
+.danger{
 	
+	border: 1px solid transparent;
+	background-color: #f7c5c5;
+	border-color: #e2b5b5;
 	
+}
+.success{
+	
+	border: 1px solid transparent;
+	background-color: #d9eace;
+	border-color: #c0d1b5;
+}
+.nav-item{
+	margin-bottom:-15px;
 	
 }
 
 #stat{
-	margin:auto;
-	width:80%;
+	
+	width:65%;
+	margin-left:520px;
 	
 }

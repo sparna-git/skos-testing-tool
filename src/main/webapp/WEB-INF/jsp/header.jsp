@@ -5,13 +5,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-info navbar-fixed-left btn-info">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Skos file validator</a>
+      <a class="navbar-brand" href="home"><em>Skos file validator</em></a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="home">Home</a></li>
+      <li class="active"><a href="home"><em>Home</em></a></li>
     </ul>
   </div>
  </nav>
