@@ -37,9 +37,7 @@ public class ValidateSkosFile {
 	private final Logger logger = LoggerFactory.getLogger(ValidateSkosFile.class);
 	protected String rules;
 	protected File f;
-	
-	
-	
+
 
 	public ValidateSkosFile(String rules, File f) {
 		super();
@@ -96,12 +94,12 @@ public class ValidateSkosFile {
 	public String getRules() {
 		return rules;
 	}
-	
+
 	public File getF() {
 		return f;
 	}
-	
-	
+
+
 
 
 }

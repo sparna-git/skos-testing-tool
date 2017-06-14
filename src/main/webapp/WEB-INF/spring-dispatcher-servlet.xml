@@ -16,7 +16,7 @@
         http://www.springframework.org/schema/util/spring-util.xsd">
 
 	<!-- ***** Basic application bootstraping ***** -->
-		
+	<import resource="rules.xml" />
     <!-- scans the annotations in the source code to find @Controller, @Autowired, @Value and more -->
     <context:component-scan base-package="fr.sparna.validator"/>
 
@@ -40,6 +40,38 @@
     </bean>
   	<bean id="ValidatorConfig" class="fr.sparna.validator.ValidatorConfig" factory-method="getInstance" />
 	<bean id="applicationData" class="fr.sparna.validator.ApplicationData">
+		
+		<property name="descList">
+			<list >
+				<ref bean="issue-oc" />
+				<ref bean="issue-el" />
+				<ref bean="issue-uc" />
+				<ref bean="issue-ilc" />
+				<ref bean="issue-oilt" />
+				<ref bean="issue-ol" />
+				<ref bean="issue-mol" />
+				<ref bean="issue-ml" />
+				<ref bean="issue-dcc" />
+				<ref bean="issue-hr" />
+				<ref bean="issue-anr" />
+				<ref bean="issue-rrc" />
+				<ref bean="issue-strc" />
+				<ref bean="issue-urc" />
+				<ref bean="issue-var" />
+				<ref bean="issue-mri" />
+				<ref bean="issue-rc" />
+				<ref bean="issue-usr" />
+				<ref bean="issue-husv" />
+				<ref bean="issue-tchbc" />
+				<ref bean="issue-otc" />
+				<ref bean="issue-dlv" />
+				<ref bean="issue-ncl" />
+				<ref bean="issue-ipl" />
+				<ref bean="issue-ucil" />
+				<ref bean="issue-bl" />
+			</list>
+		</property>
+		
 	</bean>
 	<bean class="org.springframework.web.context.support.ServletContextAttributeExporter">
         <property name="attributes">
@@ -54,5 +86,7 @@
     <mvc:resources mapping="/resources/**" location="/theme-paper/" />
 
 	<!-- / Application Config -->
+	
+	
 
 </beans>

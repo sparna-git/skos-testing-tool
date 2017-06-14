@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import org.openrdf.repository.RepositoryException;
 import org.springframework.stereotype.Controller;
@@ -21,11 +22,13 @@ public class SkosValidatorController {
 
 	@RequestMapping(value = "home")
 	public ModelAndView upload(
-
+			@RequestParam(value="lang", required=false) String lang
 			) throws IOException{
 
 		ValidatorData data = new ValidatorData();
-
+		if(lang!=null){
+			Locale.setDefault(new Locale(lang));
+		}
 		return new ModelAndView("home", ValidatorData.KEY, data);
 	}
 
@@ -37,7 +40,7 @@ public class SkosValidatorController {
 
 		ValidatorData data = new ValidatorData();
 		File newFile=null;
-	
+
 		if(choice!=null){
 			data.extractAndSetChoice(choice);
 		}		
@@ -47,14 +50,22 @@ public class SkosValidatorController {
 				newFile=multipartToFile(file);
 			} catch (IllegalStateException e) {
 				// TODO Auto-generated catch block
+				data.setMsg(e.getMessage());
 				e.printStackTrace();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				data.setMsg(e.getMessage());
 			}
-			ValidateSkosFile skos=new ValidateSkosFile(choice.replaceAll("-", ","),newFile);
-			data.setErrorList(skos.validate());
+			try {
+				ValidateSkosFile skos=new ValidateSkosFile(choice.replaceAll("-", ","),newFile);
+				data.setErrorList(skos.validate());
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				data.setMsg(e.getMessage());
+				return new ModelAndView("home", ValidatorData.KEY, data);
+			}
 
 		}
 		return new ModelAndView("result", ValidatorData.KEY, data);

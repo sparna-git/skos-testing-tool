@@ -6,12 +6,39 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <nav class="navbar navbar-info navbar-fixed-left btn-info">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="home"><em>Skos file validator</em></a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="home"><em>Home</em></a></li>
-    </ul>
-  </div>
- </nav>
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="home"><em>Skos file validator</em></a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li class="active">
+				<a href="home">
+					<em>
+						${applicationScope.applicationData.userLocale == 'fr'? 'Accueil':'Home'}
+					
+					</em>
+				</a></li>
+			<li id="header-pill-lang"><a class="dropdown-toggle"
+				data-toggle="dropdown" href="#"> <c:choose>
+						<c:when 
+							test="${applicationScope.applicationData.userLocale == 'fr'}">fr</c:when>
+						<c:when
+							test="${applicationScope.applicationData.userLocale == 'en'}">en</c:when>
+					</c:choose> <b class="caret"></b>
+			</a>
+				<ul class="dropdown-menu">
+					<c:choose>
+						<c:when
+							test="${applicationScope.applicationData.userLocale== 'fr'}">
+							<li><a href="?lang=en">en</a></li>
+						</c:when>
+						<c:when
+							test="${applicationScope.applicationData.userLocale == 'en'}">
+							<li><a href="?lang=fr">fr</a></li>
+						</c:when>
+					</c:choose>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</nav>

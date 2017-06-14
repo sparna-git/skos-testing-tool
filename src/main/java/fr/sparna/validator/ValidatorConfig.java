@@ -15,7 +15,6 @@ private Logger log = LoggerFactory.getLogger(this.getClass().getName());
 	protected ApplicationData applicationData;
 	
 	
-	
 	/**
 	 * Singleton private constructor
 	 */

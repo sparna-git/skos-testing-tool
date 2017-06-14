@@ -67,7 +67,7 @@ public class Process {
 
 	@SuppressWarnings("rawtypes")
 	public List<SkosError> createReport(Collection<Issue> issues) throws IOException, OpenRDFException {
-
+		List<IssueDescription> DescList =ValidatorConfig.getInstance().applicationData.getDescList();
 		for (Issue issue : issues) {
 			
 
@@ -75,10 +75,21 @@ public class Process {
 				
 				SkosError error=new SkosError();
 				List<String> uri=new ArrayList<String>();
-				error.setRuleName(issue.getName());
 				error.setState(prepareOccurrenceText(issue,error));
-				error.setDescription(issue.getDescription());
 				error.setId(issue.getId());
+				//put issue 's description in french
+				for (IssueDescription desc : DescList) {
+					if(desc.id.equals(issue.getId())){
+						if(ValidatorConfig.getInstance().applicationData.userLocale.equals("fr")){
+							error.setDescription(desc.getDescriptionById("fr"));
+							error.setRuleName(desc.getLabelById("fr"));
+						}else if(ValidatorConfig.getInstance().applicationData.userLocale.equals("en")){
+							error.setDescription(desc.getDescriptionById("en"));
+							error.setRuleName(desc.getLabelById("en"));
+						}
+						
+					}
+				}
 				
 				if(issue.getWeblink()==null){
 					error.setWeblink("");

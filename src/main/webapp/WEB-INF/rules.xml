@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd">
+        
+        
+        <bean id="issue-oc" class="fr.sparna.validator.IssueDescription">
+			<constructor-arg name="id" value="oc" />
+			<constructor-arg name="description">
+				<map>
+	                <entry key="fr" value="Trouve tous les concepts orphelin, c'est-à-dire ceux qui n'ont pas de relations sémantiques avec d'autres concepts." />
+	                <entry key="en" value="Finds all orphan concepts, i.e. those not having semantic relationships to other concepts." />
+	            </map>
+			</constructor-arg>
+			<constructor-arg name="lbconcept">
+				<map>
+	                <entry key="fr" value="Concepts orphelins"/>
+	                <entry key="en" value="Orphans Concepts" />
+	            </map>
+			</constructor-arg>
+		</bean>
+		<bean id="issue-el" class="fr.sparna.validator.IssueDescription">
+			<constructor-arg name="id" value="el" />
+			<constructor-arg name="description">
+				<map>
+	                <entry key="fr" value="Trouve des étiquettes ou des étiquettes vides contenant uniquement des espaces blancs." />
+	                <entry key="en" value="Finds empty labels or labels containing only whitespaces." />
+	            </map>
+			</constructor-arg>
+			<constructor-arg name="lbconcept">
+				<map>
+	                <entry key="fr" value="Libellés vides"/>
+	                <entry key="en" value="Empty Labels" />
+	            </map>
+			</constructor-arg>
+		</bean>
+		<bean id="issue-ml" class="fr.sparna.validator.IssueDescription">
+			<constructor-arg name="id" value="ml" />
+			<constructor-arg name="description">
+				<map>
+	                <entry key="fr" value="Trouve des concepts avec des étiquettes manquantes." />
+	                <entry key="en" value="Finds concepts and conceptschemes with missing labels." />
+	            </map>
+			</constructor-arg>
+			<constructor-arg name="lbconcept">
+				<map>
+	                <entry key="fr" value="Libellés manquants"/>
+	                <entry key="en" value="Missing Labels" />
+	            </map>
+			</constructor-arg>
+		</bean>
+		<bean id="issue-uc" class="fr.sparna.validator.IssueDescription">
+			<constructor-arg name="id" value="uc"/>
+			<constructor-arg name="description">
+				<map>
+	                <entry key="fr" value="Trouve des concepts qui n'utilisent pas de propriétés de documentation SKOS." />
+	                <entry key="en" value="Finds concepts that don't use any SKOS documentation properties." />
+	            </map>
+			</constructor-arg>
+			<constructor-arg name="lbconcept">
+				<map>
+	                <entry key="fr" value="Concepts non documentés"/>
+	                <entry key="en" value="Undocumented Concepts" />
+	            </map>
+			</constructor-arg>
+		</bean>
+		<bean id="issue-ilc" class="fr.sparna.validator.IssueDescription">
+			<constructor-arg name="id" value="ilc" />
+			<constructor-arg name="description">
+				<map>
+	                <entry key="fr" value="Trouve des concepts qui manquent de description dans les langues présentes pour d'autres concepts." />
+	                <entry key="en" value="Finds concepts lacking description in languages that are present for other concepts." />
+	            </map>
+			</constructor-arg>
+			<constructor-arg name="lbconcept">
+				<map>
+	                <entry key="fr" value="Couverture linguistique incomplète"/>
+	                <entry key="en" value="Incomplete Language Coverage" />
+	            </map>
+			</constructor-arg>
+		</bean>
+		<bean id="issue-oilt" class="fr.sparna.validator.IssueDescription">
+			<constructor-arg name="id" value="oilt"/>
+			<constructor-arg name="description">
+				<map>
+	                <entry key="fr" value="Trouve des langages de texte ou de texte ignorés ou non." />
+	                <entry key="en" value="Finds omitted or invalid language tags of text literals." />
+	            </map>
+			</constructor-arg>
+			<constructor-arg name="lbconcept">
+				<map>
+	                <entry key="fr" value="Mots clés de langue omis ou invalides"/>
+	                <entry key="en" value="Omitted or Invalid Language Tags" />
+	            </map>
+			</constructor-arg>
+			
+		</bean>
+		
+		<bean id="issue-dcc" class="fr.sparna.validator.IssueDescription">
+			<constructor-arg name="id" value="dcc" />
+			<constructor-arg name="description">
+				<map>
+	                <entry key="fr" value="Trouve des ensembles de concepts isolés du reste du vocabulaire." />
+	                <entry key="en" value="Finds sets of concepts that are isolated from the rest of the vocabulary." />
+	            </map>
+			</constructor-arg>
+			<constructor-arg name="lbconcept">
+				<map>
+	                <entry key="fr" value="Ensemble de concepts déconnectés"/>
+	                <entry key="en" value="Disconnected Concept Clusters" />
+	            </map>
+			</constructor-arg>
+			
+		</bean>
+		<bean id="issue-hr" class="fr.sparna.validator.IssueDescription">
+			<constructor-arg name="id" value="hr" />
+			<constructor-arg name="description">
+				<map>
+	                <entry key="fr" value="Trouve des relations plus larges / plus étroites sur de multiples niveaux de hiérarchie." />
+	                <entry key="en" value="Finds broader/narrower relations over multiple hierarchy levels." />
+	            </map>
+			</constructor-arg>
+			<constructor-arg name="lbconcept">
+				<map>
+	                <entry key="fr" value="Redondance hiérarchique"/>
+	                <entry key="en" value="Hierarchical Redundancy" />
+	            </map>
+			</constructor-arg>
+			
+		</bean>
+		<bean id="issue-anr" class="fr.sparna.validator.IssueDescription">
+			<constructor-arg name="id" value="anr" />
+			<constructor-arg name="description">
+				<map>
+	                <entry key="fr" value="Trouve des concepts avec des notations multiples ou identiques dans le même schéma de concept." />
+	                <entry key="en" value="Finds concepts with multiple or identical notations within the same concept scheme." />
+	            </map>
+			</constructor-arg>
+			<constructor-arg name="lbconcept">
+				<map>
+	                <entry key="fr" value="Référence de notation ambigue"/>
+	                <entry key="en" value="Ambiguous Notation References" />
+	            </map>
+			</constructor-arg>
+		</bean>
+		<bean id="issue-rrc" class="fr.sparna.validator.IssueDescription">
+			<constructor-arg name="id" value="rrc"/>
+			<constructor-arg name="description">
+				<map>
+	                <entry key="fr" value="Trouve des concepts qui sont liés à eux-mêmes." />
+	                <entry key="en" value="Finds concepts that are related to themselves." />
+	            </map>
+			</constructor-arg>
+			<constructor-arg name="lbconcept">
+				<map>
+	                <entry key="fr" value="Concepts liés reflexivement"/>
+	                <entry key="en" value="Reflexively Related Concepts" />
+	            </map>
+			</constructor-arg>
+		</bean>
+		<bean id="issue-strc" class="fr.sparna.validator.IssueDescription">
+			<constructor-arg name="id" value="strc" />
+			<constructor-arg name="description">
+				<map>
+	                <entry key="fr" value="Concepts uniquement liés par skos:broaderTransitive ou skos:narrowerTransitive." />
+	                <entry key="en" value="Concepts only related by skos:broaderTransitive or skos:narrowerTransitive." />
+	            </map>
+			</constructor-arg>
+			<constructor-arg name="lbconcept">
+				<map>
+	                <entry key="fr" value="Concepts uniquement liés à la transmission"/>
+	                <entry key="en" value="Solely Transitively Related Concepts" />
+	            </map>
+			</constructor-arg>
+		</bean>
+		<bean id="issue-urc" class="fr.sparna.validator.IssueDescription">
+			<constructor-arg name="id" value="urc"/>
+			<constructor-arg name="description">
+				<map>
+	                <entry key="fr" value="Les concepts ne comprennent pas les relations réciproque"/>
+	                <entry key="en" value="Concepts not including reciprocal relations" />
+	            </map>
+			</constructor-arg>
+			
+			<constructor-arg name="lbconcept">
+				<map>
+	                <entry key="fr" value="Concept liés unidirectionnellement"/>
+	                <entry key="en" value="Unidirectionally Related Concepts" />
+	            </map>
+			</constructor-arg>
+		</bean>
+		
+		
+		<bean id="issue-var" class="fr.sparna.validator.IssueDescription">
+			<constructor-arg name="id" value="var"/>
+			<constructor-arg name="description">
+				<map>
+	                <entry key="fr" value="Trouve des paires de concepts de frères et sœurs qui sont également reliées par une relation associative." />
+	                 <entry key="en" value="Finds sibling concept pairs that are also connected by an associative relation." />
+	            </map>
+			</constructor-arg>
+			<constructor-arg name="lbconcept">
+				<map>
+	                <entry key="fr" value="Relations associatives sans valeur"/>
+	                <entry key="en" value="Valueless Associative Relations" />
+	            </map>
+			</constructor-arg>
+			
+		</bean>
+		
+		<bean id="issue-mri" class="fr.sparna.validator.IssueDescription">
+			<constructor-arg name="id" value="mri" />
+			<constructor-arg name="description">
+				<map>
+	                <entry key="fr" value="Trouve des concepts dans le même schéma de concept qui sont liés par une relation de cartographie." />
+	                 <entry key="en" value="Finds concepts within the same concept scheme that are related by a mapping relation." />
+	            </map>
+			</constructor-arg>
+			<constructor-arg name="lbconcept">
+				<map>
+	                <entry key="fr" value="Cartographier les relations abusives"/>
+	                <entry key="en" value="Mapping Relations Misuse" />
+	            </map>
+			</constructor-arg>
+		</bean>
+		<bean id="issue-rc" class="fr.sparna.validator.IssueDescription">
+			<constructor-arg name="id" value="rc" />
+			<constructor-arg name="description">
+				<map>
+	                <entry key="fr" value="Couvre la condition S27 du document de référence SKOS (affrontements associatifs par rapport à la relation hiérarchique)." />
+	                 <entry key="en" value="Covers condition S27 from the SKOS reference document (Associative vs. Hierarchical Relation Clashes)." />
+	            </map>
+			</constructor-arg>
+			<constructor-arg name="lbconcept">
+				<map>
+	                <entry key="fr" value="Collision entre relations"/>
+	                <entry key="en" value="Relation Clashes" />
+	            </map>
+			</constructor-arg>
+		</bean>
+		<bean id="issue-usr" class="fr.sparna.validator.IssueDescription">
+			<constructor-arg name="id" value="usr" />
+			<constructor-arg name="description">
+				<map>
+	                <entry key="fr" value="Trouve les nouveaux termes «inventés» dans l'espace de noms SKOS ou les propriétés obsolètes." />
+	                 <entry key="en" value="Finds 'invented' new terms within the SKOS namespace or deprecated properties." />
+	            </map>
+			</constructor-arg>
+			<constructor-arg name="lbconcept">
+				<map>
+	                <entry key="fr" value="Ressources SKOS indéfinies"/>
+	                <entry key="en" value="Undefined SKOS Resources" />
+	            </map>
+			</constructor-arg>
+		</bean>
+		<bean id="issue-mol" class="fr.sparna.validator.IssueDescription">
+			<constructor-arg name="id" value="mol"/>
+			<constructor-arg name="description">
+				<map>
+	                <entry key="fr" value="Trouve des concepts qui ne sont pas liés à d'autres vocabulaires sur le Web." />
+	                 <entry key="en" value="Finds concepts that are not linked to other vocabularies on the Web." />
+	            </map>
+			</constructor-arg>
+			<constructor-arg name="lbconcept">
+				<map>
+	                <entry key="fr" value="Liens externes manquants"/>
+	                <entry key="en" value="Missing Out-Link" />
+	            </map>
+			</constructor-arg>
+		</bean>
+		<bean id="issue-husv" class="fr.sparna.validator.IssueDescription">
+			<constructor-arg name="id" value="husv" />
+			<constructor-arg name="description">
+				<map>
+	                <entry key="fr" value="Trouve des sujets triples qui ne sont pas des URI HTTP." />
+	                 <entry key="en" value="Finds triple subjects that are no HTTP URIs." />
+	            </map>
+			</constructor-arg>
+			<constructor-arg name="lbconcept">
+				<map>
+	                <entry key="fr" value="Violation du système HTTP URI"/>
+	                <entry key="en" value="HTTP URI Scheme Violation" />
+	            </map>
+			</constructor-arg>
+		</bean>
+		<bean id="issue-tchbc" class="fr.sparna.validator.IssueDescription">
+			<constructor-arg name="id" value="tchbc"/>
+			<constructor-arg name="description">
+				<map>
+	                <entry key="fr" value="Trouve des concepts supérieurs internes à l'hiérarchie du vocabulaire."/>
+	                <entry key="en" value="Finds top concepts internal to the vocabulary hierarchy tree." />
+	            </map>
+			</constructor-arg>
+			<constructor-arg name="lbconcept">
+				<map>
+	                <entry key="fr" value="Principaux concepts ayant des concepts plus larges"/>
+	                <entry key="en" value="Top Concepts Having Broader Concepts" />
+	            </map>
+			</constructor-arg>
+		</bean>
+		<bean id="issue-otc" class="fr.sparna.validator.IssueDescription">
+			<constructor-arg name="id" value="otc" />
+			<constructor-arg name="description">
+				<map>
+	                <entry key="fr" value="Trouve des skos: ConceptSchemes qui n'ont pas de concepts de base définis." />
+	                <entry key="en" value="Finds skos:ConceptSchemes that don't have top concepts defined." />
+	            </map>
+			</constructor-arg>
+			<constructor-arg name="lbconcept">
+				<map>
+	                <entry key="fr" value="Top Concepts omis"/>
+	                <entry key="en" value="Omitted Top Concepts" />
+	            </map>
+			</constructor-arg>
+		</bean>
+		<bean id="issue-ncl" class="fr.sparna.validator.IssueDescription">
+			<constructor-arg name="id" value="ncl" />
+			<constructor-arg name="description">
+				<map>
+	                <entry key="fr" value="Vérification des langues communes dans tous les concepts littéraires." />
+	                <entry key="en" value="Checks for common languages in all concept literals." />
+	            </map>
+			</constructor-arg>
+			<constructor-arg name="lbconcept">
+				<map>
+	                <entry key="fr" value="Pas de langues communes"/>
+	                <entry key="en" value="No Common Languages" />
+	            </map>
+			</constructor-arg>
+		</bean>
+		<bean id="issue-ipl" class="fr.sparna.validator.IssueDescription">
+			<constructor-arg name="id" value="ipl"/>
+			<constructor-arg name="description">
+				<map>
+	                <entry key="fr" value="Trouve des ressources avec plus d'un prefLabel par langue." />
+	                <entry key="en" value="Finds resources with more then one prefLabel per language." />
+	            </map>
+			</constructor-arg>
+			<constructor-arg name="lbconcept">
+				<map>
+	                <entry key="fr" value="Étiquettes préférées incohérentes"/>
+	                <entry key="en" value="Inconsistent Preferred Labels" />
+	            </map>
+			</constructor-arg>
+		</bean>
+		<bean id="issue-dlv" class="fr.sparna.validator.IssueDescription">
+			<constructor-arg name="id" value="dlv" />
+			<constructor-arg name="description">
+				<map>
+	                <entry key="fr" value="Trouve des ressources avec des entrées identiques pour différents types d'étiquettes." />
+	                <entry key="en" value="Finds resources with identical entries for different label types." />
+	            </map>
+			</constructor-arg>
+			<constructor-arg name="lbconcept">
+				<map>
+	                <entry key="fr" value="Violation des étiquettes disjointes"/>
+	                <entry key="en" value="Disjoint Labels Violation" />
+	            </map>
+			</constructor-arg>
+			
+		</bean>
+		<bean id="issue-ol" class="fr.sparna.validator.IssueDescription">
+			<constructor-arg name="id" value="ol"/>
+			<constructor-arg name="description">
+				<map>
+	                <entry key="fr" value="Trouve des concepts avec des étiquettes similaires (identiques)."/>
+	                <entry key="en" value="Finds concepts with similar (identical) labels." />
+	            </map>
+			</constructor-arg>
+			<constructor-arg name="lbconcept">
+				<map>
+	                <entry key="fr" value="Etiquettes supperposées"/>
+	                <entry key="en" value="Overlapping Labels" />
+	            </map>
+			</constructor-arg>
+		</bean>
+		<bean id="issue-ucil" class="fr.sparna.validator.IssueDescription">
+			<constructor-arg name="id" value="ucil" />
+			<constructor-arg name="description">
+				<map>
+	                <entry key="fr" value="Trouve des concepts ayant des étiquettes contenant des caractères non imprimables." />
+	                <entry key="en" value="Finds concepts having labels that contain unprintable characters." />
+	            </map>
+			</constructor-arg>
+			<constructor-arg name="lbconcept">
+				<map>
+	                <entry key="fr" value="Etiquettes contenant des caractères non imprimables"/>
+	                <entry key="en" value="Unprintable Characters in Labels" />
+	            </map>
+			</constructor-arg>
+		</bean>
+		<bean id="issue-bl" class="fr.sparna.validator.IssueDescription">
+			<constructor-arg name="id" value="bl"/>
+			<constructor-arg name="description">
+				<map>
+	                <entry key="fr" value="Lien brisé - incorrect."/>
+	                <entry key="en" value="Broken links." />
+	            </map>
+			</constructor-arg>
+			<constructor-arg name="lbconcept">
+				<map>
+	                <entry key="fr" value="Liens incorrects"/>
+	                <entry key="en" value="Broken Links" />
+	            </map>
+			</constructor-arg>
+		</bean>
+        
+        
+</beans>
+
