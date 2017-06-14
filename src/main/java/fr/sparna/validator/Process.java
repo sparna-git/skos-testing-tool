@@ -3,22 +3,16 @@ package fr.sparna.validator;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-
 import org.openrdf.OpenRDFException;
 import org.openrdf.model.Resource;
 import org.openrdf.model.URI;
 import org.slf4j.Logger;
-
 import at.ac.univie.mminf.qskos4j.issues.Issue;
 import at.ac.univie.mminf.qskos4j.issues.Issue.IssueType;
-import at.ac.univie.mminf.qskos4j.issues.labels.EmptyLabeledResources;
 import at.ac.univie.mminf.qskos4j.issues.labels.util.EmptyLabelsResult;
-import at.ac.univie.mminf.qskos4j.issues.labels.util.LabelConflict;
-import at.ac.univie.mminf.qskos4j.issues.labels.util.LabelConflictsResult;
 import at.ac.univie.mminf.qskos4j.issues.language.IncompleteLangCovResult;
 import at.ac.univie.mminf.qskos4j.issues.language.OmittedOrInvalidLanguageTagsResult;
 import at.ac.univie.mminf.qskos4j.issues.relations.UnidirectionallyRelatedConceptsResult;
