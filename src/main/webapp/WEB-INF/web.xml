@@ -4,7 +4,7 @@
   <display-name>validator</display-name>
   <context-param>
     <param-name>javax.servlet.jsp.jstl.fmt.fallbackLocale</param-name>
-    <param-value>en</param-value>
+    <param-value>fr</param-value>
   </context-param>
   <servlet>
     <servlet-name>spring-dispatcher</servlet-name>

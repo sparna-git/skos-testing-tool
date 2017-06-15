@@ -26,7 +26,7 @@
     width: 100%;    
   }
   
-div >.table-outer{
+.table-outer:FIRST-CHILD{
 	height:unset;
   overflow:visible;
 }

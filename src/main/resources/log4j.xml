@@ -72,10 +72,10 @@
 	</logger>
     
  
-   <!--   <logger name="eu.europa.publications" additivity="false">
+    <logger name="eu.europa.publications" additivity="false">
         <level value="DEBUG" />
         <appender-ref ref="STDOUT" />
-    </logger>-->
+    </logger>
          
     <root>
         <level value="DEBUG" />

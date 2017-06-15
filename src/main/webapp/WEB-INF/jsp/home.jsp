@@ -9,6 +9,7 @@
 <c:set var="data" value="${requestScope['fr.sparna.validator.ValidatorData']}" />
 <c:set var="sessionData" value="${sessionScope['fr.sparna.validator.SessionData']}" />
 <c:set var="applicationData" value="${applicationScope.applicationData}" />
+<fmt:setLocale value="${sessionScope['fr.sparna.validator.SessionData'].userLocale}"/>
 <fmt:setBundle basename="Bundle"/>
 <c:set var="compteur" scope="session" value="0" />
 <html>
@@ -78,54 +79,39 @@
 		enctype="multipart/form-data" class="form-horizontal">
 		<div class="jumbotron">
 
-<<<<<<< HEAD
+
 			<label for="file"><em><font size="3"><fmt:message key="choice" /></font></em></label>
-=======
-			<label for="file"><em><font size="3">${sessionData.userLocale== 'fr'? 'Choisissez votre fichier' :'Choose your file'}</font></em></label>
->>>>>>> d5219b1f73d64c75d1a649ee5cd545e9467b6e72
+
 			<div class="fileinput fileinput-new input-group"
 				data-provides="fileinput" id="file">
 				<div class="form-control" data-trigger="fileinput">
 					<i class="glyphicon glyphicon-file fileinput-exists"></i> <span
 						class="fileinput-filename"></span>
 				</div>
-				<span class="input-group-addon btn btn-default btn-file"><span
-<<<<<<< HEAD
-					class="fileinput-new"><fmt:message key="file" /></span>
+				<span class="input-group-addon btn btn-default btn-file">
+					<span class="fileinput-new"> <fmt:message key="file" /></span>
 					<span class="fileinput-exists"><fmt:message key="change" /></span><input
-					type="file" required name="file"></span> <a href="#"
+					type="file" required name="file">
+				</span> 
+					<a href="#"
 					class="input-group-addon btn btn-default fileinput-exists"
-					data-dismiss="fileinput"><fmt:message key="retirer"/></a>
+					data-dismiss="fileinput"><fmt:message key="retirer"/>
+					</a>	
 			</div>
 			<input name="rulesChoice" id="rulesChoice"><br>
 			<button class="btn btn-info" type="submit" onclick="choice()">
-				<fmt:message key="valid" />
-=======
-					class="fileinput-new">${sessionData.userLocale== 'fr'? 'Fichier' :'Select file'}</span>
-					<span class="fileinput-exists">${sessionData.userLocale== 'fr'? 'Changer' :'Change'}</span><input
-					type="file" required name="file"></span> <a href="#"
-					class="input-group-addon btn btn-default fileinput-exists"
-					data-dismiss="fileinput">${sessionData.userLocale== 'fr'? 'Retirer' :'Remove'}</a>
-			</div>
-			<input name="rulesChoice" id="rulesChoice"><br>
-			<button class="btn btn-info" type="submit" onclick="choice()">
-				${sessionData.userLocale== 'fr'? 'Valider' :'Valid'}
->>>>>>> d5219b1f73d64c75d1a649ee5cd545e9467b6e72
+				<fmt:message key="valid" />		
 			</button>
-
-
-		</div>
+			</div>
+			
+			
 		<div class="panel-group" id="myAccordion">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<a class="accordion-toggle " data-toggle="collapse"
 						data-parent="#myAccordion" href="#collapse1">
 						<h4>
-<<<<<<< HEAD
 							<fmt:message key="option" />
-=======
-							${sessionData.userLocale== 'fr'? 'Options avancées' :'Advanced options'}
->>>>>>> d5219b1f73d64c75d1a649ee5cd545e9467b6e72
 						</h4>
 					</a>
 				</div>

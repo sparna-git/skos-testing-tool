@@ -22,6 +22,16 @@
 	margin:auto;
 	
 }
+.table-outer {
+				height:100px;
+				overflow:hidden;
+		}
+			
+	.table-outer.open {
+				height:unset;
+				overflow:visible;
+	}
+.navigation {position:fixed;}
 
 #log{
 	background-color:white;

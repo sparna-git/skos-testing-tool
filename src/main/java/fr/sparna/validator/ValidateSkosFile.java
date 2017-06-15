@@ -66,20 +66,6 @@ public class ValidateSkosFile {
 					RDFFormat.RDFXML,
 					new URIImpl(SkosOntology.SKOS_ONTO_URI));
 
-<<<<<<< HEAD
-			// instantiation
-			QSkos qskos = new QSkos();
-			qskos.setRepositoryConnection(c);
-			
-			@SuppressWarnings("rawtypes")
-			//el, anr, otc, tchbc, hr, rr, ldsi, mrm, dlv,
-			Collection<Issue> issues = qskos.getIssues(rules);
-
-			
-			Process process=new Process();
-			process.processIssues(issues, logger);
-			errorList=process.createReport(issues);
-=======
 			return runQSkos(c);
 
 		} finally {
@@ -120,7 +106,6 @@ public class ValidateSkosFile {
 					new URIImpl(SkosOntology.SKOS_ONTO_URI));
 
 			return runQSkos(c);
->>>>>>> d5219b1f73d64c75d1a649ee5cd545e9467b6e72
 
 		} finally {
 			try { c.close(); } catch(Exception ignore) {}

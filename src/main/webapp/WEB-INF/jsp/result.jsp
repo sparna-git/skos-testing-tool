@@ -14,23 +14,12 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link href="resources/jasny-bootstrap/css/jasny-bootstrap.min.css" rel="stylesheet" />
 <link href="resources/bootstrap/css/bootstrap.min.css"   rel="stylesheet" />
-<link href="resources/css/media.css" rel="stylesheet" />
 <link href="resources/css/style.css" rel="stylesheet" />
+<link href="resources/css/media.css" rel="stylesheet" />
 <script src="resources/js/jquery-1.11.3.js"></script>
 <script src="resources/bootstrap/js/bootstrap.min.js"></script>
 <script src="resources/bootstrap/js/bootstrap-table-expandable.js"></script>
-<style>
-	.table-outer {
-				height:100px;
-				overflow:hidden;
-		}
-			
-	.table-outer.open {
-				height:unset;
-				overflow:visible;
-	}
-	.navigation {position:fixed;}
-</style>
+
 <script type="text/javascript">
 
 </script>
@@ -76,7 +65,7 @@
 			        	<td colspan="3">
 				          <div class="table-outer">
 				          	<c:forEach items="${error.errorList}" var="list">
-								  ${list}<br>
+								  <em>${list}</em><br>
 							</c:forEach>
 				           </div>
 				           <div>

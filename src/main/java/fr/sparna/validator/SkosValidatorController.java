@@ -2,22 +2,12 @@ package fr.sparna.validator;
 
 import java.io.File;
 import java.io.IOException;
-<<<<<<< HEAD
-import java.util.Locale;
-import java.util.ResourceBundle;
-import java.util.ResourceBundle.Control;
-import java.util.spi.ResourceBundleControlProvider;
-
-import org.openrdf.repository.RepositoryException;
-import org.springframework.beans.factory.annotation.Autowired;
-=======
 import java.util.Collection;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.openrdf.repository.RepositoryException;
 import org.openrdf.rio.Rio;
->>>>>>> d5219b1f73d64c75d1a649ee5cd545e9467b6e72
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,13 +19,6 @@ import at.ac.univie.mminf.qskos4j.issues.Issue;
 @Controller
 public class SkosValidatorController {
 
-<<<<<<< HEAD
-	@Autowired
-	private ApplicationData applicationData;
-
-
-=======
->>>>>>> d5219b1f73d64c75d1a649ee5cd545e9467b6e72
 	@RequestMapping(value = "home")
 	public ModelAndView upload(
 			@RequestParam(value="lang", required=false) String lang,
@@ -43,15 +26,6 @@ public class SkosValidatorController {
 	) throws IOException{
 
 		ValidatorData data = new ValidatorData();
-<<<<<<< HEAD
-		ResourceBundle b = ResourceBundle.getBundle(
-							"Bundle",
-							Locale.getDefault());
-					
-					
-		if(lang!=null){
-			Locale.setDefault(new Locale(lang));
-=======
 		if(lang!=null) {
 			SessionData sessionData = new SessionData();
 			sessionData.setUserLocale(lang);
@@ -65,7 +39,6 @@ public class SkosValidatorController {
 				sessionData.setUserLocale("en");
 			}
 			sessionData.store(request.getSession());
->>>>>>> d5219b1f73d64c75d1a649ee5cd545e9467b6e72
 		}
 		return new ModelAndView("home", ValidatorData.KEY, data);
 	}
