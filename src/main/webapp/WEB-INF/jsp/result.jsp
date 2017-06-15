@@ -14,7 +14,7 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link href="resources/jasny-bootstrap/css/jasny-bootstrap.min.css" rel="stylesheet" />
 <link href="resources/bootstrap/css/bootstrap.min.css"   rel="stylesheet" />
-<link href="resources/css/media.css" rel="stylesheet" media="all" />
+<link href="resources/css/media.css" rel="stylesheet" />
 <link href="resources/css/style.css" rel="stylesheet" />
 <script src="resources/js/jquery-1.11.3.js"></script>
 <script src="resources/bootstrap/js/bootstrap.min.js"></script>
@@ -38,14 +38,14 @@
 <body id="resultpage">
 <jsp:include page="header.jsp"/>
  <div class="navigation hidden-print" >
- <ul id="sidebar" class=" nav col-xs-12 left">
+ <ul id="sidebar" class="nav col-xs-12 left">
  	<c:forEach items="${data.errorList}" var="error">	  
 		  	 <c:set var="compteur" scope="session" value="${compteur+error.number}" />
-		  	 <li class="nav-item"
-		  	 >
+		  	 <li class="nav-item">
 			    <a  href="#${error.id}"
-			    <c:if test="${error.success==true}"> class="nav-link hidden-print success" </c:if>
-			 	<c:if test="${error.success==false}">class="nav-link hidden-print danger" </c:if>>${error.ruleName} : ${error.state}</a>
+			    	<c:if test="${error.success==true}"> class="nav-link hidden-print success" </c:if>
+			 		<c:if test="${error.success==false}">class="nav-link hidden-print danger" </c:if>
+			 	>${error.ruleName} : ${error.state}</a>
 			 </li>
 	</c:forEach>
 </ul>

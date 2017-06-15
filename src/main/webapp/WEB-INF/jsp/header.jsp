@@ -6,18 +6,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <c:set var="sessionData" value="${sessionScope['fr.sparna.validator.SessionData']}" />
-<nav class="navbar navbar-info navbar-fixed-left btn-info">
+<nav class="navbar navbar-default">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="home"><em>Skos file validator</em></a>
+			<a class="navbar-brand" href="home">Skos Validator</a>
 		</div>
 		<ul class="nav navbar-nav">
 			<li class="active">
 				<a href="home">
-					<em>
 						${sessionData.userLocale == 'fr'? 'Accueil':'Home'}
-					
-					</em>
 				</a></li>
 			<li id="header-pill-lang"><a class="dropdown-toggle"
 				data-toggle="dropdown" href="#"> <c:choose>

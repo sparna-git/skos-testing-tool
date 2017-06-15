@@ -56,9 +56,12 @@
 	background-color: #d9eace;
 	border-color: #c0d1b5;
 }
-.nav-item{
-	margin-bottom:-15px;
-	
+
+.navigation {
+	margin-left: 1.5em;
+}
+#sidebar > li > a {
+	padding: 3px 15px;
 }
 
 #stat{
