@@ -1,9 +1,9 @@
-@media print{
+@media only print{
 	
   html, body {
-    float:left;
-    
+    float:left;    
   }
+
   @page {                
     size: A4;
     margin: 0mm;
@@ -16,22 +16,21 @@
   }
 
 
-  body {
-    
+  body {    
     line-height: 1em;
     word-spacing:1px;
     letter-spacing:0.2px;
     font: 14px "Times New Roman", Times, serif;
     background:white;
     color:black;
-    width: 100%;
-    
-    
+    width: 100%;    
   }
+  
 div >.table-outer{
 	height:unset;
   overflow:visible;
 }
+
   /* avoid page-breaks inside a listingContainer*/
   .listingContainer{
     page-break-inside: avoid;

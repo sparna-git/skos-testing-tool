@@ -24,135 +24,38 @@
 		</plugins>
 	</build>
 
-    <dependencyManagement>
-        <dependencies>
-            
-            <dependency>
-	            <groupId>at.ac.univie.mminf</groupId>
-	            <artifactId>qSKOS</artifactId>
-	            <version>1.4.8</version>
-        	</dependency>
-			<dependency>
-	            <groupId>org.eclipse.rdf4j</groupId>
-	            <artifactId>rdf4j-runtime</artifactId>
-	            <version>2.2.1</version>
-        	</dependency>
-        	<!-- COMMON CLIENT HTTP -->
-        	 <dependency>
-	            <groupId>commons-httpclient</groupId>
-	            <artifactId>commons-httpclient</artifactId>
-	             <version>20020423</version>
-       		 </dependency>
-       		  <dependency>
-	            <groupId>commons-codec</groupId>
-	            <artifactId>commons-codec</artifactId>
-	             <version>20041127.091804</version>
-       		 </dependency>
-
-            <!-- Spring -->
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-beans</artifactId>
-                <version>4.3.5.RELEASE</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-webmvc</artifactId>
-                <version>4.3.5.RELEASE</version>
-            </dependency>
-
-            <!-- Logging: SLF4J -->
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>1.7.5</version>
-            </dependency>
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-simple</artifactId>
-                <version>1.7.5</version>
-            </dependency>
-            <dependency> 
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-log4j12</artifactId>
-                <version>1.7.5</version>
-            </dependency>
-
-            <!-- Testing: JUnit -->
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>4.7</version>
-                <scope>test</scope>
-            </dependency>
-
-            <!-- J2EE -->
-            <dependency>
-                <groupId>javaee</groupId>
-                <artifactId>javaee-api</artifactId>
-                <version>5</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-              <groupId>org.jgrapht</groupId>
-			  <artifactId>jgrapht-core</artifactId>
-			  <version>1.0.1</version>
-            </dependency>
-            <dependency>
-	            <groupId>commons-fileupload</groupId>
-	            <artifactId>commons-fileupload</artifactId>
-	            <version>1.3</version>
-        	</dependency>
-<!--             <dependency> -->
-<!-- 			    <groupId>org.openrdf</groupId> -->
-<!-- 			    <artifactId>openrdf-model</artifactId> -->
-<!-- 			    <version>1.2.5</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 			    <groupId>org.openrdf</groupId> -->
-<!-- 			    <artifactId>rio</artifactId> -->
-<!-- 			    <version>1.0.10</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 			    <groupId>org.openrdf</groupId> -->
-<!-- 			    <artifactId>openrdf-repository-sail</artifactId> -->
-<!-- 			    <version>2.0.1</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 			    <groupId>org.openrdf</groupId> -->
-<!-- 			    <artifactId>openrdf-repository-api</artifactId> -->
-<!-- 			    <version>2.0.1</version> -->
-<!-- 			</dependency> -->
-			<dependency>
-			    <groupId>org.openrdf.sesame</groupId>
-			    <artifactId>sesame-runtime</artifactId>
-			    <version>2.9.0</version>
- 			</dependency>
- 		
-        </dependencies>
-    </dependencyManagement>
-
 	<dependencies>
-		<dependency>
-	            <groupId>commons-codec</groupId>
-	            <artifactId>commons-codec</artifactId>
-       	</dependency>
-        <dependency>
-	            <groupId>org.eclipse.rdf4j</groupId>
-	            <artifactId>rdf4j-runtime</artifactId>
-        </dependency>
-        <dependency>
-	            <groupId>commons-httpclient</groupId>
-	            <artifactId>commons-httpclient</artifactId>
-        </dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-		</dependency>
+    	<!-- Commons dependencies -->
+    	 <dependency>
+            <groupId>commons-httpclient</groupId>
+            <artifactId>commons-httpclient</artifactId>
+             <version>20020423</version>
+   		 </dependency>
+   		  <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+             <version>20041127.091804</version>
+   		 </dependency>
+   		 <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.3</version>
+    	</dependency>
 
+        <!-- Testing: JUnit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.7</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- J2EE -->
         <dependency>
             <groupId>javaee</groupId>
             <artifactId>javaee-api</artifactId>
+            <version>5</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -161,56 +64,56 @@
             <version>1.2</version>
         </dependency>
 
+        <!-- Logging: SLF4J -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
+            <version>1.7.5</version>
         </dependency>
-
-		<dependency> 
-		  <groupId>org.slf4j</groupId>
-		  <artifactId>slf4j-log4j12</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.5</version>
+        </dependency>
+        <dependency> 
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.5</version>
+        </dependency>
 		
-		<!--  Spring dependency -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-		</dependency>
+		<!-- Spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>4.3.5.RELEASE</version>
+        </dependency>
   
+  		<!-- qSKOS -->
         <dependency>
             <groupId>at.ac.univie.mminf</groupId>
             <artifactId>qSKOS</artifactId>
+            <version>1.4.8</version>
+    	</dependency>
+    	<!-- Mandatory for a qSKOS rule : hierarchical redundancy (hr) -->
+        <dependency>
+        	<groupId>org.jgrapht</groupId>
+			<artifactId>jgrapht-core</artifactId>
+			<version>1.0.1</version>
         </dependency>
-        
-<!--         <dependency> -->
-<!-- 			   <groupId>org.openrdf</groupId> -->
-<!-- 			   <artifactId>openrdf-model</artifactId> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 		    <groupId>org.openrdf</groupId> -->
-<!-- 		    <artifactId>rio</artifactId> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			    <groupId>org.openrdf</groupId> -->
-<!-- 			    <artifactId>openrdf-repository-sail</artifactId> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 		    <groupId>org.openrdf</groupId> -->
-<!-- 		    <artifactId>openrdf-repository-api</artifactId> -->
-<!-- 		</dependency> -->
 		
-			<dependency>
-			    <groupId>org.openrdf.sesame</groupId>
-			    <artifactId>sesame-runtime</artifactId>
- 			</dependency>
- 			<dependency>
-            <groupId>commons-fileupload</groupId>
-            <artifactId>commons-fileupload</artifactId>
-        	</dependency>
-        	<dependency>
-              <groupId>org.jgrapht</groupId>
-			  <artifactId>jgrapht-core</artifactId>
-            </dependency>
+		<dependency>
+		    <groupId>org.openrdf.sesame</groupId>
+		    <artifactId>sesame-runtime</artifactId>
+		    <!-- Use the same Sesame dependency as in qSKOS -->
+		    <version>2.7.9</version>
+	    	<exclusions>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-databind</artifactId>
+                </exclusion>
+            </exclusions>
+		</dependency>
+
 	</dependencies>
 
 </project>

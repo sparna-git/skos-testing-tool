@@ -1,21 +1,17 @@
 package fr.sparna.validator;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 
 import org.openrdf.OpenRDFException;
-import org.openrdf.model.Resource;
 import org.openrdf.model.impl.URIImpl;
 import org.openrdf.model.vocabulary.RDF;
 import org.openrdf.repository.Repository;
 import org.openrdf.repository.RepositoryConnection;
-import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.sail.SailRepository;
 import org.openrdf.rio.RDFFormat;
 import org.openrdf.rio.Rio;
@@ -26,26 +22,29 @@ import org.slf4j.LoggerFactory;
 
 import at.ac.univie.mminf.qskos4j.QSkos;
 import at.ac.univie.mminf.qskos4j.issues.Issue;
-import at.ac.univie.mminf.qskos4j.progress.ConsoleProgressMonitor;
-import at.ac.univie.mminf.qskos4j.progress.StreamProgressMonitor;
 import at.ac.univie.mminf.qskos4j.util.vocab.SkosOntology;
 
 
 
 public class ValidateSkosFile {
-	protected List<SkosError> errorList;
 	private final Logger logger = LoggerFactory.getLogger(ValidateSkosFile.class);
+	
 	protected String rules;
-	protected File f;
 
-
-	public ValidateSkosFile(String rules, File f) {
+	public ValidateSkosFile(String rules) {
 		super();
 		this.rules = rules;
-		this.f = f;
 	}
 
-	public List<SkosError> validate() throws RepositoryException {
+	/**
+	 * Validate a File
+	 * @param f
+	 * @return
+	 * @throws OpenRDFException
+	 * @throws IOException
+	 */
+	@SuppressWarnings("rawtypes")
+	public Collection<Issue> validate(File f) throws OpenRDFException, IOException {
 
 		// load RDF in a Repository
 		Repository r = new SailRepository(new ForwardChainingRDFSInferencer(new MemoryStore()));
@@ -67,6 +66,7 @@ public class ValidateSkosFile {
 					RDFFormat.RDFXML,
 					new URIImpl(SkosOntology.SKOS_ONTO_URI));
 
+<<<<<<< HEAD
 			// instantiation
 			QSkos qskos = new QSkos();
 			qskos.setRepositoryConnection(c);
@@ -79,27 +79,76 @@ public class ValidateSkosFile {
 			Process process=new Process();
 			process.processIssues(issues, logger);
 			errorList=process.createReport(issues);
+=======
+			return runQSkos(c);
 
-		} catch(OpenRDFException ore) {
-			ore.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
 		} finally {
 			try { c.close(); } catch(Exception ignore) {}
 		}
+	}
+	
+	/**
+	 * Validate an InputStream
+	 * 
+	 * @param input
+	 * @param format
+	 * @return
+	 * @throws OpenRDFException
+	 * @throws IOException
+	 */
+	@SuppressWarnings("rawtypes")
+	public Collection<Issue> validate(InputStream input, RDFFormat format) throws OpenRDFException, IOException {
 
-		return errorList;
+		// load RDF in a Repository
+		Repository r = new SailRepository(new ForwardChainingRDFSInferencer(new MemoryStore()));
+		r.initialize();
+
+		// load some data in the repository
+		RepositoryConnection c = r.getConnection();
+		try {
+
+			c.add(
+					input, 
+					RDF.NAMESPACE,
+					format
+					);
+
+			c.add(
+					new URL(SkosOntology.SKOS_ONTO_URI),
+					SkosOntology.SKOS_BASE_URI,
+					RDFFormat.RDFXML,
+					new URIImpl(SkosOntology.SKOS_ONTO_URI));
+
+			return runQSkos(c);
+>>>>>>> d5219b1f73d64c75d1a649ee5cd545e9467b6e72
+
+		} finally {
+			try { c.close(); } catch(Exception ignore) {}
+		}
+	}
+	
+	@SuppressWarnings("rawtypes")
+	private Collection<Issue> runQSkos(RepositoryConnection c) throws OpenRDFException, IOException {
+		// instantiation
+		QSkos qskos = new QSkos();
+		qskos.setRepositoryConnection(c);
+		Collection<Issue> issues = qskos.getIssues(rules);
+		
+		int issueNumber = 0;
+		Iterator<Issue> issueIt = issues.iterator();
+		while (issueIt.hasNext()) {
+			Issue issue = issueIt.next();
+			issueNumber++;
+			logger.info("Processing issue " + issueNumber + " of " + issues.size() + " (" + issue.getName() + ")");
+			issue.getResult();
+		}
+
+		logger.info("Validation complete!");
+		
+		return issues;
 	}
 
 	public String getRules() {
 		return rules;
 	}
-
-	public File getF() {
-		return f;
-	}
-
-
-
-
 }

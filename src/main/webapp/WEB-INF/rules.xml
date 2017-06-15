@@ -19,14 +19,14 @@
 			<constructor-arg name="id" value="oc" />
 			<constructor-arg name="description">
 				<map>
-	                <entry key="fr" value="Trouve tous les concepts orphelin, c'est-à-dire ceux qui n'ont pas de relations sémantiques avec d'autres concepts." />
+	                <entry key="fr" value="Trouve tous les concepts orphelins, c'est-à-dire ceux qui n'ont pas de relations sémantiques (générique, spécifique, associé) avec d'autres concepts." />
 	                <entry key="en" value="Finds all orphan concepts, i.e. those not having semantic relationships to other concepts." />
 	            </map>
 			</constructor-arg>
 			<constructor-arg name="lbconcept">
 				<map>
 	                <entry key="fr" value="Concepts orphelins"/>
-	                <entry key="en" value="Orphans Concepts" />
+	                <entry key="en" value="Orphan Concepts" />
 	            </map>
 			</constructor-arg>
 		</bean>
@@ -34,7 +34,7 @@
 			<constructor-arg name="id" value="el" />
 			<constructor-arg name="description">
 				<map>
-	                <entry key="fr" value="Trouve des étiquettes ou des étiquettes vides contenant uniquement des espaces blancs." />
+	                <entry key="fr" value="Trouve les libellés vides ou les libellés contenant uniquement des espaces." />
 	                <entry key="en" value="Finds empty labels or labels containing only whitespaces." />
 	            </map>
 			</constructor-arg>
@@ -49,8 +49,8 @@
 			<constructor-arg name="id" value="ml" />
 			<constructor-arg name="description">
 				<map>
-	                <entry key="fr" value="Trouve des concepts avec des étiquettes manquantes." />
-	                <entry key="en" value="Finds concepts and conceptschemes with missing labels." />
+	                <entry key="fr" value="Trouve des concepts ou des schema de concepts avec des libellés manquants." />
+	                <entry key="en" value="Finds concepts and conceptSchemes with missing labels." />
 	            </map>
 			</constructor-arg>
 			<constructor-arg name="lbconcept">
@@ -64,7 +64,7 @@
 			<constructor-arg name="id" value="uc"/>
 			<constructor-arg name="description">
 				<map>
-	                <entry key="fr" value="Trouve des concepts qui n'utilisent pas de propriétés de documentation SKOS." />
+	                <entry key="fr" value="Trouve des concepts qui n'utilisent aucune propriétés de documentation SKOS." />
 	                <entry key="en" value="Finds concepts that don't use any SKOS documentation properties." />
 	            </map>
 			</constructor-arg>
@@ -79,7 +79,7 @@
 			<constructor-arg name="id" value="ilc" />
 			<constructor-arg name="description">
 				<map>
-	                <entry key="fr" value="Trouve des concepts qui manquent de description dans les langues présentes pour d'autres concepts." />
+	                <entry key="fr" value="Trouve des concepts qui n'ont pas de description dans des langues utilisées pour d'autres concepts." />
 	                <entry key="en" value="Finds concepts lacking description in languages that are present for other concepts." />
 	            </map>
 			</constructor-arg>
@@ -94,13 +94,13 @@
 			<constructor-arg name="id" value="oilt"/>
 			<constructor-arg name="description">
 				<map>
-	                <entry key="fr" value="Trouve des langages de texte ou de texte ignorés ou non." />
+	                <entry key="fr" value="Trouve les litéraux sans étiquette de langue ou avec une étiquette de langue invalide." />
 	                <entry key="en" value="Finds omitted or invalid language tags of text literals." />
 	            </map>
 			</constructor-arg>
 			<constructor-arg name="lbconcept">
 				<map>
-	                <entry key="fr" value="Mots clés de langue omis ou invalides"/>
+	                <entry key="fr" value="Langue absente ou invalide"/>
 	                <entry key="en" value="Omitted or Invalid Language Tags" />
 	            </map>
 			</constructor-arg>
@@ -127,7 +127,7 @@
 			<constructor-arg name="id" value="hr" />
 			<constructor-arg name="description">
 				<map>
-	                <entry key="fr" value="Trouve des relations plus larges / plus étroites sur de multiples niveaux de hiérarchie." />
+	                <entry key="fr" value="Trouve des relations générique/spécifique redondantes sur plusieurs niveaux de hiérarchie." />
 	                <entry key="en" value="Finds broader/narrower relations over multiple hierarchy levels." />
 	            </map>
 			</constructor-arg>
@@ -143,13 +143,13 @@
 			<constructor-arg name="id" value="anr" />
 			<constructor-arg name="description">
 				<map>
-	                <entry key="fr" value="Trouve des concepts avec des notations multiples ou identiques dans le même schéma de concept." />
+	                <entry key="fr" value="Trouve des concepts avec plusieurs notations ou des notations identiques dans le même schéma de concept." />
 	                <entry key="en" value="Finds concepts with multiple or identical notations within the same concept scheme." />
 	            </map>
 			</constructor-arg>
 			<constructor-arg name="lbconcept">
 				<map>
-	                <entry key="fr" value="Référence de notation ambigue"/>
+	                <entry key="fr" value="Notations ambigues"/>
 	                <entry key="en" value="Ambiguous Notation References" />
 	            </map>
 			</constructor-arg>
@@ -158,13 +158,13 @@
 			<constructor-arg name="id" value="rrc"/>
 			<constructor-arg name="description">
 				<map>
-	                <entry key="fr" value="Trouve des concepts qui sont liés à eux-mêmes." />
+	                <entry key="fr" value="Trouve des concepts qui sont reliés à eux-mêmes." />
 	                <entry key="en" value="Finds concepts that are related to themselves." />
 	            </map>
 			</constructor-arg>
 			<constructor-arg name="lbconcept">
 				<map>
-	                <entry key="fr" value="Concepts liés reflexivement"/>
+	                <entry key="fr" value="Relations réflexives"/>
 	                <entry key="en" value="Reflexively Related Concepts" />
 	            </map>
 			</constructor-arg>
@@ -173,13 +173,13 @@
 			<constructor-arg name="id" value="strc" />
 			<constructor-arg name="description">
 				<map>
-	                <entry key="fr" value="Concepts uniquement liés par skos:broaderTransitive ou skos:narrowerTransitive." />
+	                <entry key="fr" value="Concepts uniquement reliés par skos:broaderTransitive ou skos:narrowerTransitive." />
 	                <entry key="en" value="Concepts only related by skos:broaderTransitive or skos:narrowerTransitive." />
 	            </map>
 			</constructor-arg>
 			<constructor-arg name="lbconcept">
 				<map>
-	                <entry key="fr" value="Concepts uniquement liés à la transmission"/>
+	                <entry key="fr" value="Concepts reliés uniquement par des relations transitives"/>
 	                <entry key="en" value="Solely Transitively Related Concepts" />
 	            </map>
 			</constructor-arg>
@@ -188,14 +188,14 @@
 			<constructor-arg name="id" value="urc"/>
 			<constructor-arg name="description">
 				<map>
-	                <entry key="fr" value="Les concepts ne comprennent pas les relations réciproque"/>
+	                <entry key="fr" value="Concepts qui ne sont pas liés par des relations inverses (générique/spécifique)"/>
 	                <entry key="en" value="Concepts not including reciprocal relations" />
 	            </map>
 			</constructor-arg>
 			
 			<constructor-arg name="lbconcept">
 				<map>
-	                <entry key="fr" value="Concept liés unidirectionnellement"/>
+	                <entry key="fr" value="Concept reliés dans un seul sens"/>
 	                <entry key="en" value="Unidirectionally Related Concepts" />
 	            </map>
 			</constructor-arg>
@@ -206,13 +206,13 @@
 			<constructor-arg name="id" value="var"/>
 			<constructor-arg name="description">
 				<map>
-	                <entry key="fr" value="Trouve des paires de concepts de frères et sœurs qui sont également reliées par une relation associative." />
+	                <entry key="fr" value="Trouve les concepts ayant le même générique qui sont également reliés par une relation associative." />
 	                 <entry key="en" value="Finds sibling concept pairs that are also connected by an associative relation." />
 	            </map>
 			</constructor-arg>
 			<constructor-arg name="lbconcept">
 				<map>
-	                <entry key="fr" value="Relations associatives sans valeur"/>
+	                <entry key="fr" value="Relations associatives entre concepts du même niveau"/>
 	                <entry key="en" value="Valueless Associative Relations" />
 	            </map>
 			</constructor-arg>
@@ -223,13 +223,13 @@
 			<constructor-arg name="id" value="mri" />
 			<constructor-arg name="description">
 				<map>
-	                <entry key="fr" value="Trouve des concepts dans le même schéma de concept qui sont liés par une relation de cartographie." />
+	                <entry key="fr" value="Trouve des concepts dans le même schéma de concept qui sont liés par une relation d'alignement (exactMatch, closeMatch, etc.)" />
 	                 <entry key="en" value="Finds concepts within the same concept scheme that are related by a mapping relation." />
 	            </map>
 			</constructor-arg>
 			<constructor-arg name="lbconcept">
 				<map>
-	                <entry key="fr" value="Cartographier les relations abusives"/>
+	                <entry key="fr" value="Mauvaises relations d'alignement"/>
 	                <entry key="en" value="Mapping Relations Misuse" />
 	            </map>
 			</constructor-arg>
@@ -238,13 +238,13 @@
 			<constructor-arg name="id" value="rc" />
 			<constructor-arg name="description">
 				<map>
-	                <entry key="fr" value="Couvre la condition S27 du document de référence SKOS (affrontements associatifs par rapport à la relation hiérarchique)." />
+	                <entry key="fr" value="Condition S27 du document de référence SKOS (2 concepts ne peuvent pas être reliés à la fois hiérarchiquement et associativement)." />
 	                 <entry key="en" value="Covers condition S27 from the SKOS reference document (Associative vs. Hierarchical Relation Clashes)." />
 	            </map>
 			</constructor-arg>
 			<constructor-arg name="lbconcept">
 				<map>
-	                <entry key="fr" value="Collision entre relations"/>
+	                <entry key="fr" value="Collision entre relations sémantiques"/>
 	                <entry key="en" value="Relation Clashes" />
 	            </map>
 			</constructor-arg>
@@ -253,13 +253,13 @@
 			<constructor-arg name="id" value="usr" />
 			<constructor-arg name="description">
 				<map>
-	                <entry key="fr" value="Trouve les nouveaux termes «inventés» dans l'espace de noms SKOS ou les propriétés obsolètes." />
+	                <entry key="fr" value="Trouve les nouvelles URIs «inventées» dans l'espace de noms SKOS, ou des propriétés obsolètes." />
 	                 <entry key="en" value="Finds 'invented' new terms within the SKOS namespace or deprecated properties." />
 	            </map>
 			</constructor-arg>
 			<constructor-arg name="lbconcept">
 				<map>
-	                <entry key="fr" value="Ressources SKOS indéfinies"/>
+	                <entry key="fr" value="Identifiants SKOS non définis"/>
 	                <entry key="en" value="Undefined SKOS Resources" />
 	            </map>
 			</constructor-arg>
@@ -283,13 +283,13 @@
 			<constructor-arg name="id" value="husv" />
 			<constructor-arg name="description">
 				<map>
-	                <entry key="fr" value="Trouve des sujets triples qui ne sont pas des URI HTTP." />
+	                <entry key="fr" value="Trouve les sujets de triplets qui n'utilisent pas le protocole HTTP." />
 	                 <entry key="en" value="Finds triple subjects that are no HTTP URIs." />
 	            </map>
 			</constructor-arg>
 			<constructor-arg name="lbconcept">
 				<map>
-	                <entry key="fr" value="Violation du système HTTP URI"/>
+	                <entry key="fr" value="URI sans protocole HTTP"/>
 	                <entry key="en" value="HTTP URI Scheme Violation" />
 	            </map>
 			</constructor-arg>
@@ -298,13 +298,13 @@
 			<constructor-arg name="id" value="tchbc"/>
 			<constructor-arg name="description">
 				<map>
-	                <entry key="fr" value="Trouve des concepts supérieurs internes à l'hiérarchie du vocabulaire."/>
+	                <entry key="fr" value="Trouve des concepts marqués comme racine mais qui sont à l'intérieur de la hiérarchie des concepts."/>
 	                <entry key="en" value="Finds top concepts internal to the vocabulary hierarchy tree." />
 	            </map>
 			</constructor-arg>
 			<constructor-arg name="lbconcept">
 				<map>
-	                <entry key="fr" value="Principaux concepts ayant des concepts plus larges"/>
+	                <entry key="fr" value="Concepts racines avec des génériques"/>
 	                <entry key="en" value="Top Concepts Having Broader Concepts" />
 	            </map>
 			</constructor-arg>
@@ -313,7 +313,7 @@
 			<constructor-arg name="id" value="otc" />
 			<constructor-arg name="description">
 				<map>
-	                <entry key="fr" value="Trouve des skos: ConceptSchemes qui n'ont pas de concepts de base définis." />
+	                <entry key="fr" value="Trouve des skos:ConceptSchemes qui n'ont pas de concepts racines définis." />
 	                <entry key="en" value="Finds skos:ConceptSchemes that don't have top concepts defined." />
 	            </map>
 			</constructor-arg>
@@ -328,7 +328,7 @@
 			<constructor-arg name="id" value="ncl" />
 			<constructor-arg name="description">
 				<map>
-	                <entry key="fr" value="Vérification des langues communes dans tous les concepts littéraires." />
+	                <entry key="fr" value="Vérifie que les litéraux sur les concepts utilisent des langues communes." />
 	                <entry key="en" value="Checks for common languages in all concept literals." />
 	            </map>
 			</constructor-arg>
@@ -349,7 +349,7 @@
 			</constructor-arg>
 			<constructor-arg name="lbconcept">
 				<map>
-	                <entry key="fr" value="Étiquettes préférées incohérentes"/>
+	                <entry key="fr" value="Incohérence des libellés préférés"/>
 	                <entry key="en" value="Inconsistent Preferred Labels" />
 	            </map>
 			</constructor-arg>
@@ -358,13 +358,13 @@
 			<constructor-arg name="id" value="dlv" />
 			<constructor-arg name="description">
 				<map>
-	                <entry key="fr" value="Trouve des ressources avec des entrées identiques pour différents types d'étiquettes." />
+	                <entry key="fr" value="Trouve des ressources avec des valeurs identiques dans différents types de libellés (pref, alt, hidden)." />
 	                <entry key="en" value="Finds resources with identical entries for different label types." />
 	            </map>
 			</constructor-arg>
 			<constructor-arg name="lbconcept">
 				<map>
-	                <entry key="fr" value="Violation des étiquettes disjointes"/>
+	                <entry key="fr" value="Libellés disjoints"/>
 	                <entry key="en" value="Disjoint Labels Violation" />
 	            </map>
 			</constructor-arg>
@@ -374,13 +374,13 @@
 			<constructor-arg name="id" value="ol"/>
 			<constructor-arg name="description">
 				<map>
-	                <entry key="fr" value="Trouve des concepts avec des étiquettes similaires (identiques)."/>
+	                <entry key="fr" value="Trouve des concepts avec des libellés identiques."/>
 	                <entry key="en" value="Finds concepts with similar (identical) labels." />
 	            </map>
 			</constructor-arg>
 			<constructor-arg name="lbconcept">
 				<map>
-	                <entry key="fr" value="Etiquettes supperposées"/>
+	                <entry key="fr" value="Libellés homonymes"/>
 	                <entry key="en" value="Overlapping Labels" />
 	            </map>
 			</constructor-arg>
@@ -389,13 +389,13 @@
 			<constructor-arg name="id" value="ucil" />
 			<constructor-arg name="description">
 				<map>
-	                <entry key="fr" value="Trouve des concepts ayant des étiquettes contenant des caractères non imprimables." />
+	                <entry key="fr" value="Trouve des concepts ayant des libellés contenant des caractères non-imprimables." />
 	                <entry key="en" value="Finds concepts having labels that contain unprintable characters." />
 	            </map>
 			</constructor-arg>
 			<constructor-arg name="lbconcept">
 				<map>
-	                <entry key="fr" value="Etiquettes contenant des caractères non imprimables"/>
+	                <entry key="fr" value="Caractères non-imprimables dans les libellés"/>
 	                <entry key="en" value="Unprintable Characters in Labels" />
 	            </map>
 			</constructor-arg>
@@ -404,13 +404,13 @@
 			<constructor-arg name="id" value="bl"/>
 			<constructor-arg name="description">
 				<map>
-	                <entry key="fr" value="Lien brisé - incorrect."/>
+	                <entry key="fr" value="Liens URL pointant vers une ressource qui n'existe pas."/>
 	                <entry key="en" value="Broken links." />
 	            </map>
 			</constructor-arg>
 			<constructor-arg name="lbconcept">
 				<map>
-	                <entry key="fr" value="Liens incorrects"/>
+	                <entry key="fr" value="Liens cassés"/>
 	                <entry key="en" value="Broken Links" />
 	            </map>
 			</constructor-arg>

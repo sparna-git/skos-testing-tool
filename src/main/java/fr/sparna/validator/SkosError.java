@@ -16,6 +16,9 @@ public class SkosError {
 	
 	protected String number;
 	
+	protected List<String> errorList;
+	
+	protected boolean success;
 	
 	
 	public String getNumber() {
@@ -42,17 +45,12 @@ public class SkosError {
 	public void setWeblink(String weblink) {
 		this.weblink = weblink;
 	}
-	protected List<String> errorList;
-	
-	protected boolean success;
-	
 	public String getRuleName() {
 		return ruleName;
 	}
 	public void setRuleName(String ruleName) {
 		this.ruleName = ruleName;
-	}
-	
+	}	
 	public List<String> getErrorList() {
 		return errorList;
 	}
@@ -71,7 +69,5 @@ public class SkosError {
 	public void setSuccess(boolean success) {
 		this.success = success;
 	}
-	
-	
 
 }

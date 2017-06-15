@@ -2,10 +2,13 @@ package fr.sparna.validator;
 
 import java.util.Map;
 
+/**
+ * A multilingual issue description, with multilingual descriptions and labels
+ */
 public class IssueDescription {
 	
-	protected Map<String ,String> description;
 	protected String id;
+	protected Map<String ,String> description;
 	protected Map<String, String> lbconcept;
 	
 	
@@ -16,12 +19,12 @@ public class IssueDescription {
 		this.lbconcept=lbconcept;
 	}
 	
-	public String getDescriptionById(String Id) {
-		return description.get(Id);
+	public String getDescriptionByLang(String lang) {
+		return description.get(lang);
 	}
 	
-	public String getLabelById(String Id) {
-		return lbconcept.get(Id);
+	public String getLabelByLang(String lang) {
+		return lbconcept.get(lang);
 	}
 	
 	public Map<String, String> getDescription() {

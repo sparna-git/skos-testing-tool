@@ -41,7 +41,7 @@
   	<bean id="ValidatorConfig" class="fr.sparna.validator.ValidatorConfig" factory-method="getInstance" />
 	<bean id="applicationData" class="fr.sparna.validator.ApplicationData">
 		
-		<property name="descList">
+		<property name="issueDescriptions">
 			<list >
 				<ref bean="issue-oc" />
 				<ref bean="issue-el" />
