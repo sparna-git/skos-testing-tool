@@ -1,15 +1,21 @@
 package fr.sparna.validator;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+
 import org.openrdf.OpenRDFException;
 import org.openrdf.model.Resource;
 import org.openrdf.model.URI;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import at.ac.univie.mminf.qskos4j.issues.Issue;
 import at.ac.univie.mminf.qskos4j.issues.Issue.IssueType;
 import at.ac.univie.mminf.qskos4j.issues.labels.util.EmptyLabelsResult;
@@ -17,11 +23,14 @@ import at.ac.univie.mminf.qskos4j.issues.language.IncompleteLangCovResult;
 import at.ac.univie.mminf.qskos4j.issues.language.OmittedOrInvalidLanguageTagsResult;
 import at.ac.univie.mminf.qskos4j.issues.relations.UnidirectionallyRelatedConceptsResult;
 import at.ac.univie.mminf.qskos4j.result.CollectionResult;
+import at.ac.univie.mminf.qskos4j.result.Result.ReportFormat;
 
 public class Process {
 
 	List<SkosError> resultList=new ArrayList<SkosError>();
-
+	private static final String FILENAME = "report.txt";
+	private final Logger logger = LoggerFactory.getLogger(Process.class);
+	
 	@SuppressWarnings("rawtypes")
 	public void processIssues(Collection<Issue> issues, Logger logger) throws OpenRDFException{
 		int issueNumber = 0;
@@ -62,11 +71,20 @@ public class Process {
 	@SuppressWarnings("rawtypes")
 	public List<SkosError> createReport(Collection<Issue> issues) throws IOException, OpenRDFException {
 		List<IssueDescription> DescList =ValidatorConfig.getInstance().applicationData.getDescList();
+		
+	
 		for (Issue issue : issues) {
 			
 
 			if(issue.getType()==IssueType.ANALYTICAL){
 				
+				logger.info("********---------"+issue.getName()+"-----------*********\n\n"+
+							"************************Description********************************\n\n"
+											+issue.getDescription()+"\n\n"
+							+"***************************Data***************************************\n\n"+
+								issue.getResult().getData().toString()+"\n\n"
+							+"**********************************************************************\n\n"
+						);
 				SkosError error=new SkosError();
 				List<String> uri=new ArrayList<String>();
 				error.setState(prepareOccurrenceText(issue,error));
@@ -127,7 +145,7 @@ public class Process {
 				}
 				/*--------------------Collection Result-------------------------*/
 				if(issue.getResult() instanceof CollectionResult) {
-
+					
 
 					if(issue.getResult().getData() instanceof URI){
 						Collection<URI> preciseResult = (Collection<URI>)issue.getResult().getData();
@@ -140,7 +158,6 @@ public class Process {
 						Collection<Resource> preciseResult = (Collection<Resource>)issue.getResult().getData();	
 						for (Resource res : preciseResult) {
 							uri.add(res.stringValue());
-
 
 						}
 					}
@@ -162,8 +179,10 @@ public class Process {
 					}
 					
 				}
+				
 				error.setErrorList(uri);
 				resultList.add(error);
+				
 			}
 		
 			

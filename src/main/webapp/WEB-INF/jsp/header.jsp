@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-
+<fmt:setBundle basename="Bundle"/>
 <nav class="navbar navbar-info navbar-fixed-left btn-info">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -14,7 +14,7 @@
 			<li class="active">
 				<a href="home">
 					<em>
-						${applicationScope.applicationData.userLocale == 'fr'? 'Accueil':'Home'}
+						<fmt:message key="menu.home"/>
 					
 					</em>
 				</a></li>

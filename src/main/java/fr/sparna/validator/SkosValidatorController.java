@@ -2,15 +2,15 @@ package fr.sparna.validator;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
+import java.util.ResourceBundle;
+import java.util.ResourceBundle.Control;
+import java.util.spi.ResourceBundleControlProvider;
 
 import org.openrdf.repository.RepositoryException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,6 +18,8 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class SkosValidatorController {
 
+	@Autowired
+	private ApplicationData applicationData;
 
 
 	@RequestMapping(value = "home")
@@ -26,6 +28,11 @@ public class SkosValidatorController {
 			) throws IOException{
 
 		ValidatorData data = new ValidatorData();
+		ResourceBundle b = ResourceBundle.getBundle(
+							"Bundle",
+							Locale.getDefault());
+					
+					
 		if(lang!=null){
 			Locale.setDefault(new Locale(lang));
 		}

@@ -9,6 +9,7 @@
 <c:set var="data"
 	value="${requestScope['fr.sparna.validator.ValidatorData']}" />
 <c:set var="applicationData" value="${applicationScope.applicationData}" />
+<fmt:setBundle basename="Bundle"/>
 <c:set var="compteur" scope="session" value="0" />
 <html>
 <head>
@@ -77,7 +78,7 @@
 		enctype="multipart/form-data" class="form-horizontal">
 		<div class="jumbotron">
 
-			<label for="file"><em><font size="3">${applicationData.userLocale== 'fr'? 'Choisissez votre fichier' :'Choose your file'}</font></em></label>
+			<label for="file"><em><font size="3"><fmt:message key="choice" /></font></em></label>
 			<div class="fileinput fileinput-new input-group"
 				data-provides="fileinput" id="file">
 				<div class="form-control" data-trigger="fileinput">
@@ -85,15 +86,15 @@
 						class="fileinput-filename"></span>
 				</div>
 				<span class="input-group-addon btn btn-default btn-file"><span
-					class="fileinput-new">${applicationData.userLocale== 'fr'? 'Fichier' :'Select file'}</span>
-					<span class="fileinput-exists">${applicationData.userLocale== 'fr'? 'Changer' :'Change'}</span><input
+					class="fileinput-new"><fmt:message key="file" /></span>
+					<span class="fileinput-exists"><fmt:message key="change" /></span><input
 					type="file" required name="file"></span> <a href="#"
 					class="input-group-addon btn btn-default fileinput-exists"
-					data-dismiss="fileinput">${applicationData.userLocale== 'fr'? 'Retirer' :'Remove'}</a>
+					data-dismiss="fileinput"><fmt:message key="retirer"/></a>
 			</div>
 			<input name="rulesChoice" id="rulesChoice"><br>
 			<button class="btn btn-info" type="submit" onclick="choice()">
-				${applicationData.userLocale== 'fr'? 'Valider' :'Valid'}
+				<fmt:message key="valid" />
 			</button>
 
 
@@ -104,7 +105,7 @@
 					<a class="accordion-toggle " data-toggle="collapse"
 						data-parent="#myAccordion" href="#collapse1">
 						<h4>
-							${applicationData.userLocale== 'fr'? 'Options avancées' :'Advanced options'}
+							<fmt:message key="option" />
 						</h4>
 					</a>
 				</div>

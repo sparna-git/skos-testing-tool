@@ -70,12 +70,12 @@ public class ValidateSkosFile {
 			// instantiation
 			QSkos qskos = new QSkos();
 			qskos.setRepositoryConnection(c);
-
+			
 			@SuppressWarnings("rawtypes")
 			//el, anr, otc, tchbc, hr, rr, ldsi, mrm, dlv,
 			Collection<Issue> issues = qskos.getIssues(rules);
 
-
+			
 			Process process=new Process();
 			process.processIssues(issues, logger);
 			errorList=process.createReport(issues);
