@@ -6,8 +6,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 
-<c:set var="data"
-	value="${requestScope['fr.sparna.validator.ValidatorData']}" />
+<c:set var="data" value="${requestScope['fr.sparna.validator.ValidatorData']}" />
+<c:set var="sessionData" value="${sessionScope['fr.sparna.validator.SessionData']}" />
 <c:set var="applicationData" value="${applicationScope.applicationData}" />
 <c:set var="compteur" scope="session" value="0" />
 <html>
@@ -77,7 +77,7 @@
 		enctype="multipart/form-data" class="form-horizontal">
 		<div class="jumbotron">
 
-			<label for="file"><em><font size="3">${applicationData.userLocale== 'fr'? 'Choisissez votre fichier' :'Choose your file'}</font></em></label>
+			<label for="file"><em><font size="3">${sessionData.userLocale== 'fr'? 'Choisissez votre fichier' :'Choose your file'}</font></em></label>
 			<div class="fileinput fileinput-new input-group"
 				data-provides="fileinput" id="file">
 				<div class="form-control" data-trigger="fileinput">
@@ -85,15 +85,15 @@
 						class="fileinput-filename"></span>
 				</div>
 				<span class="input-group-addon btn btn-default btn-file"><span
-					class="fileinput-new">${applicationData.userLocale== 'fr'? 'Fichier' :'Select file'}</span>
-					<span class="fileinput-exists">${applicationData.userLocale== 'fr'? 'Changer' :'Change'}</span><input
+					class="fileinput-new">${sessionData.userLocale== 'fr'? 'Fichier' :'Select file'}</span>
+					<span class="fileinput-exists">${sessionData.userLocale== 'fr'? 'Changer' :'Change'}</span><input
 					type="file" required name="file"></span> <a href="#"
 					class="input-group-addon btn btn-default fileinput-exists"
-					data-dismiss="fileinput">${applicationData.userLocale== 'fr'? 'Retirer' :'Remove'}</a>
+					data-dismiss="fileinput">${sessionData.userLocale== 'fr'? 'Retirer' :'Remove'}</a>
 			</div>
 			<input name="rulesChoice" id="rulesChoice"><br>
 			<button class="btn btn-info" type="submit" onclick="choice()">
-				${applicationData.userLocale== 'fr'? 'Valider' :'Valid'}
+				${sessionData.userLocale== 'fr'? 'Valider' :'Valid'}
 			</button>
 
 
@@ -104,24 +104,24 @@
 					<a class="accordion-toggle " data-toggle="collapse"
 						data-parent="#myAccordion" href="#collapse1">
 						<h4>
-							${applicationData.userLocale== 'fr'? 'Options avancées' :'Advanced options'}
+							${sessionData.userLocale== 'fr'? 'Options avancées' :'Advanced options'}
 						</h4>
 					</a>
 				</div>
 				<div id="collapse1" class="panel-collapse collapse in">
 					<div class="panel-body">
-						<c:forEach items="${applicationData.descList}" var="rule">
+						<c:forEach items="${applicationData.issueDescriptions}" var="rule">
 							<div class="form-group">
 								<c:set var="compteur" scope="session" value="${compteur+1}" />
-								<label class="col-sm-7"> <c:choose>
-										<c:when test="${applicationData.userLocale== 'fr'}">
+								<label class="col-sm-3"> <c:choose>
+										<c:when test="${sessionData.userLocale== 'fr'}">
 											<c:forEach items="${rule.lbconcept}" var="label">
 												<c:if test="${label.key=='fr'}">
 																	<a href="">${label.value}(${rule.id})</a>
 														</c:if>
 											</c:forEach>
 										</c:when>
-										<c:when test="${applicationData.userLocale == 'en'}">
+										<c:when test="${sessionData.userLocale == 'en'}">
 											<c:forEach items="${rule.lbconcept}" var="label">
 												<c:if test="${label.key=='en'}">
 																	<a href="">${label.value}(${rule.id})</a>
@@ -131,20 +131,20 @@
 										<c:otherwise></c:otherwise>
 									</c:choose>
 								</label>
-								<div class="col-sm-12">
+								<div class="col-sm-9">
 									<input type="checkbox" name="rule${compteur}"
 										id="rule${compteur}" value="${rule.id}"
 										<c:if test="${rule.id!='bl'}">checked</c:if>>
 
 									<span class="help-block"> <c:choose>
-											<c:when test="${applicationData.userLocale== 'fr'}">
+											<c:when test="${sessionData.userLocale== 'fr'}">
 												<c:forEach items="${rule.description}" var="desc">
 													<c:if test="${desc.key=='fr'}">
 																	${desc.value}
 																</c:if>
 												</c:forEach>
 											</c:when>
-											<c:when test="${applicationData.userLocale == 'en'}">
+											<c:when test="${sessionData.userLocale == 'en'}">
 												<c:forEach items="${rule.description}" var="desc">
 													<c:if test="${desc.key=='en'}">
 																	${desc.value}

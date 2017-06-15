@@ -5,6 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <c:set var="data" value="${requestScope['fr.sparna.validator.ValidatorData']}" />
+<c:set var="sessionData" value="${sessionScope['fr.sparna.validator.SessionData']}" />
 <c:set var="compteur" scope="session" value="0" />
 <html>
 <head>
@@ -72,7 +73,7 @@
 			        </tr>
 			        <c:if test="${!empty error.errorList}">
 					     <tr id="content" class="default">
-			        	<td >
+			        	<td colspan="3">
 				          <div class="table-outer">
 				          	<c:forEach items="${error.errorList}" var="list">
 								  ${list}<br>
@@ -84,8 +85,6 @@
 					           </c:if> 
 					       </div>
 				        </td>
-				         <td ></td>
-				         <td></td>
 			      	</tr>       		
 					</c:if> 
 			          
