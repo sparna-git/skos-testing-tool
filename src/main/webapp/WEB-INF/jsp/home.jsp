@@ -111,7 +111,7 @@
 					<a class="accordion-toggle " data-toggle="collapse"
 						data-parent="#myAccordion" href="#collapse1">
 						<h4>
-							<fmt:message key="option" />
+							<fmt:message key="regles" />
 						</h4>
 					</a>
 				</div>
@@ -120,48 +120,13 @@
 						<c:forEach items="${applicationData.issueDescriptions}" var="rule">
 							<div class="form-group">
 								<c:set var="compteur" scope="session" value="${compteur+1}" />
-								<label class="col-sm-3"> <c:choose>
-										<c:when test="${sessionData.userLocale== 'fr'}">
-											<c:forEach items="${rule.lbconcept}" var="label">
-												<c:if test="${label.key=='fr'}">
-																	<a href="">${label.value}(${rule.id})</a>
-														</c:if>
-											</c:forEach>
-										</c:when>
-										<c:when test="${sessionData.userLocale == 'en'}">
-											<c:forEach items="${rule.lbconcept}" var="label">
-												<c:if test="${label.key=='en'}">
-																	<a href="">${label.value}(${rule.id})</a>
-														</c:if>
-											</c:forEach>
-										</c:when>
-										<c:otherwise></c:otherwise>
-									</c:choose>
-								</label>
+								<label class="col-sm-3"><a href="">${rule.getLabelByLang(sessionData.userLocale)}</a></label>
 								<div class="col-sm-9">
 									<input type="checkbox" name="rule${compteur}"
 										id="rule${compteur}" value="${rule.id}"
-										<c:if test="${rule.id!='bl'}">checked</c:if>>
+										<c:if test="${rule.id!='bl'}">checked</c:if> />
 
-									<span class="help-block"> <c:choose>
-											<c:when test="${sessionData.userLocale== 'fr'}">
-												<c:forEach items="${rule.description}" var="desc">
-													<c:if test="${desc.key=='fr'}">
-																	${desc.value}
-																</c:if>
-												</c:forEach>
-											</c:when>
-											<c:when test="${sessionData.userLocale == 'en'}">
-												<c:forEach items="${rule.description}" var="desc">
-													<c:if test="${desc.key=='en'}">
-																	${desc.value}
-																</c:if>
-												</c:forEach>
-											</c:when>
-											<c:otherwise></c:otherwise>
-										</c:choose>
-
-									</span>
+									<span class="help-block">${rule.getDescriptionByLang(sessionData.userLocale)}</span>
 								</div>
 
 							</div>

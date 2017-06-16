@@ -27,11 +27,10 @@
 				overflow:hidden;
 		}
 			
-	.table-outer.open {
-				height:unset;
-				overflow:visible;
-	}
-.navigation {position:fixed;}
+.table-outer.open {
+			height:unset;
+			overflow:visible;
+}
 
 #log{
 	background-color:white;
@@ -67,7 +66,9 @@
 	border-color: #c0d1b5;
 }
 
+/** navigation menu **/
 .navigation {
+	position:fixed;
 	margin-left: 1.5em;
 }
 #sidebar > li > a {
@@ -75,8 +76,6 @@
 }
 
 #stat{
-	
 	width:65%;
 	margin-left:570px;
-	
 }

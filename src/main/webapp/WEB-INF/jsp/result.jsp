@@ -45,9 +45,9 @@
 		  <table id="table" data-show-print="true" class="table table-hover table-expandable table-striped">
 		    <thead>
 		      <tr>
-		        <th>Rules</th>
-		        <th>Description</th>
+		        <th>Rule</th>
 		        <th>State</th>
+		        <th>Description</th>
 		      </tr>
 		    </thead>
 		    <tbody>
@@ -57,8 +57,8 @@
 			        	<c:if test="${error.success==false}">class="danger" </c:if>
 					>
 				        <td><a href="${error.weblink}" id="${error.id}">${error.ruleName}(${error.id})</a></td>
-				        <td>${error.description}</td>
 				        <td>${error.state}</td>
+				        <td>${error.description}</td>
 			        </tr>
 			        <c:if test="${!empty error.errorList}">
 					     <tr id="content" class="default">

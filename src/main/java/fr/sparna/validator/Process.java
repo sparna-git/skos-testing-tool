@@ -166,6 +166,20 @@ public class Process {
 	//							});
 	//							buffer.append("</ul>\n");
 	//							messages.add(buffer.toString());
+							} else if (item instanceof Collection) {
+								// collections inside a collection, case of "disconnected concept clusters"
+								StringBuffer buffer = new StringBuffer();
+								Collection c = (Collection)item;								
+								c.stream().forEach(elmt -> {
+									if(elmt instanceof URI) {
+										buffer.append("<a href=\""+elmt.toString()+"\" target=\"_blank\">"+elmt.toString()+"</a>");
+									} else {
+										buffer.append(elmt.toString());
+									}
+									buffer.append(", ");
+								});
+								buffer.delete(buffer.length()-2, buffer.length());
+								messages.add(buffer.toString());
 							} else {
 								messages.add(item.toString());
 							}
