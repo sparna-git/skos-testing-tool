@@ -6,6 +6,8 @@ public class SessionData {
 
 	protected String userLocale;
 	
+	protected String baseUrl;
+	
 	public String getUserLocale() {
 		return userLocale;
 	}
@@ -21,5 +23,14 @@ public class SessionData {
 	public void store(HttpSession session) {
 		session.setAttribute(SessionData.class.getName(), this);
 	}
+
+	public String getBaseUrl() {
+		return baseUrl;
+	}
+
+	public void setBaseUrl(String baseUrl) {
+		this.baseUrl = baseUrl;
+	}
+	
 	
 }

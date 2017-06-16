@@ -2,6 +2,8 @@ package fr.sparna.validator;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Collection;
 
 import javax.servlet.http.HttpServletRequest;
@@ -48,10 +50,12 @@ public class SkosValidatorController {
 			@RequestParam(value="file", required=true) MultipartFile file,
 			@RequestParam(value="rulesChoice", required=false) String choice,
 			HttpServletRequest request
-	) throws RepositoryException {
+	) throws RepositoryException, MalformedURLException {
 
-		ValidatorData data = new ValidatorData();		
-
+		ValidatorData data = new ValidatorData();
+		SessionData sessionData=SessionData.retrieve(request.getSession());
+		URL baseURL = new URL("http://"+request.getServerName()+((request.getServerPort() != 80)?":"+request.getServerPort():"")+request.getContextPath());
+		sessionData.setBaseUrl(baseURL.toString());
 		if(choice!=null){
 			data.extractAndSetChoice(choice);
 		}		
@@ -59,7 +63,7 @@ public class SkosValidatorController {
 		try {
 			ValidateSkosFile skos=new ValidateSkosFile(choice.replaceAll("-", ","));			
 			Collection<Issue> qSkosResult = skos.validate(file.getInputStream(), Rio.getWriterFormatForFileName(file.getOriginalFilename()));
-			Process process = new Process(SessionData.retrieve(request.getSession()).getUserLocale());
+			Process process = new Process(sessionData.getUserLocale());
 			data.setErrorList(process.createReport(qSkosResult));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

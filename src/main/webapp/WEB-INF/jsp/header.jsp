@@ -46,6 +46,11 @@
 			<li>
 				<a href="https://github.com/cmader/qSKOS"><em>QSkos documentation</em></a>
 			</li>
+			<!--  <li>
+				<c:if test="${sessionData.baseUrl!=null}">
+					<a href="${sessionData.baseUrl}/validator.log"><em><fmt:message key="menu.download"/></em></a>
+				</c:if>
+			</li>-->
 		</ul>
 	</div>
 </nav>
