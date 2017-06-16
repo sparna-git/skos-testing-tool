@@ -40,7 +40,7 @@ public class ValidateSkosFile {
 	 * Validate a File
 	 * @param f
 	 * @return
-	 * @throws OpenRDFException
+	 * @throws RDF4JException
 	 * @throws IOException
 	 */
 	@SuppressWarnings("rawtypes")
@@ -79,7 +79,7 @@ public class ValidateSkosFile {
 	 * @param input
 	 * @param format
 	 * @return
-	 * @throws OpenRDFException
+	 * @throws RDF4JException
 	 * @throws IOException
 	 */
 	@SuppressWarnings("rawtypes")

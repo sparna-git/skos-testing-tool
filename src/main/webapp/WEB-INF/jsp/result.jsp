@@ -39,7 +39,7 @@
 	</c:forEach>
 </ul>
 </div>
-  <div class="panel panel-info content" id="stat">
+  <div class="panel panel-primary content" id="stat">
       <div class="panel-heading">Details</div>
       	<div class="panel-body">
 		  <table id="table" data-show-print="true" class="table table-hover table-expandable table-striped">

@@ -7,8 +7,8 @@
 	<version>3.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 	
-	<name>validator</name>
-	<description>validator</description>
+	<name>skos-validator</name>
+	<description>SKOS validator</description>
 
 	<build>
         <plugins>

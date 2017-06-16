@@ -99,7 +99,7 @@
 					</a>	
 			</div>
 			<input name="rulesChoice" id="rulesChoice"><br>
-			<button class="btn btn-info" type="submit" onclick="choice()">
+			<button class="btn btn-lg btn-primary" type="submit" onclick="choice()">
 				<fmt:message key="valid" />		
 			</button>
 			</div>
