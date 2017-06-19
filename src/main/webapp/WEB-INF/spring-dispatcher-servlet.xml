@@ -69,6 +69,8 @@
 				<ref bean="issue-ipl" />
 				<ref bean="issue-ucil" />
 				<ref bean="issue-bl" />
+				<ref bean="issue-mil" />
+				<ref bean="issue-chr" />
 			</list>
 		</property>
 		

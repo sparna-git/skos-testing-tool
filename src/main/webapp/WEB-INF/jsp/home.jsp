@@ -9,9 +9,10 @@
 <c:set var="data" value="${requestScope['fr.sparna.validator.ValidatorData']}" />
 <c:set var="sessionData" value="${sessionScope['fr.sparna.validator.SessionData']}" />
 <c:set var="applicationData" value="${applicationScope.applicationData}" />
-<fmt:setLocale value="${sessionScope['fr.sparna.validator.SessionData'].userLocale}"/>
-<fmt:setBundle basename="Bundle"/>
 <c:set var="compteur" scope="session" value="0" />
+
+<fmt:setBundle basename="fr.sparna.validator.properties.Bundle"/>
+<fmt:setLocale value="${sessionScope['fr.sparna.validator.SessionData'].userLocale}"/>
 <html>
 <head>
 
@@ -99,7 +100,7 @@
 					</a>	
 			</div>
 			<input name="rulesChoice" id="rulesChoice"><br>
-			<button class="btn btn-lg btn-primary" type="submit" onclick="choice()">
+			<button class="btn btn-info" type="submit" onclick="choice()">
 				<fmt:message key="valid" />		
 			</button>
 			</div>
@@ -111,7 +112,7 @@
 					<a class="accordion-toggle " data-toggle="collapse"
 						data-parent="#myAccordion" href="#collapse1">
 						<h4>
-							<fmt:message key="regles" />
+							<fmt:message key="option" />
 						</h4>
 					</a>
 				</div>
@@ -120,13 +121,48 @@
 						<c:forEach items="${applicationData.issueDescriptions}" var="rule">
 							<div class="form-group">
 								<c:set var="compteur" scope="session" value="${compteur+1}" />
-								<label class="col-sm-3"><a href="">${rule.getLabelByLang(sessionData.userLocale)}</a></label>
+								<label class="col-sm-3"> <c:choose>
+										<c:when test="${sessionData.userLocale== 'fr'}">
+											<c:forEach items="${rule.lbconcept}" var="label">
+												<c:if test="${label.key=='fr'}">
+																	<a href="${rule.link}">${rule.id} - ${label.value}</a>
+														</c:if>
+											</c:forEach>
+										</c:when>
+										<c:when test="${sessionData.userLocale == 'en'}">
+											<c:forEach items="${rule.lbconcept}" var="label">
+												<c:if test="${label.key=='en'}">
+																	<a href="">${label.value}(${rule.id})</a>
+														</c:if>
+											</c:forEach>
+										</c:when>
+										<c:otherwise></c:otherwise>
+									</c:choose>
+								</label>
 								<div class="col-sm-9">
 									<input type="checkbox" name="rule${compteur}"
 										id="rule${compteur}" value="${rule.id}"
-										<c:if test="${rule.id!='bl'}">checked</c:if> />
+										<c:if test="${rule.id!='bl' && rule.id!='mil'}">checked</c:if>>
 
-									<span class="help-block">${rule.getDescriptionByLang(sessionData.userLocale)}</span>
+									<span class="help-block"> <c:choose>
+											<c:when test="${sessionData.userLocale== 'fr'}">
+												<c:forEach items="${rule.description}" var="desc">
+													<c:if test="${desc.key=='fr'}">
+																	${desc.value}
+																</c:if>
+												</c:forEach>
+											</c:when>
+											<c:when test="${sessionData.userLocale == 'en'}">
+												<c:forEach items="${rule.description}" var="desc">
+													<c:if test="${desc.key=='en'}">
+																	${desc.value}
+																</c:if>
+												</c:forEach>
+											</c:when>
+											<c:otherwise></c:otherwise>
+										</c:choose>
+
+									</span>
 								</div>
 
 							</div>
@@ -138,8 +174,9 @@
 			<br>
 		</div>
 	</form>
-
+	<jsp:include page="footer.jsp" />
 </body>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		var newinput = document.getElementById('rulesChoice');

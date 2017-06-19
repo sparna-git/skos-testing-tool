@@ -4,9 +4,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<fmt:setLocale value="${sessionScope['fr.sparna.validator.SessionData'].userLocale}"/>
-<fmt:setBundle basename="Bundle" />
+
 <c:set var="sessionData" value="${sessionScope['fr.sparna.validator.SessionData']}" />
+<fmt:setLocale value="${sessionScope['fr.sparna.validator.SessionData'].userLocale}"/>
+<fmt:setBundle basename="fr.sparna.validator.properties.Bundle" />
 <nav class="navbar navbar-default">
 
 	<div class="container-fluid">
@@ -14,7 +15,7 @@
 			<a class="navbar-brand" href="home">Skos Validator</a>
 		</div>
 		<ul class="nav navbar-nav">
-			<li class="active">
+			<li >
 				<a href="home">
 					<em>
 						<fmt:message key="menu.home"/>
@@ -42,9 +43,6 @@
 						</c:when>
 					</c:choose>
 				</ul>
-			</li>
-			<li>
-				<a href="https://github.com/cmader/qSKOS"><em>QSkos documentation</em></a>
 			</li>
 			<!--  <li>
 				<c:if test="${sessionData.baseUrl!=null}">

@@ -10,13 +10,14 @@ public class IssueDescription {
 	protected String id;
 	protected Map<String ,String> description;
 	protected Map<String, String> lbconcept;
+	protected String link;
 	
-	
-	public IssueDescription(String id, Map<String, String> description, Map<String, String> lbconcept) {
+	public IssueDescription(String id, Map<String, String> description, Map<String, String> lbconcept, String link) {
 		super();
 		this.description = description;
 		this.id = id;
 		this.lbconcept=lbconcept;
+		this.link=link;
 	}
 	
 	public String getDescriptionByLang(String lang) {
@@ -39,6 +40,15 @@ public class IssueDescription {
 		return lbconcept;
 	}
 
+	public String getLink() {
+		return link;
+	}
+
+	public void setLink(String link) {
+		this.link = link;
+	}
+
+	
 	
 
 	

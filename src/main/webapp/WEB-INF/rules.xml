@@ -29,6 +29,8 @@
 	                <entry key="en" value="Orphan Concepts" />
 	            </map>
 			</constructor-arg>
+			<constructor-arg name="link" 
+			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Orphan_Concepts"/>
 		</bean>
 		<bean id="issue-el" class="fr.sparna.validator.IssueDescription">
 			<constructor-arg name="id" value="el" />
@@ -44,6 +46,8 @@
 	                <entry key="en" value="Empty Labels" />
 	            </map>
 			</constructor-arg>
+			<constructor-arg name="link" 
+			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Empty_Labels"/>
 		</bean>
 		<bean id="issue-ml" class="fr.sparna.validator.IssueDescription">
 			<constructor-arg name="id" value="ml" />
@@ -59,6 +63,8 @@
 	                <entry key="en" value="Missing Labels" />
 	            </map>
 			</constructor-arg>
+			<constructor-arg name="link" 
+			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Missing_Labels"/>
 		</bean>
 		<bean id="issue-uc" class="fr.sparna.validator.IssueDescription">
 			<constructor-arg name="id" value="uc"/>
@@ -74,6 +80,8 @@
 	                <entry key="en" value="Undocumented Concepts" />
 	            </map>
 			</constructor-arg>
+			<constructor-arg name="link" 
+			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Undocumented_Concepts"/>
 		</bean>
 		<bean id="issue-ilc" class="fr.sparna.validator.IssueDescription">
 			<constructor-arg name="id" value="ilc" />
@@ -89,6 +97,8 @@
 	                <entry key="en" value="Incomplete Language Coverage" />
 	            </map>
 			</constructor-arg>
+			<constructor-arg name="link" 
+			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Incomplete_Language_Coverage"/>
 		</bean>
 		<bean id="issue-oilt" class="fr.sparna.validator.IssueDescription">
 			<constructor-arg name="id" value="oilt"/>
@@ -104,7 +114,8 @@
 	                <entry key="en" value="Omitted or Invalid Language Tags" />
 	            </map>
 			</constructor-arg>
-			
+			<constructor-arg name="link" 
+			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Omitted_or_Invalid_Language_Tags"/>
 		</bean>
 		
 		<bean id="issue-dcc" class="fr.sparna.validator.IssueDescription">
@@ -121,7 +132,8 @@
 	                <entry key="en" value="Disconnected Concept Clusters" />
 	            </map>
 			</constructor-arg>
-			
+			<constructor-arg name="link" 
+			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Disconnected_Concept_Clusters"/>
 		</bean>
 		<bean id="issue-hr" class="fr.sparna.validator.IssueDescription">
 			<constructor-arg name="id" value="hr" />
@@ -137,7 +149,8 @@
 	                <entry key="en" value="Hierarchical Redundancy" />
 	            </map>
 			</constructor-arg>
-			
+			<constructor-arg name="link" 
+			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Hierarchical_Redundancy"/>
 		</bean>
 		<bean id="issue-anr" class="fr.sparna.validator.IssueDescription">
 			<constructor-arg name="id" value="anr" />
@@ -153,6 +166,8 @@
 	                <entry key="en" value="Ambiguous Notation References" />
 	            </map>
 			</constructor-arg>
+			<constructor-arg name="link" 
+			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Ambiguous_Notation_References"/>
 		</bean>
 		<bean id="issue-rrc" class="fr.sparna.validator.IssueDescription">
 			<constructor-arg name="id" value="rrc"/>
@@ -168,6 +183,8 @@
 	                <entry key="en" value="Reflexively Related Concepts" />
 	            </map>
 			</constructor-arg>
+			<constructor-arg name="link" 
+			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Reflexively_Related_Concepts"/>
 		</bean>
 		<bean id="issue-strc" class="fr.sparna.validator.IssueDescription">
 			<constructor-arg name="id" value="strc" />
@@ -183,6 +200,8 @@
 	                <entry key="en" value="Solely Transitively Related Concepts" />
 	            </map>
 			</constructor-arg>
+			<constructor-arg name="link" 
+			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Solely_Transitively_Related_Concepts"/>
 		</bean>
 		<bean id="issue-urc" class="fr.sparna.validator.IssueDescription">
 			<constructor-arg name="id" value="urc"/>
@@ -199,6 +218,8 @@
 	                <entry key="en" value="Unidirectionally Related Concepts" />
 	            </map>
 			</constructor-arg>
+			<constructor-arg name="link" 
+			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Unidirectionally_Related_Concepts"/>
 		</bean>
 		
 		
@@ -216,7 +237,8 @@
 	                <entry key="en" value="Valueless Associative Relations" />
 	            </map>
 			</constructor-arg>
-			
+			<constructor-arg name="link" 
+			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Valueless_Associative_Relations"/>
 		</bean>
 		
 		<bean id="issue-mri" class="fr.sparna.validator.IssueDescription">
@@ -233,6 +255,8 @@
 	                <entry key="en" value="Mapping Relations Misuse" />
 	            </map>
 			</constructor-arg>
+			<constructor-arg name="link" 
+			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Mapping_Relations_Misuse"/>
 		</bean>
 		<bean id="issue-rc" class="fr.sparna.validator.IssueDescription">
 			<constructor-arg name="id" value="rc" />
@@ -248,6 +272,8 @@
 	                <entry key="en" value="Relation Clashes" />
 	            </map>
 			</constructor-arg>
+			<constructor-arg name="link" 
+			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Relation_Clashes"/>
 		</bean>
 		<bean id="issue-usr" class="fr.sparna.validator.IssueDescription">
 			<constructor-arg name="id" value="usr" />
@@ -263,6 +289,8 @@
 	                <entry key="en" value="Undefined SKOS Resources" />
 	            </map>
 			</constructor-arg>
+			<constructor-arg name="link" 
+			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Undefined_SKOS_Resources"/>
 		</bean>
 		<bean id="issue-mol" class="fr.sparna.validator.IssueDescription">
 			<constructor-arg name="id" value="mol"/>
@@ -278,6 +306,8 @@
 	                <entry key="en" value="Missing Out-Link" />
 	            </map>
 			</constructor-arg>
+			<constructor-arg name="link" 
+			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Missing_OutLink"/>
 		</bean>
 		<bean id="issue-husv" class="fr.sparna.validator.IssueDescription">
 			<constructor-arg name="id" value="husv" />
@@ -293,6 +323,8 @@
 	                <entry key="en" value="HTTP URI Scheme Violation" />
 	            </map>
 			</constructor-arg>
+			<constructor-arg name="link" 
+			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#HTTP_URI_Scheme_Violation"/>
 		</bean>
 		<bean id="issue-tchbc" class="fr.sparna.validator.IssueDescription">
 			<constructor-arg name="id" value="tchbc"/>
@@ -308,6 +340,8 @@
 	                <entry key="en" value="Top Concepts Having Broader Concepts" />
 	            </map>
 			</constructor-arg>
+			<constructor-arg name="link" 
+			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Top_Concepts_Having_Broader_Concepts"/>
 		</bean>
 		<bean id="issue-otc" class="fr.sparna.validator.IssueDescription">
 			<constructor-arg name="id" value="otc" />
@@ -323,6 +357,8 @@
 	                <entry key="en" value="Omitted Top Concepts" />
 	            </map>
 			</constructor-arg>
+			<constructor-arg name="link" 
+			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Omitted_Top_Concepts"/>
 		</bean>
 		<bean id="issue-ncl" class="fr.sparna.validator.IssueDescription">
 			<constructor-arg name="id" value="ncl" />
@@ -338,6 +374,8 @@
 	                <entry key="en" value="No Common Languages" />
 	            </map>
 			</constructor-arg>
+			<constructor-arg name="link" 
+			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#No_Common_Languages"/>
 		</bean>
 		<bean id="issue-ipl" class="fr.sparna.validator.IssueDescription">
 			<constructor-arg name="id" value="ipl"/>
@@ -353,6 +391,8 @@
 	                <entry key="en" value="Inconsistent Preferred Labels" />
 	            </map>
 			</constructor-arg>
+			<constructor-arg name="link" 
+			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Inconsistent_Preferred_Labels"/>
 		</bean>
 		<bean id="issue-dlv" class="fr.sparna.validator.IssueDescription">
 			<constructor-arg name="id" value="dlv" />
@@ -368,7 +408,8 @@
 	                <entry key="en" value="Disjoint Labels Violation" />
 	            </map>
 			</constructor-arg>
-			
+			<constructor-arg name="link" 
+			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Disjoint_Labels_Violation"/>
 		</bean>
 		<bean id="issue-ol" class="fr.sparna.validator.IssueDescription">
 			<constructor-arg name="id" value="ol"/>
@@ -384,6 +425,8 @@
 	                <entry key="en" value="Overlapping Labels" />
 	            </map>
 			</constructor-arg>
+			<constructor-arg name="link" 
+			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Overlapping_Labels"/>
 		</bean>
 		<bean id="issue-ucil" class="fr.sparna.validator.IssueDescription">
 			<constructor-arg name="id" value="ucil" />
@@ -399,6 +442,8 @@
 	                <entry key="en" value="Unprintable Characters in Labels" />
 	            </map>
 			</constructor-arg>
+			<constructor-arg name="link" 
+			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Unprintable_Characters_in_Labels"/>
 		</bean>
 		<bean id="issue-bl" class="fr.sparna.validator.IssueDescription">
 			<constructor-arg name="id" value="bl"/>
@@ -414,7 +459,46 @@
 	                <entry key="en" value="Broken Links" />
 	            </map>
 			</constructor-arg>
+			<constructor-arg name="link" 
+			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Broken_Links"/>
 		</bean>
+		<bean id="issue-mil" class="fr.sparna.validator.IssueDescription">
+			<constructor-arg name="id" value="mil"/>
+			<constructor-arg name="description">
+				<map>
+	                <entry key="fr" value="Utilise l'index Synice pour trouver des concepts qui ne sont pas référencés par d'autres ensembles de données sur le Web."/>
+	                <entry key="en" value="Uses the sindice index to find concepts that aren't referenced by other datasets on the Web." />
+	            </map>
+			</constructor-arg>
+			<constructor-arg name="lbconcept">
+				<map>
+	                <entry key="fr" value="Manquant dans les liens"/>
+	                <entry key="en" value="Missing In-Links" />
+	            </map>
+			</constructor-arg>
+			<constructor-arg name="link" 
+			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Missing_InLinks"/>
+				
+			
+		</bean>
+		<bean id="issue-chr" class="fr.sparna.validator.IssueDescription">
+			<constructor-arg name="id" value="chr"/>
+			<constructor-arg name="description">
+				<map>
+	                <entry key="fr" value="TRouve des concepts qui sont liés hiérarchiquement à d'autres."/>
+	                <entry key="en" value="Finds concepts that are hierarchically related to each other." />
+	            </map>
+			</constructor-arg>
+			<constructor-arg name="lbconcept">
+				<map>
+	                <entry key="fr" value="Relations hiérarchique cyclique"/>
+	                <entry key="en" value="Cyclic Hierarchical Relations" />
+	            </map>
+			</constructor-arg>
+			<constructor-arg name="link" 
+			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Cyclic_Hierarchical_Relations"/>
+		</bean>
+        
         
         
 </beans>

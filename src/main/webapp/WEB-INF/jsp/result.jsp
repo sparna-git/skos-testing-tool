@@ -7,6 +7,8 @@
 <c:set var="data" value="${requestScope['fr.sparna.validator.ValidatorData']}" />
 <c:set var="sessionData" value="${sessionScope['fr.sparna.validator.SessionData']}" />
 <c:set var="compteur" scope="session" value="0" />
+<fmt:setLocale value="${sessionScope['fr.sparna.validator.SessionData'].userLocale}"/>
+<fmt:setBundle basename="fr.sparna.validator.properties.Bundle" />
 <html>
 <head>
 
@@ -39,15 +41,15 @@
 	</c:forEach>
 </ul>
 </div>
-  <div class="panel panel-primary content" id="stat">
+  <div class="panel panel-info content" id="stat">
       <div class="panel-heading">Details</div>
       	<div class="panel-body">
 		  <table id="table" data-show-print="true" class="table table-hover table-expandable table-striped">
 		    <thead>
 		      <tr>
-		        <th>Rule</th>
-		        <th>State</th>
+		        <th>Rules</th>
 		        <th>Description</th>
+		        <th>State</th>
 		      </tr>
 		    </thead>
 		    <tbody>
@@ -57,8 +59,8 @@
 			        	<c:if test="${error.success==false}">class="danger" </c:if>
 					>
 				        <td><a href="${error.weblink}" id="${error.id}">${error.ruleName}(${error.id})</a></td>
-				        <td>${error.state}</td>
 				        <td>${error.description}</td>
+				        <td>${error.state}</td>
 			        </tr>
 			        <c:if test="${!empty error.errorList}">
 					     <tr id="content" class="default">
@@ -82,6 +84,7 @@
 		    </table>
 		 </div>
     </div>
+    <jsp:include page="footer.jsp" />
     <script type="text/javascript">
     $(document).ready(function() {
     	// add the toggle link behavior
