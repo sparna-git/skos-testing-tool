@@ -2,8 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc" 
-	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -13,493 +12,573 @@
         http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/util
         http://www.springframework.org/schema/util/spring-util.xsd">
-        
-        
-        <bean id="issue-oc" class="fr.sparna.validator.IssueDescription">
-			<constructor-arg name="id" value="oc" />
-			<constructor-arg name="description">
-				<map>
-	                <entry key="fr" value="Trouve tous les concepts orphelins, c'est-à-dire ceux qui n'ont pas de relations sémantiques (générique, spécifique, associé) avec d'autres concepts." />
-	                <entry key="en" value="Finds all orphan concepts, i.e. those not having semantic relationships to other concepts." />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="lbconcept">
-				<map>
-	                <entry key="fr" value="Concepts orphelins"/>
-	                <entry key="en" value="Orphan Concepts" />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="link" 
-			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Orphan_Concepts"/>
-		</bean>
-		<bean id="issue-el" class="fr.sparna.validator.IssueDescription">
-			<constructor-arg name="id" value="el" />
-			<constructor-arg name="description">
-				<map>
-	                <entry key="fr" value="Trouve les libellés vides ou les libellés contenant uniquement des espaces." />
-	                <entry key="en" value="Finds empty labels or labels containing only whitespaces." />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="lbconcept">
-				<map>
-	                <entry key="fr" value="Libellés vides"/>
-	                <entry key="en" value="Empty Labels" />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="link" 
-			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Empty_Labels"/>
-		</bean>
-		<bean id="issue-ml" class="fr.sparna.validator.IssueDescription">
-			<constructor-arg name="id" value="ml" />
-			<constructor-arg name="description">
-				<map>
-	                <entry key="fr" value="Trouve des concepts ou des schema de concepts avec des libellés manquants." />
-	                <entry key="en" value="Finds concepts and conceptSchemes with missing labels." />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="lbconcept">
-				<map>
-	                <entry key="fr" value="Libellés manquants"/>
-	                <entry key="en" value="Missing Labels" />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="link" 
-			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Missing_Labels"/>
-		</bean>
-		<bean id="issue-uc" class="fr.sparna.validator.IssueDescription">
-			<constructor-arg name="id" value="uc"/>
-			<constructor-arg name="description">
-				<map>
-	                <entry key="fr" value="Trouve des concepts qui n'utilisent aucune propriétés de documentation SKOS." />
-	                <entry key="en" value="Finds concepts that don't use any SKOS documentation properties." />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="lbconcept">
-				<map>
-	                <entry key="fr" value="Concepts non documentés"/>
-	                <entry key="en" value="Undocumented Concepts" />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="link" 
-			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Undocumented_Concepts"/>
-		</bean>
-		<bean id="issue-ilc" class="fr.sparna.validator.IssueDescription">
-			<constructor-arg name="id" value="ilc" />
-			<constructor-arg name="description">
-				<map>
-	                <entry key="fr" value="Trouve des concepts qui n'ont pas de description dans des langues utilisées pour d'autres concepts." />
-	                <entry key="en" value="Finds concepts lacking description in languages that are present for other concepts." />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="lbconcept">
-				<map>
-	                <entry key="fr" value="Couverture linguistique incomplète"/>
-	                <entry key="en" value="Incomplete Language Coverage" />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="link" 
-			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Incomplete_Language_Coverage"/>
-		</bean>
-		<bean id="issue-oilt" class="fr.sparna.validator.IssueDescription">
-			<constructor-arg name="id" value="oilt"/>
-			<constructor-arg name="description">
-				<map>
-	                <entry key="fr" value="Trouve les litéraux sans étiquette de langue ou avec une étiquette de langue invalide." />
-	                <entry key="en" value="Finds omitted or invalid language tags of text literals." />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="lbconcept">
-				<map>
-	                <entry key="fr" value="Langue absente ou invalide"/>
-	                <entry key="en" value="Omitted or Invalid Language Tags" />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="link" 
-			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Omitted_or_Invalid_Language_Tags"/>
-		</bean>
-		
-		<bean id="issue-dcc" class="fr.sparna.validator.IssueDescription">
-			<constructor-arg name="id" value="dcc" />
-			<constructor-arg name="description">
-				<map>
-	                <entry key="fr" value="Trouve des ensembles de concepts isolés du reste du vocabulaire." />
-	                <entry key="en" value="Finds sets of concepts that are isolated from the rest of the vocabulary." />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="lbconcept">
-				<map>
-	                <entry key="fr" value="Ensemble de concepts déconnectés"/>
-	                <entry key="en" value="Disconnected Concept Clusters" />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="link" 
-			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Disconnected_Concept_Clusters"/>
-		</bean>
-		<bean id="issue-hr" class="fr.sparna.validator.IssueDescription">
-			<constructor-arg name="id" value="hr" />
-			<constructor-arg name="description">
-				<map>
-	                <entry key="fr" value="Trouve des relations générique/spécifique redondantes sur plusieurs niveaux de hiérarchie." />
-	                <entry key="en" value="Finds broader/narrower relations over multiple hierarchy levels." />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="lbconcept">
-				<map>
-	                <entry key="fr" value="Redondance hiérarchique"/>
-	                <entry key="en" value="Hierarchical Redundancy" />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="link" 
-			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Hierarchical_Redundancy"/>
-		</bean>
-		<bean id="issue-anr" class="fr.sparna.validator.IssueDescription">
-			<constructor-arg name="id" value="anr" />
-			<constructor-arg name="description">
-				<map>
-	                <entry key="fr" value="Trouve des concepts avec plusieurs notations ou des notations identiques dans le même schéma de concept." />
-	                <entry key="en" value="Finds concepts with multiple or identical notations within the same concept scheme." />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="lbconcept">
-				<map>
-	                <entry key="fr" value="Notations ambigues"/>
-	                <entry key="en" value="Ambiguous Notation References" />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="link" 
-			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Ambiguous_Notation_References"/>
-		</bean>
-		<bean id="issue-rrc" class="fr.sparna.validator.IssueDescription">
-			<constructor-arg name="id" value="rrc"/>
-			<constructor-arg name="description">
-				<map>
-	                <entry key="fr" value="Trouve des concepts qui sont reliés à eux-mêmes." />
-	                <entry key="en" value="Finds concepts that are related to themselves." />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="lbconcept">
-				<map>
-	                <entry key="fr" value="Relations réflexives"/>
-	                <entry key="en" value="Reflexively Related Concepts" />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="link" 
-			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Reflexively_Related_Concepts"/>
-		</bean>
-		<bean id="issue-strc" class="fr.sparna.validator.IssueDescription">
-			<constructor-arg name="id" value="strc" />
-			<constructor-arg name="description">
-				<map>
-	                <entry key="fr" value="Concepts uniquement reliés par skos:broaderTransitive ou skos:narrowerTransitive." />
-	                <entry key="en" value="Concepts only related by skos:broaderTransitive or skos:narrowerTransitive." />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="lbconcept">
-				<map>
-	                <entry key="fr" value="Concepts reliés uniquement par des relations transitives"/>
-	                <entry key="en" value="Solely Transitively Related Concepts" />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="link" 
-			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Solely_Transitively_Related_Concepts"/>
-		</bean>
-		<bean id="issue-urc" class="fr.sparna.validator.IssueDescription">
-			<constructor-arg name="id" value="urc"/>
-			<constructor-arg name="description">
-				<map>
-	                <entry key="fr" value="Concepts qui ne sont pas liés par des relations inverses (générique/spécifique)"/>
-	                <entry key="en" value="Concepts not including reciprocal relations" />
-	            </map>
-			</constructor-arg>
-			
-			<constructor-arg name="lbconcept">
-				<map>
-	                <entry key="fr" value="Concept reliés dans un seul sens"/>
-	                <entry key="en" value="Unidirectionally Related Concepts" />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="link" 
-			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Unidirectionally_Related_Concepts"/>
-		</bean>
-		
-		
-		<bean id="issue-var" class="fr.sparna.validator.IssueDescription">
-			<constructor-arg name="id" value="var"/>
-			<constructor-arg name="description">
-				<map>
-	                <entry key="fr" value="Trouve les concepts ayant le même générique qui sont également reliés par une relation associative." />
-	                 <entry key="en" value="Finds sibling concept pairs that are also connected by an associative relation." />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="lbconcept">
-				<map>
-	                <entry key="fr" value="Relations associatives entre concepts du même niveau"/>
-	                <entry key="en" value="Valueless Associative Relations" />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="link" 
-			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Valueless_Associative_Relations"/>
-		</bean>
-		
-		<bean id="issue-mri" class="fr.sparna.validator.IssueDescription">
-			<constructor-arg name="id" value="mri" />
-			<constructor-arg name="description">
-				<map>
-	                <entry key="fr" value="Trouve des concepts dans le même schéma de concept qui sont liés par une relation d'alignement (exactMatch, closeMatch, etc.)" />
-	                 <entry key="en" value="Finds concepts within the same concept scheme that are related by a mapping relation." />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="lbconcept">
-				<map>
-	                <entry key="fr" value="Mauvaises relations d'alignement"/>
-	                <entry key="en" value="Mapping Relations Misuse" />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="link" 
-			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Mapping_Relations_Misuse"/>
-		</bean>
-		<bean id="issue-rc" class="fr.sparna.validator.IssueDescription">
-			<constructor-arg name="id" value="rc" />
-			<constructor-arg name="description">
-				<map>
-	                <entry key="fr" value="Condition S27 du document de référence SKOS (2 concepts ne peuvent pas être reliés à la fois hiérarchiquement et associativement)." />
-	                 <entry key="en" value="Covers condition S27 from the SKOS reference document (Associative vs. Hierarchical Relation Clashes)." />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="lbconcept">
-				<map>
-	                <entry key="fr" value="Collision entre relations sémantiques"/>
-	                <entry key="en" value="Relation Clashes" />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="link" 
-			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Relation_Clashes"/>
-		</bean>
-		<bean id="issue-usr" class="fr.sparna.validator.IssueDescription">
-			<constructor-arg name="id" value="usr" />
-			<constructor-arg name="description">
-				<map>
-	                <entry key="fr" value="Trouve les nouvelles URIs «inventées» dans l'espace de noms SKOS, ou des propriétés obsolètes." />
-	                 <entry key="en" value="Finds 'invented' new terms within the SKOS namespace or deprecated properties." />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="lbconcept">
-				<map>
-	                <entry key="fr" value="Identifiants SKOS non définis"/>
-	                <entry key="en" value="Undefined SKOS Resources" />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="link" 
-			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Undefined_SKOS_Resources"/>
-		</bean>
-		<bean id="issue-mol" class="fr.sparna.validator.IssueDescription">
-			<constructor-arg name="id" value="mol"/>
-			<constructor-arg name="description">
-				<map>
-	                <entry key="fr" value="Trouve des concepts qui ne sont pas liés à d'autres vocabulaires sur le Web." />
-	                 <entry key="en" value="Finds concepts that are not linked to other vocabularies on the Web." />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="lbconcept">
-				<map>
-	                <entry key="fr" value="Liens externes manquants"/>
-	                <entry key="en" value="Missing Out-Link" />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="link" 
-			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Missing_OutLink"/>
-		</bean>
-		<bean id="issue-husv" class="fr.sparna.validator.IssueDescription">
-			<constructor-arg name="id" value="husv" />
-			<constructor-arg name="description">
-				<map>
-	                <entry key="fr" value="Trouve les sujets de triplets qui n'utilisent pas le protocole HTTP." />
-	                 <entry key="en" value="Finds triple subjects that are no HTTP URIs." />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="lbconcept">
-				<map>
-	                <entry key="fr" value="URI sans protocole HTTP"/>
-	                <entry key="en" value="HTTP URI Scheme Violation" />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="link" 
-			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#HTTP_URI_Scheme_Violation"/>
-		</bean>
-		<bean id="issue-tchbc" class="fr.sparna.validator.IssueDescription">
-			<constructor-arg name="id" value="tchbc"/>
-			<constructor-arg name="description">
-				<map>
-	                <entry key="fr" value="Trouve des concepts marqués comme racine mais qui sont à l'intérieur de la hiérarchie des concepts."/>
-	                <entry key="en" value="Finds top concepts internal to the vocabulary hierarchy tree." />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="lbconcept">
-				<map>
-	                <entry key="fr" value="Concepts racines avec des génériques"/>
-	                <entry key="en" value="Top Concepts Having Broader Concepts" />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="link" 
-			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Top_Concepts_Having_Broader_Concepts"/>
-		</bean>
-		<bean id="issue-otc" class="fr.sparna.validator.IssueDescription">
-			<constructor-arg name="id" value="otc" />
-			<constructor-arg name="description">
-				<map>
-	                <entry key="fr" value="Trouve des skos:ConceptSchemes qui n'ont pas de concepts racines définis." />
-	                <entry key="en" value="Finds skos:ConceptSchemes that don't have top concepts defined." />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="lbconcept">
-				<map>
-	                <entry key="fr" value="Top Concepts omis"/>
-	                <entry key="en" value="Omitted Top Concepts" />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="link" 
-			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Omitted_Top_Concepts"/>
-		</bean>
-		<bean id="issue-ncl" class="fr.sparna.validator.IssueDescription">
-			<constructor-arg name="id" value="ncl" />
-			<constructor-arg name="description">
-				<map>
-	                <entry key="fr" value="Vérifie que les litéraux sur les concepts utilisent des langues communes." />
-	                <entry key="en" value="Checks for common languages in all concept literals." />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="lbconcept">
-				<map>
-	                <entry key="fr" value="Pas de langues communes"/>
-	                <entry key="en" value="No Common Languages" />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="link" 
-			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#No_Common_Languages"/>
-		</bean>
-		<bean id="issue-ipl" class="fr.sparna.validator.IssueDescription">
-			<constructor-arg name="id" value="ipl"/>
-			<constructor-arg name="description">
-				<map>
-	                <entry key="fr" value="Trouve des ressources avec plus d'un prefLabel par langue." />
-	                <entry key="en" value="Finds resources with more then one prefLabel per language." />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="lbconcept">
-				<map>
-	                <entry key="fr" value="Incohérence des libellés préférés"/>
-	                <entry key="en" value="Inconsistent Preferred Labels" />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="link" 
-			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Inconsistent_Preferred_Labels"/>
-		</bean>
-		<bean id="issue-dlv" class="fr.sparna.validator.IssueDescription">
-			<constructor-arg name="id" value="dlv" />
-			<constructor-arg name="description">
-				<map>
-	                <entry key="fr" value="Trouve des ressources avec des valeurs identiques dans différents types de libellés (pref, alt, hidden)." />
-	                <entry key="en" value="Finds resources with identical entries for different label types." />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="lbconcept">
-				<map>
-	                <entry key="fr" value="Libellés disjoints"/>
-	                <entry key="en" value="Disjoint Labels Violation" />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="link" 
-			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Disjoint_Labels_Violation"/>
-		</bean>
-		<bean id="issue-ol" class="fr.sparna.validator.IssueDescription">
-			<constructor-arg name="id" value="ol"/>
-			<constructor-arg name="description">
-				<map>
-	                <entry key="fr" value="Trouve des concepts avec des libellés identiques."/>
-	                <entry key="en" value="Finds concepts with similar (identical) labels." />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="lbconcept">
-				<map>
-	                <entry key="fr" value="Libellés homonymes"/>
-	                <entry key="en" value="Overlapping Labels" />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="link" 
-			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Overlapping_Labels"/>
-		</bean>
-		<bean id="issue-ucil" class="fr.sparna.validator.IssueDescription">
-			<constructor-arg name="id" value="ucil" />
-			<constructor-arg name="description">
-				<map>
-	                <entry key="fr" value="Trouve des concepts ayant des libellés contenant des caractères non-imprimables." />
-	                <entry key="en" value="Finds concepts having labels that contain unprintable characters." />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="lbconcept">
-				<map>
-	                <entry key="fr" value="Caractères non-imprimables dans les libellés"/>
-	                <entry key="en" value="Unprintable Characters in Labels" />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="link" 
-			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Unprintable_Characters_in_Labels"/>
-		</bean>
-		<bean id="issue-bl" class="fr.sparna.validator.IssueDescription">
-			<constructor-arg name="id" value="bl"/>
-			<constructor-arg name="description">
-				<map>
-	                <entry key="fr" value="Liens URL pointant vers une ressource qui n'existe pas."/>
-	                <entry key="en" value="Broken links." />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="lbconcept">
-				<map>
-	                <entry key="fr" value="Liens cassés"/>
-	                <entry key="en" value="Broken Links" />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="link" 
-			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Broken_Links"/>
-		</bean>
-		<bean id="issue-mil" class="fr.sparna.validator.IssueDescription">
-			<constructor-arg name="id" value="mil"/>
-			<constructor-arg name="description">
-				<map>
-	                <entry key="fr" value="Utilise l'index Synice pour trouver des concepts qui ne sont pas référencés par d'autres ensembles de données sur le Web."/>
-	                <entry key="en" value="Uses the sindice index to find concepts that aren't referenced by other datasets on the Web." />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="lbconcept">
-				<map>
-	                <entry key="fr" value="Manquant dans les liens"/>
-	                <entry key="en" value="Missing In-Links" />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="link" 
-			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Missing_InLinks"/>
-				
-			
-		</bean>
-		<bean id="issue-chr" class="fr.sparna.validator.IssueDescription">
-			<constructor-arg name="id" value="chr"/>
-			<constructor-arg name="description">
-				<map>
-	                <entry key="fr" value="TRouve des concepts qui sont liés hiérarchiquement à d'autres."/>
-	                <entry key="en" value="Finds concepts that are hierarchically related to each other." />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="lbconcept">
-				<map>
-	                <entry key="fr" value="Relations hiérarchique cyclique"/>
-	                <entry key="en" value="Cyclic Hierarchical Relations" />
-	            </map>
-			</constructor-arg>
-			<constructor-arg name="link" 
-			 value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Cyclic_Hierarchical_Relations"/>
-		</bean>
-        
-        
-        
+
+
+	<bean id="issue-oc" class="fr.sparna.validator.IssueDescription">
+		<constructor-arg name="id" value="oc" />
+		<constructor-arg name="description">
+			<map>
+				<entry key="fr"
+					value="Trouve tous les concepts orphelins, c'est-à-dire ceux qui n'ont pas de relations sémantiques (générique, spécifique, associé) avec d'autres concepts." />
+				<entry key="en"
+					value="Finds all orphan concepts, i.e. those not having semantic relationships to other concepts." />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="lbconcept">
+			<map>
+				<entry key="fr" value="Concepts orphelins" />
+				<entry key="en" value="Orphan Concepts" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="link"
+			value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Orphan_Concepts" />
+		<constructor-arg name="checked" value="true" />
+	</bean>
+	<bean id="issue-el" class="fr.sparna.validator.IssueDescription">
+		<constructor-arg name="id" value="el" />
+		<constructor-arg name="description">
+			<map>
+				<entry key="fr"
+					value="Trouve les libellés vides ou les libellés contenant uniquement des espaces." />
+				<entry key="en"
+					value="Finds empty labels or labels containing only whitespaces." />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="lbconcept">
+			<map>
+				<entry key="fr" value="Libellés vides" />
+				<entry key="en" value="Empty Labels" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="link"
+			value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Empty_Labels" />
+		<constructor-arg name="checked" value="true" />
+	</bean>
+	<bean id="issue-ml" class="fr.sparna.validator.IssueDescription">
+		<constructor-arg name="id" value="ml" />
+		<constructor-arg name="description">
+			<map>
+				<entry key="fr"
+					value="Trouve des concepts ou des schema de concepts avec des libellés manquants." />
+				<entry key="en"
+					value="Finds concepts and conceptSchemes with missing labels." />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="lbconcept">
+			<map>
+				<entry key="fr" value="Libellés manquants" />
+				<entry key="en" value="Missing Labels" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="link"
+			value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Missing_Labels" />
+		<constructor-arg name="checked" value="true" />
+	</bean>
+	<bean id="issue-uc" class="fr.sparna.validator.IssueDescription">
+		<constructor-arg name="id" value="uc" />
+		<constructor-arg name="description">
+			<map>
+				<entry key="fr"
+					value="Trouve des concepts qui n'utilisent aucune propriétés de documentation SKOS." />
+				<entry key="en"
+					value="Finds concepts that don't use any SKOS documentation properties." />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="lbconcept">
+			<map>
+				<entry key="fr" value="Concepts non documentés" />
+				<entry key="en" value="Undocumented Concepts" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="link"
+			value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Undocumented_Concepts" />
+		<constructor-arg name="checked" value="true" />
+	</bean>
+	<bean id="issue-ilc" class="fr.sparna.validator.IssueDescription">
+		<constructor-arg name="id" value="ilc" />
+		<constructor-arg name="description">
+			<map>
+				<entry key="fr"
+					value="Trouve des concepts qui n'ont pas de description dans des langues utilisées pour d'autres concepts." />
+				<entry key="en"
+					value="Finds concepts lacking description in languages that are present for other concepts." />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="lbconcept">
+			<map>
+				<entry key="fr" value="Couverture linguistique incomplète" />
+				<entry key="en" value="Incomplete Language Coverage" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="link"
+			value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Incomplete_Language_Coverage" />
+		<constructor-arg name="checked" value="true" />
+	</bean>
+	<bean id="issue-oilt" class="fr.sparna.validator.IssueDescription">
+		<constructor-arg name="id" value="oilt" />
+		<constructor-arg name="description">
+			<map>
+				<entry key="fr"
+					value="Trouve les litéraux sans étiquette de langue ou avec une étiquette de langue invalide." />
+				<entry key="en"
+					value="Finds omitted or invalid language tags of text literals." />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="lbconcept">
+			<map>
+				<entry key="fr" value="Langue absente ou invalide" />
+				<entry key="en" value="Omitted or Invalid Language Tags" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="link"
+			value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Omitted_or_Invalid_Language_Tags" />
+		<constructor-arg name="checked" value="true" />
+	</bean>
+
+	<bean id="issue-dcc" class="fr.sparna.validator.IssueDescription">
+		<constructor-arg name="id" value="dcc" />
+		<constructor-arg name="description">
+			<map>
+				<entry key="fr"
+					value="Trouve des ensembles de concepts isolés du reste du vocabulaire." />
+				<entry key="en"
+					value="Finds sets of concepts that are isolated from the rest of the vocabulary." />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="lbconcept">
+			<map>
+				<entry key="fr" value="Ensemble de concepts déconnectés" />
+				<entry key="en" value="Disconnected Concept Clusters" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="link"
+			value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Disconnected_Concept_Clusters" />
+		<constructor-arg name="checked" value="true" />
+	</bean>
+	<bean id="issue-hr" class="fr.sparna.validator.IssueDescription">
+		<constructor-arg name="id" value="hr" />
+		<constructor-arg name="description">
+			<map>
+				<entry key="fr"
+					value="Trouve des relations générique/spécifique redondantes sur plusieurs niveaux de hiérarchie." />
+				<entry key="en"
+					value="Finds broader/narrower relations over multiple hierarchy levels." />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="lbconcept">
+			<map>
+				<entry key="fr" value="Redondance hiérarchique" />
+				<entry key="en" value="Hierarchical Redundancy" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="link"
+			value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Hierarchical_Redundancy" />
+		<constructor-arg name="checked" value="true" />
+	</bean>
+	<bean id="issue-anr" class="fr.sparna.validator.IssueDescription">
+		<constructor-arg name="id" value="anr" />
+		<constructor-arg name="description">
+			<map>
+				<entry key="fr"
+					value="Trouve des concepts avec plusieurs notations ou des notations identiques dans le même schéma de concept." />
+				<entry key="en"
+					value="Finds concepts with multiple or identical notations within the same concept scheme." />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="lbconcept">
+			<map>
+				<entry key="fr" value="Notations ambigues" />
+				<entry key="en" value="Ambiguous Notation References" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="link"
+			value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Ambiguous_Notation_References" />
+		<constructor-arg name="checked" value="true" />
+	</bean>
+	<bean id="issue-rrc" class="fr.sparna.validator.IssueDescription">
+		<constructor-arg name="id" value="rrc" />
+		<constructor-arg name="description">
+			<map>
+				<entry key="fr" value="Trouve des concepts qui sont reliés à eux-mêmes." />
+				<entry key="en" value="Finds concepts that are related to themselves." />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="lbconcept">
+			<map>
+				<entry key="fr" value="Relations réflexives" />
+				<entry key="en" value="Reflexively Related Concepts" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="link"
+			value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Reflexively_Related_Concepts" />
+		<constructor-arg name="checked" value="true" />
+	</bean>
+	<bean id="issue-strc" class="fr.sparna.validator.IssueDescription">
+		<constructor-arg name="id" value="strc" />
+		<constructor-arg name="description">
+			<map>
+				<entry key="fr"
+					value="Concepts uniquement reliés par skos:broaderTransitive ou skos:narrowerTransitive." />
+				<entry key="en"
+					value="Concepts only related by skos:broaderTransitive or skos:narrowerTransitive." />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="lbconcept">
+			<map>
+				<entry key="fr"
+					value="Concepts reliés uniquement par des relations transitives" />
+				<entry key="en" value="Solely Transitively Related Concepts" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="link"
+			value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Solely_Transitively_Related_Concepts" />
+		<constructor-arg name="checked" value="true" />
+	</bean>
+	<bean id="issue-urc" class="fr.sparna.validator.IssueDescription">
+		<constructor-arg name="id" value="urc" />
+		<constructor-arg name="description">
+			<map>
+				<entry key="fr"
+					value="Concepts qui ne sont pas liés par des relations inverses (générique/spécifique)" />
+				<entry key="en" value="Concepts not including reciprocal relations" />
+			</map>
+		</constructor-arg>
+
+		<constructor-arg name="lbconcept">
+			<map>
+				<entry key="fr" value="Concept reliés dans un seul sens" />
+				<entry key="en" value="Unidirectionally Related Concepts" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="link"
+			value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Unidirectionally_Related_Concepts" />
+		<constructor-arg name="checked" value="true" />
+	</bean>
+
+
+	<bean id="issue-var" class="fr.sparna.validator.IssueDescription">
+		<constructor-arg name="id" value="var" />
+		<constructor-arg name="description">
+			<map>
+				<entry key="fr"
+					value="Trouve les concepts ayant le même générique qui sont également reliés par une relation associative." />
+				<entry key="en"
+					value="Finds sibling concept pairs that are also connected by an associative relation." />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="lbconcept">
+			<map>
+				<entry key="fr"
+					value="Relations associatives entre concepts du même niveau" />
+				<entry key="en" value="Valueless Associative Relations" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="link"
+			value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Valueless_Associative_Relations" />
+		<constructor-arg name="checked" value="true" />
+	</bean>
+
+	<bean id="issue-mri" class="fr.sparna.validator.IssueDescription">
+		<constructor-arg name="id" value="mri" />
+		<constructor-arg name="description">
+			<map>
+				<entry key="fr"
+					value="Trouve des concepts dans le même schéma de concept qui sont liés par une relation d'alignement (exactMatch, closeMatch, etc.)" />
+				<entry key="en"
+					value="Finds concepts within the same concept scheme that are related by a mapping relation." />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="lbconcept">
+			<map>
+				<entry key="fr" value="Mauvaises relations d'alignement" />
+				<entry key="en" value="Mapping Relations Misuse" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="link"
+			value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Mapping_Relations_Misuse" />
+		<constructor-arg name="checked" value="true" />
+	</bean>
+	<bean id="issue-rc" class="fr.sparna.validator.IssueDescription">
+		<constructor-arg name="id" value="rc" />
+		<constructor-arg name="description">
+			<map>
+				<entry key="fr"
+					value="Condition S27 du document de référence SKOS (2 concepts ne peuvent pas être reliés à la fois hiérarchiquement et associativement)." />
+				<entry key="en"
+					value="Covers condition S27 from the SKOS reference document (Associative vs. Hierarchical Relation Clashes)." />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="lbconcept">
+			<map>
+				<entry key="fr" value="Collision entre relations sémantiques" />
+				<entry key="en" value="Relation Clashes" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="link"
+			value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Relation_Clashes" />
+		<constructor-arg name="checked" value="true" />
+	</bean>
+	<bean id="issue-usr" class="fr.sparna.validator.IssueDescription">
+		<constructor-arg name="id" value="usr" />
+		<constructor-arg name="description">
+			<map>
+				<entry key="fr"
+					value="Trouve les nouvelles URIs «inventées» dans l'espace de noms SKOS, ou des propriétés obsolètes." />
+				<entry key="en"
+					value="Finds 'invented' new terms within the SKOS namespace or deprecated properties." />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="lbconcept">
+			<map>
+				<entry key="fr" value="Identifiants SKOS non définis" />
+				<entry key="en" value="Undefined SKOS Resources" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="link"
+			value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Undefined_SKOS_Resources" />
+		<constructor-arg name="checked" value="true" />
+	</bean>
+	<bean id="issue-mol" class="fr.sparna.validator.IssueDescription">
+		<constructor-arg name="id" value="mol" />
+		<constructor-arg name="description">
+			<map>
+				<entry key="fr"
+					value="Trouve des concepts qui ne sont pas liés à d'autres vocabulaires sur le Web." />
+				<entry key="en"
+					value="Finds concepts that are not linked to other vocabularies on the Web." />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="lbconcept">
+			<map>
+				<entry key="fr" value="Liens externes manquants" />
+				<entry key="en" value="Missing Out-Link" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="link"
+			value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Missing_OutLink" />
+		<constructor-arg name="checked" value="true" />
+	</bean>
+	<bean id="issue-husv" class="fr.sparna.validator.IssueDescription">
+		<constructor-arg name="id" value="husv" />
+		<constructor-arg name="description">
+			<map>
+				<entry key="fr"
+					value="Trouve les sujets de triplets qui n'utilisent pas le protocole HTTP." />
+				<entry key="en" value="Finds triple subjects that are no HTTP URIs." />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="lbconcept">
+			<map>
+				<entry key="fr" value="URI sans protocole HTTP" />
+				<entry key="en" value="HTTP URI Scheme Violation" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="link"
+			value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#HTTP_URI_Scheme_Violation" />
+		<constructor-arg name="checked" value="true" />
+	</bean>
+	<bean id="issue-tchbc" class="fr.sparna.validator.IssueDescription">
+		<constructor-arg name="id" value="tchbc" />
+		<constructor-arg name="description">
+			<map>
+				<entry key="fr"
+					value="Trouve des concepts marqués comme racine mais qui sont à l'intérieur de la hiérarchie des concepts." />
+				<entry key="en"
+					value="Finds top concepts internal to the vocabulary hierarchy tree." />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="lbconcept">
+			<map>
+				<entry key="fr" value="Concepts racines avec des génériques" />
+				<entry key="en" value="Top Concepts Having Broader Concepts" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="link"
+			value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Top_Concepts_Having_Broader_Concepts" />
+		<constructor-arg name="checked" value="true" />
+	</bean>
+	<bean id="issue-otc" class="fr.sparna.validator.IssueDescription">
+		<constructor-arg name="id" value="otc" />
+		<constructor-arg name="description">
+			<map>
+				<entry key="fr"
+					value="Trouve des skos:ConceptSchemes qui n'ont pas de concepts racines définis." />
+				<entry key="en"
+					value="Finds skos:ConceptSchemes that don't have top concepts defined." />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="lbconcept">
+			<map>
+				<entry key="fr" value="Top Concepts omis" />
+				<entry key="en" value="Omitted Top Concepts" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="link"
+			value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Omitted_Top_Concepts" />
+		<constructor-arg name="checked" value="true" />
+	</bean>
+	<bean id="issue-ncl" class="fr.sparna.validator.IssueDescription">
+		<constructor-arg name="id" value="ncl" />
+		<constructor-arg name="description">
+			<map>
+				<entry key="fr"
+					value="Vérifie que les litéraux sur les concepts utilisent des langues communes." />
+				<entry key="en"
+					value="Checks for common languages in all concept literals." />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="lbconcept">
+			<map>
+				<entry key="fr" value="Pas de langues communes" />
+				<entry key="en" value="No Common Languages" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="link"
+			value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#No_Common_Languages" />
+		<constructor-arg name="checked" value="true" />
+	</bean>
+	<bean id="issue-ipl" class="fr.sparna.validator.IssueDescription">
+		<constructor-arg name="id" value="ipl" />
+		<constructor-arg name="description">
+			<map>
+				<entry key="fr"
+					value="Trouve des ressources avec plus d'un prefLabel par langue." />
+				<entry key="en"
+					value="Finds resources with more then one prefLabel per language." />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="lbconcept">
+			<map>
+				<entry key="fr" value="Incohérence des libellés préférés" />
+				<entry key="en" value="Inconsistent Preferred Labels" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="link"
+			value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Inconsistent_Preferred_Labels" />
+		<constructor-arg name="checked" value="true" />
+	</bean>
+	<bean id="issue-dlv" class="fr.sparna.validator.IssueDescription">
+		<constructor-arg name="id" value="dlv" />
+		<constructor-arg name="description">
+			<map>
+				<entry key="fr"
+					value="Trouve des ressources avec des valeurs identiques dans différents types de libellés (pref, alt, hidden)." />
+				<entry key="en"
+					value="Finds resources with identical entries for different label types." />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="lbconcept">
+			<map>
+				<entry key="fr" value="Libellés disjoints" />
+				<entry key="en" value="Disjoint Labels Violation" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="link"
+			value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Disjoint_Labels_Violation" />
+		<constructor-arg name="checked" value="true" />
+	</bean>
+	<bean id="issue-ol" class="fr.sparna.validator.IssueDescription">
+		<constructor-arg name="id" value="ol" />
+		<constructor-arg name="description">
+			<map>
+				<entry key="fr" value="Trouve des concepts avec des libellés identiques." />
+				<entry key="en" value="Finds concepts with similar (identical) labels." />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="lbconcept">
+			<map>
+				<entry key="fr" value="Libellés homonymes" />
+				<entry key="en" value="Overlapping Labels" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="link"
+			value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Overlapping_Labels" />
+		<constructor-arg name="checked" value="true" />
+	</bean>
+	<bean id="issue-ucil" class="fr.sparna.validator.IssueDescription">
+		<constructor-arg name="id" value="ucil" />
+		<constructor-arg name="description">
+			<map>
+				<entry key="fr"
+					value="Trouve des concepts ayant des libellés contenant des caractères non-imprimables." />
+				<entry key="en"
+					value="Finds concepts having labels that contain unprintable characters." />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="lbconcept">
+			<map>
+				<entry key="fr" value="Caractères non-imprimables dans les libellés" />
+				<entry key="en" value="Unprintable Characters in Labels" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="link"
+			value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Unprintable_Characters_in_Labels" />
+		<constructor-arg name="checked" value="true" />
+	</bean>
+
+	<bean id="issue-bl" class="fr.sparna.validator.IssueDescription">
+		<constructor-arg name="id" value="bl" />
+		<constructor-arg name="description">
+			<map>
+				<entry key="fr"
+					value="Liens URL pointant vers une ressource qui n'existe pas." />
+				<entry key="en" value="Broken links." />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="lbconcept">
+			<map>
+				<entry key="fr" value="Liens cassés" />
+				<entry key="en" value="Broken Links" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="link"
+			value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Broken_Links" />
+		<constructor-arg name="checked" value="false" />
+	</bean>
+
+	<bean id="issue-mil" class="fr.sparna.validator.IssueDescription">
+		<constructor-arg name="id" value="mil" />
+		<constructor-arg name="description">
+			<map>
+				<entry key="fr"
+					value="Utilise l'index Synice pour trouver des concepts qui ne sont pas référencés par d'autres ensembles de données sur le Web." />
+				<entry key="en"
+					value="Uses the sindice index to find concepts that aren't referenced by other datasets on the Web." />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="lbconcept">
+			<map>
+				<entry key="fr" value="Manquant dans les liens" />
+				<entry key="en" value="Missing In-Links" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="link"
+			value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Missing_InLinks" />
+		<constructor-arg name="checked" value="false" />
+	</bean>
+
+	<bean id="issue-chr" class="fr.sparna.validator.IssueDescription">
+		<constructor-arg name="id" value="chr" />
+		<constructor-arg name="description">
+			<map>
+				<entry key="fr"
+					value="TRouve des concepts qui sont liés hiérarchiquement à d'autres." />
+				<entry key="en"
+					value="Finds concepts that are hierarchically related to each other." />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="lbconcept">
+			<map>
+				<entry key="fr" value="Relations hiérarchique cyclique" />
+				<entry key="en" value="Cyclic Hierarchical Relations" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="link"
+			value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Cyclic_Hierarchical_Relations" />
+		<constructor-arg name="checked" value="false" />
+	</bean>
+
+
+
 </beans>
 

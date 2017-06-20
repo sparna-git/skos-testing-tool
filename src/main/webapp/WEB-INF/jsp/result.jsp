@@ -9,41 +9,51 @@
 <c:set var="compteur" scope="session" value="0" />
 <fmt:setLocale value="${sessionScope['fr.sparna.validator.SessionData'].userLocale}"/>
 <fmt:setBundle basename="fr.sparna.validator.properties.Bundle" />
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
 <title>Validator</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link href="resources/jasny-bootstrap/css/jasny-bootstrap.min.css" rel="stylesheet" />
 <link href="resources/bootstrap/css/bootstrap.min.css"   rel="stylesheet" />
-<link href="resources/css/style.css" rel="stylesheet" />
-<link href="resources/css/media.css" rel="stylesheet" />
+<link rel="stylesheet" href="resources/css/style.css" type="text/css">
+<link rel="stylesheet" href="resources/css/print.css" type="text/css" media="print">
+<link rel="stylesheet" href="resources/css/print-preview.css" type="text/css" media="screen">
 <script src="resources/js/jquery-1.11.3.js"></script>
 <script src="resources/bootstrap/js/bootstrap.min.js"></script>
-<script src="resources/bootstrap/js/bootstrap-table-expandable.js"></script>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.0.0.js"></script>
+<script src="resources/js/jquery.print-preview.js" type="text/javascript"></script>
+<style type="text/css">
 
+</style>
 <script type="text/javascript">
 
+$(function() {
+    
+	$('#print').prepend('<a href="" class="print-preview glyphicon glyphicon-print">&nbsp;&nbsp;<fmt:message key="print"/></a>');
+    $('a.print-preview').printPreview();
+    
+});
 </script>
 </head>
 <body id="resultpage">
 <jsp:include page="header.jsp"/>
  <div class="navigation hidden-print" >
- <ul id="sidebar" class="nav col-xs-12 left">
+ <ul id="sidebar" class="nav col-xs-11 left">
  	<c:forEach items="${data.errorList}" var="error">	  
 		  	 <c:set var="compteur" scope="session" value="${compteur+error.number}" />
 		  	 <li class="nav-item">
 			    <a  href="#${error.id}"
 			    	<c:if test="${error.success==true}"> class="nav-link hidden-print success" </c:if>
 			 		<c:if test="${error.success==false}">class="nav-link hidden-print danger" </c:if>
-			 	>${error.ruleName} : ${error.state}</a>
+			 	><font size="2">${error.ruleName} : ${error.state}</font></a>
 			 </li>
 	</c:forEach>
 </ul>
 </div>
-  <div class="panel panel-info content" id="stat">
-      <div class="panel-heading">Details</div>
-      	<div class="panel-body">
+  <div id="print">
+  	
+  </div>
 		  <table id="table" data-show-print="true" class="table table-hover table-expandable table-striped">
 		    <thead>
 		      <tr>
@@ -54,16 +64,16 @@
 		    </thead>
 		    <tbody>
 		    	<c:forEach items="${data.errorList}" var="error">
-					<tr
+					<tr id="line"
 						<c:if test="${error.success==true}"> class="success" </c:if>
 			        	<c:if test="${error.success==false}">class="danger" </c:if>
 					>
 				        <td><a href="${error.weblink}" id="${error.id}">${error.ruleName}(${error.id})</a></td>
 				        <td>${error.description}</td>
-				        <td>${error.state}</td>
+				        <td><h6>${error.state}</h6></td>
 			        </tr>
 			        <c:if test="${!empty error.errorList}">
-					     <tr id="content" class="default">
+					     <tr id="content" class="default ">
 			        	<td colspan="3">
 				          <div class="table-outer">
 				          	<c:forEach items="${error.errorList}" var="list">
@@ -82,8 +92,7 @@
 				</c:forEach>
 		      </tbody>
 		    </table>
-		 </div>
-    </div>
+    <br>
     <jsp:include page="footer.jsp" />
     <script type="text/javascript">
     $(document).ready(function() {

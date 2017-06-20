@@ -11,13 +11,15 @@ public class IssueDescription {
 	protected Map<String ,String> description;
 	protected Map<String, String> lbconcept;
 	protected String link;
+	protected boolean checked;
 	
-	public IssueDescription(String id, Map<String, String> description, Map<String, String> lbconcept, String link) {
+	public IssueDescription(String id, Map<String, String> description, Map<String, String> lbconcept, String link, boolean checked) {
 		super();
 		this.description = description;
 		this.id = id;
 		this.lbconcept=lbconcept;
 		this.link=link;
+		this.checked=checked;
 	}
 	
 	public String getDescriptionByLang(String lang) {
@@ -42,6 +44,14 @@ public class IssueDescription {
 
 	public String getLink() {
 		return link;
+	}
+
+	public boolean isChecked() {
+		return checked;
+	}
+
+	public void setChecked(boolean checked) {
+		this.checked = checked;
 	}
 
 	public void setLink(String link) {

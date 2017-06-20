@@ -132,7 +132,7 @@
 										<c:when test="${sessionData.userLocale == 'en'}">
 											<c:forEach items="${rule.lbconcept}" var="label">
 												<c:if test="${label.key=='en'}">
-																	<a href="">${label.value}(${rule.id})</a>
+																	<a href="${rule.link}">${rule.id}  -  ${label.value}</a>
 														</c:if>
 											</c:forEach>
 										</c:when>
@@ -142,7 +142,7 @@
 								<div class="col-sm-9">
 									<input type="checkbox" name="rule${compteur}"
 										id="rule${compteur}" value="${rule.id}"
-										<c:if test="${rule.id!='bl' && rule.id!='mil'}">checked</c:if>>
+										<c:if test="${rule.checked==true}"> checked</c:if>>
 
 									<span class="help-block"> <c:choose>
 											<c:when test="${sessionData.userLocale== 'fr'}">

@@ -37,30 +37,30 @@
   <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-repository-sail/2.7.9/sesame-repository-sail-2.7.9.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-sail-api/2.7.9/sesame-sail-api-2.7.9.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-queryalgebra-model/2.7.9/sesame-queryalgebra-model-2.7.9.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-queryparser-api/2.7.9/sesame-queryparser-api-2.7.9.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-sail-memory/2.7.9/sesame-sail-memory-2.7.9.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-repository-http/2.7.9/sesame-repository-http-2.7.9.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-sail-inferencer/2.7.9/sesame-sail-inferencer-2.7.9.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-queryparser-serql/2.7.9/sesame-queryparser-serql-2.7.9.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-queryalgebra-evaluation/2.7.9/sesame-queryalgebra-evaluation-2.7.9.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-repository-sparql/2.7.9/sesame-repository-sparql-2.7.9.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-http-client/2.7.9/sesame-http-client-2.7.9.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-http-protocol/2.7.9/sesame-http-protocol-2.7.9.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-rio-ntriples/2.7.9/sesame-rio-ntriples-2.7.9.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-rio-datatypes/2.7.9/sesame-rio-datatypes-2.7.9.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-rio-languages/2.7.9/sesame-rio-languages-2.7.9.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-queryresultio-api/2.7.9/sesame-queryresultio-api-2.7.9.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-queryparser-api/2.7.9/sesame-queryparser-api-2.7.9.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-repository-sparql/2.7.9/sesame-repository-sparql-2.7.9.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-queryparser-sparql/2.7.9/sesame-queryparser-sparql-2.7.9.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-queryresultio-sparqlxml/2.7.9/sesame-queryresultio-sparqlxml-2.7.9.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-repository-http/2.7.9/sesame-repository-http-2.7.9.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-repository-contextaware/2.7.9/sesame-repository-contextaware-2.7.9.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-sail-federation/2.7.9/sesame-sail-federation-2.7.9.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-rio-turtle/2.7.9/sesame-rio-turtle-2.7.9.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-queryalgebra-evaluation/2.7.9/sesame-queryalgebra-evaluation-2.7.9.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-sail-inferencer/2.7.9/sesame-sail-inferencer-2.7.9.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-queryparser-serql/2.7.9/sesame-queryparser-serql-2.7.9.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-queryresultio-binary/2.7.9/sesame-queryresultio-binary-2.7.9.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-queryresultio-sparqljson/2.7.9/sesame-queryresultio-sparqljson-2.7.9.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/fasterxml/jackson/core/jackson-core/2.2.1/jackson-core-2.2.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-queryresultio-text/2.7.9/sesame-queryresultio-text-2.7.9.jar"/>
   <classpathentry kind="var" path="M2_REPO/net/sf/opencsv/opencsv/2.0/opencsv-2.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-repository-dataset/2.7.9/sesame-repository-dataset-2.7.9.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-rio-datatypes/2.7.9/sesame-rio-datatypes-2.7.9.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-rio-languages/2.7.9/sesame-rio-languages-2.7.9.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-rio-binary/2.7.9/sesame-rio-binary-2.7.9.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-rio-nquads/2.7.9/sesame-rio-nquads-2.7.9.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/openrdf/sesame/sesame-rio-n3/2.7.9/sesame-rio-n3-2.7.9.jar"/>

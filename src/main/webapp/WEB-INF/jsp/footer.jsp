@@ -8,7 +8,7 @@
 
       	<footer id="footer">
       	<a href="https://github.com/cmader/qSKOS" target="_blank"><fmt:message key="source" /></a>	&nbsp;|&nbsp;
-      	<a href="http://sparna.fr" target="_blank"><img src="resources/img/sparna.jpeg" style="width:80px;"/></a>
+      	<a href="http://sparna.fr" target="_blank"><img src="resources/images/sparna.jpeg" style="width:80px;"/></a>
       	<br />
       	<br />
       	</footer>

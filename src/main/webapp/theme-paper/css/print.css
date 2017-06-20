@@ -1,6 +1,55 @@
-@media screen{
-	
-	
+/**
+ * Example Print Preview site
+ *
+ *	print.css
+ *	author: Tim Connell
+ */
+
+/* -- Hide screen specific elements -- */
+#nav,
+#footer,
+a.print-preview, .navigation, .navbar {
+    display: none;
+}
+
+
+/* -- Typography -- */
+p, table, ul, ol, dl, blockquote, pre, code, form {
+    margin: 0 0 1em;
+}
+
+ @page {                
+    size: A4;
+    margin: 0;
+    margin-top:50px;
+  }
+.table-outer:FIRST-CHILD{
+	height:unset;
+  overflow:visible;
+}
+
+
+a:link:after, 
+a:visited:after {
+  content: "";
+  font-size: 80%;
+  text-decoration: none;
+}
+
+
+/* -- Accommodate JS driven elements --*/
+#feature > div {
+    border: none;
+    overflow: visible;
+    height: auto;
+}
+    
+/* -- Footer -- */
+#footer {
+    border-top: 1px solid #cecece;
+    font-size: 0.83em;
+    margin: 2em 0 0;
+    padding: 1em 0 0;
 }
 #file{
 	margin:auto; 
@@ -50,9 +99,8 @@ footer{
 }
 
 #table{
-	width:65%;
+	
 	margin: auto;
-	margin-left:420px;
 	margin-top:15px;
 }
 #content{
@@ -112,14 +160,8 @@ footer{
 				height:unset;
 				overflow:visible;
 	}
-.navigation {
-	position:fixed;
-	width:24%;
-	
-	}
-.nav-item{
-	margin-bottom:-3px;
-}
+.navigation {position:fixed;}
+
 #log{
 	background-color:white;
 	width:80%;

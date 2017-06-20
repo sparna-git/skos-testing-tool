@@ -4,7 +4,7 @@
 
 	<groupId>fr.sparna.validator</groupId>
 	<artifactId>skos-validator</artifactId>
-	<version>0.8.0</version>
+	<version>0.8.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 	
 	<name>skos-validator</name>
