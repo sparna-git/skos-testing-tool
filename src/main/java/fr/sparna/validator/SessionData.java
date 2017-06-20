@@ -1,12 +1,18 @@
 package fr.sparna.validator;
 
+import java.util.Collection;
+
 import javax.servlet.http.HttpSession;
+
+import at.ac.univie.mminf.qskos4j.issues.Issue;
 
 public class SessionData {
 
 	protected String userLocale;
 	
 	protected String baseUrl;
+	
+	protected Collection<Issue> qSkosResult;
 	
 	public String getUserLocale() {
 		return userLocale;
@@ -31,6 +37,15 @@ public class SessionData {
 	public void setBaseUrl(String baseUrl) {
 		this.baseUrl = baseUrl;
 	}
+
+	public Collection<Issue> getqSkosResult() {
+		return qSkosResult;
+	}
+
+	public void setqSkosResult(Collection<Issue> qSkosResult) {
+		this.qSkosResult = qSkosResult;
+	}
+	
 	
 	
 }

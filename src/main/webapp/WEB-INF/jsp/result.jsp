@@ -9,7 +9,7 @@
 <c:set var="compteur" scope="session" value="0" />
 <fmt:setLocale value="${sessionScope['fr.sparna.validator.SessionData'].userLocale}"/>
 <fmt:setBundle basename="fr.sparna.validator.properties.Bundle" />
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html >
 <head>
 <title>Validator</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
