@@ -2,12 +2,16 @@
 	
 	
 }
-#file{
+#files, #url{
 	margin:auto; 
-	width:50%; 
+	width:70%; 
 	border:1px solid #ebebe0;
 	margin-top:20px;
 	background-color:white;
+}
+#local{
+	float:left;
+	margin-top:8px;
 }
 .jumbotron{
 	width:50%;
@@ -27,7 +31,9 @@
 	
 }
   
-
+.form-group{
+	
+}
 
 
   body {    
@@ -48,12 +54,11 @@ footer{
 	margin:auto;
 	text-align:center;
 }
-
-#table{
+#exe,#table{
 	width:65%;
 	margin: auto;
 	margin-left:420px;
-	margin-top:15px;
+	margin-top:10px;
 }
 #content{
 	border:1px solid #ebebe0;

@@ -4,15 +4,21 @@ import java.util.Collection;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import at.ac.univie.mminf.qskos4j.issues.Issue;
 
 public class SessionData {
 
 	protected String userLocale;
 	
-	protected String baseUrl;
-	
 	protected Collection<Issue> qSkosResult;
+
+	protected ValidateSkosFile skosfile;
+	
+	protected String source;
+	
+	protected String baseurl;
 	
 	public String getUserLocale() {
 		return userLocale;
@@ -30,14 +36,6 @@ public class SessionData {
 		session.setAttribute(SessionData.class.getName(), this);
 	}
 
-	public String getBaseUrl() {
-		return baseUrl;
-	}
-
-	public void setBaseUrl(String baseUrl) {
-		this.baseUrl = baseUrl;
-	}
-
 	public Collection<Issue> getqSkosResult() {
 		return qSkosResult;
 	}
@@ -46,6 +44,29 @@ public class SessionData {
 		this.qSkosResult = qSkosResult;
 	}
 	
+	public String getSource() {
+		return source;
+	}
+
+	public void setSource(String source) {
+		this.source = source;
+	}
+
+	public ValidateSkosFile getSkosfile() {
+		return skosfile;
+	}
+
+	public void setSkosfile(ValidateSkosFile skosfile) {
+		this.skosfile = skosfile;
+	}
+
+	public String getBaseurl() {
+		return baseurl;
+	}
+
+	public void setBaseurl(String baseurl) {
+		this.baseurl = baseurl;
+	}
 	
 	
 }

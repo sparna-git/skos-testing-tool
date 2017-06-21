@@ -44,11 +44,11 @@
 					</c:choose>
 				</ul>
 			</li>
-			<!--  <li>
-				<c:if test="${sessionData.baseUrl!=null}">
-					<a href="${sessionData.baseUrl}/validator.log"><em><fmt:message key="menu.download"/></em></a>
+			<li>
+				<c:if test="${sessionData.baseurl!=null}">
+					<a href="${sessionData.baseurl}/logs/report.txt"><em><fmt:message key="menu.download"/></em></a>
 				</c:if>
-			</li>-->
+			</li>
 		</ul>
 	</div>
 </nav>

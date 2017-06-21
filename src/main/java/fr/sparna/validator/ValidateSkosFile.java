@@ -21,7 +21,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import at.ac.univie.mminf.qskos4j.QSkos;
+import at.ac.univie.mminf.qskos4j.cmd.VocEvaluate;
 import at.ac.univie.mminf.qskos4j.issues.Issue;
+import at.ac.univie.mminf.qskos4j.progress.IProgressMonitor;
 import at.ac.univie.mminf.qskos4j.util.vocab.SkosOntology;
 
 
@@ -31,10 +33,15 @@ public class ValidateSkosFile {
 	
 	protected String rules;
 
+	protected Integer rulesNumber;
+	
+	
+	
 	public ValidateSkosFile(String rules) {
 		super();
 		this.rules = rules;
 	}
+
 
 	/**
 	 * Validate a File
@@ -84,7 +91,7 @@ public class ValidateSkosFile {
 	 */
 	@SuppressWarnings("rawtypes")
 	public Collection<Issue> validate(InputStream input, RDFFormat format) throws OpenRDFException, IOException {
-
+		
 		// load RDF in a Repository
 		Repository r = new SailRepository(new ForwardChainingRDFSInferencer(new MemoryStore()));
 		r.initialize();
@@ -127,7 +134,7 @@ public class ValidateSkosFile {
 			logger.info("Processing issue " + issueNumber + " of " + issues.size() + " (" + issue.getName() + ")");
 			issue.getResult();
 		}
-
+		this.rulesNumber=issueNumber;
 		logger.info("Validation complete!");
 		
 		return issues;
@@ -136,4 +143,9 @@ public class ValidateSkosFile {
 	public String getRules() {
 		return rules;
 	}
+
+	public Integer getRulesNumber() {
+		return rulesNumber;
+	}
+	
 }

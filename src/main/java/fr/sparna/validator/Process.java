@@ -1,5 +1,7 @@
 package fr.sparna.validator;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -24,6 +26,7 @@ import at.ac.univie.mminf.qskos4j.issues.language.OmittedOrInvalidLanguageTagsRe
 import at.ac.univie.mminf.qskos4j.issues.language.util.NoCommonLanguagesResult;
 import at.ac.univie.mminf.qskos4j.issues.relations.UnidirectionallyRelatedConceptsResult;
 import at.ac.univie.mminf.qskos4j.result.CollectionResult;
+import at.ac.univie.mminf.qskos4j.result.Result.ReportFormat;
 
 public class Process {
 	private final Logger logger = LoggerFactory.getLogger(Process.class);
@@ -31,22 +34,36 @@ public class Process {
 	protected List<SkosError> resultList = new ArrayList<SkosError>();
 	// language used to generate the report
 	protected String lang;
-	// RepositoryConnection
+	
+	protected Integer rulesFail;
 	
 	public Process(String lang) {
 		super();
 		this.lang = lang;
 	}
 
+	
+	public Integer getRulesFail() {
+		return rulesFail;
+	}
+
+
 	@SuppressWarnings("rawtypes")
 	public List<SkosError> createReport(Collection<Issue> issues) throws IOException, OpenRDFException {
 
+		int occurrenceCountFail = 0;
+		BufferedWriter bw = null;
+		FileWriter fw = null;
+		fw = new FileWriter("report.txt");
+		bw = new BufferedWriter(fw);
 		// for each issue...
 		for (Issue issue : issues) {
+			
 			
 			if(issue.getType()==IssueType.ANALYTICAL){
 				
 				
+				bw.write(issue.getResult().getData().toString());
 				
 				SkosError error=new SkosError();
 				error.setId(issue.getId());
@@ -54,7 +71,8 @@ public class Process {
 				String stateText = "";
 				if (issue.getResult().isProblematic()) {
 					stateText = "FAIL";
-					error.setSuccess(false);				
+					error.setSuccess(false);
+					occurrenceCountFail++;
 					String occurrenceCount = Long.toString(issue.getResult().occurrenceCount());
 					error.setNumber(occurrenceCount);
 					stateText += " (" +occurrenceCount+ ")";
@@ -194,6 +212,9 @@ public class Process {
 				resultList.add(error);
 			}
 		}
+		bw.close();
+		fw.close();
+		this.rulesFail=occurrenceCountFail;
 		return resultList;
 	}
 }

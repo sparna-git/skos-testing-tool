@@ -1,0 +1,280 @@
+***********************************
+Concepts orphelins: FAIL (1)
+Libellés vides: FAIL (1)
+Concepts non documentés: FAIL (19)
+Couverture linguistique incomplète: FAIL (9)
+Langue absente ou invalide: OK
+Libellés homonymes: FAIL (1)
+Liens externes manquants: FAIL (20)
+Libellés manquants: FAIL (10)
+Ensemble de concepts déconnectés: FAIL (9)
+Redondance hiérarchique: OK
+Notations ambigues: OK
+Relations réflexives: OK
+Concepts reliés uniquement par des relations transitives: OK
+Concept reliés dans un seul sens: FAIL (10)
+Relations associatives entre concepts du même niveau: OK
+Mauvaises relations d'alignement: OK
+Collision entre relations sémantiques: OK
+Identifiants SKOS non définis: OK
+URI sans protocole HTTP: OK
+Concepts racines avec des génériques: OK
+Top Concepts omis: FAIL (1)
+Libellés disjoints: OK
+Pas de langues communes: OK
+Incohérence des libellés préférés: OK
+Caractères non-imprimables dans les libellés: OK
+
+* Detailed coverage of each Quality Issue:
+
+--- Concepts orphelins
+Description: Trouve tous les concepts orphelins, c'est-à-dire ceux qui n'ont pas de relations sémantiques (générique, spécifique, associé) avec d'autres concepts.
+Detailed information: https://github.com/cmader/qSKOS/wiki/Quality-Issues#orphan-concepts
+count: 1
+http://irstea.fr/thesaurus/6618
+
+--- Libellés vides
+Description: Trouve les libellés vides ou les libellés contenant uniquement des espaces.
+count: 1
+
+http://irstea.fr/thesaurus/9556: [LABEL, PREF_LABEL]
+
+
+--- Concepts non documentés
+Description: Trouve des concepts qui n'utilisent aucune propriétés de documentation SKOS.
+Detailed information: https://github.com/cmader/qSKOS/wiki/Quality-Issues#undocumented-concepts
+count: 19
+http://irstea.fr/thesaurus/9394
+http://irstea.fr/thesaurus/1700
+http://irstea.fr/thesaurus/9281
+http://irstea.fr/thesaurus/9387
+http://irstea.fr/thesaurus/6581
+http://irstea.fr/thesaurus/1058
+http://irstea.fr/thesaurus/4482
+http://irstea.fr/thesaurus/4672
+http://irstea.fr/thesaurus/9267
+http://irstea.fr/thesaurus/9355
+http://irstea.fr/thesaurus/6612
+http://irstea.fr/thesaurus/7005
+http://irstea.fr/thesaurus/9337
+http://irstea.fr/thesaurus/6868
+http://irstea.fr/thesaurus/6869
+http://irstea.fr/thesaurus/10729
+http://irstea.fr/thesaurus/6613
+http://irstea.fr/thesaurus/5306
+http://irstea.fr/thesaurus/6618
+
+--- Couverture linguistique incomplète
+Description: Trouve des concepts qui n'ont pas de description dans des langues utilisées pour d'autres concepts.
+Detailed information: https://github.com/cmader/qSKOS/wiki/Quality-Issues#incomplete-language-coverage
+count: 9
+concept: 'http://irstea.fr/thesaurus/6612', not covered languages: [de, en, es]
+concept: 'http://irstea.fr/thesaurus/7005', not covered languages: [de, en, es]
+concept: 'http://irstea.fr/thesaurus/6869', not covered languages: [de, en, es]
+concept: 'http://irstea.fr/thesaurus/10729', not covered languages: [de, en, es]
+concept: 'http://irstea.fr/thesaurus/6613', not covered languages: [de, en, es]
+concept: 'http://irstea.fr/thesaurus/1700', not covered languages: [de, en, es]
+concept: 'http://irstea.fr/thesaurus/5306', not covered languages: [de, en, es]
+concept: 'http://irstea.fr/thesaurus/1058', not covered languages: [de, en, es]
+concept: 'http://irstea.fr/thesaurus/4672', not covered languages: [de, en, es]
+
+--- Langue absente ou invalide
+Description: Trouve les litéraux sans étiquette de langue ou avec une étiquette de langue invalide.
+Detailed information: https://github.com/cmader/qSKOS/wiki/Quality-Issues#omitted-or-invalid-language-tags
+count: 0
+
+
+--- Libellés homonymes
+Description: Trouve des concepts avec des libellés identiques.
+Detailed information: https://github.com/cmader/qSKOS/wiki/Quality-Issues#overlapping-labels
+count: 1
+[http://irstea.fr/thesaurus/6612 ("VAPEUR"@fr, PREF_LABEL), http://irstea.fr/thesaurus/6613 ("VAPEUR"@fr, PREF_LABEL)]
+
+--- Liens externes manquants
+Description: Trouve des concepts qui ne sont pas liés à d'autres vocabulaires sur le Web.
+Detailed information: https://github.com/cmader/qSKOS/wiki/Quality-Issues#missing-out-links
+count: 20
+http://irstea.fr/thesaurus/9394
+http://irstea.fr/thesaurus/1700
+http://irstea.fr/thesaurus/9281
+http://irstea.fr/thesaurus/9387
+http://irstea.fr/thesaurus/6581
+http://irstea.fr/thesaurus/1058
+http://irstea.fr/thesaurus/9556
+http://irstea.fr/thesaurus/4482
+http://irstea.fr/thesaurus/4672
+http://irstea.fr/thesaurus/9267
+http://irstea.fr/thesaurus/9355
+http://irstea.fr/thesaurus/6612
+http://irstea.fr/thesaurus/7005
+http://irstea.fr/thesaurus/9337
+http://irstea.fr/thesaurus/6868
+http://irstea.fr/thesaurus/6869
+http://irstea.fr/thesaurus/10729
+http://irstea.fr/thesaurus/6613
+http://irstea.fr/thesaurus/5306
+http://irstea.fr/thesaurus/6618
+
+--- Libellés manquants
+Description: Trouve des concepts ou des schema de concepts avec des libellés manquants.
+Detailed information: https://github.com/cmader/qSKOS/wiki/Quality-Issues#missing-labels
+count: 10
+http://irstea.fr/thesaurus/9394
+http://irstea.fr/thesaurus/9281
+http://irstea.fr/thesaurus/9387
+http://irstea.fr/thesaurus/6581
+http://irstea.fr/thesaurus/4482
+http://irstea.fr/thesaurus/9267
+http://irstea.fr/thesaurus/9355
+http://irstea.fr/thesaurus/9337
+http://irstea.fr/thesaurus/6868
+http://irstea.fr/thesaurus/6618
+
+--- Ensemble de concepts déconnectés
+Description: Trouve des ensembles de concepts isolés du reste du vocabulaire.
+Detailed information: https://github.com/cmader/qSKOS/wiki/Quality-Issues#disconnected-concept-clusters
+count: 9
+Cluster 1, size: 2
+Cluster 2, size: 3
+Cluster 3, size: 2
+Cluster 4, size: 2
+Cluster 5, size: 2
+Cluster 6, size: 2
+Cluster 7, size: 2
+Cluster 8, size: 2
+Cluster 9, size: 2
+Cluster 1, size: 2
+	http://irstea.fr/thesaurus/1058
+	http://irstea.fr/thesaurus/9267
+Cluster 2, size: 3
+	http://irstea.fr/thesaurus/1700
+	http://irstea.fr/thesaurus/9281
+	http://irstea.fr/thesaurus/9556
+Cluster 3, size: 2
+	http://irstea.fr/thesaurus/5306
+	http://irstea.fr/thesaurus/9355
+Cluster 4, size: 2
+	http://irstea.fr/thesaurus/6868
+	http://irstea.fr/thesaurus/6869
+Cluster 5, size: 2
+	http://irstea.fr/thesaurus/4482
+	http://irstea.fr/thesaurus/4672
+Cluster 6, size: 2
+	http://irstea.fr/thesaurus/9337
+	http://irstea.fr/thesaurus/10729
+Cluster 7, size: 2
+	http://irstea.fr/thesaurus/7005
+	http://irstea.fr/thesaurus/9394
+Cluster 8, size: 2
+	http://irstea.fr/thesaurus/6612
+	http://irstea.fr/thesaurus/9387
+Cluster 9, size: 2
+	http://irstea.fr/thesaurus/6613
+	http://irstea.fr/thesaurus/6581
+
+--- Redondance hiérarchique
+Description: Trouve des relations générique/spécifique redondantes sur plusieurs niveaux de hiérarchie.
+Detailed information: https://github.com/cmader/qSKOS/wiki/Quality-Issues#hierarchical-redundancy
+count: 0
+
+
+--- Notations ambigues
+Description: Trouve des concepts avec plusieurs notations ou des notations identiques dans le même schéma de concept.
+Detailed information: https://github.com/cmader/qSKOS/wiki/Quality-Issues#Ambiguous_Notation_References
+count: 0
+
+
+--- Relations réflexives
+Description: Trouve des concepts qui sont reliés à eux-mêmes.
+Detailed information: https://github.com/cmader/qSKOS/wiki/Quality-Issues#wiki-Reflexive_Relations
+count: 0
+
+
+--- Concepts reliés uniquement par des relations transitives
+Description: Concepts uniquement reliés par skos:broaderTransitive ou skos:narrowerTransitive.
+Detailed information: https://github.com/cmader/qSKOS/wiki/Quality-Issues#solely-transitively-related-concepts
+count: 0
+
+
+--- Concept reliés dans un seul sens
+Description: Concepts qui ne sont pas liés par des relations inverses (générique/spécifique)
+Detailed information: https://github.com/cmader/qSKOS/wiki/Quality-Issues#unidirectionally-related-concepts
+count: 10
+concepts: (http://irstea.fr/thesaurus/7005, http://irstea.fr/thesaurus/9394), related by: 'skos:broaderTransitive/skos:narrowerTransitive'
+concepts: (http://irstea.fr/thesaurus/1058, http://irstea.fr/thesaurus/9267), related by: 'skos:broaderTransitive/skos:narrowerTransitive'
+concepts: (http://irstea.fr/thesaurus/10729, http://irstea.fr/thesaurus/9337), related by: 'skos:broaderTransitive/skos:narrowerTransitive'
+concepts: (http://irstea.fr/thesaurus/9556, http://irstea.fr/thesaurus/9281), related by: 'skos:broaderTransitive/skos:narrowerTransitive'
+concepts: (http://irstea.fr/thesaurus/5306, http://irstea.fr/thesaurus/9355), related by: 'skos:broaderTransitive/skos:narrowerTransitive'
+concepts: (http://irstea.fr/thesaurus/6869, http://irstea.fr/thesaurus/6868), related by: 'skos:broaderTransitive/skos:narrowerTransitive'
+concepts: (http://irstea.fr/thesaurus/4672, http://irstea.fr/thesaurus/4482), related by: 'skos:broaderTransitive/skos:narrowerTransitive'
+concepts: (http://irstea.fr/thesaurus/6613, http://irstea.fr/thesaurus/6581), related by: 'skos:broaderTransitive/skos:narrowerTransitive'
+concepts: (http://irstea.fr/thesaurus/6612, http://irstea.fr/thesaurus/9387), related by: 'skos:broaderTransitive/skos:narrowerTransitive'
+concepts: (http://irstea.fr/thesaurus/1700, http://irstea.fr/thesaurus/9281), related by: 'skos:broaderTransitive/skos:narrowerTransitive'
+
+
+--- Relations associatives entre concepts du même niveau
+Description: Trouve les concepts ayant le même générique qui sont également reliés par une relation associative.
+Detailed information: https://github.com/cmader/qSKOS/wiki/Quality-Issues#valueless-associative-relations
+count: 0
+
+
+--- Mauvaises relations d'alignement
+Description: Trouve des concepts dans le même schéma de concept qui sont liés par une relation d'alignement (exactMatch, closeMatch, etc.)
+Detailed information: https://github.com/cmader/qSKOS/wiki/Quality-Issues#mapping-relations-misuse
+count: 0
+
+
+--- Collision entre relations sémantiques
+Description: Condition S27 du document de référence SKOS (2 concepts ne peuvent pas être reliés à la fois hiérarchiquement et associativement).
+Detailed information: https://github.com/cmader/qSKOS/wiki/Quality-Issues#relation-clashes
+count: 0
+
+
+--- Identifiants SKOS non définis
+Description: Trouve les nouvelles URIs «inventées» dans l'espace de noms SKOS, ou des propriétés obsolètes.
+Detailed information: https://github.com/cmader/qSKOS/wiki/Quality-Issues#undefined-skos-resources
+count: 0
+
+
+--- URI sans protocole HTTP
+Description: Trouve les sujets de triplets qui n'utilisent pas le protocole HTTP.
+Detailed information: https://github.com/cmader/qSKOS/wiki/Quality-Issues#http-uri-scheme-violation
+count: 0
+
+
+--- Concepts racines avec des génériques
+Description: Trouve des concepts marqués comme racine mais qui sont à l'intérieur de la hiérarchie des concepts.
+Detailed information: https://github.com/cmader/qSKOS/wiki/Quality-Issues#top-concepts-having-broader-concepts
+count: 0
+
+
+--- Top Concepts omis
+Description: Trouve des skos:ConceptSchemes qui n'ont pas de concepts racines définis.
+Detailed information: https://github.com/cmader/qSKOS/wiki/Quality-Issues#omitted-top-concepts
+count: 1
+http://irstea.fr/thesaurus/scheme
+
+--- Libellés disjoints
+Description: Trouve des ressources avec des valeurs identiques dans différents types de libellés (pref, alt, hidden).
+Detailed information: https://github.com/cmader/qSKOS/wiki/Quality-Issues#disjoint-labels-violation
+count: 0
+
+
+
+--- Pas de langues communes
+Description: Vérifie que les litéraux sur les concepts utilisent des langues communes.
+At least one common language for text literals of all concepts has been found
+Common language(s) for all concepts: [fr]
+
+--- Incohérence des libellés préférés
+Description: Trouve des ressources avec plus d'un prefLabel par langue.
+Detailed information: https://github.com/cmader/qSKOS/wiki/Quality-Issues#inconsistent-preferred-labels
+count: 0
+
+
+
+--- Caractères non-imprimables dans les libellés
+Description: Trouve des concepts ayant des libellés contenant des caractères non-imprimables.
+Detailed information: https://github.com/cmader/qSKOS/wiki/Quality-Issues#unprintable-characters-in-labels
+count: 0
+
