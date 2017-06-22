@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collection;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -28,7 +29,6 @@ public class SkosValidatorController {
 	private enum SOURCE_TYPE {
 		FILE,
 		URL
-
 	}
 
 	/**
@@ -42,23 +42,21 @@ public class SkosValidatorController {
 	public ModelAndView upload(
 			@RequestParam(value="lang", required=false) String lang,
 			HttpServletRequest request
-			) throws IOException{
+	) throws IOException{
 
 		ValidatorData data = new ValidatorData();
+		SessionData sessionData = SessionData.retrieve(request.getSession());
 		if(lang!=null) {
-			SessionData sessionData = new SessionData();
 			sessionData.setUserLocale(lang);
-			sessionData.store(request.getSession());
-		} else {
-			SessionData sessionData = new SessionData();
+		} else {;
 			String userLanguage = request.getLocale().getLanguage();
 			if(userLanguage.startsWith("fr")) {
 				sessionData.setUserLocale("fr");
 			} else {
 				sessionData.setUserLocale("en");
 			}
-			sessionData.store(request.getSession());
 		}
+		System.out.println("default locale : "+Locale.getDefault().getLanguage());
 		return new ModelAndView("home", ValidatorData.KEY, data);
 	}
 

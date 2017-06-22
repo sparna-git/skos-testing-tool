@@ -6,8 +6,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <c:set var="sessionData" value="${sessionScope['fr.sparna.validator.SessionData']}" />
-<fmt:setLocale value="${sessionScope['fr.sparna.validator.SessionData'].userLocale}"/>
-<fmt:setBundle basename="fr.sparna.validator.properties.Bundle" />
+<fmt:setLocale
+	value="${sessionScope['fr.sparna.validator.SessionData'].userLocale}" />
+<fmt:setBundle basename="fr.sparna.validator.properties.Bundle"  scope="session"/>
+
 <nav class="navbar navbar-default">
 
 	<div class="container-fluid">
@@ -19,7 +21,6 @@
 				<a href="home">
 					<em>
 						<fmt:message key="menu.home"/>
-					
 					</em>
 
 				</a></li>
@@ -46,7 +47,12 @@
 			</li>
 			<li>
 				<c:if test="${sessionData.baseurl!=null}">
-					<a href="${sessionData.baseurl}/logs/report.txt"><em><fmt:message key="menu.download"/></em></a>
+				  <a href="${sessionData.baseurl}/logs/report.txt">
+				  	<em>
+						<fmt:message key="menu.download" />
+								
+				  	</em>
+				  </a>
 				</c:if>
 			</li>
 		</ul>

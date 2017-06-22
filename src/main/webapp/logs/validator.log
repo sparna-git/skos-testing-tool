@@ -1,600 +1,400 @@
-[2017-06-21 16:15:03,320] INFO  ********************Orphan Concepts FAIL (1)************************
+[2017-06-22 11:12:33,370] INFO  ********************Orphan Concepts FAIL (1)************************
 
 
-[2017-06-21 16:15:03,320] INFO  ********************Additional information************************
-[2017-06-21 16:15:03,320] INFO  [http://irstea.fr/thesaurus/6618]
+[2017-06-22 11:12:33,371] INFO  ********************Additional information************************
+[2017-06-22 11:12:33,371] INFO  [http://irstea.fr/thesaurus/6618]
 
 
-[2017-06-21 16:15:03,320] INFO  ******************************************************************
-[2017-06-21 16:15:03,322] INFO  ********************Empty Labels FAIL (1)************************
+[2017-06-22 11:12:33,371] INFO  ******************************************************************
+[2017-06-22 11:12:33,374] INFO  ********************Empty Labels FAIL (1)************************
 
 
-[2017-06-21 16:15:03,322] INFO  ********************Additional information************************
-[2017-06-21 16:15:03,322] INFO  {http://irstea.fr/thesaurus/9556=[LABEL, PREF_LABEL]}
+[2017-06-22 11:12:33,374] INFO  ********************Additional information************************
+[2017-06-22 11:12:33,374] INFO  {http://irstea.fr/thesaurus/9556=[LABEL, PREF_LABEL]}
 
 
-[2017-06-21 16:15:03,322] INFO  ******************************************************************
-[2017-06-21 16:15:03,323] INFO  ********************Undocumented Concepts FAIL (19)************************
+[2017-06-22 11:12:33,374] INFO  ******************************************************************
+[2017-06-22 11:12:33,384] INFO  ********************Undocumented Concepts FAIL (19)************************
 
 
-[2017-06-21 16:15:03,323] INFO  ********************Additional information************************
-[2017-06-21 16:15:03,323] INFO  [http://irstea.fr/thesaurus/9394, http://irstea.fr/thesaurus/1700, http://irstea.fr/thesaurus/9281, http://irstea.fr/thesaurus/9387, http://irstea.fr/thesaurus/6581, http://irstea.fr/thesaurus/1058, http://irstea.fr/thesaurus/4482, http://irstea.fr/thesaurus/4672, http://irstea.fr/thesaurus/9267, http://irstea.fr/thesaurus/9355, http://irstea.fr/thesaurus/6612, http://irstea.fr/thesaurus/7005, http://irstea.fr/thesaurus/9337, http://irstea.fr/thesaurus/6868, http://irstea.fr/thesaurus/6869, http://irstea.fr/thesaurus/10729, http://irstea.fr/thesaurus/6613, http://irstea.fr/thesaurus/5306, http://irstea.fr/thesaurus/6618]
+[2017-06-22 11:12:33,385] INFO  ********************Additional information************************
+[2017-06-22 11:12:33,385] INFO  [http://irstea.fr/thesaurus/9394, http://irstea.fr/thesaurus/1700, http://irstea.fr/thesaurus/9281, http://irstea.fr/thesaurus/9387, http://irstea.fr/thesaurus/6581, http://irstea.fr/thesaurus/1058, http://irstea.fr/thesaurus/4482, http://irstea.fr/thesaurus/4672, http://irstea.fr/thesaurus/9267, http://irstea.fr/thesaurus/9355, http://irstea.fr/thesaurus/6612, http://irstea.fr/thesaurus/7005, http://irstea.fr/thesaurus/9337, http://irstea.fr/thesaurus/6868, http://irstea.fr/thesaurus/6869, http://irstea.fr/thesaurus/10729, http://irstea.fr/thesaurus/6613, http://irstea.fr/thesaurus/5306, http://irstea.fr/thesaurus/6618]
 
 
-[2017-06-21 16:15:03,323] INFO  ******************************************************************
-[2017-06-21 16:15:03,324] INFO  ********************Incomplete Language Coverage FAIL (9)************************
+[2017-06-22 11:12:33,385] INFO  ******************************************************************
+[2017-06-22 11:12:33,386] INFO  ********************Incomplete Language Coverage FAIL (9)************************
 
 
-[2017-06-21 16:15:03,324] INFO  ********************Additional information************************
-[2017-06-21 16:15:03,324] INFO  {http://irstea.fr/thesaurus/6612=[de, en, es], http://irstea.fr/thesaurus/7005=[de, en, es], http://irstea.fr/thesaurus/6869=[de, en, es], http://irstea.fr/thesaurus/10729=[de, en, es], http://irstea.fr/thesaurus/6613=[de, en, es], http://irstea.fr/thesaurus/1700=[de, en, es], http://irstea.fr/thesaurus/5306=[de, en, es], http://irstea.fr/thesaurus/1058=[de, en, es], http://irstea.fr/thesaurus/4672=[de, en, es]}
+[2017-06-22 11:12:33,386] INFO  ********************Additional information************************
+[2017-06-22 11:12:33,386] INFO  {http://irstea.fr/thesaurus/6612=[de, en, es], http://irstea.fr/thesaurus/7005=[de, en, es], http://irstea.fr/thesaurus/6869=[de, en, es], http://irstea.fr/thesaurus/10729=[de, en, es], http://irstea.fr/thesaurus/6613=[de, en, es], http://irstea.fr/thesaurus/1700=[de, en, es], http://irstea.fr/thesaurus/5306=[de, en, es], http://irstea.fr/thesaurus/1058=[de, en, es], http://irstea.fr/thesaurus/4672=[de, en, es]}
 
 
-[2017-06-21 16:15:03,324] INFO  ******************************************************************
-[2017-06-21 16:15:03,325] INFO  ********************Omitted or Invalid Language Tags OK************************
+[2017-06-22 11:12:33,386] INFO  ******************************************************************
+[2017-06-22 11:12:33,388] INFO  ********************Omitted or Invalid Language Tags OK************************
 
 
-[2017-06-21 16:15:03,325] INFO  ********************Additional information************************
-[2017-06-21 16:15:03,325] INFO  {}
+[2017-06-22 11:12:33,388] INFO  ********************Additional information************************
+[2017-06-22 11:12:33,388] INFO  {}
 
 
-[2017-06-21 16:15:03,325] INFO  ******************************************************************
-[2017-06-21 16:15:03,325] INFO  ********************Overlapping Labels FAIL (1)************************
+[2017-06-22 11:12:33,388] INFO  ******************************************************************
+[2017-06-22 11:12:33,388] INFO  ********************Overlapping Labels FAIL (1)************************
 
 
-[2017-06-21 16:15:03,325] INFO  ********************Additional information************************
-[2017-06-21 16:15:03,325] INFO  [[http://irstea.fr/thesaurus/6612 ("VAPEUR"@fr, PREF_LABEL), http://irstea.fr/thesaurus/6613 ("VAPEUR"@fr, PREF_LABEL)]]
+[2017-06-22 11:12:33,388] INFO  ********************Additional information************************
+[2017-06-22 11:12:33,388] INFO  [[http://irstea.fr/thesaurus/6612 ("VAPEUR"@fr, PREF_LABEL), http://irstea.fr/thesaurus/6613 ("VAPEUR"@fr, PREF_LABEL)]]
 
 
-[2017-06-21 16:15:03,325] INFO  ******************************************************************
-[2017-06-21 16:15:03,325] INFO  ********************Missing Out-Links FAIL (20)************************
+[2017-06-22 11:12:33,388] INFO  ******************************************************************
+[2017-06-22 11:12:33,388] INFO  ********************Missing Out-Links FAIL (20)************************
 
 
-[2017-06-21 16:15:03,325] INFO  ********************Additional information************************
-[2017-06-21 16:15:03,325] INFO  [http://irstea.fr/thesaurus/9394, http://irstea.fr/thesaurus/1700, http://irstea.fr/thesaurus/9281, http://irstea.fr/thesaurus/9387, http://irstea.fr/thesaurus/6581, http://irstea.fr/thesaurus/1058, http://irstea.fr/thesaurus/9556, http://irstea.fr/thesaurus/4482, http://irstea.fr/thesaurus/4672, http://irstea.fr/thesaurus/9267, http://irstea.fr/thesaurus/9355, http://irstea.fr/thesaurus/6612, http://irstea.fr/thesaurus/7005, http://irstea.fr/thesaurus/9337, http://irstea.fr/thesaurus/6868, http://irstea.fr/thesaurus/6869, http://irstea.fr/thesaurus/10729, http://irstea.fr/thesaurus/6613, http://irstea.fr/thesaurus/5306, http://irstea.fr/thesaurus/6618]
+[2017-06-22 11:12:33,388] INFO  ********************Additional information************************
+[2017-06-22 11:12:33,388] INFO  [http://irstea.fr/thesaurus/9394, http://irstea.fr/thesaurus/1700, http://irstea.fr/thesaurus/9281, http://irstea.fr/thesaurus/9387, http://irstea.fr/thesaurus/6581, http://irstea.fr/thesaurus/1058, http://irstea.fr/thesaurus/9556, http://irstea.fr/thesaurus/4482, http://irstea.fr/thesaurus/4672, http://irstea.fr/thesaurus/9267, http://irstea.fr/thesaurus/9355, http://irstea.fr/thesaurus/6612, http://irstea.fr/thesaurus/7005, http://irstea.fr/thesaurus/9337, http://irstea.fr/thesaurus/6868, http://irstea.fr/thesaurus/6869, http://irstea.fr/thesaurus/10729, http://irstea.fr/thesaurus/6613, http://irstea.fr/thesaurus/5306, http://irstea.fr/thesaurus/6618]
 
 
-[2017-06-21 16:15:03,325] INFO  ******************************************************************
-[2017-06-21 16:15:03,326] INFO  ********************Missing Labels FAIL (10)************************
+[2017-06-22 11:12:33,388] INFO  ******************************************************************
+[2017-06-22 11:12:33,390] INFO  ********************Missing Labels FAIL (10)************************
 
 
-[2017-06-21 16:15:03,326] INFO  ********************Additional information************************
-[2017-06-21 16:15:03,326] INFO  [http://irstea.fr/thesaurus/9394, http://irstea.fr/thesaurus/9281, http://irstea.fr/thesaurus/9387, http://irstea.fr/thesaurus/6581, http://irstea.fr/thesaurus/4482, http://irstea.fr/thesaurus/9267, http://irstea.fr/thesaurus/9355, http://irstea.fr/thesaurus/9337, http://irstea.fr/thesaurus/6868, http://irstea.fr/thesaurus/6618]
+[2017-06-22 11:12:33,390] INFO  ********************Additional information************************
+[2017-06-22 11:12:33,390] INFO  [http://irstea.fr/thesaurus/9394, http://irstea.fr/thesaurus/9281, http://irstea.fr/thesaurus/9387, http://irstea.fr/thesaurus/6581, http://irstea.fr/thesaurus/4482, http://irstea.fr/thesaurus/9267, http://irstea.fr/thesaurus/9355, http://irstea.fr/thesaurus/9337, http://irstea.fr/thesaurus/6868, http://irstea.fr/thesaurus/6618]
 
 
-[2017-06-21 16:15:03,326] INFO  ******************************************************************
-[2017-06-21 16:15:03,326] INFO  ********************Disconnected Concept Clusters FAIL (9)************************
+[2017-06-22 11:12:33,390] INFO  ******************************************************************
+[2017-06-22 11:12:33,390] INFO  ********************Disconnected Concept Clusters FAIL (9)************************
 
 
-[2017-06-21 16:15:03,326] INFO  ********************Additional information************************
-[2017-06-21 16:15:03,326] INFO  [[http://irstea.fr/thesaurus/1058, http://irstea.fr/thesaurus/9267], [http://irstea.fr/thesaurus/1700, http://irstea.fr/thesaurus/9281, http://irstea.fr/thesaurus/9556], [http://irstea.fr/thesaurus/5306, http://irstea.fr/thesaurus/9355], [http://irstea.fr/thesaurus/6868, http://irstea.fr/thesaurus/6869], [http://irstea.fr/thesaurus/4482, http://irstea.fr/thesaurus/4672], [http://irstea.fr/thesaurus/9337, http://irstea.fr/thesaurus/10729], [http://irstea.fr/thesaurus/7005, http://irstea.fr/thesaurus/9394], [http://irstea.fr/thesaurus/6612, http://irstea.fr/thesaurus/9387], [http://irstea.fr/thesaurus/6613, http://irstea.fr/thesaurus/6581]]
+[2017-06-22 11:12:33,390] INFO  ********************Additional information************************
+[2017-06-22 11:12:33,390] INFO  [[http://irstea.fr/thesaurus/1058, http://irstea.fr/thesaurus/9267], [http://irstea.fr/thesaurus/1700, http://irstea.fr/thesaurus/9281, http://irstea.fr/thesaurus/9556], [http://irstea.fr/thesaurus/5306, http://irstea.fr/thesaurus/9355], [http://irstea.fr/thesaurus/6868, http://irstea.fr/thesaurus/6869], [http://irstea.fr/thesaurus/4482, http://irstea.fr/thesaurus/4672], [http://irstea.fr/thesaurus/9337, http://irstea.fr/thesaurus/10729], [http://irstea.fr/thesaurus/7005, http://irstea.fr/thesaurus/9394], [http://irstea.fr/thesaurus/6612, http://irstea.fr/thesaurus/9387], [http://irstea.fr/thesaurus/6613, http://irstea.fr/thesaurus/6581]]
 
 
-[2017-06-21 16:15:03,326] INFO  ******************************************************************
-[2017-06-21 16:15:03,327] INFO  ********************Hierarchical Redundancy OK************************
+[2017-06-22 11:12:33,390] INFO  ******************************************************************
+[2017-06-22 11:12:33,392] INFO  ********************Hierarchical Redundancy OK************************
 
 
-[2017-06-21 16:15:03,327] INFO  ********************Additional information************************
-[2017-06-21 16:15:03,327] INFO  []
+[2017-06-22 11:12:33,392] INFO  ********************Additional information************************
+[2017-06-22 11:12:33,392] INFO  []
 
 
-[2017-06-21 16:15:03,327] INFO  ******************************************************************
-[2017-06-21 16:15:03,327] INFO  ********************Ambiguous Notation References OK************************
+[2017-06-22 11:12:33,392] INFO  ******************************************************************
+[2017-06-22 11:12:33,392] INFO  ********************Ambiguous Notation References OK************************
 
 
-[2017-06-21 16:15:03,327] INFO  ********************Additional information************************
-[2017-06-21 16:15:03,327] INFO  []
+[2017-06-22 11:12:33,392] INFO  ********************Additional information************************
+[2017-06-22 11:12:33,392] INFO  []
 
 
-[2017-06-21 16:15:03,327] INFO  ******************************************************************
-[2017-06-21 16:15:03,327] INFO  ********************Reflexively Related Concepts OK************************
+[2017-06-22 11:12:33,392] INFO  ******************************************************************
+[2017-06-22 11:12:33,392] INFO  ********************Reflexively Related Concepts OK************************
 
 
-[2017-06-21 16:15:03,327] INFO  ********************Additional information************************
-[2017-06-21 16:15:03,327] INFO  []
+[2017-06-22 11:12:33,392] INFO  ********************Additional information************************
+[2017-06-22 11:12:33,392] INFO  []
 
 
-[2017-06-21 16:15:03,327] INFO  ******************************************************************
-[2017-06-21 16:15:03,327] INFO  ********************Solely Transitively Related Concepts OK************************
+[2017-06-22 11:12:33,392] INFO  ******************************************************************
+[2017-06-22 11:12:33,392] INFO  ********************Solely Transitively Related Concepts OK************************
 
 
-[2017-06-21 16:15:03,327] INFO  ********************Additional information************************
-[2017-06-21 16:15:03,327] INFO  []
+[2017-06-22 11:12:33,392] INFO  ********************Additional information************************
+[2017-06-22 11:12:33,392] INFO  []
 
 
-[2017-06-21 16:15:03,327] INFO  ******************************************************************
-[2017-06-21 16:15:03,327] INFO  ********************Unidirectionally Related Concepts FAIL (10)************************
+[2017-06-22 11:12:33,392] INFO  ******************************************************************
+[2017-06-22 11:12:33,392] INFO  ********************Unidirectionally Related Concepts FAIL (10)************************
 
 
-[2017-06-21 16:15:03,327] INFO  ********************Additional information************************
-[2017-06-21 16:15:03,327] INFO  {(http://irstea.fr/thesaurus/7005, http://irstea.fr/thesaurus/9394)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/1058, http://irstea.fr/thesaurus/9267)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/10729, http://irstea.fr/thesaurus/9337)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/9556, http://irstea.fr/thesaurus/9281)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/5306, http://irstea.fr/thesaurus/9355)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/6869, http://irstea.fr/thesaurus/6868)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/4672, http://irstea.fr/thesaurus/4482)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/6613, http://irstea.fr/thesaurus/6581)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/6612, http://irstea.fr/thesaurus/9387)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/1700, http://irstea.fr/thesaurus/9281)=skos:broaderTransitive/skos:narrowerTransitive}
+[2017-06-22 11:12:33,392] INFO  ********************Additional information************************
+[2017-06-22 11:12:33,393] INFO  {(http://irstea.fr/thesaurus/7005, http://irstea.fr/thesaurus/9394)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/1058, http://irstea.fr/thesaurus/9267)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/10729, http://irstea.fr/thesaurus/9337)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/9556, http://irstea.fr/thesaurus/9281)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/5306, http://irstea.fr/thesaurus/9355)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/6869, http://irstea.fr/thesaurus/6868)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/4672, http://irstea.fr/thesaurus/4482)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/6613, http://irstea.fr/thesaurus/6581)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/6612, http://irstea.fr/thesaurus/9387)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/1700, http://irstea.fr/thesaurus/9281)=skos:broaderTransitive/skos:narrowerTransitive}
 
 
-[2017-06-21 16:15:03,327] INFO  ******************************************************************
-[2017-06-21 16:15:03,329] INFO  ********************Valueless Associative Relations OK************************
+[2017-06-22 11:12:33,393] INFO  ******************************************************************
+[2017-06-22 11:12:33,394] INFO  ********************Valueless Associative Relations OK************************
 
 
-[2017-06-21 16:15:03,329] INFO  ********************Additional information************************
-[2017-06-21 16:15:03,329] INFO  []
+[2017-06-22 11:12:33,394] INFO  ********************Additional information************************
+[2017-06-22 11:12:33,394] INFO  []
 
 
-[2017-06-21 16:15:03,329] INFO  ******************************************************************
-[2017-06-21 16:15:03,329] INFO  ********************Mapping Relations Misuse OK************************
+[2017-06-22 11:12:33,394] INFO  ******************************************************************
+[2017-06-22 11:12:33,395] INFO  ********************Mapping Relations Misuse OK************************
 
 
-[2017-06-21 16:15:03,329] INFO  ********************Additional information************************
-[2017-06-21 16:15:03,329] INFO  []
+[2017-06-22 11:12:33,395] INFO  ********************Additional information************************
+[2017-06-22 11:12:33,395] INFO  []
 
 
-[2017-06-21 16:15:03,329] INFO  ******************************************************************
-[2017-06-21 16:15:03,329] INFO  ********************Relation Clashes OK************************
+[2017-06-22 11:12:33,395] INFO  ******************************************************************
+[2017-06-22 11:12:33,395] INFO  ********************Relation Clashes OK************************
 
 
-[2017-06-21 16:15:03,329] INFO  ********************Additional information************************
-[2017-06-21 16:15:03,329] INFO  []
+[2017-06-22 11:12:33,395] INFO  ********************Additional information************************
+[2017-06-22 11:12:33,395] INFO  []
 
 
-[2017-06-21 16:15:03,329] INFO  ******************************************************************
-[2017-06-21 16:15:03,329] INFO  ********************Undefined SKOS Resources OK************************
+[2017-06-22 11:12:33,395] INFO  ******************************************************************
+[2017-06-22 11:12:33,395] INFO  ********************Undefined SKOS Resources OK************************
 
 
-[2017-06-21 16:15:03,329] INFO  ********************Additional information************************
-[2017-06-21 16:15:03,329] INFO  []
+[2017-06-22 11:12:33,395] INFO  ********************Additional information************************
+[2017-06-22 11:12:33,395] INFO  []
 
 
-[2017-06-21 16:15:03,329] INFO  ******************************************************************
-[2017-06-21 16:15:03,329] INFO  ********************HTTP URI Scheme Violation OK************************
+[2017-06-22 11:12:33,395] INFO  ******************************************************************
+[2017-06-22 11:12:33,395] INFO  ********************HTTP URI Scheme Violation OK************************
 
 
-[2017-06-21 16:15:03,329] INFO  ********************Additional information************************
-[2017-06-21 16:15:03,330] INFO  []
+[2017-06-22 11:12:33,395] INFO  ********************Additional information************************
+[2017-06-22 11:12:33,395] INFO  []
 
 
-[2017-06-21 16:15:03,330] INFO  ******************************************************************
-[2017-06-21 16:15:03,330] INFO  ********************Top Concepts Having Broader Concepts OK************************
+[2017-06-22 11:12:33,395] INFO  ******************************************************************
+[2017-06-22 11:12:33,395] INFO  ********************Top Concepts Having Broader Concepts OK************************
 
 
-[2017-06-21 16:15:03,330] INFO  ********************Additional information************************
-[2017-06-21 16:15:03,330] INFO  []
+[2017-06-22 11:12:33,395] INFO  ********************Additional information************************
+[2017-06-22 11:12:33,395] INFO  []
 
 
-[2017-06-21 16:15:03,330] INFO  ******************************************************************
-[2017-06-21 16:15:03,330] INFO  ********************Omitted Top Concepts FAIL (1)************************
+[2017-06-22 11:12:33,395] INFO  ******************************************************************
+[2017-06-22 11:12:33,395] INFO  ********************Omitted Top Concepts FAIL (1)************************
 
 
-[2017-06-21 16:15:03,330] INFO  ********************Additional information************************
-[2017-06-21 16:15:03,330] INFO  [http://irstea.fr/thesaurus/scheme]
+[2017-06-22 11:12:33,395] INFO  ********************Additional information************************
+[2017-06-22 11:12:33,395] INFO  [http://irstea.fr/thesaurus/scheme]
 
 
-[2017-06-21 16:15:03,330] INFO  ******************************************************************
-[2017-06-21 16:15:03,330] INFO  ********************Disjoint Labels Violation OK************************
+[2017-06-22 11:12:33,395] INFO  ******************************************************************
+[2017-06-22 11:12:33,395] INFO  ********************Disjoint Labels Violation OK************************
 
 
-[2017-06-21 16:15:03,330] INFO  ********************Additional information************************
-[2017-06-21 16:15:03,330] INFO  []
+[2017-06-22 11:12:33,395] INFO  ********************Additional information************************
+[2017-06-22 11:12:33,395] INFO  []
 
 
-[2017-06-21 16:15:03,330] INFO  ******************************************************************
-[2017-06-21 16:15:03,330] INFO  ********************No Common Languages OK************************
+[2017-06-22 11:12:33,395] INFO  ******************************************************************
+[2017-06-22 11:12:33,396] INFO  ********************No Common Languages OK************************
 
 
-[2017-06-21 16:15:03,330] INFO  ********************Additional information************************
-[2017-06-21 16:15:03,330] INFO  [fr]
+[2017-06-22 11:12:33,396] INFO  ********************Additional information************************
+[2017-06-22 11:12:33,396] INFO  [fr]
 
 
-[2017-06-21 16:15:03,330] INFO  ******************************************************************
-[2017-06-21 16:15:03,330] INFO  ********************Inconsistent Preferred Labels OK************************
+[2017-06-22 11:12:33,396] INFO  ******************************************************************
+[2017-06-22 11:12:33,396] INFO  ********************Inconsistent Preferred Labels OK************************
 
 
-[2017-06-21 16:15:03,330] INFO  ********************Additional information************************
-[2017-06-21 16:15:03,330] INFO  []
+[2017-06-22 11:12:33,396] INFO  ********************Additional information************************
+[2017-06-22 11:12:33,396] INFO  []
 
 
-[2017-06-21 16:15:03,330] INFO  ******************************************************************
-[2017-06-21 16:15:03,330] INFO  ********************Unprintable Characters in Labels OK************************
+[2017-06-22 11:12:33,396] INFO  ******************************************************************
+[2017-06-22 11:12:33,396] INFO  ********************Unprintable Characters in Labels OK************************
 
 
-[2017-06-21 16:15:03,330] INFO  ********************Additional information************************
-[2017-06-21 16:15:03,330] INFO  []
+[2017-06-22 11:12:33,396] INFO  ********************Additional information************************
+[2017-06-22 11:12:33,396] INFO  []
 
 
-[2017-06-21 16:15:03,330] INFO  ******************************************************************
-[2017-06-21 16:15:09,044] INFO  ********************Orphan Concepts FAIL (1)************************
+[2017-06-22 11:12:33,396] INFO  ******************************************************************
+[2017-06-22 11:12:50,159] INFO  ********************Orphan Concepts FAIL (1)************************
 
 
-[2017-06-21 16:15:09,044] INFO  ********************Additional information************************
-[2017-06-21 16:15:09,044] INFO  [http://irstea.fr/thesaurus/6618]
+[2017-06-22 11:12:50,159] INFO  ********************Additional information************************
+[2017-06-22 11:12:50,159] INFO  [http://irstea.fr/thesaurus/6618]
 
 
-[2017-06-21 16:15:09,044] INFO  ******************************************************************
-[2017-06-21 16:15:09,044] INFO  ********************Empty Labels FAIL (1)************************
+[2017-06-22 11:12:50,159] INFO  ******************************************************************
+[2017-06-22 11:12:50,159] INFO  ********************Empty Labels FAIL (1)************************
 
 
-[2017-06-21 16:15:09,044] INFO  ********************Additional information************************
-[2017-06-21 16:15:09,044] INFO  {http://irstea.fr/thesaurus/9556=[LABEL, PREF_LABEL]}
+[2017-06-22 11:12:50,159] INFO  ********************Additional information************************
+[2017-06-22 11:12:50,159] INFO  {http://irstea.fr/thesaurus/9556=[LABEL, PREF_LABEL]}
 
 
-[2017-06-21 16:15:09,044] INFO  ******************************************************************
-[2017-06-21 16:15:09,044] INFO  ********************Undocumented Concepts FAIL (19)************************
+[2017-06-22 11:12:50,160] INFO  ******************************************************************
+[2017-06-22 11:12:50,160] INFO  ********************Undocumented Concepts FAIL (19)************************
 
 
-[2017-06-21 16:15:09,044] INFO  ********************Additional information************************
-[2017-06-21 16:15:09,044] INFO  [http://irstea.fr/thesaurus/9394, http://irstea.fr/thesaurus/1700, http://irstea.fr/thesaurus/9281, http://irstea.fr/thesaurus/9387, http://irstea.fr/thesaurus/6581, http://irstea.fr/thesaurus/1058, http://irstea.fr/thesaurus/4482, http://irstea.fr/thesaurus/4672, http://irstea.fr/thesaurus/9267, http://irstea.fr/thesaurus/9355, http://irstea.fr/thesaurus/6612, http://irstea.fr/thesaurus/7005, http://irstea.fr/thesaurus/9337, http://irstea.fr/thesaurus/6868, http://irstea.fr/thesaurus/6869, http://irstea.fr/thesaurus/10729, http://irstea.fr/thesaurus/6613, http://irstea.fr/thesaurus/5306, http://irstea.fr/thesaurus/6618]
+[2017-06-22 11:12:50,160] INFO  ********************Additional information************************
+[2017-06-22 11:12:50,160] INFO  [http://irstea.fr/thesaurus/9394, http://irstea.fr/thesaurus/1700, http://irstea.fr/thesaurus/9281, http://irstea.fr/thesaurus/9387, http://irstea.fr/thesaurus/6581, http://irstea.fr/thesaurus/1058, http://irstea.fr/thesaurus/4482, http://irstea.fr/thesaurus/4672, http://irstea.fr/thesaurus/9267, http://irstea.fr/thesaurus/9355, http://irstea.fr/thesaurus/6612, http://irstea.fr/thesaurus/7005, http://irstea.fr/thesaurus/9337, http://irstea.fr/thesaurus/6868, http://irstea.fr/thesaurus/6869, http://irstea.fr/thesaurus/10729, http://irstea.fr/thesaurus/6613, http://irstea.fr/thesaurus/5306, http://irstea.fr/thesaurus/6618]
 
 
-[2017-06-21 16:15:09,044] INFO  ******************************************************************
-[2017-06-21 16:15:09,045] INFO  ********************Incomplete Language Coverage FAIL (9)************************
+[2017-06-22 11:12:50,160] INFO  ******************************************************************
+[2017-06-22 11:12:50,160] INFO  ********************Incomplete Language Coverage FAIL (9)************************
 
 
-[2017-06-21 16:15:09,045] INFO  ********************Additional information************************
-[2017-06-21 16:15:09,045] INFO  {http://irstea.fr/thesaurus/6612=[de, en, es], http://irstea.fr/thesaurus/7005=[de, en, es], http://irstea.fr/thesaurus/6869=[de, en, es], http://irstea.fr/thesaurus/10729=[de, en, es], http://irstea.fr/thesaurus/6613=[de, en, es], http://irstea.fr/thesaurus/1700=[de, en, es], http://irstea.fr/thesaurus/5306=[de, en, es], http://irstea.fr/thesaurus/1058=[de, en, es], http://irstea.fr/thesaurus/4672=[de, en, es]}
+[2017-06-22 11:12:50,160] INFO  ********************Additional information************************
+[2017-06-22 11:12:50,160] INFO  {http://irstea.fr/thesaurus/6612=[de, en, es], http://irstea.fr/thesaurus/7005=[de, en, es], http://irstea.fr/thesaurus/6869=[de, en, es], http://irstea.fr/thesaurus/10729=[de, en, es], http://irstea.fr/thesaurus/6613=[de, en, es], http://irstea.fr/thesaurus/1700=[de, en, es], http://irstea.fr/thesaurus/5306=[de, en, es], http://irstea.fr/thesaurus/1058=[de, en, es], http://irstea.fr/thesaurus/4672=[de, en, es]}
 
 
-[2017-06-21 16:15:09,045] INFO  ******************************************************************
-[2017-06-21 16:15:09,045] INFO  ********************Omitted or Invalid Language Tags OK************************
+[2017-06-22 11:12:50,160] INFO  ******************************************************************
+[2017-06-22 11:12:50,160] INFO  ********************Omitted or Invalid Language Tags OK************************
 
 
-[2017-06-21 16:15:09,045] INFO  ********************Additional information************************
-[2017-06-21 16:15:09,045] INFO  {}
+[2017-06-22 11:12:50,160] INFO  ********************Additional information************************
+[2017-06-22 11:12:50,160] INFO  {}
 
 
-[2017-06-21 16:15:09,045] INFO  ******************************************************************
-[2017-06-21 16:15:09,045] INFO  ********************Overlapping Labels FAIL (1)************************
+[2017-06-22 11:12:50,160] INFO  ******************************************************************
+[2017-06-22 11:12:50,160] INFO  ********************Overlapping Labels FAIL (1)************************
 
 
-[2017-06-21 16:15:09,045] INFO  ********************Additional information************************
-[2017-06-21 16:15:09,045] INFO  [[http://irstea.fr/thesaurus/6612 ("VAPEUR"@fr, PREF_LABEL), http://irstea.fr/thesaurus/6613 ("VAPEUR"@fr, PREF_LABEL)]]
+[2017-06-22 11:12:50,160] INFO  ********************Additional information************************
+[2017-06-22 11:12:50,160] INFO  [[http://irstea.fr/thesaurus/6612 ("VAPEUR"@fr, PREF_LABEL), http://irstea.fr/thesaurus/6613 ("VAPEUR"@fr, PREF_LABEL)]]
 
 
-[2017-06-21 16:15:09,045] INFO  ******************************************************************
-[2017-06-21 16:15:09,045] INFO  ********************Missing Out-Links FAIL (20)************************
+[2017-06-22 11:12:50,160] INFO  ******************************************************************
+[2017-06-22 11:12:50,160] INFO  ********************Missing Out-Links FAIL (20)************************
 
 
-[2017-06-21 16:15:09,045] INFO  ********************Additional information************************
-[2017-06-21 16:15:09,045] INFO  [http://irstea.fr/thesaurus/9394, http://irstea.fr/thesaurus/1700, http://irstea.fr/thesaurus/9281, http://irstea.fr/thesaurus/9387, http://irstea.fr/thesaurus/6581, http://irstea.fr/thesaurus/1058, http://irstea.fr/thesaurus/9556, http://irstea.fr/thesaurus/4482, http://irstea.fr/thesaurus/4672, http://irstea.fr/thesaurus/9267, http://irstea.fr/thesaurus/9355, http://irstea.fr/thesaurus/6612, http://irstea.fr/thesaurus/7005, http://irstea.fr/thesaurus/9337, http://irstea.fr/thesaurus/6868, http://irstea.fr/thesaurus/6869, http://irstea.fr/thesaurus/10729, http://irstea.fr/thesaurus/6613, http://irstea.fr/thesaurus/5306, http://irstea.fr/thesaurus/6618]
+[2017-06-22 11:12:50,160] INFO  ********************Additional information************************
+[2017-06-22 11:12:50,160] INFO  [http://irstea.fr/thesaurus/9394, http://irstea.fr/thesaurus/1700, http://irstea.fr/thesaurus/9281, http://irstea.fr/thesaurus/9387, http://irstea.fr/thesaurus/6581, http://irstea.fr/thesaurus/1058, http://irstea.fr/thesaurus/9556, http://irstea.fr/thesaurus/4482, http://irstea.fr/thesaurus/4672, http://irstea.fr/thesaurus/9267, http://irstea.fr/thesaurus/9355, http://irstea.fr/thesaurus/6612, http://irstea.fr/thesaurus/7005, http://irstea.fr/thesaurus/9337, http://irstea.fr/thesaurus/6868, http://irstea.fr/thesaurus/6869, http://irstea.fr/thesaurus/10729, http://irstea.fr/thesaurus/6613, http://irstea.fr/thesaurus/5306, http://irstea.fr/thesaurus/6618]
 
 
-[2017-06-21 16:15:09,045] INFO  ******************************************************************
-[2017-06-21 16:15:09,045] INFO  ********************Missing Labels FAIL (10)************************
+[2017-06-22 11:12:50,160] INFO  ******************************************************************
+[2017-06-22 11:12:50,160] INFO  ********************Missing Labels FAIL (10)************************
 
 
-[2017-06-21 16:15:09,046] INFO  ********************Additional information************************
-[2017-06-21 16:15:09,046] INFO  [http://irstea.fr/thesaurus/9394, http://irstea.fr/thesaurus/9281, http://irstea.fr/thesaurus/9387, http://irstea.fr/thesaurus/6581, http://irstea.fr/thesaurus/4482, http://irstea.fr/thesaurus/9267, http://irstea.fr/thesaurus/9355, http://irstea.fr/thesaurus/9337, http://irstea.fr/thesaurus/6868, http://irstea.fr/thesaurus/6618]
+[2017-06-22 11:12:50,160] INFO  ********************Additional information************************
+[2017-06-22 11:12:50,160] INFO  [http://irstea.fr/thesaurus/9394, http://irstea.fr/thesaurus/9281, http://irstea.fr/thesaurus/9387, http://irstea.fr/thesaurus/6581, http://irstea.fr/thesaurus/4482, http://irstea.fr/thesaurus/9267, http://irstea.fr/thesaurus/9355, http://irstea.fr/thesaurus/9337, http://irstea.fr/thesaurus/6868, http://irstea.fr/thesaurus/6618]
 
 
-[2017-06-21 16:15:09,046] INFO  ******************************************************************
-[2017-06-21 16:15:09,046] INFO  ********************Disconnected Concept Clusters FAIL (9)************************
+[2017-06-22 11:12:50,160] INFO  ******************************************************************
+[2017-06-22 11:12:50,161] INFO  ********************Disconnected Concept Clusters FAIL (9)************************
 
 
-[2017-06-21 16:15:09,046] INFO  ********************Additional information************************
-[2017-06-21 16:15:09,046] INFO  [[http://irstea.fr/thesaurus/1058, http://irstea.fr/thesaurus/9267], [http://irstea.fr/thesaurus/1700, http://irstea.fr/thesaurus/9281, http://irstea.fr/thesaurus/9556], [http://irstea.fr/thesaurus/5306, http://irstea.fr/thesaurus/9355], [http://irstea.fr/thesaurus/6868, http://irstea.fr/thesaurus/6869], [http://irstea.fr/thesaurus/4482, http://irstea.fr/thesaurus/4672], [http://irstea.fr/thesaurus/9337, http://irstea.fr/thesaurus/10729], [http://irstea.fr/thesaurus/7005, http://irstea.fr/thesaurus/9394], [http://irstea.fr/thesaurus/6612, http://irstea.fr/thesaurus/9387], [http://irstea.fr/thesaurus/6613, http://irstea.fr/thesaurus/6581]]
+[2017-06-22 11:12:50,161] INFO  ********************Additional information************************
+[2017-06-22 11:12:50,161] INFO  [[http://irstea.fr/thesaurus/1058, http://irstea.fr/thesaurus/9267], [http://irstea.fr/thesaurus/1700, http://irstea.fr/thesaurus/9281, http://irstea.fr/thesaurus/9556], [http://irstea.fr/thesaurus/5306, http://irstea.fr/thesaurus/9355], [http://irstea.fr/thesaurus/6868, http://irstea.fr/thesaurus/6869], [http://irstea.fr/thesaurus/4482, http://irstea.fr/thesaurus/4672], [http://irstea.fr/thesaurus/9337, http://irstea.fr/thesaurus/10729], [http://irstea.fr/thesaurus/7005, http://irstea.fr/thesaurus/9394], [http://irstea.fr/thesaurus/6612, http://irstea.fr/thesaurus/9387], [http://irstea.fr/thesaurus/6613, http://irstea.fr/thesaurus/6581]]
 
 
-[2017-06-21 16:15:09,046] INFO  ******************************************************************
-[2017-06-21 16:15:09,046] INFO  ********************Hierarchical Redundancy OK************************
+[2017-06-22 11:12:50,163] INFO  ******************************************************************
+[2017-06-22 11:12:50,164] INFO  ********************Hierarchical Redundancy OK************************
 
 
-[2017-06-21 16:15:09,046] INFO  ********************Additional information************************
-[2017-06-21 16:15:09,046] INFO  []
+[2017-06-22 11:12:50,164] INFO  ********************Additional information************************
+[2017-06-22 11:12:50,164] INFO  []
 
 
-[2017-06-21 16:15:09,046] INFO  ******************************************************************
-[2017-06-21 16:15:09,046] INFO  ********************Ambiguous Notation References OK************************
+[2017-06-22 11:12:50,164] INFO  ******************************************************************
+[2017-06-22 11:12:50,164] INFO  ********************Ambiguous Notation References OK************************
 
 
-[2017-06-21 16:15:09,046] INFO  ********************Additional information************************
-[2017-06-21 16:15:09,046] INFO  []
+[2017-06-22 11:12:50,164] INFO  ********************Additional information************************
+[2017-06-22 11:12:50,164] INFO  []
 
 
-[2017-06-21 16:15:09,046] INFO  ******************************************************************
-[2017-06-21 16:15:09,046] INFO  ********************Reflexively Related Concepts OK************************
+[2017-06-22 11:12:50,164] INFO  ******************************************************************
+[2017-06-22 11:12:50,164] INFO  ********************Reflexively Related Concepts OK************************
 
 
-[2017-06-21 16:15:09,046] INFO  ********************Additional information************************
-[2017-06-21 16:15:09,046] INFO  []
+[2017-06-22 11:12:50,164] INFO  ********************Additional information************************
+[2017-06-22 11:12:50,164] INFO  []
 
 
-[2017-06-21 16:15:09,046] INFO  ******************************************************************
-[2017-06-21 16:15:09,046] INFO  ********************Solely Transitively Related Concepts OK************************
+[2017-06-22 11:12:50,164] INFO  ******************************************************************
+[2017-06-22 11:12:50,164] INFO  ********************Solely Transitively Related Concepts OK************************
 
 
-[2017-06-21 16:15:09,046] INFO  ********************Additional information************************
-[2017-06-21 16:15:09,046] INFO  []
+[2017-06-22 11:12:50,164] INFO  ********************Additional information************************
+[2017-06-22 11:12:50,164] INFO  []
 
 
-[2017-06-21 16:15:09,046] INFO  ******************************************************************
-[2017-06-21 16:15:09,046] INFO  ********************Unidirectionally Related Concepts FAIL (10)************************
+[2017-06-22 11:12:50,164] INFO  ******************************************************************
+[2017-06-22 11:12:50,164] INFO  ********************Unidirectionally Related Concepts FAIL (10)************************
 
 
-[2017-06-21 16:15:09,046] INFO  ********************Additional information************************
-[2017-06-21 16:15:09,047] INFO  {(http://irstea.fr/thesaurus/7005, http://irstea.fr/thesaurus/9394)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/1058, http://irstea.fr/thesaurus/9267)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/10729, http://irstea.fr/thesaurus/9337)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/9556, http://irstea.fr/thesaurus/9281)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/5306, http://irstea.fr/thesaurus/9355)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/6869, http://irstea.fr/thesaurus/6868)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/4672, http://irstea.fr/thesaurus/4482)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/6613, http://irstea.fr/thesaurus/6581)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/6612, http://irstea.fr/thesaurus/9387)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/1700, http://irstea.fr/thesaurus/9281)=skos:broaderTransitive/skos:narrowerTransitive}
+[2017-06-22 11:12:50,164] INFO  ********************Additional information************************
+[2017-06-22 11:12:50,164] INFO  {(http://irstea.fr/thesaurus/7005, http://irstea.fr/thesaurus/9394)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/1058, http://irstea.fr/thesaurus/9267)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/10729, http://irstea.fr/thesaurus/9337)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/9556, http://irstea.fr/thesaurus/9281)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/5306, http://irstea.fr/thesaurus/9355)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/6869, http://irstea.fr/thesaurus/6868)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/4672, http://irstea.fr/thesaurus/4482)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/6613, http://irstea.fr/thesaurus/6581)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/6612, http://irstea.fr/thesaurus/9387)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/1700, http://irstea.fr/thesaurus/9281)=skos:broaderTransitive/skos:narrowerTransitive}
 
 
-[2017-06-21 16:15:09,047] INFO  ******************************************************************
-[2017-06-21 16:15:09,047] INFO  ********************Valueless Associative Relations OK************************
+[2017-06-22 11:12:50,165] INFO  ******************************************************************
+[2017-06-22 11:12:50,165] INFO  ********************Valueless Associative Relations OK************************
 
 
-[2017-06-21 16:15:09,047] INFO  ********************Additional information************************
-[2017-06-21 16:15:09,047] INFO  []
+[2017-06-22 11:12:50,165] INFO  ********************Additional information************************
+[2017-06-22 11:12:50,165] INFO  []
 
 
-[2017-06-21 16:15:09,047] INFO  ******************************************************************
-[2017-06-21 16:15:09,047] INFO  ********************Mapping Relations Misuse OK************************
+[2017-06-22 11:12:50,165] INFO  ******************************************************************
+[2017-06-22 11:12:50,165] INFO  ********************Mapping Relations Misuse OK************************
 
 
-[2017-06-21 16:15:09,047] INFO  ********************Additional information************************
-[2017-06-21 16:15:09,047] INFO  []
+[2017-06-22 11:12:50,165] INFO  ********************Additional information************************
+[2017-06-22 11:12:50,165] INFO  []
 
 
-[2017-06-21 16:15:09,047] INFO  ******************************************************************
-[2017-06-21 16:15:09,047] INFO  ********************Relation Clashes OK************************
+[2017-06-22 11:12:50,165] INFO  ******************************************************************
+[2017-06-22 11:12:50,165] INFO  ********************Relation Clashes OK************************
 
 
-[2017-06-21 16:15:09,047] INFO  ********************Additional information************************
-[2017-06-21 16:15:09,047] INFO  []
+[2017-06-22 11:12:50,165] INFO  ********************Additional information************************
+[2017-06-22 11:12:50,165] INFO  []
 
 
-[2017-06-21 16:15:09,047] INFO  ******************************************************************
-[2017-06-21 16:15:09,047] INFO  ********************Undefined SKOS Resources OK************************
+[2017-06-22 11:12:50,165] INFO  ******************************************************************
+[2017-06-22 11:12:50,165] INFO  ********************Undefined SKOS Resources OK************************
 
 
-[2017-06-21 16:15:09,047] INFO  ********************Additional information************************
-[2017-06-21 16:15:09,047] INFO  []
+[2017-06-22 11:12:50,165] INFO  ********************Additional information************************
+[2017-06-22 11:12:50,165] INFO  []
 
 
-[2017-06-21 16:15:09,047] INFO  ******************************************************************
-[2017-06-21 16:15:09,047] INFO  ********************HTTP URI Scheme Violation OK************************
+[2017-06-22 11:12:50,165] INFO  ******************************************************************
+[2017-06-22 11:12:50,165] INFO  ********************HTTP URI Scheme Violation OK************************
 
 
-[2017-06-21 16:15:09,047] INFO  ********************Additional information************************
-[2017-06-21 16:15:09,047] INFO  []
+[2017-06-22 11:12:50,165] INFO  ********************Additional information************************
+[2017-06-22 11:12:50,165] INFO  []
 
 
-[2017-06-21 16:15:09,047] INFO  ******************************************************************
-[2017-06-21 16:15:09,047] INFO  ********************Top Concepts Having Broader Concepts OK************************
+[2017-06-22 11:12:50,165] INFO  ******************************************************************
+[2017-06-22 11:12:50,165] INFO  ********************Top Concepts Having Broader Concepts OK************************
 
 
-[2017-06-21 16:15:09,047] INFO  ********************Additional information************************
-[2017-06-21 16:15:09,047] INFO  []
+[2017-06-22 11:12:50,165] INFO  ********************Additional information************************
+[2017-06-22 11:12:50,165] INFO  []
 
 
-[2017-06-21 16:15:09,047] INFO  ******************************************************************
-[2017-06-21 16:15:09,047] INFO  ********************Omitted Top Concepts FAIL (1)************************
+[2017-06-22 11:12:50,165] INFO  ******************************************************************
+[2017-06-22 11:12:50,165] INFO  ********************Omitted Top Concepts FAIL (1)************************
 
 
-[2017-06-21 16:15:09,047] INFO  ********************Additional information************************
-[2017-06-21 16:15:09,047] INFO  [http://irstea.fr/thesaurus/scheme]
+[2017-06-22 11:12:50,165] INFO  ********************Additional information************************
+[2017-06-22 11:12:50,165] INFO  [http://irstea.fr/thesaurus/scheme]
 
 
-[2017-06-21 16:15:09,047] INFO  ******************************************************************
-[2017-06-21 16:15:09,047] INFO  ********************Disjoint Labels Violation OK************************
+[2017-06-22 11:12:50,165] INFO  ******************************************************************
+[2017-06-22 11:12:50,165] INFO  ********************Disjoint Labels Violation OK************************
 
 
-[2017-06-21 16:15:09,047] INFO  ********************Additional information************************
-[2017-06-21 16:15:09,047] INFO  []
+[2017-06-22 11:12:50,165] INFO  ********************Additional information************************
+[2017-06-22 11:12:50,165] INFO  []
 
 
-[2017-06-21 16:15:09,047] INFO  ******************************************************************
-[2017-06-21 16:15:09,047] INFO  ********************No Common Languages OK************************
+[2017-06-22 11:12:50,165] INFO  ******************************************************************
+[2017-06-22 11:12:50,166] INFO  ********************No Common Languages OK************************
 
 
-[2017-06-21 16:15:09,047] INFO  ********************Additional information************************
-[2017-06-21 16:15:09,048] INFO  [fr]
+[2017-06-22 11:12:50,166] INFO  ********************Additional information************************
+[2017-06-22 11:12:50,166] INFO  [fr]
 
 
-[2017-06-21 16:15:09,048] INFO  ******************************************************************
-[2017-06-21 16:15:09,048] INFO  ********************Inconsistent Preferred Labels OK************************
+[2017-06-22 11:12:50,166] INFO  ******************************************************************
+[2017-06-22 11:12:50,166] INFO  ********************Inconsistent Preferred Labels OK************************
 
 
-[2017-06-21 16:15:09,048] INFO  ********************Additional information************************
-[2017-06-21 16:15:09,048] INFO  []
+[2017-06-22 11:12:50,166] INFO  ********************Additional information************************
+[2017-06-22 11:12:50,166] INFO  []
 
 
-[2017-06-21 16:15:09,048] INFO  ******************************************************************
-[2017-06-21 16:15:09,048] INFO  ********************Unprintable Characters in Labels OK************************
+[2017-06-22 11:12:50,166] INFO  ******************************************************************
+[2017-06-22 11:12:50,166] INFO  ********************Unprintable Characters in Labels OK************************
 
 
-[2017-06-21 16:15:09,048] INFO  ********************Additional information************************
-[2017-06-21 16:15:09,048] INFO  []
+[2017-06-22 11:12:50,166] INFO  ********************Additional information************************
+[2017-06-22 11:12:50,166] INFO  []
 
 
-[2017-06-21 16:15:09,048] INFO  ******************************************************************
-[2017-06-21 16:15:21,450] INFO  ********************Orphan Concepts FAIL (1)************************
-
-
-[2017-06-21 16:15:21,450] INFO  ********************Additional information************************
-[2017-06-21 16:15:21,450] INFO  [http://irstea.fr/thesaurus/6618]
-
-
-[2017-06-21 16:15:21,450] INFO  ******************************************************************
-[2017-06-21 16:15:21,450] INFO  ********************Empty Labels FAIL (1)************************
-
-
-[2017-06-21 16:15:21,450] INFO  ********************Additional information************************
-[2017-06-21 16:15:21,450] INFO  {http://irstea.fr/thesaurus/9556=[LABEL, PREF_LABEL]}
-
-
-[2017-06-21 16:15:21,450] INFO  ******************************************************************
-[2017-06-21 16:15:21,450] INFO  ********************Undocumented Concepts FAIL (19)************************
-
-
-[2017-06-21 16:15:21,450] INFO  ********************Additional information************************
-[2017-06-21 16:15:21,450] INFO  [http://irstea.fr/thesaurus/9394, http://irstea.fr/thesaurus/1700, http://irstea.fr/thesaurus/9281, http://irstea.fr/thesaurus/9387, http://irstea.fr/thesaurus/6581, http://irstea.fr/thesaurus/1058, http://irstea.fr/thesaurus/4482, http://irstea.fr/thesaurus/4672, http://irstea.fr/thesaurus/9267, http://irstea.fr/thesaurus/9355, http://irstea.fr/thesaurus/6612, http://irstea.fr/thesaurus/7005, http://irstea.fr/thesaurus/9337, http://irstea.fr/thesaurus/6868, http://irstea.fr/thesaurus/6869, http://irstea.fr/thesaurus/10729, http://irstea.fr/thesaurus/6613, http://irstea.fr/thesaurus/5306, http://irstea.fr/thesaurus/6618]
-
-
-[2017-06-21 16:15:21,450] INFO  ******************************************************************
-[2017-06-21 16:15:21,451] INFO  ********************Incomplete Language Coverage FAIL (9)************************
-
-
-[2017-06-21 16:15:21,451] INFO  ********************Additional information************************
-[2017-06-21 16:15:21,451] INFO  {http://irstea.fr/thesaurus/6612=[de, en, es], http://irstea.fr/thesaurus/7005=[de, en, es], http://irstea.fr/thesaurus/6869=[de, en, es], http://irstea.fr/thesaurus/10729=[de, en, es], http://irstea.fr/thesaurus/6613=[de, en, es], http://irstea.fr/thesaurus/1700=[de, en, es], http://irstea.fr/thesaurus/5306=[de, en, es], http://irstea.fr/thesaurus/1058=[de, en, es], http://irstea.fr/thesaurus/4672=[de, en, es]}
-
-
-[2017-06-21 16:15:21,451] INFO  ******************************************************************
-[2017-06-21 16:15:21,451] INFO  ********************Omitted or Invalid Language Tags OK************************
-
-
-[2017-06-21 16:15:21,451] INFO  ********************Additional information************************
-[2017-06-21 16:15:21,451] INFO  {}
-
-
-[2017-06-21 16:15:21,451] INFO  ******************************************************************
-[2017-06-21 16:15:21,451] INFO  ********************Overlapping Labels FAIL (1)************************
-
-
-[2017-06-21 16:15:21,451] INFO  ********************Additional information************************
-[2017-06-21 16:15:21,451] INFO  [[http://irstea.fr/thesaurus/6612 ("VAPEUR"@fr, PREF_LABEL), http://irstea.fr/thesaurus/6613 ("VAPEUR"@fr, PREF_LABEL)]]
-
-
-[2017-06-21 16:15:21,451] INFO  ******************************************************************
-[2017-06-21 16:15:21,451] INFO  ********************Missing Out-Links FAIL (20)************************
-
-
-[2017-06-21 16:15:21,451] INFO  ********************Additional information************************
-[2017-06-21 16:15:21,451] INFO  [http://irstea.fr/thesaurus/9394, http://irstea.fr/thesaurus/1700, http://irstea.fr/thesaurus/9281, http://irstea.fr/thesaurus/9387, http://irstea.fr/thesaurus/6581, http://irstea.fr/thesaurus/1058, http://irstea.fr/thesaurus/9556, http://irstea.fr/thesaurus/4482, http://irstea.fr/thesaurus/4672, http://irstea.fr/thesaurus/9267, http://irstea.fr/thesaurus/9355, http://irstea.fr/thesaurus/6612, http://irstea.fr/thesaurus/7005, http://irstea.fr/thesaurus/9337, http://irstea.fr/thesaurus/6868, http://irstea.fr/thesaurus/6869, http://irstea.fr/thesaurus/10729, http://irstea.fr/thesaurus/6613, http://irstea.fr/thesaurus/5306, http://irstea.fr/thesaurus/6618]
-
-
-[2017-06-21 16:15:21,451] INFO  ******************************************************************
-[2017-06-21 16:15:21,451] INFO  ********************Missing Labels FAIL (10)************************
-
-
-[2017-06-21 16:15:21,451] INFO  ********************Additional information************************
-[2017-06-21 16:15:21,451] INFO  [http://irstea.fr/thesaurus/9394, http://irstea.fr/thesaurus/9281, http://irstea.fr/thesaurus/9387, http://irstea.fr/thesaurus/6581, http://irstea.fr/thesaurus/4482, http://irstea.fr/thesaurus/9267, http://irstea.fr/thesaurus/9355, http://irstea.fr/thesaurus/9337, http://irstea.fr/thesaurus/6868, http://irstea.fr/thesaurus/6618]
-
-
-[2017-06-21 16:15:21,451] INFO  ******************************************************************
-[2017-06-21 16:15:21,452] INFO  ********************Disconnected Concept Clusters FAIL (9)************************
-
-
-[2017-06-21 16:15:21,452] INFO  ********************Additional information************************
-[2017-06-21 16:15:21,452] INFO  [[http://irstea.fr/thesaurus/1058, http://irstea.fr/thesaurus/9267], [http://irstea.fr/thesaurus/1700, http://irstea.fr/thesaurus/9281, http://irstea.fr/thesaurus/9556], [http://irstea.fr/thesaurus/5306, http://irstea.fr/thesaurus/9355], [http://irstea.fr/thesaurus/6868, http://irstea.fr/thesaurus/6869], [http://irstea.fr/thesaurus/4482, http://irstea.fr/thesaurus/4672], [http://irstea.fr/thesaurus/9337, http://irstea.fr/thesaurus/10729], [http://irstea.fr/thesaurus/7005, http://irstea.fr/thesaurus/9394], [http://irstea.fr/thesaurus/6612, http://irstea.fr/thesaurus/9387], [http://irstea.fr/thesaurus/6613, http://irstea.fr/thesaurus/6581]]
-
-
-[2017-06-21 16:15:21,452] INFO  ******************************************************************
-[2017-06-21 16:15:21,452] INFO  ********************Hierarchical Redundancy OK************************
-
-
-[2017-06-21 16:15:21,452] INFO  ********************Additional information************************
-[2017-06-21 16:15:21,452] INFO  []
-
-
-[2017-06-21 16:15:21,452] INFO  ******************************************************************
-[2017-06-21 16:15:21,452] INFO  ********************Ambiguous Notation References OK************************
-
-
-[2017-06-21 16:15:21,452] INFO  ********************Additional information************************
-[2017-06-21 16:15:21,452] INFO  []
-
-
-[2017-06-21 16:15:21,452] INFO  ******************************************************************
-[2017-06-21 16:15:21,452] INFO  ********************Reflexively Related Concepts OK************************
-
-
-[2017-06-21 16:15:21,452] INFO  ********************Additional information************************
-[2017-06-21 16:15:21,452] INFO  []
-
-
-[2017-06-21 16:15:21,452] INFO  ******************************************************************
-[2017-06-21 16:15:21,452] INFO  ********************Solely Transitively Related Concepts OK************************
-
-
-[2017-06-21 16:15:21,452] INFO  ********************Additional information************************
-[2017-06-21 16:15:21,452] INFO  []
-
-
-[2017-06-21 16:15:21,452] INFO  ******************************************************************
-[2017-06-21 16:15:21,452] INFO  ********************Unidirectionally Related Concepts FAIL (10)************************
-
-
-[2017-06-21 16:15:21,452] INFO  ********************Additional information************************
-[2017-06-21 16:15:21,452] INFO  {(http://irstea.fr/thesaurus/7005, http://irstea.fr/thesaurus/9394)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/1058, http://irstea.fr/thesaurus/9267)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/10729, http://irstea.fr/thesaurus/9337)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/9556, http://irstea.fr/thesaurus/9281)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/5306, http://irstea.fr/thesaurus/9355)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/6869, http://irstea.fr/thesaurus/6868)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/4672, http://irstea.fr/thesaurus/4482)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/6613, http://irstea.fr/thesaurus/6581)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/6612, http://irstea.fr/thesaurus/9387)=skos:broaderTransitive/skos:narrowerTransitive, (http://irstea.fr/thesaurus/1700, http://irstea.fr/thesaurus/9281)=skos:broaderTransitive/skos:narrowerTransitive}
-
-
-[2017-06-21 16:15:21,452] INFO  ******************************************************************
-[2017-06-21 16:15:21,453] INFO  ********************Valueless Associative Relations OK************************
-
-
-[2017-06-21 16:15:21,453] INFO  ********************Additional information************************
-[2017-06-21 16:15:21,453] INFO  []
-
-
-[2017-06-21 16:15:21,453] INFO  ******************************************************************
-[2017-06-21 16:15:21,453] INFO  ********************Mapping Relations Misuse OK************************
-
-
-[2017-06-21 16:15:21,453] INFO  ********************Additional information************************
-[2017-06-21 16:15:21,453] INFO  []
-
-
-[2017-06-21 16:15:21,453] INFO  ******************************************************************
-[2017-06-21 16:15:21,453] INFO  ********************Relation Clashes OK************************
-
-
-[2017-06-21 16:15:21,453] INFO  ********************Additional information************************
-[2017-06-21 16:15:21,453] INFO  []
-
-
-[2017-06-21 16:15:21,453] INFO  ******************************************************************
-[2017-06-21 16:15:21,453] INFO  ********************Undefined SKOS Resources OK************************
-
-
-[2017-06-21 16:15:21,453] INFO  ********************Additional information************************
-[2017-06-21 16:15:21,453] INFO  []
-
-
-[2017-06-21 16:15:21,453] INFO  ******************************************************************
-[2017-06-21 16:15:21,453] INFO  ********************HTTP URI Scheme Violation OK************************
-
-
-[2017-06-21 16:15:21,453] INFO  ********************Additional information************************
-[2017-06-21 16:15:21,453] INFO  []
-
-
-[2017-06-21 16:15:21,453] INFO  ******************************************************************
-[2017-06-21 16:15:21,453] INFO  ********************Top Concepts Having Broader Concepts OK************************
-
-
-[2017-06-21 16:15:21,453] INFO  ********************Additional information************************
-[2017-06-21 16:15:21,453] INFO  []
-
-
-[2017-06-21 16:15:21,453] INFO  ******************************************************************
-[2017-06-21 16:15:21,454] INFO  ********************Omitted Top Concepts FAIL (1)************************
-
-
-[2017-06-21 16:15:21,454] INFO  ********************Additional information************************
-[2017-06-21 16:15:21,454] INFO  [http://irstea.fr/thesaurus/scheme]
-
-
-[2017-06-21 16:15:21,454] INFO  ******************************************************************
-[2017-06-21 16:15:21,454] INFO  ********************Disjoint Labels Violation OK************************
-
-
-[2017-06-21 16:15:21,454] INFO  ********************Additional information************************
-[2017-06-21 16:15:21,454] INFO  []
-
-
-[2017-06-21 16:15:21,454] INFO  ******************************************************************
-[2017-06-21 16:15:21,454] INFO  ********************No Common Languages OK************************
-
-
-[2017-06-21 16:15:21,454] INFO  ********************Additional information************************
-[2017-06-21 16:15:21,454] INFO  [fr]
-
-
-[2017-06-21 16:15:21,454] INFO  ******************************************************************
-[2017-06-21 16:15:21,454] INFO  ********************Inconsistent Preferred Labels OK************************
-
-
-[2017-06-21 16:15:21,454] INFO  ********************Additional information************************
-[2017-06-21 16:15:21,454] INFO  []
-
-
-[2017-06-21 16:15:21,454] INFO  ******************************************************************
-[2017-06-21 16:15:21,454] INFO  ********************Unprintable Characters in Labels OK************************
-
-
-[2017-06-21 16:15:21,454] INFO  ********************Additional information************************
-[2017-06-21 16:15:21,454] INFO  []
-
-
-[2017-06-21 16:15:21,454] INFO  ******************************************************************
+[2017-06-22 11:12:50,166] INFO  ******************************************************************

@@ -29,7 +29,12 @@ public class SessionData {
 	}
 
 	public static SessionData retrieve(HttpSession session) {
-		return (SessionData)session.getAttribute(SessionData.class.getName());
+		SessionData data = (SessionData)session.getAttribute(SessionData.class.getName());
+		if(data == null) {
+			data = new SessionData();
+			data.store(session);
+		}
+		return data;
 	}
 	
 	public void store(HttpSession session) {

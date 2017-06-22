@@ -12,10 +12,10 @@
 	value="${sessionScope['fr.sparna.validator.SessionData']}" />
 <c:set var="applicationData" value="${applicationScope.applicationData}" />
 <c:set var="compteur" scope="session" value="0" />
-
-<fmt:setBundle basename="fr.sparna.validator.properties.Bundle" />
 <fmt:setLocale
 	value="${sessionScope['fr.sparna.validator.SessionData'].userLocale}" />
+<fmt:setBundle basename="fr.sparna.validator.properties.Bundle"  scope="session"/>
+
 <html>
 <head>
 
@@ -81,7 +81,7 @@
 <body style="">
 	<jsp:include page="header.jsp" />
 	<c:if test="${data.msg!=null}">
-		<div class="alert alert-danger">
+		<div class="alert alert-danger" style="width:50%; margin:auto; text-align:center;">
 			<em> ${data.msg} </em>
 		</div>
 
