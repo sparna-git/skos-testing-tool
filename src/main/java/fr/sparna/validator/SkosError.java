@@ -2,6 +2,8 @@ package fr.sparna.validator;
 
 import java.util.List;
 
+import fr.sparna.validator.IssueDescription.IssueLevel;
+
 public class SkosError {
 	
 	protected String ruleName;
@@ -20,6 +22,24 @@ public class SkosError {
 	
 	protected boolean success;
 	
+	protected IssueLevel level;
+	
+	public String getCssClass() {
+		if(success) {
+			return "success";
+		} else {
+			switch (level) {
+			case DANGER:
+				return "danger";
+			case INFO:
+				return "info";
+			case WARNING:
+				return "warning";
+			default:
+				return "danger";			
+			}
+		}
+	}
 	
 	public String getNumber() {
 		return number;
@@ -68,6 +88,12 @@ public class SkosError {
 	}
 	public void setSuccess(boolean success) {
 		this.success = success;
+	}
+	public IssueLevel getLevel() {
+		return level;
+	}
+	public void setLevel(IssueLevel level) {
+		this.level = level;
 	}
 
 }

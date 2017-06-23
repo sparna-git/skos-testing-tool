@@ -30,19 +30,6 @@ footer{
 
 /** Page de résultat **/
 
-.danger{
-	
-	border: 1px solid transparent;
-	background-color: #f7c5c5;
-	border-color: #e2b5b5;
-	
-}
-.success{
-	
-	border: 1px solid transparent;
-	background-color: #d9eace;
-	border-color: #c0d1b5;
-}
   
 /* avoid page-breaks inside a listingContainer*/
 .listingContainer{
@@ -68,19 +55,16 @@ footer{
 .navigation {
 	position:fixed;
 	width:24%;
+	padding-right:4%;
 }
 	
 #result-container {
 	width:76%;
 	margin-left:24%;
 }
-	
-.nav-item{
-	margin-bottom:-3px;
-}
 
-.navigation .nav > li > a {
-	padding: 5px 15px;
+.navigation .list-group-item {
+	padding: 3px 15px;
 }
 
 #log{

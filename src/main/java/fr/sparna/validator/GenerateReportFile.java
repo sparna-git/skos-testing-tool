@@ -17,6 +17,7 @@ import org.openrdf.OpenRDFException;
 import org.openrdf.model.URI;
 
 import at.ac.univie.mminf.qskos4j.issues.Issue;
+import at.ac.univie.mminf.qskos4j.issues.Issue.IssueType;
 import at.ac.univie.mminf.qskos4j.result.Result;
 
 public class GenerateReportFile {
@@ -38,8 +39,11 @@ public class GenerateReportFile {
 	        summary.append("***********************************\n");
 
 	        for (Issue issue : issues) {
-	        	IssueDescription desc = ValidatorConfig.getInstance().getApplicationData().findIssueDescriptionById(issue.getId());
-	            summary.append(desc.getLabelByLang(lang) + ": " + prepareOccurrenceText(issue) + "\n");
+	        	// skip statistical issues
+	        	if(issue.getType() == IssueType.ANALYTICAL) {
+		        	IssueDescription desc = ValidatorConfig.getInstance().getApplicationData().findIssueDescriptionById(issue.getId());
+		            summary.append(desc.getLabelByLang(lang) + ": " + prepareOccurrenceText(issue) + "\n");
+	        	}
 	        }
 
 	        summary.append("\n");

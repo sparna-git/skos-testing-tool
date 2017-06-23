@@ -36,7 +36,7 @@
 
 $(function() {
     
-	$('#print').prepend('<a href="" class="print-preview "><fmt:message key="print"/></a>');
+	$('#print').prepend('<a href="" class="print-preview "><span class=\"glyphicon glyphicon-print\" aria-hidden="true"></span>&nbsp;<fmt:message key="print"/></a>');
     $('a.print-preview').printPreview();
     
 });
@@ -45,13 +45,11 @@ $(function() {
 <body id="resultpage">
 	<jsp:include page="header.jsp" />
 	<div class="navigation hidden-print">
-		<ul id="sidebar" class="nav col-xs-11 left">
+		<ul id="sidebar" class="list-group">
 			<c:forEach items="${data.errorList}" var="error">
 				<c:set var="compteur" scope="session"
 					value="${compteur+error.number}" />
-				<li class="nav-item"><a href="#${error.id}"
-					<c:if test="${error.success==true}"> class="nav-link hidden-print success" </c:if>
-					<c:if test="${error.success==false}">class="nav-link hidden-print danger" </c:if>><font
+				<li class="list-group-item list-group-item-${error.cssClass}"><a href="#${error.id}"><font
 						size="2">${error.ruleName} : ${error.state}</font></a></li>
 			</c:forEach>
 		</ul>
@@ -73,24 +71,22 @@ $(function() {
 			</fmt:message>
 		  	<p>${value}</p>
 		  	<p>${validate}</p>
-		  	<p><span id="print"></span>&nbsp;|&nbsp;<a href="report.txt"><fmt:message key="downloadReport" /></a></p>
+		  	<p class="hidden-print"><span id="print"></span>&nbsp;|&nbsp;<a href="report.txt"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>&nbsp;<fmt:message key="downloadReport" /></a></p>
 		  </div>
 		</div>
 		<table id="table" data-show-print="true"
 			class="table table-hover table-expandable table-striped">
 			<thead>
 				<tr>
-					<th>Rules</th>
+					<th>Rule</th>
 					<th>Description</th>
 					<th>State</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach items="${data.errorList}" var="error">
-					<tr id="line"
-						<c:if test="${error.success==true}"> class="success" </c:if>
-						<c:if test="${error.success==false}">class="danger" </c:if>>
-						<td><a href="${error.weblink}" id="${error.id}">${error.ruleName}(${error.id})</a></td>
+					<tr id="line" class="${error.cssClass}">
+						<td><a href="${error.weblink}" id="${error.id}">${error.id} - ${error.ruleName}</a></td>
 						<td>${error.description}</td>
 						<td><h6>${error.state}</h6></td>
 					</tr>
