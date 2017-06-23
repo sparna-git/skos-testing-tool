@@ -575,7 +575,7 @@
 		</constructor-arg>
 		<constructor-arg name="link"
 			value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Cyclic_Hierarchical_Relations" />
-		<constructor-arg name="checked" value="false" />
+		<constructor-arg name="checked" value="true" />
 	</bean>
 
 

@@ -13,7 +13,13 @@ public class IssueDescription {
 	protected String link;
 	protected boolean checked;
 	
-	public IssueDescription(String id, Map<String, String> description, Map<String, String> lbconcept, String link, boolean checked) {
+	public IssueDescription(
+			String id,
+			Map<String, String> description,
+			Map<String, String> lbconcept,
+			String link,
+			boolean checked
+	) {
 		super();
 		this.description = description;
 		this.id = id;
@@ -57,13 +63,5 @@ public class IssueDescription {
 	public void setLink(String link) {
 		this.link = link;
 	}
-
-	
-	
-
-	
-	
-	
-	
 
 }

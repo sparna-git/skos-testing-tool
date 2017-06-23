@@ -1,5 +1,7 @@
 package fr.sparna.validator;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +18,7 @@ public class ValidatorData {
 
 	protected Integer rulesFail;
 
-	protected Long executionTime;
+	protected Double executionTime;
 	
 	protected Long allconcepts;
 	
@@ -76,11 +78,16 @@ public class ValidatorData {
 		this.rulesFail = rulesFail;
 	}
 
-	public Long getExecutionTime() {
+	public Double getExecutionTime() {
 		return executionTime;
 	}
+	
+	public String getExecutionTimeString() {
+		NumberFormat formatter = new DecimalFormat("#0.00");
+		return formatter.format(this.getExecutionTime());
+	}
 
-	public void setExecutionTime(Long executionTime) {
+	public void setExecutionTime(Double executionTime) {
 		this.executionTime = executionTime;
 	}
 

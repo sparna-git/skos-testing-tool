@@ -36,11 +36,11 @@
 					<c:choose>
 						<c:when
 							test="${sessionData.userLocale== 'fr'}">
-							<li><a href="?lang=en">en</a></li>
+							<li><a href="home?lang=en">en</a></li>
 						</c:when>
 						<c:when
 							test="${sessionData.userLocale == 'en'}">
-							<li><a href="?lang=fr">fr</a></li>
+							<li><a href="home?lang=fr">fr</a></li>
 						</c:when>
 					</c:choose>
 				</ul>

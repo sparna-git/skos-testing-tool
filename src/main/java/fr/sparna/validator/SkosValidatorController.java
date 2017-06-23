@@ -45,20 +45,7 @@ public class SkosValidatorController {
 			@RequestParam(value="lang", required=false) String lang,
 			HttpServletRequest request
 			) throws IOException{
-
 		ValidatorData data = new ValidatorData();
-		SessionData sessionData = SessionData.retrieve(request.getSession());
-		if(lang!=null) {
-			sessionData.setUserLocale(lang);
-		} else {;
-		String userLanguage = request.getLocale().getLanguage();
-		if(userLanguage.startsWith("fr")) {
-			sessionData.setUserLocale("fr");
-		} else {
-			sessionData.setUserLocale("en");
-		}
-		}
-		System.out.println("default locale : "+Locale.getDefault().getLanguage());
 		return new ModelAndView("home", ValidatorData.KEY, data);
 	}
 
@@ -78,72 +65,47 @@ public class SkosValidatorController {
 			@RequestParam(value="url", required=false) String url,
 			@RequestParam(value="file", required=false) MultipartFile file,
 			@RequestParam(value="rulesChoice", required=false) String choice,
-			@RequestParam(value="lang", required=false) String lang,
 			HttpServletRequest request
 			) throws RepositoryException, MalformedURLException {
 
 		long start = System.currentTimeMillis();
 		InputStream in = null;
 		Collection<Issue> qSkosResult = null;
-		ValidateSkosFile skos=null;
-		Process process=null;
-		SOURCE_TYPE source=null;
-		URL urls=null;
 		ValidatorData data = new ValidatorData();
+		
 		//récupérer la session
 		SessionData sessionData=SessionData.retrieve(request.getSession());
-		URL baseURL = new URL("http://"+request.getServerName()+((request.getServerPort() != 80)?":"+request.getServerPort():"")+request.getContextPath());
-		sessionData.setBaseurl(baseURL.toString());
-		//sauvegarde de la source : file ou url dans la session
-		if(sourceString!=null){
-			source = SOURCE_TYPE.valueOf(sourceString.toUpperCase());
-			sessionData.setSource(sourceString.toUpperCase());
-		}else{
-			source=SOURCE_TYPE.valueOf(sessionData.getSource());
-		}
-		//sauvegarde de la langue dans la session
-		if(lang!=null) {
-			sessionData.setUserLocale(lang);
-		}
-		process = new Process(sessionData.getUserLocale());
-		if(choice!=null){
-			data.extractAndSetChoice(choice);
-			skos=new ValidateSkosFile(choice.replaceAll("-", ","));	
-			sessionData.setSkosfile(skos);
-		}else{
-			skos=sessionData.getSkosfile();
-		}
+
+		Process process = new Process(sessionData.getUserLocale());
+		data.extractAndSetChoice(choice);
+		ValidateSkosFile skos=new ValidateSkosFile(choice.replaceAll("-", ","));	
 
 		try {
-			if(lang==null){
-				switch(source) {
+			switch(SOURCE_TYPE.valueOf(sourceString.toUpperCase())) {
 
-				case FILE :{
-
-					qSkosResult = skos.validate(file.getInputStream(), Rio.getWriterFormatForFileName(file.getOriginalFilename()));
-					sessionData.setqSkosResult(qSkosResult);
-				}
+			case FILE : {
+				qSkosResult = skos.validate(file.getInputStream(), Rio.getWriterFormatForFileName(file.getOriginalFilename()));
+				sessionData.setqSkosResult(qSkosResult);
 				break;
+			}
 
-				case URL:{
-
-					if(url.isEmpty()) {
-						return doErrorConvert(request, "Uploaded link file is empty");
-					}
-					try {
-						urls = new URL(url);
-						InputStream urlInputStream = urls.openStream();
-						in = new DataInputStream(new BufferedInputStream(urlInputStream));
-						qSkosResult = skos.validate(in, Rio.getWriterFormatForFileName("test.rdf"));
-						sessionData.setqSkosResult(qSkosResult);
-					} catch (Exception e) {
-						e.printStackTrace();
-						return doErrorConvert(request, e.getMessage()); 
-					}
-
+			case URL: {
+				if(url.isEmpty()) {
+					return doErrorConvert(request, "Uploaded link file is empty");
 				}
+				try {
+					URL dataUrl = new URL(url);
+					InputStream urlInputStream = dataUrl.openStream();
+					in = new DataInputStream(new BufferedInputStream(urlInputStream));
+					qSkosResult = skos.validate(in, Rio.getWriterFormatForFileName(url));
+					sessionData.setqSkosResult(qSkosResult);
+				} catch (Exception e) {
+					e.printStackTrace();
+					return doErrorConvert(request, e.getMessage()); 
 				}
 			}
+			}
+			
 			//récupérer le nombre total des règles à vérifier
 			data.setRulesNumber(skos.getRulesNumber());
 			//récupérer le resultat de la vérification des règles
@@ -154,12 +116,14 @@ public class SkosValidatorController {
 			data.setAllcollections(process.getAllcollection());
 			data.setAllconcepts(process.getAllconcepts());
 			data.setAllconceptschemes(process.getAllconceptscheme());
+			
 			//fin des tâches
-			long end=System.currentTimeMillis()-start;
+			double timeMilli = new Long(System.currentTimeMillis()-start).doubleValue();
+			
 			//récupérer le temps d'éxécution des tâches
-			data.setExecutionTime((end/1000));
+			data.setExecutionTime(timeMilli/1000d);
 
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			return doErrorConvert(request, e.getMessage()); 
 		}

@@ -1,56 +1,17 @@
 
+
 #files, #url{
-	margin:auto; 
-	width:70%; 
 	border:1px solid #ebebe0;
-	margin-top:20px;
 	background-color:white;
 }
-#local{
-	float:left;
-	margin-top:8px;
-}
-.jumbotron{
-	width:50%;
-	margin:auto;
-	margin-top:50px;
-	margin-bottom:50px;
-	text-align:center;
-}
-#myAccordion{
-	width:50%;
-	margin:auto;
-}
-#TITLE{
-	text-align:center;
-	
-	margin:auto;
-	
-}
-  
-.form-group{
-	
-}
 
-
-  body {    
-    line-height: 1em;
-    word-spacing:1px;
-    letter-spacing:0.2px;
-    font: 14px "Times New Roman", Times, serif;
-    background:white;
-    color:black;
-        
-  }
  
 footer{
 	margin:auto;
 	text-align:center;
 }
-#print{
-	margin:auto;
-	text-align:center;
-}
+
+
 #exe,#table{
 	margin: auto;
 	margin-top:10px;
@@ -64,6 +25,11 @@ footer{
 	margin-left:20px;
 	text-align:left;
 }
+
+
+
+/** Page de résultat **/
+
 .danger{
 	
 	border: 1px solid transparent;
@@ -78,45 +44,31 @@ footer{
 	border-color: #c0d1b5;
 }
   
-  /* avoid page-breaks inside a listingContainer*/
-  .listingContainer{
-    page-break-inside: avoid;
-  }
-
-  h1 {
-    font: 28px "Times New Roman", Times, serif;
-  }
-
-  h2 {
-    font: 24px "Times New Roman", Times, serif;
-  }
-
-  h3 {
-    font: 20px "Times New Roman", Times, serif;
-  }
-
-footer{
-	margin:auto;
-	text-align:center;
+/* avoid page-breaks inside a listingContainer*/
+.listingContainer{
+	page-break-inside: avoid;
 }
+
+
 #print{
 	margin:auto;
 	text-align:center;
 }
+
 .table-outer {
-				height:100px;
-				overflow:hidden;
-		}
+	height:100px;
+	overflow:hidden;
+}
 			
-	.table-outer.open {
-				height:unset;
-				overflow:visible;
-	}
+.table-outer.open {
+	height:unset;
+	overflow:visible;
+}	
+	
 .navigation {
 	position:fixed;
 	width:24%;
-	
-	}
+}
 	
 #result-container {
 	width:76%;
@@ -126,6 +78,11 @@ footer{
 .nav-item{
 	margin-bottom:-3px;
 }
+
+.navigation .nav > li > a {
+	padding: 5px 15px;
+}
+
 #log{
 	background-color:white;
 	width:80%;

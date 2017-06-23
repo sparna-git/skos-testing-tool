@@ -31,33 +31,20 @@
 
 <script type="text/javascript">
 	var choix="";
-	var compteur=0;
+	
 	function choice(){
 		
-		for (i = 1; i < 27; i++) {
-			if (eval("document.formulaire.rule" + i
-					+ ".checked == true")) {
-				compteur++;
-				
-				if (compteur === 1) {
-					choix += document.getElementById('rule' + i).value;
-					
-					
-				} else if (compteur > 1) {
-					choix += '-' + document.getElementById('rule' + i).value;
-							
-				}
-				
-			}
-		}
-		
+		$(".ruleCheckbox:checked").each(function( index ) {
+			choix += $( this ).val();
+			choix += "-";
+		});
+		// on enleve le dernier caractere
+		choix = choix.substr(0, choix.length-1);
 		document.formulaire.rulesChoice.value =choix;
-		document.formulaire.submit();
-		
+		document.formulaire.submit();		
 	}
 	
 	function enabledInput(selected) {
-		
 		document.getElementById('source-' + selected).checked = true;
 		document.getElementById('url').disabled = selected != 'url';
 		document.getElementById('file').disabled = selected != 'file';
@@ -86,127 +73,133 @@
 		</div>
 
 	</c:if>
-	<form id="upload_form" action="result" method="post"
-		onSubmit="return false" name="formulaire"
-		enctype="multipart/form-data" class="form-horizontal">
-		<div class="jumbotron">
-
-
-			<label for="file"><em><font size="3"><fmt:message
-							key="choice" /></font></em></label> <br><br>
-			<div class="form-group">
-				<input class="col-sm-2" type="radio" name="source" id="source-file"
-					value="file" onchange="enabledInput('file')" /> <label
-					for="source-file" id="local"> <fmt:message key="localFile" />
-				</label>
-				<div class="col-sm-12">
-					<div class="fileinput fileinput-new input-group "
-						data-provides="fileinput" id="files">
-
-						<div class="form-control" data-trigger="fileinput">
-							<i class="glyphicon glyphicon-file fileinput-exists"></i> <span
-								class="fileinput-filename"></span>
+	
+	<div class="container">
+	
+		<form id="upload_form" action="result" method="post"
+			onSubmit="return false" name="formulaire"
+			enctype="multipart/form-data" class="form-horizontal">
+			
+			<div class="jumbotron" style="padding-bottom: 80px;">			
+				<h4><fmt:message key="choice" /></h4>
+				<br />
+				<div class="form-group">
+					<input class="col-sm-1" type="radio" name="source" id="source-file"
+						value="file" onchange="enabledInput('file')" />
+						<label class="col-sm-2 control-label" for="source-file"> <fmt:message key="localFile" />
+					</label>
+					<div class="col-sm-8">
+						<div class="fileinput fileinput-new input-group "
+							data-provides="fileinput" id="files">
+	
+							<div class="form-control" data-trigger="fileinput">
+								<i class="glyphicon glyphicon-file fileinput-exists"></i> <span
+									class="fileinput-filename"></span>
+							</div>
+							<span class="input-group-addon btn btn-default btn-file"> <span
+								class="fileinput-new"> <fmt:message key="file" /></span> <span
+								class="fileinput-exists"><fmt:message key="change" /></span><input
+								onchange="enabledInput('file');" type="file" id="file" required
+								name="file">
+							</span> <a href="#"
+								class="input-group-addon btn btn-default fileinput-exists"
+								data-dismiss="fileinput"><fmt:message key="retirer" /> </a>
 						</div>
-						<span class="input-group-addon btn btn-default btn-file"> <span
-							class="fileinput-new"> <fmt:message key="file" /></span> <span
-							class="fileinput-exists"><fmt:message key="change" /></span><input
-							onkeypress="enabledInput('file');" type="file" id="file" required
-							name="file">
-						</span> <a href="#"
-							class="input-group-addon btn btn-default fileinput-exists"
-							data-dismiss="fileinput"><fmt:message key="retirer" /> </a>
 					</div>
 				</div>
-			</div>
-
-			<div class="form-group">
-				<input class="col-sm-2" type="radio" name="source" id="source-url"
-					value="url" onchange="enabledInput('url')" /> <label
-					for="source-url" id="local"> <fmt:message
-						key="remoteUrl" />
-				</label>
-				<div class="col-sm-12">
-					<input type="text" id="url" name="url" value=""
-						placeholder="http://..." class="form-control"
-						onkeypress="enabledInput('url');" /> 
+	
+				<div class="form-group">
+					<input class="col-sm-1" type="radio" name="source" id="source-url"
+						value="url" onchange="enabledInput('url')" />
+						<label class="col-sm-2 control-label" for="source-url"> <fmt:message key="remoteUrl" /></label>
+					<div class="col-sm-8">
+						<input type="text" id="url" name="url" value=""
+							placeholder="http://..." class="form-control"
+							onkeypress="enabledInput('url');" /> 
+					</div>
 				</div>
-			</div>
 
-
-			<input name="rulesChoice" id="rulesChoice"><br>
-			<button class="btn btn-primary" type="submit" onclick="choice()">
-				<fmt:message key="valid" />
-			</button>
-		</div>
-
-
-		<div class="panel-group" id="myAccordion">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<a class="accordion-toggle " data-toggle="collapse"
-						data-parent="#myAccordion" href="#collapse1">
-						<h4>
-							<fmt:message key="option" />
-						</h4>
-					</a>
+				<br />
+				<div class="col-sm-offset-3 col-sm-8">
+					<button class="btn-lg btn-primary" type="submit" onclick="choice()">
+						<fmt:message key="valid" />
+					</button>
 				</div>
-				<div id="collapse1" class="panel-collapse collapse in">
-					<div class="panel-body">
-						<c:forEach items="${applicationData.issueDescriptions}" var="rule">
-							<div class="form-group">
-								<c:set var="compteur" scope="session" value="${compteur+1}" />
-								<label class="col-sm-3"> <c:choose>
-										<c:when test="${sessionData.userLocale== 'fr'}">
-											<c:forEach items="${rule.lbconcept}" var="label">
-												<c:if test="${label.key=='fr'}">
-													<a href="${rule.link}">${rule.id} - ${label.value}</a>
-												</c:if>
-											</c:forEach>
-										</c:when>
-										<c:when test="${sessionData.userLocale == 'en'}">
-											<c:forEach items="${rule.lbconcept}" var="label">
-												<c:if test="${label.key=='en'}">
-													<a href="${rule.link}">${rule.id} - ${label.value}</a>
-												</c:if>
-											</c:forEach>
-										</c:when>
-										<c:otherwise></c:otherwise>
-									</c:choose>
-								</label>
-								<div class="col-sm-9">
-									<input type="checkbox" name="rule${compteur}"
-										id="rule${compteur}" value="${rule.id}"
-										<c:if test="${rule.checked==true}"> checked</c:if>> <span
-										class="help-block"> <c:choose>
+				
+			</div>
+	
+	
+			<div class="panel-group" id="myAccordion">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<a class="accordion-toggle " data-toggle="collapse"
+							data-parent="#myAccordion" href="#collapse1">
+							<h4>
+								<fmt:message key="option" />
+							</h4>
+						</a>
+					</div>
+					<div id="collapse1" class="panel-collapse collapse in">
+						<div class="panel-body">
+							<c:forEach items="${applicationData.issueDescriptions}" var="rule">
+								<div class="form-group">
+									<c:set var="compteur" scope="session" value="${compteur+1}" />
+									<label class="col-sm-3"> <c:choose>
 											<c:when test="${sessionData.userLocale== 'fr'}">
-												<c:forEach items="${rule.description}" var="desc">
-													<c:if test="${desc.key=='fr'}">
-																	${desc.value}
-																</c:if>
+												<c:forEach items="${rule.lbconcept}" var="label">
+													<c:if test="${label.key=='fr'}">
+														<a href="${rule.link}" target="_blank">${rule.id} - ${label.value}</a>
+													</c:if>
 												</c:forEach>
 											</c:when>
 											<c:when test="${sessionData.userLocale == 'en'}">
-												<c:forEach items="${rule.description}" var="desc">
-													<c:if test="${desc.key=='en'}">
-																	${desc.value}
-																</c:if>
+												<c:forEach items="${rule.lbconcept}" var="label">
+													<c:if test="${label.key=='en'}">
+														<a href="${rule.link}" target="_blank">${rule.id} - ${label.value}</a>
+													</c:if>
 												</c:forEach>
 											</c:when>
 											<c:otherwise></c:otherwise>
 										</c:choose>
-
-									</span>
+									</label>
+									<div class="col-sm-9">
+										<input class="ruleCheckbox" type="checkbox" name="rule${compteur}"
+											id="rule${compteur}" value="${rule.id}"
+											<c:if test="${rule.checked==true}"> checked</c:if>> <span
+											class="help-block"> <c:choose>
+												<c:when test="${sessionData.userLocale== 'fr'}">
+													<c:forEach items="${rule.description}" var="desc">
+														<c:if test="${desc.key=='fr'}">
+																		${desc.value}
+																	</c:if>
+													</c:forEach>
+												</c:when>
+												<c:when test="${sessionData.userLocale == 'en'}">
+													<c:forEach items="${rule.description}" var="desc">
+														<c:if test="${desc.key=='en'}">
+																		${desc.value}
+																	</c:if>
+													</c:forEach>
+												</c:when>
+												<c:otherwise></c:otherwise>
+											</c:choose>
+	
+										</span>
+									</div>
+	
 								</div>
-
-							</div>
-						</c:forEach>
+							</c:forEach>
+						</div>
 					</div>
 				</div>
+				<!-- end accordion -->
+				<br>
 			</div>
-			<!-- end accordion -->
-			<br>
-		</div>
-	</form>
+			
+			<input type="hidden" name="rulesChoice" id="rulesChoice" />
+		</form>
+	
+	</div>
 	<jsp:include page="footer.jsp" />
 </body>
 

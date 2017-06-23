@@ -1,5 +1,6 @@
 package fr.sparna.validator;
 
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,15 @@ public class ApplicationData {
 	
 	@Autowired
 	public void setIssueDescriptions(List<IssueDescription> descList) {
+		// trier la liste sur le code
+		descList.sort(new Comparator<IssueDescription>() {
+
+			@Override
+			public int compare(IssueDescription id1, IssueDescription id2) {
+				return id1.getId().compareTo(id2.getId());
+			}
+			
+		});
 		this.issueDescriptions = descList;
 	}
 	

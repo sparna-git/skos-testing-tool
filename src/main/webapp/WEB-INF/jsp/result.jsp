@@ -36,7 +36,7 @@
 
 $(function() {
     
-	$('#print').prepend('<a href="" class="print-preview "><em>&nbsp;&nbsp;<fmt:message key="print"/></em></a>');
+	$('#print').prepend('<a href="" class="print-preview "><fmt:message key="print"/></a>');
     $('a.print-preview').printPreview();
     
 });
@@ -63,7 +63,7 @@ $(function() {
 		  <div class="panel-body">
 		  	<fmt:message key="statistic" var="value" >
 			   <fmt:param value="${data.rulesNumber}"/>
-			   <fmt:param value="${data.executionTime}"/>
+			   <fmt:param value="${data.executionTimeString}"/>
 			   <fmt:param value="${data.rulesFail}"/>
 			</fmt:message>
 			<fmt:message key="validate.data" var="validate" >
@@ -71,7 +71,9 @@ $(function() {
 			   <fmt:param value="${data.allcollections}"/>
 			   <fmt:param value="${data.allconceptschemes}"/>
 			</fmt:message>
-		  	${value}<br>${validate} <em id="print"></em>
+		  	<p>${value}</p>
+		  	<p>${validate}</p>
+		  	<p><span id="print"></span>&nbsp;|&nbsp;<a href="report.txt"><fmt:message key="downloadReport" /></a></p>
 		  </div>
 		</div>
 		<table id="table" data-show-print="true"

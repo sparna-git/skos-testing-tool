@@ -7,7 +7,7 @@
 <fmt:setBundle basename="fr.sparna.validator.properties.Bundle"/>
 
       	<footer id="footer">
-      	<a href="https://github.com/cmader/qSKOS" target="_blank"><fmt:message key="source" /></a>	&nbsp;|&nbsp;
+      	<fmt:message key="source" />&nbsp;|&nbsp;
       	<a href="http://sparna.fr" target="_blank"><img src="resources/images/sparna.jpeg" style="width:80px;"/></a>
       	<br />
       	<br />
