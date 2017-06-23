@@ -17,6 +17,12 @@ public class ValidatorData {
 	protected Integer rulesFail;
 
 	protected Long executionTime;
+	
+	protected Long allconcepts;
+	
+	protected Long allconceptschemes;
+	
+	protected Long allcollections;
 
 	public static final String KEY = ValidatorData.class.getCanonicalName();
 
@@ -78,6 +84,30 @@ public class ValidatorData {
 		this.executionTime = executionTime;
 	}
 
+	public Long getAllconcepts() {
+		return allconcepts;
+	}
 
+	public void setAllconcepts(Long allconcepts) {
+		this.allconcepts = allconcepts;
+	}
+
+	public Long getAllconceptschemes() {
+		return allconceptschemes;
+	}
+
+	public void setAllconceptschemes(Long allconceptscheme) {
+		this.allconceptschemes = allconceptscheme;
+	}
+
+	public Long getAllcollections() {
+		return allcollections;
+	}
+
+	public void setAllcollections(Long allcollection) {
+		this.allcollections = allcollection;
+	}
+
+	
 
 }

@@ -8,7 +8,7 @@
 <c:set var="sessionData" value="${sessionScope['fr.sparna.validator.SessionData']}" />
 <fmt:setLocale
 	value="${sessionScope['fr.sparna.validator.SessionData'].userLocale}" />
-<fmt:setBundle basename="fr.sparna.validator.properties.Bundle"  scope="session"/>
+<fmt:setBundle basename="fr.sparna.validator.properties.Bundle"/>
 
 <nav class="navbar navbar-default">
 
@@ -44,16 +44,6 @@
 						</c:when>
 					</c:choose>
 				</ul>
-			</li>
-			<li>
-				<c:if test="${sessionData.baseurl!=null}">
-				  <a href="${sessionData.baseurl}/logs/report.txt">
-				  	<em>
-						<fmt:message key="menu.download" />
-								
-				  	</em>
-				  </a>
-				</c:if>
 			</li>
 		</ul>
 	</div>

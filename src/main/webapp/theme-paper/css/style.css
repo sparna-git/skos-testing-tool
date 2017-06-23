@@ -1,7 +1,4 @@
-@media screen{
-	
-	
-}
+
 #files, #url{
 	margin:auto; 
 	width:70%; 
@@ -55,9 +52,7 @@ footer{
 	text-align:center;
 }
 #exe,#table{
-	width:65%;
 	margin: auto;
-	margin-left:420px;
 	margin-top:10px;
 }
 #content{
@@ -122,6 +117,12 @@ footer{
 	width:24%;
 	
 	}
+	
+#result-container {
+	width:76%;
+	margin-left:24%;
+}
+	
 .nav-item{
 	margin-bottom:-3px;
 }

@@ -54,10 +54,6 @@
 	<logger name="org.springframework.web">
 		<level value="INFO" />
 	</logger>
-	<logger name="fr.sparna.validator.Process" additivity="false">
-		<level value="REPORT" />
-		<appender-ref ref="ROLLING_FILE" />
-	</logger>
 	
 	<logger name="org.apache.http">
 		<level value="INFO" />
@@ -75,6 +71,7 @@
     <logger name="eu.europa.publications" additivity="false">
         <level value="DEBUG" />
         <appender-ref ref="STDOUT" />
+        <appender-ref ref="ROLLING_FILE" />
     </logger>
          
     <root>

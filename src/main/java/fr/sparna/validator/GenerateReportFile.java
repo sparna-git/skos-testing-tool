@@ -2,10 +2,16 @@ package fr.sparna.validator;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.nio.charset.Charset;
 import java.util.Collection;
 import java.util.Iterator;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.openrdf.OpenRDFException;
 import org.openrdf.model.URI;
@@ -59,8 +65,7 @@ public class GenerateReportFile {
 	        return occurrenceText;
 	    }
 
-	    private void writeReportBody(BufferedWriter reportWriter,
-	                                 File reportFile)
+	    private void writeReportBody(BufferedWriter reportWriter)
 	        throws IOException, OpenRDFException
 	    {
 	        reportWriter.write("* Detailed coverage of each Quality Issue:\n\n");
@@ -91,17 +96,14 @@ public class GenerateReportFile {
 	            writer.newLine();
 	            writer.flush();
 	        }
-
-	   public void outputIssuesReport()
-	            throws IOException, OpenRDFException
-	        {
-	    		File file = new File("report.txt");
-	    		file.createNewFile();
-	            BufferedWriter reportWriter = new BufferedWriter(new FileWriter(file));
-
+	   
+	   public void outputIssuesReport(OutputStream stream)
+	   throws IOException, OpenRDFException {
+	            BufferedWriter reportWriter = new BufferedWriter(new OutputStreamWriter(stream, "UTF-8"));
+	            
 	            String reportSummary = createReportSummary();
 	            reportWriter.write(reportSummary);
-	            writeReportBody(reportWriter, file);
+	            writeReportBody(reportWriter);
 
 	            reportWriter.close();
 	        }

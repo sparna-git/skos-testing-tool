@@ -8,10 +8,12 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import org.openrdf.OpenRDFException;
+import org.openrdf.model.Statement;
 import org.openrdf.model.impl.URIImpl;
 import org.openrdf.model.vocabulary.RDF;
 import org.openrdf.repository.Repository;
 import org.openrdf.repository.RepositoryConnection;
+import org.openrdf.repository.RepositoryResult;
 import org.openrdf.repository.sail.SailRepository;
 import org.openrdf.rio.RDFFormat;
 import org.openrdf.rio.Rio;
@@ -21,9 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import at.ac.univie.mminf.qskos4j.QSkos;
-import at.ac.univie.mminf.qskos4j.cmd.VocEvaluate;
 import at.ac.univie.mminf.qskos4j.issues.Issue;
-import at.ac.univie.mminf.qskos4j.progress.IProgressMonitor;
 import at.ac.univie.mminf.qskos4j.util.vocab.SkosOntology;
 
 
@@ -35,7 +35,7 @@ public class ValidateSkosFile {
 
 	protected Integer rulesNumber;
 	
-	
+	//protected long collectionNumber;
 	
 	public ValidateSkosFile(String rules) {
 		super();
@@ -124,7 +124,8 @@ public class ValidateSkosFile {
 		// instantiation
 		QSkos qskos = new QSkos();
 		qskos.setRepositoryConnection(c);
-		Collection<Issue> issues = qskos.getIssues(rules);
+		//cs(allconceptscheme), cc(all collection), ac(find all concepts)
+		Collection<Issue> issues = qskos.getIssues(rules+",cs,cc,ac");
 		
 		int issueNumber = 0;
 		Iterator<Issue> issueIt = issues.iterator();
@@ -135,8 +136,8 @@ public class ValidateSkosFile {
 			issue.getResult();
 		}
 		this.rulesNumber=issueNumber;
+		//this.collectionNumber=getCollectionNumber(c);
 		logger.info("Validation complete!");
-		
 		return issues;
 	}
 
@@ -147,5 +148,6 @@ public class ValidateSkosFile {
 	public Integer getRulesNumber() {
 		return rulesNumber;
 	}
+	
 	
 }

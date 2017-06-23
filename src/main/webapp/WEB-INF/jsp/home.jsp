@@ -14,7 +14,7 @@
 <c:set var="compteur" scope="session" value="0" />
 <fmt:setLocale
 	value="${sessionScope['fr.sparna.validator.SessionData'].userLocale}" />
-<fmt:setBundle basename="fr.sparna.validator.properties.Bundle"  scope="session"/>
+<fmt:setBundle basename="fr.sparna.validator.properties.Bundle"/>
 
 <html>
 <head>

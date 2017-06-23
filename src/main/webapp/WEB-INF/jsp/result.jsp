@@ -11,7 +11,7 @@
 <c:set var="compteur" scope="session" value="0" />
 <fmt:setLocale
 	value="${sessionScope['fr.sparna.validator.SessionData'].userLocale}" />
-<fmt:setBundle basename="fr.sparna.validator.properties.Bundle"  scope="session"/>
+<fmt:setBundle basename="fr.sparna.validator.properties.Bundle"/>
 <html>
 <head>
 <title>Validator</title>
@@ -56,59 +56,66 @@ $(function() {
 			</c:forEach>
 		</ul>
 	</div>
-	<div id="print"></div>
-	<div  id="exe" class="panel panel-default">
-	  <div class="panel-heading"></div>
-	  <div class="panel-body">
-	  	<fmt:message key="statistic" var="value" >
-		   <fmt:param value="${data.rulesNumber}"/>
-		   <fmt:param value="${data.executionTime}"/>
-		   <fmt:param value="${data.rulesFail}"/>
-		</fmt:message>
-	  	${value}
-	  </div>
-	</div>
-	<table id="table" data-show-print="true"
-		class="table table-hover table-expandable table-striped">
-		<thead>
-			<tr>
-				<th>Rules</th>
-				<th>Description</th>
-				<th>State</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${data.errorList}" var="error">
-				<tr id="line"
-					<c:if test="${error.success==true}"> class="success" </c:if>
-					<c:if test="${error.success==false}">class="danger" </c:if>>
-					<td><a href="${error.weblink}" id="${error.id}">${error.ruleName}(${error.id})</a></td>
-					<td>${error.description}</td>
-					<td><h6>${error.state}</h6></td>
+	
+	<div class="container" id="result-container">
+		<div  id="exe" class="panel panel-default">
+		  <div class="panel-heading"></div>
+		  <div class="panel-body">
+		  	<fmt:message key="statistic" var="value" >
+			   <fmt:param value="${data.rulesNumber}"/>
+			   <fmt:param value="${data.executionTime}"/>
+			   <fmt:param value="${data.rulesFail}"/>
+			</fmt:message>
+			<fmt:message key="validate.data" var="validate" >
+			   <fmt:param value="${data.allconcepts}"/>
+			   <fmt:param value="${data.allcollections}"/>
+			   <fmt:param value="${data.allconceptschemes}"/>
+			</fmt:message>
+		  	${value}<br>${validate} <em id="print"></em>
+		  </div>
+		</div>
+		<table id="table" data-show-print="true"
+			class="table table-hover table-expandable table-striped">
+			<thead>
+				<tr>
+					<th>Rules</th>
+					<th>Description</th>
+					<th>State</th>
 				</tr>
-				<c:if test="${!empty error.errorList}">
-					<tr id="content" class="default ">
-						<td colspan="3">
-							<div class="table-outer">
-								<c:forEach items="${error.errorList}" var="list">
-									<em>${list}</em>
-									<br>
-								</c:forEach>
-							</div>
-							<div>
-								<c:if test="${error.number>4}">
-									<a class="toggleTableLink" href="#"><i>show/hide all
-											${error.number} results</i></a>
-								</c:if>
-							</div>
-						</td>
+			</thead>
+			<tbody>
+				<c:forEach items="${data.errorList}" var="error">
+					<tr id="line"
+						<c:if test="${error.success==true}"> class="success" </c:if>
+						<c:if test="${error.success==false}">class="danger" </c:if>>
+						<td><a href="${error.weblink}" id="${error.id}">${error.ruleName}(${error.id})</a></td>
+						<td>${error.description}</td>
+						<td><h6>${error.state}</h6></td>
 					</tr>
-				</c:if>
-
-			</c:forEach>
-		</tbody>
-	</table>
-	<br>
+					<c:if test="${!empty error.errorList}">
+						<tr id="content" class="default ">
+							<td colspan="3">
+								<div class="table-outer">
+									<c:forEach items="${error.errorList}" var="list">
+										<em>${list}</em>
+										<br>
+									</c:forEach>
+								</div>
+								<div>
+									<c:if test="${error.number>4}">
+										<a class="toggleTableLink" href="#"><i>show/hide all
+												${error.number} results</i></a>
+									</c:if>
+								</div>
+							</td>
+						</tr>
+					</c:if>
+	
+				</c:forEach>
+			</tbody>
+		</table>
+		<br>
+	</div>
 	<jsp:include page="footer.jsp" />
 	<script type="text/javascript">
     $(document).ready(function() {

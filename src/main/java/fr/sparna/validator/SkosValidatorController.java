@@ -11,7 +11,9 @@ import java.util.Collection;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.openrdf.OpenRDFException;
 import org.openrdf.repository.RepositoryException;
 import org.openrdf.rio.Rio;
 import org.springframework.stereotype.Controller;
@@ -42,19 +44,19 @@ public class SkosValidatorController {
 	public ModelAndView upload(
 			@RequestParam(value="lang", required=false) String lang,
 			HttpServletRequest request
-	) throws IOException{
+			) throws IOException{
 
 		ValidatorData data = new ValidatorData();
 		SessionData sessionData = SessionData.retrieve(request.getSession());
 		if(lang!=null) {
 			sessionData.setUserLocale(lang);
 		} else {;
-			String userLanguage = request.getLocale().getLanguage();
-			if(userLanguage.startsWith("fr")) {
-				sessionData.setUserLocale("fr");
-			} else {
-				sessionData.setUserLocale("en");
-			}
+		String userLanguage = request.getLocale().getLanguage();
+		if(userLanguage.startsWith("fr")) {
+			sessionData.setUserLocale("fr");
+		} else {
+			sessionData.setUserLocale("en");
+		}
 		}
 		System.out.println("default locale : "+Locale.getDefault().getLanguage());
 		return new ModelAndView("home", ValidatorData.KEY, data);
@@ -148,12 +150,14 @@ public class SkosValidatorController {
 			data.setErrorList(process.createReport(sessionData.getqSkosResult()));
 			//récupérer les règles non vérifiées
 			data.setRulesFail(process.getRulesFail());
+			//récupérer le nombre de collection, concept et conceptscheme
+			data.setAllcollections(process.getAllcollection());
+			data.setAllconcepts(process.getAllconcepts());
+			data.setAllconceptschemes(process.getAllconceptscheme());
+			//fin des tâches
 			long end=System.currentTimeMillis()-start;
 			//récupérer le temps d'éxécution des tâches
 			data.setExecutionTime((end/1000));
-			//générer le rapport
-			GenerateReportFile report=new GenerateReportFile(sessionData.getqSkosResult(),sessionData.getUserLocale());
-			report.outputIssuesReport();
 
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -161,6 +165,25 @@ public class SkosValidatorController {
 		}
 
 		return new ModelAndView("result", ValidatorData.KEY, data);
+	}
+
+	/**
+	 * @throws OpenRDFException 
+	 * @throws IOException 
+	 */
+	@RequestMapping(value = "report.txt")
+	public void textReport(
+			HttpServletRequest request,
+			HttpServletResponse response
+			) throws IOException, OpenRDFException {
+
+		//récupérer la session
+		SessionData sessionData=SessionData.retrieve(request.getSession());
+		//générer le rapport
+		GenerateReportFile report=new GenerateReportFile(sessionData.getqSkosResult(),sessionData.getUserLocale());
+		response.addHeader("Content-Encoding", "UTF-8");
+		report.outputIssuesReport(response.getOutputStream());
+
 	}
 
 

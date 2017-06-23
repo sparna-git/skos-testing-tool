@@ -167,3 +167,8 @@ footer{
 	width:80%;
 	margin:auto;
 }
+
+#result-container {
+	width:auto;
+	margin-left:auto;
+}
