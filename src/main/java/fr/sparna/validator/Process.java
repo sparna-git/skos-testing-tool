@@ -99,6 +99,7 @@ public class Process {
 				IssueDescription desc = ValidatorConfig.getInstance().getApplicationData().findIssueDescriptionById(issue.getId());
 				error.setDescription(desc.getDescriptionByLang(lang));
 				error.setRuleName(desc.getLabelByLang(lang));
+				error.setLevel(desc.getLevel());
 
 				// TODO : store also in IssueDescription
 				if(issue.getWeblink()==null){

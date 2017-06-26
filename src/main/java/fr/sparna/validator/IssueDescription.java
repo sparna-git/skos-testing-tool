@@ -7,11 +7,18 @@ import java.util.Map;
  */
 public class IssueDescription {
 	
+	public enum IssueLevel {
+		INFO,
+		WARNING,
+		DANGER
+	}
+	
 	protected String id;
 	protected Map<String ,String> description;
 	protected Map<String, String> lbconcept;
 	protected String link;
 	protected boolean checked;
+	protected IssueLevel level = IssueLevel.DANGER;
 	
 	public IssueDescription(
 			String id,
@@ -62,6 +69,14 @@ public class IssueDescription {
 
 	public void setLink(String link) {
 		this.link = link;
+	}
+
+	public IssueLevel getLevel() {
+		return level;
+	}
+
+	public void setLevel(IssueLevel level) {
+		this.level = level;
 	}
 
 }

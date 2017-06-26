@@ -69,23 +69,21 @@ public class SkosValidatorController {
 			) throws RepositoryException, MalformedURLException {
 
 		long start = System.currentTimeMillis();
-		InputStream in = null;
-		Collection<Issue> qSkosResult = null;
-		ValidatorData data = new ValidatorData();
-		
+
 		//récupérer la session
 		SessionData sessionData=SessionData.retrieve(request.getSession());
-
-		Process process = new Process(sessionData.getUserLocale());
+		
+		ValidatorData data = new ValidatorData();
 		data.extractAndSetChoice(choice);
+		
 		ValidateSkosFile skos=new ValidateSkosFile(choice.replaceAll("-", ","));	
 
+		Collection<Issue> qSkosResult = null;
 		try {
 			switch(SOURCE_TYPE.valueOf(sourceString.toUpperCase())) {
 
 			case FILE : {
 				qSkosResult = skos.validate(file.getInputStream(), Rio.getWriterFormatForFileName(file.getOriginalFilename()));
-				sessionData.setqSkosResult(qSkosResult);
 				break;
 			}
 
@@ -95,10 +93,8 @@ public class SkosValidatorController {
 				}
 				try {
 					URL dataUrl = new URL(url);
-					InputStream urlInputStream = dataUrl.openStream();
-					in = new DataInputStream(new BufferedInputStream(urlInputStream));
+					InputStream in = new DataInputStream(new BufferedInputStream(dataUrl.openStream()));
 					qSkosResult = skos.validate(in, Rio.getWriterFormatForFileName(url));
-					sessionData.setqSkosResult(qSkosResult);
 				} catch (Exception e) {
 					e.printStackTrace();
 					return doErrorConvert(request, e.getMessage()); 
@@ -106,9 +102,13 @@ public class SkosValidatorController {
 			}
 			}
 			
+			// store qSkos result in the session
+			sessionData.setqSkosResult(qSkosResult);
+			
 			//récupérer le nombre total des règles à vérifier
 			data.setRulesNumber(skos.getRulesNumber());
 			//récupérer le resultat de la vérification des règles
+			Process process = new Process(sessionData.getUserLocale());
 			data.setErrorList(process.createReport(sessionData.getqSkosResult()));
 			//récupérer les règles non vérifiées
 			data.setRulesFail(process.getRulesFail());
@@ -142,7 +142,7 @@ public class SkosValidatorController {
 			) throws IOException, OpenRDFException {
 
 		//récupérer la session
-		SessionData sessionData=SessionData.retrieve(request.getSession());
+		SessionData sessionData=SessionData.get(request.getSession());
 		//générer le rapport
 		GenerateReportFile report=new GenerateReportFile(sessionData.getqSkosResult(),sessionData.getUserLocale());
 		response.addHeader("Content-Encoding", "UTF-8");
