@@ -104,6 +104,7 @@
 							</span> <a href="#"
 								class="input-group-addon btn btn-default fileinput-exists"
 								data-dismiss="fileinput"><fmt:message key="retirer" /> </a>
+								<span class="help"><fmt:message key="file.help" /></span>
 						</div>
 					</div>
 				</div>
