@@ -7,7 +7,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -84,6 +86,8 @@ public class SkosValidatorController {
 
 			case FILE : {
 				qSkosResult = skos.validate(file.getInputStream(), Rio.getWriterFormatForFileName(file.getOriginalFilename()));
+				System.out.println(file.getOriginalFilename());
+				sessionData.setFileName(file.getOriginalFilename());
 				break;
 			}
 
@@ -95,6 +99,7 @@ public class SkosValidatorController {
 					URL dataUrl = new URL(url);
 					InputStream in = new DataInputStream(new BufferedInputStream(dataUrl.openStream()));
 					qSkosResult = skos.validate(in, Rio.getWriterFormatForFileName(url));
+					sessionData.setFileName(url);
 				} catch (Exception e) {
 					e.printStackTrace();
 					return doErrorConvert(request, e.getMessage()); 
@@ -102,6 +107,7 @@ public class SkosValidatorController {
 			}
 			}
 			
+			data.setFileName(sessionData.getFileName());
 			// store qSkos result in the session
 			sessionData.setqSkosResult(qSkosResult);
 			
@@ -116,13 +122,12 @@ public class SkosValidatorController {
 			data.setAllcollections(process.getAllcollection());
 			data.setAllconcepts(process.getAllconcepts());
 			data.setAllconceptschemes(process.getAllconceptscheme());
-			
 			//fin des tâches
 			double timeMilli = new Long(System.currentTimeMillis()-start).doubleValue();
-			
 			//récupérer le temps d'éxécution des tâches
 			data.setExecutionTime(timeMilli/1000d);
-
+			String issuedDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
+			data.setIssueDate(issuedDate);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return doErrorConvert(request, e.getMessage()); 
@@ -144,7 +149,7 @@ public class SkosValidatorController {
 		//récupérer la session
 		SessionData sessionData=SessionData.get(request.getSession());
 		//générer le rapport
-		GenerateReportFile report=new GenerateReportFile(sessionData.getqSkosResult(),sessionData.getUserLocale());
+		GenerateReportFile report=new GenerateReportFile(sessionData.getqSkosResult(),sessionData.getUserLocale(),sessionData.getFileName());
 		response.addHeader("Content-Encoding", "UTF-8");
 		report.outputIssuesReport(response.getOutputStream());
 

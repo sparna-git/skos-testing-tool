@@ -4,6 +4,8 @@ import java.util.Collection;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import at.ac.univie.mminf.qskos4j.issues.Issue;
 
 public class SessionData {
@@ -11,6 +13,8 @@ public class SessionData {
 	protected String userLocale;
 	
 	protected Collection<Issue> qSkosResult;
+	
+	protected String fileName;
 	
 	public String getUserLocale() {
 		return userLocale;
@@ -44,5 +48,14 @@ public class SessionData {
 	public void setqSkosResult(Collection<Issue> qSkosResult) {
 		this.qSkosResult = qSkosResult;
 	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+	
 	
 }

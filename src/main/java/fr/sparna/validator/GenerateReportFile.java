@@ -8,7 +8,9 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.nio.charset.Charset;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Iterator;
 
 import javax.servlet.http.HttpServletResponse;
@@ -26,18 +28,20 @@ public class GenerateReportFile {
 	
 	protected String lang;
 	
+	protected String filename;
 	
-	  public GenerateReportFile(Collection<Issue> issues, String lang) {
+	  public GenerateReportFile(Collection<Issue> issues, String lang,String filename) {
 		super();
 		this.issues = issues;
 		this.lang = lang;
+		this.filename=filename;
 	}
 
 	private String createReportSummary() throws IOException, OpenRDFException {
 	        StringBuffer summary = new StringBuffer();
-	       
-	        summary.append("***********************************\n");
-
+	        String issuedDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
+	        summary.append("*************"+filename +", "+issuedDate+"*************\n\n\n");
+	        
 	        for (Issue issue : issues) {
 	        	// skip statistical issues
 	        	if(issue.getType() == IssueType.ANALYTICAL) {
@@ -113,6 +117,7 @@ public class GenerateReportFile {
 	        }
 	   
 	   private String createIssueHeader(Issue issue) {
+		  
 		   IssueDescription desc = ValidatorConfig.getInstance().getApplicationData().findIssueDescriptionById(issue.getId());
 		   
 	        String header = "--- " +desc.getLabelByLang(lang);

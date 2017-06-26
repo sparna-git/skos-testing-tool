@@ -25,6 +25,10 @@ public class ValidatorData {
 	protected Long allconceptschemes;
 	
 	protected Long allcollections;
+	
+	protected String fileName;
+	
+	protected String issueDate;
 
 	public static final String KEY = ValidatorData.class.getCanonicalName();
 
@@ -115,6 +119,23 @@ public class ValidatorData {
 		this.allcollections = allcollection;
 	}
 
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String filename) {
+		this.fileName = filename;
+	}
+
+	public String getIssueDate() {
+		return issueDate;
+	}
+
+	public void setIssueDate(String issuedate) {
+		this.issueDate = issuedate;
+	}
+
+	
 	
 
 }

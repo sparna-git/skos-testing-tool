@@ -54,11 +54,17 @@ $(function() {
 			</c:forEach>
 		</ul>
 	</div>
-	
 	<div class="container" id="result-container">
 		<div  id="exe" class="panel panel-default">
-		  <div class="panel-heading"></div>
+		  <div class="panel-heading">
+		  	<fmt:message key="file.validate" var="filevalidated" >
+			   <fmt:param value="${data.fileName}"/>
+			   <fmt:param value="${data.issueDate}"/>
+			</fmt:message>
+			<p>${filevalidated}</p>
+		  </div>
 		  <div class="panel-body">
+		  	
 		  	<fmt:message key="statistic" var="value" >
 			   <fmt:param value="${data.rulesNumber}"/>
 			   <fmt:param value="${data.executionTimeString}"/>
@@ -86,7 +92,7 @@ $(function() {
 			<tbody>
 				<c:forEach items="${data.errorList}" var="error">
 					<tr id="line" class="${error.cssClass}">
-						<td><a href="${error.weblink}" id="${error.id}">${error.id} - ${error.ruleName}</a></td>
+						<td><a href="${error.weblink}" target="_blank" id="${error.id}">${error.id} - ${error.ruleName}</a></td>
 						<td>${error.description}</td>
 						<td><h6>${error.state}</h6></td>
 					</tr>
