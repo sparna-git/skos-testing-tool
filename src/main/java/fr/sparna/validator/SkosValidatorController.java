@@ -129,7 +129,11 @@ public class SkosValidatorController {
 			String issuedDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
 			data.setIssueDate(issuedDate);
 		} catch (Exception e) {
+			
 			e.printStackTrace();
+			System.out.println(e.getCause());
+			System.out.println(e.getMessage());
+			
 			return doErrorConvert(request, e.getMessage()); 
 		}
 

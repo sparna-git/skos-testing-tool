@@ -103,7 +103,7 @@
 								name="file">
 							</span> <a href="#"
 								class="input-group-addon btn btn-default fileinput-exists"
-								data-dismiss="fileinput"><fmt:message key="retirer" /> </a>
+								data-dismiss="fileinput"><fmt:message key="remove" /> </a>
 								
 						</div>
 						<span class="help-block"><fmt:message key="file.help" /></span>

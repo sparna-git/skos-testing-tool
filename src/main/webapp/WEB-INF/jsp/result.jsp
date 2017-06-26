@@ -84,9 +84,9 @@ $(function() {
 			class="table table-hover table-expandable table-striped">
 			<thead>
 				<tr>
-					<th>Rule</th>
-					<th>Description</th>
-					<th>State</th>
+					<th><fmt:message key="entete.table.rule" /></th>
+					<th><fmt:message key="entete.table.description"/></th>
+					<th><fmt:message key="entete.table.state" /></th>
 				</tr>
 			</thead>
 			<tbody>

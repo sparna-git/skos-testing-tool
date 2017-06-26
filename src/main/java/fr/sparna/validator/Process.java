@@ -26,6 +26,7 @@ import at.ac.univie.mminf.qskos4j.issues.language.OmittedOrInvalidLanguageTagsRe
 import at.ac.univie.mminf.qskos4j.issues.language.util.NoCommonLanguagesResult;
 import at.ac.univie.mminf.qskos4j.issues.relations.UnidirectionallyRelatedConceptsResult;
 import at.ac.univie.mminf.qskos4j.result.CollectionResult;
+import at.ac.univie.mminf.qskos4j.result.Result;
 import at.ac.univie.mminf.qskos4j.result.Result.ReportFormat;
 
 public class Process {
@@ -66,10 +67,9 @@ public class Process {
 	}
 
 	@SuppressWarnings("rawtypes")
-	public List<SkosError> createReport(Collection<Issue> issues) throws IOException, OpenRDFException {
+	public List<SkosError> createReport(Collection<Issue> issues) throws IOException, UnsupportedOperationException, OpenRDFException {
 
 		int occurrenceCountFail = 0;
-		long occurrence= 0;
 		// for each issue...
 		for (Issue issue : issues) {
 
@@ -77,24 +77,30 @@ public class Process {
 			if(issue.getType()==IssueType.ANALYTICAL){
 
 
-
+				System.out.println("issue class: "+issue.getResult().getClass());
 				SkosError error=new SkosError();
 				error.setId(issue.getId());
 
 				String stateText = "";
+				String occurrenceaccount = "";
 				if (issue.getResult().isProblematic()) {
 					stateText = "FAIL";
 					error.setSuccess(false);
 					occurrenceCountFail++;
-					String occurrenceCount = Long.toString(issue.getResult().occurrenceCount());
-					error.setNumber(occurrenceCount);
-					stateText += " (" +occurrenceCount+ ")";
+					try{
+						occurrenceaccount = Long.toString(issue.getResult().occurrenceCount());
+						stateText += " (" +occurrenceaccount+ ")";
+					}catch (UnsupportedOperationException e) {
+		                // ignore this
+		            }
+					error.setNumber(occurrenceaccount);
+					
 				} else {
 					stateText = "OK";
 					error.setSuccess(true);
 				}
 				error.setState(stateText);
-
+				
 				// find issue 's description in user language
 				IssueDescription desc = ValidatorConfig.getInstance().getApplicationData().findIssueDescriptionById(issue.getId());
 				error.setDescription(desc.getDescriptionByLang(lang));
@@ -107,8 +113,6 @@ public class Process {
 				}else{
 					error.setWeblink(issue.getWeblink().stringValue());
 				}
-
-				System.out.println(issue.getId()+" : "+issue.getResult().getClass().getName());
 
 				// store messages only if problematic
 				// some Issues like "Common Languages" return the correct languages even if there is no issue, and we don't want to display it in this case
@@ -180,7 +184,7 @@ public class Process {
 						CollectionResult collectionResult = (CollectionResult)issue.getResult();
 						Collection<?> collection = (Collection<?>)collectionResult.getData();
 						collection.forEach(item-> {
-							System.out.println("  "+issue.getId()+" : "+item.getClass().getName());
+							
 							if(item instanceof URI) {
 								messages.add("<a href=\""+item.toString()+"\" target=\"_blank\">"+item.toString()+"</a>");
 							} else if(item instanceof LabelConflict) {

@@ -11,6 +11,7 @@ import org.openrdf.OpenRDFException;
 import org.openrdf.model.Statement;
 import org.openrdf.model.impl.URIImpl;
 import org.openrdf.model.vocabulary.RDF;
+import org.openrdf.query.QueryLanguage;
 import org.openrdf.repository.Repository;
 import org.openrdf.repository.RepositoryConnection;
 import org.openrdf.repository.RepositoryResult;
@@ -95,7 +96,6 @@ public class ValidateSkosFile {
 		// load RDF in a Repository
 		Repository r = new SailRepository(new ForwardChainingRDFSInferencer(new MemoryStore()));
 		r.initialize();
-
 		// load some data in the repository
 		RepositoryConnection c = r.getConnection();
 		try {
@@ -111,6 +111,19 @@ public class ValidateSkosFile {
 					SkosOntology.SKOS_BASE_URI,
 					RDFFormat.RDFXML,
 					new URIImpl(SkosOntology.SKOS_ONTO_URI));
+			
+			//prendre en compte les libellés skos-xl
+			String queryString = "PREFIX skos:<http://www.w3.org/2004/02/skos/core#>"
+							+"PREFIX skosxl:<http://www.w3.org/2008/05/skos-xl#>"
+							+ "INSERT {	?x skos:prefLabel ?y} "
+								+ "WHERE {?x skosxl:prefLabel/skosxl:literalForm ?y}";
+			c.prepareUpdate(QueryLanguage.SPARQL, queryString);
+					
+			String queryString1 = "PREFIX skos:<http://www.w3.org/2004/02/skos/core#>"
+							+"PREFIX skosxl:<http://www.w3.org/2008/05/skos-xl#>"
+							+ "INSERT {	?x skos:altLabel ?y} "
+								+ "WHERE {?x skosxl:altLabel/skosxl:literalForm ?y}";
+			c.prepareUpdate(QueryLanguage.SPARQL, queryString1);
 
 			return runQSkos(c);
 
@@ -121,9 +134,11 @@ public class ValidateSkosFile {
 	
 	@SuppressWarnings("rawtypes")
 	private Collection<Issue> runQSkos(RepositoryConnection c) throws OpenRDFException, IOException {
+		
 		// instantiation
 		QSkos qskos = new QSkos();
 		qskos.setRepositoryConnection(c);
+		
 		//cs(allconceptscheme), cc(all collection), ac(find all concepts)
 		Collection<Issue> issues = qskos.getIssues(rules+",cs,cc,ac");
 		
