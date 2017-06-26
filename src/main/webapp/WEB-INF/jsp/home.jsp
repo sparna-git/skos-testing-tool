@@ -207,11 +207,7 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		var newinput = document.getElementById('rulesChoice');
-		newinput.style.visibility = "hidden";
-		// add the toggle link behavior
-        $( ".accordion-toggle" ).click();
-		
+			
 	});
 </script>
 </html>
