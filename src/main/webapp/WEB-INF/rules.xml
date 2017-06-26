@@ -317,7 +317,7 @@
 		<constructor-arg name="description">
 			<map>
 				<entry key="fr"
-					value="Condition S27 du document de référence SKOS (2 concepts ne peuvent pas être reliés à la fois hiérarchiquement et associativement)." />
+					value="Trouve les paires de concepts reliés à la fois hiérarchiquement et associativement (Condition S27 de la spécification SKOS)." />
 				<entry key="en"
 					value="Covers condition S27 from the SKOS reference document (Associative vs. Hierarchical Relation Clashes)." />
 			</map>
@@ -372,7 +372,7 @@
 		</constructor-arg>
 		<constructor-arg name="link"
 			value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Missing_OutLink" />
-		<constructor-arg name="checked" value="true" />
+		<constructor-arg name="checked" value="false" />
 		<property name="level" value="WARNING" />
 	</bean>
 	<bean id="issue-husv" class="fr.sparna.validator.IssueDescription">
@@ -463,14 +463,14 @@
 		<constructor-arg name="description">
 			<map>
 				<entry key="fr"
-					value="Trouve des ressources avec plus d'un prefLabel par langue." />
+					value="Trouve des ressources avec plus d'un prefLabel par langue (Condition S14 de la spécification SKOS)." />
 				<entry key="en"
 					value="Finds resources with more then one prefLabel per language." />
 			</map>
 		</constructor-arg>
 		<constructor-arg name="lbconcept">
 			<map>
-				<entry key="fr" value="Incohérence des libellés préférés" />
+				<entry key="fr" value="Plusieurs libellés préférés" />
 				<entry key="en" value="Inconsistent Preferred Labels" />
 			</map>
 		</constructor-arg>
@@ -484,7 +484,7 @@
 		<constructor-arg name="description">
 			<map>
 				<entry key="fr"
-					value="Trouve des ressources avec des valeurs identiques dans différents types de libellés (pref, alt, hidden)." />
+					value="Trouve des ressources avec des valeurs identiques dans différents types de libellés (pref, alt, hidden) (Condition S13 de la spécification SKOS)." />
 				<entry key="en"
 					value="Finds resources with identical entries for different label types." />
 			</map>
@@ -561,20 +561,21 @@
 		<constructor-arg name="checked" value="false" />
 		<property name="level" value="DANGER" />
 	</bean>
-
+	<!-- 
+	THOMAS : cette règle ne marche plus, on l'enlève.	
 	<bean id="issue-mil" class="fr.sparna.validator.IssueDescription">
 		<constructor-arg name="id" value="mil" />
 		<constructor-arg name="description">
 			<map>
 				<entry key="fr"
-					value="Utilise l'index Syndice pour trouver des concepts qui ne sont pas référencés par d'autres données sur le Web." />
+					value="Utilise l'index Sindice pour trouver des concepts qui ne sont pas référencés par d'autres données sur le Web." />
 				<entry key="en"
 					value="Uses the Sindice index to find concepts that aren't referenced by other datasets on the Web." />
 			</map>
 		</constructor-arg>
 		<constructor-arg name="lbconcept">
 			<map>
-				<entry key="fr" value="Manquant dans les liens" />
+				<entry key="fr" value="Liens entrants manquants" />
 				<entry key="en" value="Missing In-Links" />
 			</map>
 		</constructor-arg>
@@ -583,7 +584,8 @@
 		<constructor-arg name="checked" value="false" />
 		<property name="level" value="WARNING" />
 	</bean>
-
+ 	-->
+ 	
 	<bean id="issue-chr" class="fr.sparna.validator.IssueDescription">
 		<constructor-arg name="id" value="chr" />
 		<constructor-arg name="description">
