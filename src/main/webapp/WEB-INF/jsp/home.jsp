@@ -75,7 +75,7 @@
 	</c:if>
 	
 	<div class="container">
-	
+		<h3><fmt:message key="app.description"/></h3><br><br>
 		<form id="upload_form" action="result" method="post"
 			onSubmit="return false" name="formulaire"
 			enctype="multipart/form-data" class="form-horizontal">
