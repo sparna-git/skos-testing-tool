@@ -7,19 +7,20 @@ import java.net.URL;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.openrdf.OpenRDFException;
-import org.openrdf.model.Statement;
-import org.openrdf.model.impl.URIImpl;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.query.QueryLanguage;
-import org.openrdf.repository.Repository;
-import org.openrdf.repository.RepositoryConnection;
-import org.openrdf.repository.RepositoryResult;
-import org.openrdf.repository.sail.SailRepository;
-import org.openrdf.rio.RDFFormat;
-import org.openrdf.rio.Rio;
-import org.openrdf.sail.inferencer.fc.ForwardChainingRDFSInferencer;
-import org.openrdf.sail.memory.MemoryStore;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.model.impl.SimpleIRI;
+import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
+import org.eclipse.rdf4j.model.impl.URIImpl;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.query.QueryLanguage;
+import org.eclipse.rdf4j.repository.Repository;
+import org.eclipse.rdf4j.repository.RepositoryConnection;
+import org.eclipse.rdf4j.repository.sail.SailRepository;
+import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.Rio;
+import org.eclipse.rdf4j.sail.inferencer.fc.ForwardChainingRDFSInferencer;
+import org.eclipse.rdf4j.sail.memory.MemoryStore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,6 +36,8 @@ public class ValidateSkosFile {
 	protected String rules;
 
 	protected Integer rulesNumber;
+	
+	private ValueFactory factory = null;
 	
 	//protected long collectionNumber;
 	
@@ -52,27 +55,27 @@ public class ValidateSkosFile {
 	 * @throws IOException
 	 */
 	@SuppressWarnings("rawtypes")
-	public Collection<Issue> validate(File f) throws OpenRDFException, IOException {
-
+	public Collection<Issue> validate(File f) throws  IOException {
+		
 		// load RDF in a Repository
 		Repository r = new SailRepository(new ForwardChainingRDFSInferencer(new MemoryStore()));
 		r.initialize();
-
+		factory=r.getValueFactory();
 		// load some data in the repository
 		RepositoryConnection c = r.getConnection();
+		
 		try {
 
 			c.add(
 					f, 
 					RDF.NAMESPACE,
-					Rio.getParserFormatForFileName(f.getName())
+					Rio.getParserFormatForFileName(f.getName()).get()
 					);
-
 			c.add(
-					new URL(SkosOntology.SKOS_ONTO_URI),
-					SkosOntology.SKOS_BASE_URI,
+					new URL(SkosOntology.SKOS_ONTO_IRI),
+					SkosOntology.SKOS_BASE_IRI,
 					RDFFormat.RDFXML,
-					new URIImpl(SkosOntology.SKOS_ONTO_URI));
+					factory.createIRI(SkosOntology.SKOS_ONTO_IRI));
 
 			return runQSkos(c);
 
@@ -91,11 +94,12 @@ public class ValidateSkosFile {
 	 * @throws IOException
 	 */
 	@SuppressWarnings("rawtypes")
-	public Collection<Issue> validate(InputStream input, RDFFormat format) throws OpenRDFException, IOException {
+	public Collection<Issue> validate(InputStream input, RDFFormat format) throws IOException {
 		
 		// load RDF in a Repository
 		Repository r = new SailRepository(new ForwardChainingRDFSInferencer(new MemoryStore()));
 		r.initialize();
+		factory=r.getValueFactory();
 		// load some data in the repository
 		RepositoryConnection c = r.getConnection();
 		try {
@@ -107,10 +111,10 @@ public class ValidateSkosFile {
 					);
 
 			c.add(
-					new URL(SkosOntology.SKOS_ONTO_URI),
-					SkosOntology.SKOS_BASE_URI,
+					new URL(SkosOntology.SKOS_ONTO_IRI),
+					SkosOntology.SKOS_BASE_IRI,
 					RDFFormat.RDFXML,
-					new URIImpl(SkosOntology.SKOS_ONTO_URI));
+					factory.createIRI(SkosOntology.SKOS_ONTO_IRI));
 			
 			//prendre en compte les libellés skos-xl
 			String queryString = "PREFIX skos:<http://www.w3.org/2004/02/skos/core#>"
@@ -133,7 +137,7 @@ public class ValidateSkosFile {
 	}
 	
 	@SuppressWarnings("rawtypes")
-	private Collection<Issue> runQSkos(RepositoryConnection c) throws OpenRDFException, IOException {
+	private Collection<Issue> runQSkos(RepositoryConnection c) throws  IOException {
 		
 		// instantiation
 		QSkos qskos = new QSkos();
@@ -147,7 +151,7 @@ public class ValidateSkosFile {
 		while (issueIt.hasNext()) {
 			Issue issue = issueIt.next();
 			issueNumber++;
-			logger.info("Processing issue " + issueNumber + " of " + issues.size() + " (" + issue.getName() + ")");
+			logger.info("Processing issue " + issueNumber + " of " + issues.size() + " (" + issue.getIssueDescriptor().getName() + ")");
 			issue.getResult();
 		}
 		this.rulesNumber=issueNumber;

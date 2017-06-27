@@ -15,11 +15,11 @@ import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.openrdf.OpenRDFException;
-import org.openrdf.repository.RepositoryException;
-import org.openrdf.rio.Rio;
+import org.eclipse.rdf4j.repository.RepositoryException;
+import org.eclipse.rdf4j.rio.Rio;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -85,7 +85,7 @@ public class SkosValidatorController {
 			switch(SOURCE_TYPE.valueOf(sourceString.toUpperCase())) {
 
 			case FILE : {
-				qSkosResult = skos.validate(file.getInputStream(), Rio.getWriterFormatForFileName(file.getOriginalFilename()));
+				qSkosResult = skos.validate(file.getInputStream(), Rio.getWriterFormatForFileName(file.getOriginalFilename()).get());
 				System.out.println(file.getOriginalFilename());
 				sessionData.setFileName(file.getOriginalFilename());
 				break;
@@ -98,7 +98,7 @@ public class SkosValidatorController {
 				try {
 					URL dataUrl = new URL(url);
 					InputStream in = new DataInputStream(new BufferedInputStream(dataUrl.openStream()));
-					qSkosResult = skos.validate(in, Rio.getWriterFormatForFileName(url));
+					qSkosResult = skos.validate(in, Rio.getWriterFormatForFileName(url).get());
 					sessionData.setFileName(url);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -106,34 +106,69 @@ public class SkosValidatorController {
 				}
 			}
 			}
-			
-			data.setFileName(sessionData.getFileName());
-			// store qSkos result in the session
-			sessionData.setqSkosResult(qSkosResult);
-			
-			//récupérer le nombre total des règles à vérifier
-			data.setRulesNumber(skos.getRulesNumber());
-			//récupérer le resultat de la vérification des règles
-			Process process = new Process(sessionData.getUserLocale());
-			data.setErrorList(process.createReport(sessionData.getqSkosResult()));
-			//récupérer les règles non vérifiées
-			data.setRulesFail(process.getRulesFail());
-			//récupérer le nombre de collection, concept et conceptscheme
-			data.setAllcollections(process.getAllcollection());
-			data.setAllconcepts(process.getAllconcepts());
-			data.setAllconceptschemes(process.getAllconceptscheme());
+			doResultValidated(sessionData,data, qSkosResult,skos);
 			//fin des tâches
 			double timeMilli = new Long(System.currentTimeMillis()-start).doubleValue();
 			//récupérer le temps d'éxécution des tâches
 			data.setExecutionTime(timeMilli/1000d);
-			String issuedDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
-			data.setIssueDate(issuedDate);
+
 		} catch (Exception e) {
 			
 			e.printStackTrace();
 			System.out.println(e.getCause());
 			System.out.println(e.getMessage());
 			
+			return doErrorConvert(request, e.getMessage()); 
+		}
+
+		return new ModelAndView("result", ValidatorData.KEY, data);
+	}
+	
+	
+	@RequestMapping(value = "get",  method=RequestMethod.GET)
+	public ModelAndView getResult(
+			@RequestParam(value="urlfile", required=false) String urlfile,
+			//règles séparées par des tirets de 6
+			@RequestParam(value="rules", required=false) String choice,
+			HttpServletRequest request
+			) throws RepositoryException, MalformedURLException {
+
+		long start = System.currentTimeMillis();
+
+		//récupérer la session
+		SessionData sessionData=SessionData.retrieve(request.getSession());
+		
+		ValidatorData data = new ValidatorData();
+		data.extractAndSetChoice(choice);
+		
+		ValidateSkosFile skos=new ValidateSkosFile(choice.replaceAll("-", ","));	
+
+		Collection<Issue> qSkosResult = null;
+		try {
+		
+			
+				if(urlfile.isEmpty()) {
+					return doErrorConvert(request, "Uploaded link file is empty");
+				}
+				try {
+					URL dataUrl = new URL(urlfile);
+					InputStream in = new DataInputStream(new BufferedInputStream(dataUrl.openStream()));
+					qSkosResult = skos.validate(in, Rio.getWriterFormatForFileName(urlfile).get());
+					sessionData.setFileName(urlfile);
+				} catch (Exception e) {
+					e.printStackTrace();
+					return doErrorConvert(request, e.getMessage()); 
+				}
+			
+			doResultValidated(sessionData,data, qSkosResult,skos);
+			//fin des tâches
+			double timeMilli = new Long(System.currentTimeMillis()-start).doubleValue();
+			//récupérer le temps d'éxécution des tâches
+			data.setExecutionTime(timeMilli/1000d);
+		
+		} catch (Exception e) {
+			
+			e.printStackTrace();
 			return doErrorConvert(request, e.getMessage()); 
 		}
 
@@ -148,7 +183,7 @@ public class SkosValidatorController {
 	public void textReport(
 			HttpServletRequest request,
 			HttpServletResponse response
-			) throws IOException, OpenRDFException {
+			) throws IOException{
 
 		//récupérer la session
 		SessionData sessionData=SessionData.get(request.getSession());
@@ -158,8 +193,13 @@ public class SkosValidatorController {
 		report.outputIssuesReport(response.getOutputStream());
 
 	}
-
-
+	
+	/**
+	 * 
+	 * @param request
+	 * @param message
+	 * @return
+	 */
 	protected ModelAndView doErrorConvert(
 			HttpServletRequest request,
 			String message
@@ -168,5 +208,37 @@ public class SkosValidatorController {
 		data.setMsg(message);
 		request.setAttribute(ValidatorData.KEY, data);
 		return new ModelAndView("home");
+	}
+	/**
+	 * 
+	 * @param sessionData
+	 * @param data
+	 * @param qSkosResult
+	 * @param skos
+	 * @throws IOException
+	 */
+	private void doResultValidated(
+			SessionData sessionData, 
+			ValidatorData data, 
+			Collection<Issue> qSkosResult,
+			ValidateSkosFile skos
+			) throws IOException{
+		
+		data.setFileName(sessionData.getFileName());
+		// store qSkos result in the session
+		sessionData.setqSkosResult(qSkosResult);
+		//récupérer le nombre total des règles à vérifier
+		data.setRulesNumber(skos.getRulesNumber());
+		//récupérer le resultat de la vérification des règles
+		Process process = new Process(sessionData.getUserLocale());
+		data.setErrorList(process.createReport(sessionData.getqSkosResult()));
+		//récupérer les règles non vérifiées
+		data.setRulesFail(process.getRulesFail());
+		//récupérer le nombre de collection, concept et conceptscheme
+		data.setAllcollections(process.getAllcollection());
+		data.setAllconcepts(process.getAllconcepts());
+		data.setAllconceptschemes(process.getAllconceptscheme());
+		String issuedDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
+		data.setIssueDate(issuedDate);
 	}
 }

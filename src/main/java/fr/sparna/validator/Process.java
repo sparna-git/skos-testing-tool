@@ -3,6 +3,7 @@ package fr.sparna.validator;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -10,14 +11,11 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.openrdf.OpenRDFException;
-import org.openrdf.model.Resource;
-import org.openrdf.model.URI;
+import org.eclipse.rdf4j.model.URI;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import at.ac.univie.mminf.qskos4j.issues.Issue;
-import at.ac.univie.mminf.qskos4j.issues.Issue.IssueType;
 import at.ac.univie.mminf.qskos4j.issues.labels.util.EmptyLabelsResult;
 import at.ac.univie.mminf.qskos4j.issues.labels.util.LabelConflict;
 import at.ac.univie.mminf.qskos4j.issues.labels.util.LabelConflictsResult;
@@ -28,6 +26,7 @@ import at.ac.univie.mminf.qskos4j.issues.relations.UnidirectionallyRelatedConcep
 import at.ac.univie.mminf.qskos4j.result.CollectionResult;
 import at.ac.univie.mminf.qskos4j.result.Result;
 import at.ac.univie.mminf.qskos4j.result.Result.ReportFormat;
+import at.ac.univie.mminf.qskos4j.util.IssueDescriptor.IssueType;
 
 public class Process {
 	private final Logger logger = LoggerFactory.getLogger(Process.class);
@@ -66,20 +65,20 @@ public class Process {
 		return allcollection;
 	}
 
-	@SuppressWarnings("rawtypes")
-	public List<SkosError> createReport(Collection<Issue> issues) throws IOException, UnsupportedOperationException, OpenRDFException {
+	@SuppressWarnings({ "rawtypes", "deprecation" })
+	public List<SkosError> createReport(Collection<Issue> issues) throws IOException {
 
 		int occurrenceCountFail = 0;
 		// for each issue...
 		for (Issue issue : issues) {
 
 
-			if(issue.getType()==IssueType.ANALYTICAL){
+			if(issue.getIssueDescriptor().getType()==IssueType.ANALYTICAL){
 
 
 				System.out.println("issue class: "+issue.getResult().getClass());
 				SkosError error=new SkosError();
-				error.setId(issue.getId());
+				error.setId(issue.getIssueDescriptor().getId());
 
 				String stateText = "";
 				String occurrenceaccount = "";
@@ -102,16 +101,16 @@ public class Process {
 				error.setState(stateText);
 				
 				// find issue 's description in user language
-				IssueDescription desc = ValidatorConfig.getInstance().getApplicationData().findIssueDescriptionById(issue.getId());
+				IssueDescription desc = ValidatorConfig.getInstance().getApplicationData().findIssueDescriptionById(issue.getIssueDescriptor().getId());
 				error.setDescription(desc.getDescriptionByLang(lang));
 				error.setRuleName(desc.getLabelByLang(lang));
 				error.setLevel(desc.getLevel());
 
 				// TODO : store also in IssueDescription
-				if(issue.getWeblink()==null){
+				if(issue.getIssueDescriptor().getWeblink()==null){
 					error.setWeblink("");
 				}else{
-					error.setWeblink(issue.getWeblink().stringValue());
+					error.setWeblink(issue.getIssueDescriptor().getWeblink().toString());
 				}
 
 				// store messages only if problematic
@@ -185,7 +184,7 @@ public class Process {
 						Collection<?> collection = (Collection<?>)collectionResult.getData();
 						collection.forEach(item-> {
 							
-							if(item instanceof URI) {
+							if(item instanceof URL) {
 								messages.add("<a href=\""+item.toString()+"\" target=\"_blank\">"+item.toString()+"</a>");
 							} else if(item instanceof LabelConflict) {
 								messages.add(item.toString());		
@@ -195,7 +194,7 @@ public class Process {
 								StringBuffer buffer = new StringBuffer();
 								Collection c = (Collection)item;								
 								c.stream().forEach(elmt -> {
-									if(elmt instanceof URI) {
+									if(elmt instanceof URL) {
 										buffer.append("<a href=\""+elmt.toString()+"\" target=\"_blank\">"+elmt.toString()+"</a>");
 									} else {
 										buffer.append(elmt.toString());
@@ -218,15 +217,15 @@ public class Process {
 				resultList.add(error);
 			}else{
 				//allcollection
-				if(issue.getId().equals("cc")){
+				if(issue.getIssueDescriptor().getId().equals("cc")){
 					this.allcollection=issue.getResult().occurrenceCount();
 				}
 				//all concepts
-				if(issue.getId().equals("ac")){
+				if(issue.getIssueDescriptor().getId().equals("ac")){
 					this.allconcepts=issue.getResult().occurrenceCount();
 				}
 				//all conceptschemes
-				if(issue.getId().equals("cs")){
+				if(issue.getIssueDescriptor().getId().equals("cs")){
 					this.allconceptscheme=issue.getResult().occurrenceCount();				
 				}
 			}

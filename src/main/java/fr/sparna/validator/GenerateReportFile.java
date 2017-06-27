@@ -7,6 +7,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.net.URI;
+import java.net.URL;
 import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
@@ -15,12 +17,11 @@ import java.util.Iterator;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.openrdf.OpenRDFException;
-import org.openrdf.model.URI;
+
 
 import at.ac.univie.mminf.qskos4j.issues.Issue;
-import at.ac.univie.mminf.qskos4j.issues.Issue.IssueType;
 import at.ac.univie.mminf.qskos4j.result.Result;
+import at.ac.univie.mminf.qskos4j.util.IssueDescriptor.IssueType;
 
 public class GenerateReportFile {
 	
@@ -37,15 +38,15 @@ public class GenerateReportFile {
 		this.filename=filename;
 	}
 
-	private String createReportSummary() throws IOException, OpenRDFException {
+	private String createReportSummary() throws IOException {
 	        StringBuffer summary = new StringBuffer();
 	        String issuedDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
 	        summary.append("*************"+filename +", "+issuedDate+"*************\n\n\n");
 	        
 	        for (Issue issue : issues) {
 	        	// skip statistical issues
-	        	if(issue.getType() == IssueType.ANALYTICAL) {
-		        	IssueDescription desc = ValidatorConfig.getInstance().getApplicationData().findIssueDescriptionById(issue.getId());
+	        	if(issue.getIssueDescriptor().getType() == IssueType.ANALYTICAL) {
+		        	IssueDescription desc = ValidatorConfig.getInstance().getApplicationData().findIssueDescriptionById(issue.getIssueDescriptor().getId());
 		            summary.append(desc.getLabelByLang(lang) + ": " + prepareOccurrenceText(issue) + "\n");
 	        	}
 	        }
@@ -54,7 +55,7 @@ public class GenerateReportFile {
 	        return summary.toString();
 	    }
 
-	    private String prepareOccurrenceText(Issue issue) throws OpenRDFException {
+	    private String prepareOccurrenceText(Issue issue) {
 	        String occurrenceText = "";
 	        if (issue.getResult().isProblematic()) {
 	            occurrenceText = "FAIL";
@@ -74,7 +75,7 @@ public class GenerateReportFile {
 	    }
 
 	    private void writeReportBody(BufferedWriter reportWriter)
-	        throws IOException, OpenRDFException
+	        throws IOException
 	    {
 	        reportWriter.write("* Detailed coverage of each Quality Issue:\n\n");
 	        Iterator<Issue> issueIt = issues.iterator();
@@ -92,7 +93,7 @@ public class GenerateReportFile {
 	    }
 	    
 	    private void writeTextReport(Issue issue, BufferedWriter writer)
-	            throws IOException, OpenRDFException
+	            throws IOException
 	        {
 		    	writer.write(createIssueHeader(issue));
 		        writer.newLine();
@@ -106,7 +107,7 @@ public class GenerateReportFile {
 	        }
 	   
 	   public void outputIssuesReport(OutputStream stream)
-	   throws IOException, OpenRDFException {
+	   throws IOException {
 	            BufferedWriter reportWriter = new BufferedWriter(new OutputStreamWriter(stream, "UTF-8"));
 	            
 	            String reportSummary = createReportSummary();
@@ -118,14 +119,14 @@ public class GenerateReportFile {
 	   
 	   private String createIssueHeader(Issue issue) {
 		  
-		   IssueDescription desc = ValidatorConfig.getInstance().getApplicationData().findIssueDescriptionById(issue.getId());
+		   IssueDescription desc = ValidatorConfig.getInstance().getApplicationData().findIssueDescriptionById(issue.getIssueDescriptor().getId());
 		   
 	        String header = "--- " +desc.getLabelByLang(lang);
-	        URI weblink = issue.getWeblink();
+	        URL weblink = issue.getIssueDescriptor().getWeblink();
 	        header += "\nDescription: " +desc.getDescriptionByLang(lang);
 
 	        if (weblink != null) {
-	            header += "\nDetailed information: " +weblink.stringValue();
+	            header += "\nDetailed information: " +weblink.toString();
 	        }
 	        return header;
 	    }
