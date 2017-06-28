@@ -36,7 +36,7 @@
 		
 		$(".ruleCheckbox:checked").each(function( index ) {
 			choix += $( this ).val();
-			choix += "-";
+			choix += ",";
 		});
 		// on enleve le dernier caractere
 		choix = choix.substr(0, choix.length-1);
@@ -75,7 +75,7 @@
 	</c:if>
 	
 	<div class="container">
-		<h3><fmt:message key="app.description"/></h3><br><br>
+		<em style="font-size:larger;"><fmt:message key="app.description"/></em><br><br>
 		<form id="upload_form" action="result" method="post"
 			onSubmit="return false" name="formulaire"
 			enctype="multipart/form-data" class="form-horizontal">
@@ -117,7 +117,7 @@
 					<div class="col-sm-8">
 						<input type="text" id="url" name="url" value=""
 							placeholder="http://..." class="form-control"
-							onkeypress="enabledInput('url');" /> 
+							onchange="enabledInput('url');" /> 
 					</div>
 				</div>
 

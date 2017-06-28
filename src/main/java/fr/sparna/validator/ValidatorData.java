@@ -34,14 +34,6 @@ public class ValidatorData {
 
 
 
-	public void extractAndSetChoice(String choice){
-		List<String> list=new ArrayList<String>();
-		for(String ch:choice.split("[-]")){
-			list.add(ch);
-		}
-		this.choiceList=list;
-	}
-
 	public List<String> getChoiceList() {
 		return choiceList;
 	}
