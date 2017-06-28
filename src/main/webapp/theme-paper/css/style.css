@@ -30,7 +30,7 @@ footer{
 
 /** Page de résultat **/
 
-  
+ 
 /* avoid page-breaks inside a listingContainer*/
 .listingContainer{
 	page-break-inside: avoid;

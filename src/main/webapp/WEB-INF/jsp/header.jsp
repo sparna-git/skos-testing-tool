@@ -10,7 +10,7 @@
 	value="${sessionScope['fr.sparna.validator.SessionData'].userLocale}" />
 <fmt:setBundle basename="fr.sparna.validator.properties.Bundle"/>
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default hidden-print">
 
 	<div class="container-fluid">
 		<div class="navbar-header">

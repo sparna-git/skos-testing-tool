@@ -2,20 +2,22 @@ package fr.sparna.validator;
 
 import java.io.BufferedInputStream;
 import java.io.DataInputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
-import java.util.Locale;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.eclipse.rdf4j.OpenRDFException;
 import org.eclipse.rdf4j.repository.RepositoryException;
+import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.Rio;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -76,16 +78,16 @@ public class SkosValidatorController {
 		SessionData sessionData=SessionData.retrieve(request.getSession());
 		
 		ValidatorData data = new ValidatorData();
-		data.extractAndSetChoice(choice);
+		data.setChoiceList(Arrays.asList(choice.split(",")));
 		
-		ValidateSkosFile skos=new ValidateSkosFile(choice.replaceAll("-", ","));	
+		ValidateSkosFile skos=new ValidateSkosFile(choice);	
 
 		Collection<Issue> qSkosResult = null;
 		try {
 			switch(SOURCE_TYPE.valueOf(sourceString.toUpperCase())) {
 
 			case FILE : {
-				qSkosResult = skos.validate(file.getInputStream(), Rio.getWriterFormatForFileName(file.getOriginalFilename()).get());
+				qSkosResult = skos.validate(file.getInputStream(), Rio.getWriterFormatForFileName(file.getOriginalFilename()).orElse(RDFFormat.RDFXML));
 				System.out.println(file.getOriginalFilename());
 				sessionData.setFileName(file.getOriginalFilename());
 				break;
@@ -98,7 +100,7 @@ public class SkosValidatorController {
 				try {
 					URL dataUrl = new URL(url);
 					InputStream in = new DataInputStream(new BufferedInputStream(dataUrl.openStream()));
-					qSkosResult = skos.validate(in, Rio.getWriterFormatForFileName(url).get());
+					qSkosResult = skos.validate(in, Rio.getWriterFormatForFileName(url).orElse(RDFFormat.RDFXML));
 					sessionData.setFileName(url);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -125,13 +127,13 @@ public class SkosValidatorController {
 	}
 	
 	
-	@RequestMapping(value = "get",  method=RequestMethod.GET)
+	@RequestMapping(value = "validate",  method=RequestMethod.GET)
 	public ModelAndView getResult(
-			@RequestParam(value="urlfile", required=false) String urlfile,
-			//règles séparées par des tirets de 6
+			@RequestParam(value="data", required=true) String url,
+			//règles séparées par des virgules
 			@RequestParam(value="rules", required=false) String choice,
 			HttpServletRequest request
-			) throws RepositoryException, MalformedURLException {
+	) throws RepositoryException, MalformedURLException {
 
 		long start = System.currentTimeMillis();
 
@@ -139,26 +141,22 @@ public class SkosValidatorController {
 		SessionData sessionData=SessionData.retrieve(request.getSession());
 		
 		ValidatorData data = new ValidatorData();
-		data.extractAndSetChoice(choice);
+		data.setChoiceList(Arrays.asList(choice.split(",")));
 		
-		ValidateSkosFile skos=new ValidateSkosFile(choice.replaceAll("-", ","));	
+		// prends en parametre la liste des regles separees par des virgules
+		ValidateSkosFile skos=new ValidateSkosFile(choice);	
 
 		Collection<Issue> qSkosResult = null;
 		try {
-		
-			
-				if(urlfile.isEmpty()) {
-					return doErrorConvert(request, "Uploaded link file is empty");
-				}
-				try {
-					URL dataUrl = new URL(urlfile);
-					InputStream in = new DataInputStream(new BufferedInputStream(dataUrl.openStream()));
-					qSkosResult = skos.validate(in, Rio.getWriterFormatForFileName(urlfile).get());
-					sessionData.setFileName(urlfile);
-				} catch (Exception e) {
-					e.printStackTrace();
-					return doErrorConvert(request, e.getMessage()); 
-				}
+			try {
+				URL dataUrl = new URL(url);
+				InputStream in = new DataInputStream(new BufferedInputStream(dataUrl.openStream()));
+				qSkosResult = skos.validate(in, Rio.getWriterFormatForFileName(url).orElse(RDFFormat.RDFXML));
+				sessionData.setFileName(url);
+			} catch (Exception e) {
+				e.printStackTrace();
+				return doErrorConvert(request, e.getMessage()); 
+			}
 			
 			doResultValidated(sessionData,data, qSkosResult,skos);
 			//fin des tâches
@@ -166,8 +164,7 @@ public class SkosValidatorController {
 			//récupérer le temps d'éxécution des tâches
 			data.setExecutionTime(timeMilli/1000d);
 		
-		} catch (Exception e) {
-			
+		} catch (Exception e) {			
 			e.printStackTrace();
 			return doErrorConvert(request, e.getMessage()); 
 		}
@@ -209,6 +206,7 @@ public class SkosValidatorController {
 		request.setAttribute(ValidatorData.KEY, data);
 		return new ModelAndView("home");
 	}
+	
 	/**
 	 * 
 	 * @param sessionData
@@ -222,7 +220,7 @@ public class SkosValidatorController {
 			ValidatorData data, 
 			Collection<Issue> qSkosResult,
 			ValidateSkosFile skos
-			) throws IOException{
+	) throws IOException{
 		
 		data.setFileName(sessionData.getFileName());
 		// store qSkos result in the session

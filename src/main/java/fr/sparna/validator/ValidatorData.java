@@ -2,7 +2,6 @@ package fr.sparna.validator;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ValidatorData {
@@ -31,16 +30,6 @@ public class ValidatorData {
 	protected String issueDate;
 
 	public static final String KEY = ValidatorData.class.getCanonicalName();
-
-
-
-	public void extractAndSetChoice(String choice){
-		List<String> list=new ArrayList<String>();
-		for(String ch:choice.split("[-]")){
-			list.add(ch);
-		}
-		this.choiceList=list;
-	}
 
 	public List<String> getChoiceList() {
 		return choiceList;

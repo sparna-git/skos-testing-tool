@@ -1,31 +1,23 @@
 package fr.sparna.validator;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
-import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.Literal;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import at.ac.univie.mminf.qskos4j.issues.Issue;
 import at.ac.univie.mminf.qskos4j.issues.labels.util.EmptyLabelsResult;
 import at.ac.univie.mminf.qskos4j.issues.labels.util.LabelConflict;
-import at.ac.univie.mminf.qskos4j.issues.labels.util.LabelConflictsResult;
 import at.ac.univie.mminf.qskos4j.issues.language.IncompleteLangCovResult;
 import at.ac.univie.mminf.qskos4j.issues.language.OmittedOrInvalidLanguageTagsResult;
 import at.ac.univie.mminf.qskos4j.issues.language.util.NoCommonLanguagesResult;
 import at.ac.univie.mminf.qskos4j.issues.relations.UnidirectionallyRelatedConceptsResult;
 import at.ac.univie.mminf.qskos4j.result.CollectionResult;
-import at.ac.univie.mminf.qskos4j.result.Result;
-import at.ac.univie.mminf.qskos4j.result.Result.ReportFormat;
 import at.ac.univie.mminf.qskos4j.util.IssueDescriptor.IssueType;
 
 public class Process {
@@ -184,17 +176,28 @@ public class Process {
 						Collection<?> collection = (Collection<?>)collectionResult.getData();
 						collection.forEach(item-> {
 							
-							if(item instanceof URL) {
+							if(item instanceof IRI) {
 								messages.add("<a href=\""+item.toString()+"\" target=\"_blank\">"+item.toString()+"</a>");
 							} else if(item instanceof LabelConflict) {
-								messages.add(item.toString());		
+								// messages.add(item.toString());		
 
+								// TODO : improve class LabelConflict to get our hand on the inner LabeledResource to get the label
+								LabelConflict aConflict = (LabelConflict)item;
+								StringBuffer buffer = new StringBuffer();
+								Literal l = aConflict.getConflicts().iterator().next().getLiteral();
+								buffer.append(l+" : ");
+								aConflict.getAffectedResources().stream().forEach(anAffectedResource-> {
+									buffer.append("<a href=\""+anAffectedResource.toString()+"\" target=\"_blank\">"+anAffectedResource.toString()+"</a>"+", ");
+								});
+								buffer.delete(buffer.length()-2, buffer.length());
+								messages.add(buffer.toString());
+								
 							} else if (item instanceof Collection) {
 								// collections inside a collection, case of "disconnected concept clusters"
 								StringBuffer buffer = new StringBuffer();
 								Collection c = (Collection)item;								
 								c.stream().forEach(elmt -> {
-									if(elmt instanceof URL) {
+									if(elmt instanceof IRI) {
 										buffer.append("<a href=\""+elmt.toString()+"\" target=\"_blank\">"+elmt.toString()+"</a>");
 									} else {
 										buffer.append(elmt.toString());

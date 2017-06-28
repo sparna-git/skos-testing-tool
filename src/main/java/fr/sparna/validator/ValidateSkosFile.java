@@ -110,6 +110,7 @@ public class ValidateSkosFile {
 					format
 					);
 
+			// TODO : avoir une copie locale de l'ontologie SKOS
 			c.add(
 					new URL(SkosOntology.SKOS_ONTO_IRI),
 					SkosOntology.SKOS_BASE_IRI,
