@@ -31,6 +31,7 @@ public class ValidatorData {
 
 	public static final String KEY = ValidatorData.class.getCanonicalName();
 
+
 	public List<String> getChoiceList() {
 		return choiceList;
 	}

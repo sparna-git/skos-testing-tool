@@ -69,14 +69,15 @@
 	<jsp:include page="header.jsp" />
 	
 	<div class="container">
+
 		<c:if test="${data.msg!=null}">
 			<div class="alert alert-danger">
 				<em> ${data.msg} </em>
-			</div>
-	
+			</div>c	
 		</c:if>
 	
-		<em style="font-size: larger"><fmt:message key="app.description"/></em><br><br>
+		<em style="font-size: larger;"><fmt:message key="app.description"/></em><br><br>
+
 		<form id="upload_form" action="result" method="post"
 			onSubmit="return false" name="formulaire"
 			enctype="multipart/form-data" class="form-horizontal">
@@ -122,7 +123,7 @@
 					<div class="col-sm-8">
 						<input type="text" id="url" name="url" value=""
 							placeholder="http://..." class="form-control"
-							onkeypress="enabledInput('url');" /> 
+							onchange="enabledInput('url');" /> 
 					</div>
 				</div>
 

@@ -92,7 +92,7 @@ public class Process {
 				}
 				error.setState(stateText);
 				
-				// find issue 's description in user language
+				// find issue's description in user language
 				IssueDescription desc = ValidatorConfig.getInstance().getApplicationData().findIssueDescriptionById(issue.getIssueDescriptor().getId());
 				error.setDescription(desc.getDescriptionByLang(lang));
 				error.setRuleName(desc.getLabelByLang(lang));
