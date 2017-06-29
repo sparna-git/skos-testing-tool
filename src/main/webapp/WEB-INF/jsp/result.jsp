@@ -20,8 +20,7 @@
 	rel="stylesheet" />
 <link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="resources/css/style.css" type="text/css">
-<link rel="stylesheet" href="resources/css/print.css" type="text/css"
-	media="print">
+<link rel="stylesheet" href="resources/css/print.css" type="text/css" media="print">
 <link rel="stylesheet" href="resources/css/print-preview.css"
 	type="text/css" media="screen">
 <script src="resources/js/jquery-1.11.3.js"></script>
@@ -61,7 +60,7 @@ $(function() {
 			   <fmt:param value="${data.fileName}"/>
 			   <fmt:param value="${data.issueDate}"/>
 			</fmt:message>
-			<p>${filevalidated}</p>
+			<h5>${filevalidated}</h5>
 		  </div>
 		  <div class="panel-body">
 		  	
@@ -107,7 +106,7 @@ $(function() {
 								</div>
 								<div>
 									<c:if test="${error.number>4}">
-										<a class="toggleTableLink" href="#"><i>show/hide all
+										<a class="toggleTableLink hidden-print" href="#"><i>show/hide all
 												${error.number} results</i></a>
 									</c:if>
 								</div>

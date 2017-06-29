@@ -7,14 +7,13 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.eclipse.rdf4j.repository.RepositoryException;
 import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.Rio;
@@ -89,10 +88,7 @@ public class SkosValidatorController {
 		SessionData sessionData=SessionData.retrieve(request.getSession());
 
 		ValidatorData data = new ValidatorData();
-
-		List<String> list=Arrays.asList(choice.split("[,]"));
-
-		data.setChoiceList(list);
+		data.setChoiceList(Arrays.asList(choice.split(",")));
 
 		ValidateSkosFile skos=new ValidateSkosFile(choice);	
 
@@ -118,7 +114,9 @@ public class SkosValidatorController {
 					URL dataUrl = new URL(url);
 					InputStream in = new DataInputStream(new BufferedInputStream(dataUrl.openStream()));
 					qSkosResult = skos.validate(in, Rio.getWriterFormatForFileName(url).orElse(RDFFormat.RDFXML));
+
 					data.setFileName(url);
+
 				} catch (Exception e) {
 					e.printStackTrace();
 					return doError(request, e.getMessage()); 
@@ -145,58 +143,57 @@ public class SkosValidatorController {
 				break;
 			}
 			}
-
-		} catch (Exception e) {
+		}catch (Exception e) {
+			doError(request,e.getMessage());
 			e.printStackTrace();
-			return doError(request, e.getMessage()); 
 		}
 		return null;
-	}
-
-	/**
-	 * 
-	 * @param request
-	 * @param message
-	 * @return
-	 */
-	protected ModelAndView doError(
-			HttpServletRequest request,
-			String message
-			) {
-		ValidatorData data = new ValidatorData();
-		data.setMsg(message);
-		request.setAttribute(ValidatorData.KEY, data);
-		return new ModelAndView("home");
-	}
-
-	/**
-	 * 
-	 * @param nbrules
-	 * @param lang
-	 * @param qSkosResult
-	 * @param data
-	 * @throws IOException
-	 */
-
-	private void doResult(
-			Integer nbrules, 
-			String lang, 
-			Collection<Issue> qSkosResult, 
-			ValidatorData data
-			) throws IOException {
-		//récupérer le nombre total des règles à vérifier
-		data.setRulesNumber(nbrules-3);
-		//récupérer le resultat de la vérification des règles
-		Process process = new Process(lang);
-		data.setErrorList(process.createReport(qSkosResult));
-		//récupérer les règles non vérifiées
-		data.setRulesFail(process.getRulesFail());
-		//récupérer le nombre de collection, concept et conceptscheme
-		data.setAllcollections(process.getAllcollection());
-		data.setAllconcepts(process.getAllconcepts());
-		data.setAllconceptschemes(process.getAllconceptscheme());
-		String issuedDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
-		data.setIssueDate(issuedDate);
-	}
-
 }
+
+		/**
+		 * 
+		 * @param request
+		 * @param message
+		 * @return
+		 */
+		protected ModelAndView doError(
+				HttpServletRequest request,
+				String message
+				) {
+			ValidatorData data = new ValidatorData();
+			data.setMsg(message);
+			request.setAttribute(ValidatorData.KEY, data);
+			return new ModelAndView("home");
+		}
+
+		/**
+		 * 
+		 * @param nbrules
+		 * @param lang
+		 * @param qSkosResult
+		 * @param data
+		 * @throws IOException
+		 */
+
+		private void doResult(
+				Integer nbrules, 
+				String lang, 
+				Collection<Issue> qSkosResult, 
+				ValidatorData data
+				) throws IOException {
+			//récupérer le nombre total des règles à vérifier
+			data.setRulesNumber(nbrules-3);
+			//récupérer le resultat de la vérification des règles
+			Process process = new Process(lang);
+			data.setErrorList(process.createReport(qSkosResult));
+			//récupérer les règles non vérifiées
+			data.setRulesFail(process.getRulesFail());
+			//récupérer le nombre de collection, concept et conceptscheme
+			data.setAllcollections(process.getAllcollection());
+			data.setAllconcepts(process.getAllconcepts());
+			data.setAllconceptschemes(process.getAllconceptscheme());
+			String issuedDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
+			data.setIssueDate(issuedDate);
+		}
+
+	}

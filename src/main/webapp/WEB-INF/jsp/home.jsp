@@ -67,15 +67,17 @@
 </head>
 <body style="">
 	<jsp:include page="header.jsp" />
-	<c:if test="${data.msg!=null}">
-		<div class="alert alert-danger" style="width:50%; margin:auto; text-align:center;">
-			<em> ${data.msg} </em>
-		</div>
-
-	</c:if>
 	
 	<div class="container">
-		<em style="font-size:larger;"><fmt:message key="app.description"/></em><br><br>
+
+		<c:if test="${data.msg!=null}">
+			<div class="alert alert-danger">
+				<em> ${data.msg} </em>
+			</div>c	
+		</c:if>
+	
+		<em style="font-size: larger;"><fmt:message key="app.description"/></em><br><br>
+
 		<form id="upload_form" action="result" method="post"
 			onSubmit="return false" name="formulaire"
 			enctype="multipart/form-data" class="form-horizontal">
@@ -84,8 +86,10 @@
 				<h4><fmt:message key="choice" /></h4>
 				<br />
 				<div class="form-group">
-					<input class="col-sm-1" type="radio" name="source" id="source-file"
-						value="file" onchange="enabledInput('file')" />
+					<div class="col-sm-1" style="text-align:right">
+						<input type="radio" name="source" id="source-file"
+							value="file" onchange="enabledInput('file')" />
+					</div>
 						<label class="col-sm-2 control-label" for="source-file"> <fmt:message key="localFile" />
 					</label>
 					<div class="col-sm-8">
@@ -111,8 +115,10 @@
 				</div>
 	
 				<div class="form-group">
-					<input class="col-sm-1" type="radio" name="source" id="source-url"
-						value="url" onchange="enabledInput('url')" />
+					<div class="col-sm-1" style="text-align:right">
+						<input type="radio" name="source" id="source-url"
+							value="url" onchange="enabledInput('url')" />
+					</div>
 						<label class="col-sm-2 control-label" for="source-url"> <fmt:message key="remoteUrl" /></label>
 					<div class="col-sm-8">
 						<input type="text" id="url" name="url" value=""

@@ -6,16 +6,8 @@
  */
 
 /* -- Hide screen specific elements -- */
-#nav,
-#footer,
-a.print-preview, .navigation, .navbar {
+.hidden-print {
     display: none;
-}
-
-
-/* -- Typography -- */
-p, table, ul, ol, dl, blockquote, pre, code, form {
-    margin: 0 0 1em;
 }
 
  @page {                
@@ -23,6 +15,14 @@ p, table, ul, ol, dl, blockquote, pre, code, form {
     margin: 0;
     margin-top:50px;
   }
+
+
+/* -- Typography -- */
+p, table, ul, ol, dl, blockquote, pre, code, form {
+    margin: 0 0 1em;
+}
+
+
 .table-outer:FIRST-CHILD{
 	height:unset;
   overflow:visible;
