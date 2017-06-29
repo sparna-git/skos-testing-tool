@@ -1,10 +1,10 @@
-package fr.sparna.validator;
+package fr.sparna.rdf.skos.testtool;
 
 import java.util.List;
 
-import fr.sparna.validator.IssueDescription.IssueLevel;
+import fr.sparna.rdf.skos.testtool.IssueDescription.IssueLevel;
 
-public class SkosError {
+public class IssueResultDisplay {
 	
 	protected String ruleName;
 	

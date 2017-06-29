@@ -5,10 +5,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
-<c:set var="sessionData" value="${sessionScope['fr.sparna.validator.SessionData']}" />
+<c:set var="sessionData" value="${sessionScope['fr.sparna.rdf.skos.testtool.SessionData']}" />
 <fmt:setLocale
-	value="${sessionScope['fr.sparna.validator.SessionData'].userLocale}" />
-<fmt:setBundle basename="fr.sparna.validator.properties.Bundle"/>
+	value="${sessionScope['fr.sparna.rdf.skos.testtool.SessionData'].userLocale}" />
+<fmt:setBundle basename="fr.sparna.rdf.skos.testtool.properties.Bundle"/>
 
 <nav class="navbar navbar-default hidden-print">
 

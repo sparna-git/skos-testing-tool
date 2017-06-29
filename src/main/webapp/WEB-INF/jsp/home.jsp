@@ -7,14 +7,14 @@
 
 
 <c:set var="data"
-	value="${requestScope['fr.sparna.validator.ValidatorData']}" />
+	value="${requestScope['fr.sparna.rdf.skos.testtool.HomeDisplay']}" />
 <c:set var="sessionData"
-	value="${sessionScope['fr.sparna.validator.SessionData']}" />
+	value="${sessionScope['fr.sparna.rdf.skos.testtool.SessionData']}" />
 <c:set var="applicationData" value="${applicationScope.applicationData}" />
 <c:set var="compteur" scope="session" value="0" />
 <fmt:setLocale
-	value="${sessionScope['fr.sparna.validator.SessionData'].userLocale}" />
-<fmt:setBundle basename="fr.sparna.validator.properties.Bundle"/>
+	value="${sessionScope['fr.sparna.rdf.skos.testtool.SessionData'].userLocale}" />
+<fmt:setBundle basename="fr.sparna.rdf.skos.testtool.properties.Bundle"/>
 
 <html>
 <head>

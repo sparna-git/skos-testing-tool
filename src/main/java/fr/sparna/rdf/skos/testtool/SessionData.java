@@ -1,20 +1,15 @@
-package fr.sparna.validator;
-
-import java.util.Collection;
+package fr.sparna.rdf.skos.testtool;
 
 import javax.servlet.http.HttpSession;
 
-import org.springframework.web.multipart.MultipartFile;
-
-import at.ac.univie.mminf.qskos4j.issues.Issue;
-
+/**
+ * Data stored in the user session
+ * @author thomas
+ *
+ */
 public class SessionData {
 
 	protected String userLocale;
-	
-	protected Collection<Issue> qSkosResult;
-	
-	protected String fileName;
 	
 	public String getUserLocale() {
 		return userLocale;
@@ -41,21 +36,6 @@ public class SessionData {
 		session.setAttribute(SessionData.class.getName(), this);
 	}
 
-	public Collection<Issue> getqSkosResult() {
-		return qSkosResult;
-	}
-
-	public void setqSkosResult(Collection<Issue> qSkosResult) {
-		this.qSkosResult = qSkosResult;
-	}
-
-	public String getFileName() {
-		return fileName;
-	}
-
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
 	
 	
 }

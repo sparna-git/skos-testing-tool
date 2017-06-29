@@ -1,17 +1,20 @@
-package fr.sparna.validator;
+package fr.sparna.rdf.skos.testtool;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.List;
 
-public class ValidatorData {
+/**
+ * Data used to display the report result page
+ * @author thomas
+ *
+ */
+public class ReportDisplay {
 
 
-	protected List<SkosError> errorList;
+	protected List<IssueResultDisplay> errorList;
 
 	protected List<String> choiceList;
-
-	protected String msg;
 
 	protected Integer rulesNumber;
 
@@ -29,7 +32,7 @@ public class ValidatorData {
 	
 	protected String issueDate;
 
-	public static final String KEY = ValidatorData.class.getCanonicalName();
+	public static final String KEY = ReportDisplay.class.getCanonicalName();
 
 
 	public List<String> getChoiceList() {
@@ -40,20 +43,12 @@ public class ValidatorData {
 		this.choiceList = choiceList;
 	}
 
-	public List<SkosError> getErrorList() {
+	public List<IssueResultDisplay> getErrorList() {
 		return errorList;
 	}
 
-	public void setErrorList(List<SkosError> errorList) {
+	public void setErrorList(List<IssueResultDisplay> errorList) {
 		this.errorList = errorList;
-	}
-
-	public String getMsg() {
-		return msg;
-	}
-
-	public void setMsg(String msg) {
-		this.msg = msg;
 	}
 
 	public Integer getRulesNumber() {

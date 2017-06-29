@@ -1,15 +1,15 @@
-package fr.sparna.validator;
+package fr.sparna.rdf.skos.testtool;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class ValidatorConfig {
+public class TestToolConfig {
 	
 private Logger log = LoggerFactory.getLogger(this.getClass().getName());
 	
 	// singleton instance
-	private static ValidatorConfig instance;
+	private static TestToolConfig instance;
 	
 	@Autowired
 	protected ApplicationData applicationData;
@@ -18,15 +18,15 @@ private Logger log = LoggerFactory.getLogger(this.getClass().getName());
 	/**
 	 * Singleton private constructor
 	 */
-	private ValidatorConfig() {
+	private TestToolConfig() {
 	}
 	
 	/**
 	 * Singleton Access
 	 */
-	public static ValidatorConfig getInstance() {
+	public static TestToolConfig getInstance() {
 		if(instance == null) {
-			instance = new ValidatorConfig();
+			instance = new TestToolConfig();
 		}
 		return instance;
 	}

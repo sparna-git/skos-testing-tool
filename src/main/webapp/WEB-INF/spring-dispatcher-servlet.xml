@@ -18,7 +18,7 @@
 	<!-- ***** Basic application bootstraping ***** -->
 	<import resource="rules.xml" />
     <!-- scans the annotations in the source code to find @Controller, @Autowired, @Value and more -->
-    <context:component-scan base-package="fr.sparna.validator"/>
+    <context:component-scan base-package="fr.sparna.rdf.skos.testtool"/>
 
 	<!-- Maps /** to the DefaultServletHandler -->
 	<mvc:default-servlet-handler />
@@ -38,8 +38,8 @@
 	<bean id="multipartResolver"  
         class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
     </bean>
-  	<bean id="ValidatorConfig" class="fr.sparna.validator.ValidatorConfig" factory-method="getInstance" />
-	<bean id="applicationData" class="fr.sparna.validator.ApplicationData">
+  	<bean id="ValidatorConfig" class="fr.sparna.rdf.skos.testtool.TestToolConfig" factory-method="getInstance" />
+	<bean id="applicationData" class="fr.sparna.rdf.skos.testtool.ApplicationData">
 		
 		<property name="issueDescriptions">
 			<list >

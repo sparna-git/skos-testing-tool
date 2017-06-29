@@ -1,4 +1,4 @@
-package fr.sparna.validator;
+package fr.sparna.rdf.skos.testtool;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -46,7 +46,7 @@ public class GenerateReportFile {
 	        for (Issue issue : issues) {
 	        	// skip statistical issues
 	        	if(issue.getIssueDescriptor().getType() == IssueType.ANALYTICAL) {
-		        	IssueDescription desc = ValidatorConfig.getInstance().getApplicationData().findIssueDescriptionById(issue.getIssueDescriptor().getId());
+		        	IssueDescription desc = TestToolConfig.getInstance().getApplicationData().findIssueDescriptionById(issue.getIssueDescriptor().getId());
 		            summary.append(desc.getLabelByLang(lang) + ": " + prepareOccurrenceText(issue) + "\n");
 	        	}
 	        }
@@ -119,7 +119,7 @@ public class GenerateReportFile {
 	   
 	   private String createIssueHeader(Issue issue) {
 		  
-		   IssueDescription desc = ValidatorConfig.getInstance().getApplicationData().findIssueDescriptionById(issue.getIssueDescriptor().getId());
+		   IssueDescription desc = TestToolConfig.getInstance().getApplicationData().findIssueDescriptionById(issue.getIssueDescriptor().getId());
 		   
 	        String header = "--- " +desc.getLabelByLang(lang);
 	        URL weblink = issue.getIssueDescriptor().getWeblink();

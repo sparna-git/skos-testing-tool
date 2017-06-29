@@ -1,18 +1,18 @@
-package fr.sparna.validator.test;
+package fr.sparna.rdf.skos.testtool.test;
 
 import java.io.File;
 
 import org.junit.Ignore;
 import org.junit.Test;
 
-import fr.sparna.validator.ValidateSkosFile;
+import fr.sparna.rdf.skos.testtool.ExecuteQSkos;
 
 public class ValidateSkosFileTest {
 
 	@Test
 	@Ignore
 	public void testValidate() throws Exception {
-		ValidateSkosFile skos=new ValidateSkosFile("ilc");
+		ExecuteQSkos skos=new ExecuteQSkos("ilc");
 		skos.validate(new File("/home/clarvie/test.rdf"));
 	}
 

@@ -3,8 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" 	prefix="c" 		%>
 
 <!-- setup the locale for the messages based on the language in the session -->
-<fmt:setLocale value="${sessionScope['fr.sparna.validator.SessionData'].userLocale}"/>
-<fmt:setBundle basename="fr.sparna.validator.properties.Bundle"/>
+<fmt:setLocale value="${sessionScope['fr.sparna.rdf.skos.testtool.SessionData'].userLocale}"/>
+<fmt:setBundle basename="fr.sparna.rdf.skos.testtool.properties.Bundle"/>
 
       	<footer id="footer" class="hidden-print">
       	<fmt:message key="footer.source" />

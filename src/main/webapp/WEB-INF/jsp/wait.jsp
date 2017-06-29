@@ -6,7 +6,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 
-<c:set var="data" value="${requestScope['fr.sparna.validator.ValidatorData']}" />
+<c:set var="data" value="${requestScope['fr.sparna.rdf.skos.testtool.ReportDisplay']}" />
 <c:set var="applicationData" value="${applicationScope.applicationData}" />
 <c:set var="compteur" scope="session" value="0" />
 <html>

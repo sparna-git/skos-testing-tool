@@ -5,13 +5,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <c:set var="data"
-	value="${requestScope['fr.sparna.validator.ValidatorData']}" />
+	value="${requestScope['fr.sparna.rdf.skos.testtool.ReportDisplay']}" />
 <c:set var="sessionData"
-	value="${sessionScope['fr.sparna.validator.SessionData']}" />
+	value="${sessionScope['fr.sparna.rdf.skos.testtool.SessionData']}" />
 <c:set var="compteur" scope="session" value="0" />
 <fmt:setLocale
-	value="${sessionScope['fr.sparna.validator.SessionData'].userLocale}" />
-<fmt:setBundle basename="fr.sparna.validator.properties.Bundle"/>
+	value="${sessionScope['fr.sparna.rdf.skos.testtool.SessionData'].userLocale}" />
+<fmt:setBundle basename="fr.sparna.rdf.skos.testtool.properties.Bundle"/>
 <html>
 <head>
 <title><fmt:message key="menu.brand"/> : ${data.fileName}</title>

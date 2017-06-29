@@ -1,4 +1,4 @@
-package fr.sparna.validator;
+package fr.sparna.rdf.skos.testtool;
 
 import java.util.Comparator;
 import java.util.List;
@@ -46,8 +46,8 @@ public class ApplicationData {
 		return null;
 	}
 
-	public ValidatorConfig getValidatorConfig() {
-		return ValidatorConfig.getInstance();
+	public TestToolConfig getValidatorConfig() {
+		return TestToolConfig.getInstance();
 	}
 
 }

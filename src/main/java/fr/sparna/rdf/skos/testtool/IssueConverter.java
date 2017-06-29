@@ -1,4 +1,4 @@
-package fr.sparna.validator;
+package fr.sparna.rdf.skos.testtool;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,12 +19,12 @@ import at.ac.univie.mminf.qskos4j.issues.language.util.NoCommonLanguagesResult;
 import at.ac.univie.mminf.qskos4j.issues.relations.UnidirectionallyRelatedConceptsResult;
 import at.ac.univie.mminf.qskos4j.result.CollectionResult;
 import at.ac.univie.mminf.qskos4j.util.IssueDescriptor.IssueType;
-import fr.sparna.validator.IssueDescription.IssueLevel;
+import fr.sparna.rdf.skos.testtool.IssueDescription.IssueLevel;
 
-public class Process {
-	private final Logger logger = LoggerFactory.getLogger(Process.class);
+public class IssueConverter {
+	private final Logger logger = LoggerFactory.getLogger(IssueConverter.class);
 
-	protected List<SkosError> resultList = new ArrayList<SkosError>();
+	protected List<IssueResultDisplay> resultList = new ArrayList<IssueResultDisplay>();
 	// language used to generate the report
 	protected String lang;
 
@@ -36,7 +36,7 @@ public class Process {
 
 	protected Long allcollection;
 
-	public Process(String lang) {
+	public IssueConverter(String lang) {
 		super();
 		this.lang = lang;
 	}
@@ -59,7 +59,7 @@ public class Process {
 	}
 
 	@SuppressWarnings({ "rawtypes", "deprecation" })
-	public List<SkosError> createReport(Collection<Issue> issues) throws IOException {
+	public List<IssueResultDisplay> createReport(Collection<Issue> issues) throws IOException {
 
 		int occurrenceCountFail = 0;
 		// for each issue...
@@ -67,8 +67,8 @@ public class Process {
 
 
 			if(issue.getIssueDescriptor().getType()==IssueType.ANALYTICAL){
-				IssueDescription desc = ValidatorConfig.getInstance().getApplicationData().findIssueDescriptionById(issue.getIssueDescriptor().getId());
-				SkosError error=new SkosError();
+				IssueDescription desc = TestToolConfig.getInstance().getApplicationData().findIssueDescriptionById(issue.getIssueDescriptor().getId());
+				IssueResultDisplay error=new IssueResultDisplay();
 				error.setId(issue.getIssueDescriptor().getId());
 
 				String stateText = "";

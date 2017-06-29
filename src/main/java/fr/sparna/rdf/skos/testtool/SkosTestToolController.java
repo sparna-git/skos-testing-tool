@@ -1,4 +1,4 @@
-package fr.sparna.validator;
+package fr.sparna.rdf.skos.testtool;
 
 import java.io.BufferedInputStream;
 import java.io.DataInputStream;
@@ -28,9 +28,9 @@ import org.springframework.web.servlet.ModelAndView;
 import at.ac.univie.mminf.qskos4j.issues.Issue;
 
 @Controller
-public class SkosValidatorController {
+public class SkosTestToolController {
 
-	private final Logger logger = LoggerFactory.getLogger(SkosValidatorController.class);
+	private final Logger logger = LoggerFactory.getLogger(SkosTestToolController.class);
 
 	private enum SOURCE_TYPE {
 		FILE,
@@ -52,8 +52,8 @@ public class SkosValidatorController {
 			@RequestParam(value="lang", required=false) String lang,
 			HttpServletRequest request
 			) throws IOException{
-		ValidatorData data = new ValidatorData();
-		return new ModelAndView("home", ValidatorData.KEY, data);
+		HomeDisplay data = new HomeDisplay();
+		return new ModelAndView("home", HomeDisplay.KEY, data);
 	}
 
 	/**
@@ -91,10 +91,10 @@ public class SkosValidatorController {
 		//récupérer la session
 		SessionData sessionData=SessionData.retrieve(request.getSession());
 
-		ValidatorData data = new ValidatorData();
+		ReportDisplay data = new ReportDisplay();
 		data.setChoiceList(Arrays.asList(choice.split(",")));
 
-		ValidateSkosFile skos=new ValidateSkosFile(choice);	
+		ExecuteQSkos skos=new ExecuteQSkos(choice);	
 
 		Collection<Issue> qSkosResult = null;
 		if(lang==null){
@@ -145,7 +145,7 @@ public class SkosValidatorController {
 				double timeMilli = new Long(System.currentTimeMillis()-start).doubleValue();
 				//récupérer le temps d'éxécution des tâches
 				data.setExecutionTime(timeMilli/1000d);
-				return new ModelAndView("result", ValidatorData.KEY, data);
+				return new ModelAndView("result", ReportDisplay.KEY, data);
 			}
 			
 			}
@@ -165,9 +165,9 @@ public class SkosValidatorController {
 				HttpServletRequest request,
 				String message
 				) {
-			ValidatorData data = new ValidatorData();
+			HomeDisplay data = new HomeDisplay();
 			data.setMsg(message);
-			request.setAttribute(ValidatorData.KEY, data);
+			request.setAttribute(HomeDisplay.KEY, data);
 			return new ModelAndView("home");
 		}
 
@@ -184,12 +184,12 @@ public class SkosValidatorController {
 				Integer nbrules, 
 				String lang, 
 				Collection<Issue> qSkosResult, 
-				ValidatorData data
+				ReportDisplay data
 				) throws IOException {
 			//récupérer le nombre total des règles à vérifier
 			data.setRulesNumber(nbrules-3);
 			//récupérer le resultat de la vérification des règles
-			Process process = new Process(lang);
+			IssueConverter process = new IssueConverter(lang);
 			data.setErrorList(process.createReport(qSkosResult));
 			//récupérer les règles non vérifiées
 			data.setRulesFail(process.getRulesFail());

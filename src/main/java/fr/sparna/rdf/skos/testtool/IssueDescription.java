@@ -1,4 +1,4 @@
-package fr.sparna.validator;
+package fr.sparna.rdf.skos.testtool;
 
 import java.util.Map;
 

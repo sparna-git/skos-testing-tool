@@ -1,9 +1,9 @@
-package fr.sparna.validator;
+package fr.sparna.rdf.skos.testtool;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -28,10 +28,8 @@ import at.ac.univie.mminf.qskos4j.util.vocab.SkosOntology;
 
 
 
-public class ValidateSkosFile {
-	private final Logger logger = LoggerFactory.getLogger(ValidateSkosFile.class);
-	
-	private static final String SKOS_FILE	="http://localhost:8080/skos-validator/skos.rdf";
+public class ExecuteQSkos {
+	private final Logger logger = LoggerFactory.getLogger(ExecuteQSkos.class);
 	
 	protected String rules;
 
@@ -41,7 +39,7 @@ public class ValidateSkosFile {
 	
 	//protected long collectionNumber;
 	
-	public ValidateSkosFile(String rules) {
+	public ExecuteQSkos(String rules) {
 		super();
 		this.rules = rules;
 	}
@@ -55,28 +53,10 @@ public class ValidateSkosFile {
 	 * @throws IOException
 	 */
 	@SuppressWarnings("rawtypes")
-	public Collection<Issue> validate(File f) throws  IOException {
-		
-		// load RDF in a Repository
-		Repository r = new SailRepository(new ForwardChainingRDFSInferencer(new MemoryStore()));
-		r.initialize();
-		factory=r.getValueFactory();
-		// load some data in the repository
-		try(RepositoryConnection c = r.getConnection()) {
-
-			c.add(
-					f, 
-					RDF.NAMESPACE,
-					Rio.getParserFormatForFileName(f.getName()).get()
-					);
-			c.add(
-					new URL(SKOS_FILE),
-					SkosOntology.SKOS_BASE_IRI,
-					RDFFormat.RDFXML,
-					factory.createIRI(SkosOntology.SKOS_ONTO_IRI));
-
-			return runQSkos(c);
-
+	public Collection<Issue> validate(File f) throws  IOException {		
+		try(FileInputStream fis = new FileInputStream(f)) {
+			RDFFormat format = Rio.getParserFormatForFileName(f.getName()).orElse(RDFFormat.RDFXML);
+			return validate(fis, format);
 		}
 	}
 	
@@ -107,8 +87,10 @@ public class ValidateSkosFile {
 					);
 
 			logger.info("Loading SKOS ontology...");
+			
+			InputStream skosInputStream = this.getClass().getClassLoader().getResourceAsStream("skos.rdf");			
 			c.add(
-					new URL(SKOS_FILE),
+					skosInputStream,
 					SkosOntology.SKOS_BASE_IRI,
 					RDFFormat.RDFXML,
 					factory.createIRI(SkosOntology.SKOS_ONTO_IRI));
