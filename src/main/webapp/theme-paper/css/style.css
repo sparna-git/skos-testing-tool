@@ -1,10 +1,11 @@
 
 
-#files, #url{
-	border:1px solid #ebebe0;
-	background-color:white;
-}
 
+/* larger control labels */
+.control-label {
+	font-weight: bold;
+	font-size: 1.1em;
+}
  
 footer{
 	margin:auto;

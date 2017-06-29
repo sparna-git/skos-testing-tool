@@ -82,48 +82,57 @@
 			onSubmit="return false" name="formulaire"
 			enctype="multipart/form-data" class="form-horizontal">
 			
-			<div class="jumbotron" style="padding-bottom: 80px;">			
-				<h4><fmt:message key="choice" /></h4>
-				<br />
-				<div class="form-group">
-					<div class="col-sm-1" style="text-align:right">
-						<input type="radio" name="source" id="source-file"
-							value="file" onchange="enabledInput('file')" />
-					</div>
-						<label class="col-sm-2 control-label" for="source-file"> <fmt:message key="localFile" />
-					</label>
-					<div class="col-sm-8">
-						<div class="fileinput fileinput-new input-group "
-							data-provides="fileinput" id="files">
-	
-							<div class="form-control" data-trigger="fileinput">
-								<i class="glyphicon glyphicon-file fileinput-exists"></i> <span
-									class="fileinput-filename"></span>
-							</div>
-							<span class="input-group-addon btn btn-default btn-file"> <span
-								class="fileinput-new"> <fmt:message key="file" /></span> <span
-								class="fileinput-exists"><fmt:message key="change" /></span><input
-								onchange="enabledInput('file');" type="file" id="file" required
-								name="file">
-							</span> <a href="#"
-								class="input-group-addon btn btn-default fileinput-exists"
-								data-dismiss="fileinput"><fmt:message key="remove" /> </a>
-								
+			<div class="panel panel-default">			
+				<div class="panel-heading"><h4><fmt:message key="choice" /></h4></div>
+				
+				<div class="panel-body">
+					<div class="form-group">
+						<div class="col-sm-1" style="text-align:right">
+							<input type="radio" name="source" id="source-file"
+								value="file" onchange="enabledInput('file')" />
 						</div>
-						<span class="help-block"><fmt:message key="file.help" /></span>
-					</div>
-				</div>
+							<label class="col-sm-2 control-label" for="source-file"> <fmt:message key="localFile" />
+						</label>
+						<div class="col-sm-8">
+							<div class="fileinput fileinput-new input-group "
+								data-provides="fileinput" id="files">
+		
+								<div class="form-control" data-trigger="fileinput">
+									<i class="glyphicon glyphicon-file fileinput-exists"></i> <span
+										class="fileinput-filename"></span>
+								</div>
+								<span class="input-group-addon btn btn-default btn-file"> <span
+									class="fileinput-new"> <fmt:message key="file" /></span> <span
+									class="fileinput-exists"><fmt:message key="change" /></span><input
+									onchange="enabledInput('file');" type="file" id="file" required
+									name="file">
+								</span> <a href="#"
+									class="input-group-addon btn btn-default fileinput-exists"
+									data-dismiss="fileinput"><fmt:message key="remove" /> </a>
+									
+							</div>
+							<span class="help-block"><fmt:message key="file.help" /></span>
+						</div>
+					</div><!-- /.form-group -->
+		
+					<div class="form-group">
+						<div class="col-sm-1" style="text-align:right">
+							<input type="radio" name="source" id="source-url"
+								value="url" onchange="enabledInput('url')" />
+						</div>
+							<label class="col-sm-2 control-label" for="source-url"> <fmt:message key="remoteUrl" /></label>
+						<div class="col-sm-8">
+							<input type="text" id="url" name="url" value=""
+								placeholder="http://..." class="form-control"
+								onchange="enabledInput('url');" /> 
+						</div>
+					</div><!-- /.form-group -->
 	
-				<div class="form-group">
-					<div class="col-sm-1" style="text-align:right">
-						<input type="radio" name="source" id="source-url"
-							value="url" onchange="enabledInput('url')" />
-					</div>
-						<label class="col-sm-2 control-label" for="source-url"> <fmt:message key="remoteUrl" /></label>
-					<div class="col-sm-8">
-						<input type="text" id="url" name="url" value=""
-							placeholder="http://..." class="form-control"
-							onchange="enabledInput('url');" /> 
+					<br />
+					<div class="col-sm-offset-3 col-sm-8">
+						<button class="btn-lg btn-primary" type="submit" onclick="choice()">
+							<fmt:message key="valid" />
+						</button>
 					</div>
 				</div>
 				
@@ -138,7 +147,9 @@
 						<fmt:message key="valid" />
 					</button>
 				</div>
+
 				
+				</div>
 			</div>
 	
 	
