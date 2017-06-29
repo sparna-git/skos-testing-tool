@@ -7,11 +7,8 @@ import java.net.URL;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.RDF4JException;
 import org.eclipse.rdf4j.model.ValueFactory;
-import org.eclipse.rdf4j.model.impl.SimpleIRI;
-import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
-import org.eclipse.rdf4j.model.impl.URIImpl;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.query.QueryLanguage;
 import org.eclipse.rdf4j.query.Update;

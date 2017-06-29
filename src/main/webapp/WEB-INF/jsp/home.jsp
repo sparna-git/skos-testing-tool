@@ -83,7 +83,7 @@
 			enctype="multipart/form-data" class="form-horizontal">
 			
 			<div class="panel panel-default">			
-				<div class="panel-heading"><h4><fmt:message key="choice" /></h4></div>
+				<div class="panel-heading"><h4><fmt:message key="home.choice" /></h4></div>
 				
 				<div class="panel-body">
 					<div class="form-group">
@@ -91,7 +91,7 @@
 							<input type="radio" name="source" id="source-file"
 								value="file" onchange="enabledInput('file')" />
 						</div>
-							<label class="col-sm-2 control-label" for="source-file"> <fmt:message key="localFile" />
+							<label class="col-sm-2 control-label" for="source-file"> <fmt:message key="home.localFile" />
 						</label>
 						<div class="col-sm-8">
 							<div class="fileinput fileinput-new input-group "
@@ -102,16 +102,16 @@
 										class="fileinput-filename"></span>
 								</div>
 								<span class="input-group-addon btn btn-default btn-file"> <span
-									class="fileinput-new"> <fmt:message key="file" /></span> <span
-									class="fileinput-exists"><fmt:message key="change" /></span><input
+									class="fileinput-new"> <fmt:message key="home.file" /></span> <span
+									class="fileinput-exists"><fmt:message key="home.change" /></span><input
 									onchange="enabledInput('file');" type="file" id="file" required
 									name="file">
 								</span> <a href="#"
 									class="input-group-addon btn btn-default fileinput-exists"
-									data-dismiss="fileinput"><fmt:message key="remove" /> </a>
+									data-dismiss="fileinput"><fmt:message key="home.remove" /> </a>
 									
 							</div>
-							<span class="help-block"><fmt:message key="file.help" /></span>
+							<span class="help-block"><fmt:message key="home.file.help" /></span>
 						</div>
 					</div><!-- /.form-group -->
 		
@@ -120,7 +120,7 @@
 							<input type="radio" name="source" id="source-url"
 								value="url" onchange="enabledInput('url')" />
 						</div>
-							<label class="col-sm-2 control-label" for="source-url"> <fmt:message key="remoteUrl" /></label>
+							<label class="col-sm-2 control-label" for="source-url"> <fmt:message key="home.remoteUrl" /></label>
 						<div class="col-sm-8">
 							<input type="text" id="url" name="url" value=""
 								placeholder="http://..." class="form-control"
@@ -131,7 +131,7 @@
 					<br />
 					<div class="col-sm-offset-3 col-sm-8">
 						<button class="btn-lg btn-primary" type="submit" onclick="choice()">
-							<fmt:message key="valid" />
+							<fmt:message key="home.valid" />
 						</button>
 					</div>
 				
@@ -146,7 +146,7 @@
 						<a class="accordion-toggle " data-toggle="collapse"
 							data-parent="#myAccordion" href="#collapse1">
 							<h4>
-								<fmt:message key="option" />
+								<fmt:message key="home.option" />
 							</h4>
 						</a>
 					</div>

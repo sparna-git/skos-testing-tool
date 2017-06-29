@@ -7,9 +7,9 @@
 <fmt:setBundle basename="fr.sparna.validator.properties.Bundle"/>
 
       	<footer id="footer" class="hidden-print">
-      	<fmt:message key="source" />
+      	<fmt:message key="footer.source" />
       	&nbsp;|&nbsp;
-      	<fmt:message key="developpedBy" />&nbsp;
+      	<fmt:message key="footer.developpedBy" />&nbsp;
       	<a href="http://sparna.fr" target="_blank"><img src="resources/images/sparna.jpeg" style="width:80px;"/></a>
       	<br />
       	<br />

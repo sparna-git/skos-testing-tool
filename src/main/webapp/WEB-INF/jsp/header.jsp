@@ -14,16 +14,16 @@
 
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="home">Skos Validator</a>
+			<a class="navbar-brand" href="home"><fmt:message key="menu.brand"/></a>
 		</div>
-		<ul class="nav navbar-nav">
+		<ul class="nav navbar-nav pull-right">
 			<li >
 				<a href="home">
-					<em>
-						<fmt:message key="menu.home"/>
-					</em>
-
-				</a></li>
+					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					&nbsp;
+					<em><fmt:message key="menu.home"/></em>
+				</a>
+			</li>
 			<li id="header-pill-lang"><a class="dropdown-toggle"
 				data-toggle="dropdown" href="#"> <c:choose>
 						<c:when 
