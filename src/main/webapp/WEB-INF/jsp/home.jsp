@@ -40,7 +40,7 @@
 		});
 		// on enleve le dernier caractere
 		choix = choix.substr(0, choix.length-1);
-		document.formulaire.rulesChoice.value =choix;
+		document.formulaire.rules.value =choix;
 		document.formulaire.submit();		
 	}
 	
@@ -120,7 +120,12 @@
 							onchange="enabledInput('url');" /> 
 					</div>
 				</div>
-
+				
+				<div class="col-sm-offset-3 col-sm-8">
+					<label><input type="radio" value="html" name="report"><fmt:message key="reportHtml"/></label>
+					<label ><input type="radio" value="text" name="report"><fmt:message key="reportText"/></label>
+				</div>
+				<br />
 				<br />
 				<div class="col-sm-offset-3 col-sm-8">
 					<button class="btn-lg btn-primary" type="submit" onclick="choice()">
@@ -194,11 +199,13 @@
 						</div>
 					</div>
 				</div>
+				
 				<!-- end accordion -->
+				
 				<br>
 			</div>
 			
-			<input type="hidden" name="rulesChoice" id="rulesChoice" />
+			<input type="hidden" name="rules" id="rulesChoice" />
 		</form>
 	
 	</div>

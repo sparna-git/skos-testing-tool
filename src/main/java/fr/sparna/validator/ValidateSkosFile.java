@@ -33,6 +33,8 @@ import at.ac.univie.mminf.qskos4j.util.vocab.SkosOntology;
 public class ValidateSkosFile {
 	private final Logger logger = LoggerFactory.getLogger(ValidateSkosFile.class);
 	
+	private static final String SKOS_FILE	="http://localhost:8080/skos-validator/skos.rdf";
+	
 	protected String rules;
 
 	protected Integer rulesNumber;
@@ -72,7 +74,7 @@ public class ValidateSkosFile {
 					Rio.getParserFormatForFileName(f.getName()).get()
 					);
 			c.add(
-					new URL(SkosOntology.SKOS_ONTO_IRI),
+					new URL(SKOS_FILE),
 					SkosOntology.SKOS_BASE_IRI,
 					RDFFormat.RDFXML,
 					factory.createIRI(SkosOntology.SKOS_ONTO_IRI));
@@ -111,7 +113,7 @@ public class ValidateSkosFile {
 					);
 
 			c.add(
-					new URL(SkosOntology.SKOS_ONTO_IRI),
+					new URL(SKOS_FILE),
 					SkosOntology.SKOS_BASE_IRI,
 					RDFFormat.RDFXML,
 					factory.createIRI(SkosOntology.SKOS_ONTO_IRI));

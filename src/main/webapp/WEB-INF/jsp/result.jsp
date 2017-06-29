@@ -77,8 +77,8 @@ $(function() {
 			</fmt:message>
 		  	<p>${value}</p>
 		  	<p>${validate}</p>
-		  	<p class="hidden-print"><span id="print"></span>&nbsp;|&nbsp;<a href="report.txt"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>&nbsp;<fmt:message key="downloadReport" /></a></p>
-		  </div>
+		  	<p class="hidden-print"><span id="print"></span></p>
+		  	</div>
 		</div>
 		<table id="table" data-show-print="true"
 			class="table table-hover table-expandable table-striped">
