@@ -68,7 +68,7 @@
 	</logger>
     
  
-    <logger name="eu.europa.publications" additivity="false">
+    <logger name="fr.sparna" additivity="false">
         <level value="DEBUG" />
         <appender-ref ref="STDOUT" />
         <appender-ref ref="ROLLING_FILE" />

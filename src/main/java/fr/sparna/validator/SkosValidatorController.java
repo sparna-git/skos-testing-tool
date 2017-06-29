@@ -17,9 +17,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.eclipse.rdf4j.repository.RepositoryException;
 import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.Rio;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -29,6 +30,7 @@ import at.ac.univie.mminf.qskos4j.issues.Issue;
 @Controller
 public class SkosValidatorController {
 
+	private final Logger logger = LoggerFactory.getLogger(SkosValidatorController.class);
 
 	private enum SOURCE_TYPE {
 		FILE,
@@ -82,6 +84,8 @@ public class SkosValidatorController {
 			HttpServletResponse response
 			) throws RepositoryException, MalformedURLException {
 
+		logger.info("validate : "+"source="+sourceString+",url="+url+",choice="+choice+",report="+report+",lang="+lang);
+		
 		long start = System.currentTimeMillis();
 
 		//récupérer la session
@@ -126,7 +130,16 @@ public class SkosValidatorController {
 
 			switch(REPORT_TYPE.valueOf(report.toUpperCase())){
 
-			case HTML :  {
+			case TEXT:   {
+				//générer le rapport
+				GenerateReportFile reportfile=new GenerateReportFile(qSkosResult,sessionData.getUserLocale(),data.getFileName());
+				response.setContentType("text/plain; charset=utf-8");
+				reportfile.outputIssuesReport(response.getOutputStream());
+				break;
+			}
+			
+			case HTML :
+			default : {
 				doResult(skos.getRulesNumber(),lang,qSkosResult,data);
 				//fin des tâches
 				double timeMilli = new Long(System.currentTimeMillis()-start).doubleValue();
@@ -134,14 +147,7 @@ public class SkosValidatorController {
 				data.setExecutionTime(timeMilli/1000d);
 				return new ModelAndView("result", ValidatorData.KEY, data);
 			}
-
-			case TEXT:   {
-				//générer le rapport
-				GenerateReportFile reportfile=new GenerateReportFile(qSkosResult,sessionData.getUserLocale(),data.getFileName());
-				response.addHeader("Content-Encoding", "UTF-8");
-				reportfile.outputIssuesReport(response.getOutputStream());
-				break;
-			}
+			
 			}
 		}catch (Exception e) {
 			doError(request,e.getMessage());

@@ -19,7 +19,7 @@
 <html>
 <head>
 
-<title>Validator</title>
+<title><fmt:message key="menu.brand"/></title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 <link href="resources/jasny-bootstrap/css/jasny-bootstrap.min.css"
@@ -30,10 +30,9 @@
 <script src="resources/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
 
 <script type="text/javascript">
-	var choix="";
 	
 	function choice(){
-		
+		var choix="";
 		$(".ruleCheckbox:checked").each(function( index ) {
 			choix += $( this ).val();
 			choix += ",";
@@ -131,7 +130,7 @@
 					<br />
 					<div class="form-group">
 						<label class="col-sm-offset-1 col-sm-2 control-label" for="source-url"> <fmt:message key="home.format" /></label>
-						<div class="col-sm-8">
+						<div class="col-sm-2">
 							<select class="dropdown form-control" name="report">
 								<option value="html" selected><fmt:message key="home.reportHtml"/></option>
 								<option value="text" ><fmt:message key="home.reportText"/></option>

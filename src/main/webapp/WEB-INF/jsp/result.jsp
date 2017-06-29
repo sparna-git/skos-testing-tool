@@ -14,7 +14,7 @@
 <fmt:setBundle basename="fr.sparna.validator.properties.Bundle"/>
 <html>
 <head>
-<title>Validator</title>
+<title><fmt:message key="menu.brand"/> : ${data.fileName}</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link href="resources/jasny-bootstrap/css/jasny-bootstrap.min.css"
 	rel="stylesheet" />

@@ -3,13 +3,13 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>fr.sparna.validator</groupId>
-	<artifactId>skos-validator</artifactId>
+	<groupId>fr.sparna.skos-testing-tool</groupId>
+	<artifactId>skos-testing-tool</artifactId>
 	<version>0.8.0</version>
 	<packaging>war</packaging>
 
-	<name>skos-validator</name>
-	<description>SKOS validator</description>
+	<name>skos-testing-tool</name>
+	<description>SKOS testing tool</description>
 
 	<build>
 		<plugins>
