@@ -31,6 +31,8 @@ import at.ac.univie.mminf.qskos4j.util.vocab.SkosOntology;
 public class ValidateSkosFile {
 	private final Logger logger = LoggerFactory.getLogger(ValidateSkosFile.class);
 	
+	private static final String SKOS_FILE	="http://localhost:8080/skos-validator/skos.rdf";
+	
 	protected String rules;
 
 	protected Integer rulesNumber;
@@ -68,7 +70,7 @@ public class ValidateSkosFile {
 					Rio.getParserFormatForFileName(f.getName()).get()
 					);
 			c.add(
-					new URL(SkosOntology.SKOS_ONTO_IRI),
+					new URL(SKOS_FILE),
 					SkosOntology.SKOS_BASE_IRI,
 					RDFFormat.RDFXML,
 					factory.createIRI(SkosOntology.SKOS_ONTO_IRI));
@@ -106,7 +108,7 @@ public class ValidateSkosFile {
 
 			logger.info("Loading SKOS ontology...");
 			c.add(
-					new URL(SkosOntology.SKOS_ONTO_IRI),
+					new URL(SKOS_FILE),
 					SkosOntology.SKOS_BASE_IRI,
 					RDFFormat.RDFXML,
 					factory.createIRI(SkosOntology.SKOS_ONTO_IRI));
@@ -117,14 +119,17 @@ public class ValidateSkosFile {
 							+"PREFIX skosxl:<http://www.w3.org/2008/05/skos-xl#>"
 							+ "INSERT {	?x skos:prefLabel ?y} "
 								+ "WHERE {?x skosxl:prefLabel/skosxl:literalForm ?y}";
-			Update u1 = c.prepareUpdate(QueryLanguage.SPARQL, update1);	
+
+			Update u1=c.prepareUpdate(QueryLanguage.SPARQL, update1);
+
 			u1.execute();
 			
 			String update2 = "PREFIX skos:<http://www.w3.org/2004/02/skos/core#>"
 							+"PREFIX skosxl:<http://www.w3.org/2008/05/skos-xl#>"
 							+ "INSERT {	?x skos:altLabel ?y} "
 								+ "WHERE {?x skosxl:altLabel/skosxl:literalForm ?y}";
-			Update u2 = c.prepareUpdate(QueryLanguage.SPARQL, update2);
+
+			Update u2=c.prepareUpdate(QueryLanguage.SPARQL, update2);
 			u2.execute();
 			
 			logger.info("Run qSKOS...");

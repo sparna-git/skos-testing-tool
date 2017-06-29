@@ -40,7 +40,7 @@
 		});
 		// on enleve le dernier caractere
 		choix = choix.substr(0, choix.length-1);
-		document.formulaire.rulesChoice.value =choix;
+		document.formulaire.rules.value =choix;
 		document.formulaire.submit();		
 	}
 	
@@ -129,15 +129,25 @@
 					</div><!-- /.form-group -->
 	
 					<br />
+					<div class="form-group">
+						<label class="col-sm-offset-1 col-sm-2 control-label" for="source-url"> <fmt:message key="home.format" /></label>
+						<div class="col-sm-8">
+							<select class="dropdown form-control" name="report">
+								<option value="html" selected><fmt:message key="home.reportHtml"/></option>
+								<option value="text" ><fmt:message key="home.reportText"/></option>
+							</select>
+						</div>
+					</div>
+					<br />
+				
 					<div class="col-sm-offset-3 col-sm-8">
 						<button class="btn-lg btn-primary" type="submit" onclick="choice()">
 							<fmt:message key="home.valid" />
 						</button>
 					</div>
-				
-				</div><!-- /.panel-body -->
-				
-			</div>
+				</div>			
+				</div>
+			
 	
 	
 			<div class="panel-group" id="myAccordion">
@@ -203,11 +213,13 @@
 						</div>
 					</div>
 				</div>
+				
 				<!-- end accordion -->
+				
 				<br>
 			</div>
 			
-			<input type="hidden" name="rulesChoice" id="rulesChoice" />
+			<input type="hidden" name="rules" id="rulesChoice" />
 		</form>
 	
 	</div>

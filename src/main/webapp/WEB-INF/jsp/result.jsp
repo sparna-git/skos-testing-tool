@@ -35,7 +35,7 @@
 
 $(function() {
     
-	$('#print').prepend('<a href="" class="print-preview "><span class=\"glyphicon glyphicon-print\" aria-hidden="true"></span>&nbsp;<fmt:message key="print"/></a>');
+	$('#print').prepend('<a href="" class="print-preview "><span class=\"glyphicon glyphicon-print\" aria-hidden="true"></span>&nbsp;<fmt:message key="result.print"/></a>');
     $('a.print-preview').printPreview();
     
 });
@@ -56,7 +56,7 @@ $(function() {
 	<div class="container" id="result-container">
 		<div  id="exe" class="panel panel-default">
 		  <div class="panel-heading">
-		  	<fmt:message key="file.validate" var="filevalidated" >
+		  	<fmt:message key="result.file.validate" var="filevalidated" >
 			   <fmt:param value="${data.fileName}"/>
 			   <fmt:param value="${data.issueDate}"/>
 			</fmt:message>
@@ -64,28 +64,28 @@ $(function() {
 		  </div>
 		  <div class="panel-body">
 		  	
-		  	<fmt:message key="statistic" var="value" >
+		  	<fmt:message key="result.statistic" var="value" >
 			   <fmt:param value="${data.rulesNumber}"/>
 			   <fmt:param value="${data.executionTimeString}"/>
 			   <fmt:param value="${data.rulesFail}"/>
 			</fmt:message>
-			<fmt:message key="validate.data" var="validate" >
+			<fmt:message key="result.validate.data" var="validate" >
 			   <fmt:param value="${data.allconcepts}"/>
 			   <fmt:param value="${data.allcollections}"/>
 			   <fmt:param value="${data.allconceptschemes}"/>
 			</fmt:message>
 		  	<p>${value}</p>
 		  	<p>${validate}</p>
-		  	<p class="hidden-print"><span id="print"></span>&nbsp;|&nbsp;<a href="report.txt"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>&nbsp;<fmt:message key="downloadReport" /></a></p>
-		  </div>
+		  	<p class="hidden-print"><span id="print"></span></p>
+		  	</div>
 		</div>
 		<table id="table" data-show-print="true"
 			class="table table-hover table-expandable table-striped">
 			<thead>
 				<tr>
-					<th><fmt:message key="entete.table.rule" /></th>
-					<th><fmt:message key="entete.table.description"/></th>
-					<th><fmt:message key="entete.table.state" /></th>
+					<th><fmt:message key="result.entete.table.rule" /></th>
+					<th><fmt:message key="result.entete.table.description"/></th>
+					<th><fmt:message key="result.entete.table.state" /></th>
 				</tr>
 			</thead>
 			<tbody>

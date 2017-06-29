@@ -29,18 +29,19 @@ public class GenerateReportFile {
 	
 	protected String lang;
 	
+	protected String filename;
 	
-	  public GenerateReportFile(Collection<Issue> issues, String lang) {
+	  public GenerateReportFile(Collection<Issue> issues, String lang,String filename) {
 		super();
 		this.issues = issues;
 		this.lang = lang;
-		
+		this.filename=filename;
 	}
 
 	private String createReportSummary() throws IOException {
 	        StringBuffer summary = new StringBuffer();
 	        String issuedDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
-	        summary.append("*************"+issuedDate+"*************\n\n\n");
+	        summary.append("********"+filename+" "+issuedDate+"*************\n\n\n");
 	        
 	        for (Issue issue : issues) {
 	        	// skip statistical issues
@@ -125,7 +126,7 @@ public class GenerateReportFile {
 	        header += "\nDescription: " +desc.getDescriptionByLang(lang);
 
 	        if (weblink != null) {
-	            header += "\nDetailed information: " +weblink.toString();
+	            header += "\ninformations: " +weblink.toString();
 	        }
 	        return header;
 	    }
