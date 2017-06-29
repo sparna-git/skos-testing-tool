@@ -19,6 +19,7 @@ import at.ac.univie.mminf.qskos4j.issues.language.util.NoCommonLanguagesResult;
 import at.ac.univie.mminf.qskos4j.issues.relations.UnidirectionallyRelatedConceptsResult;
 import at.ac.univie.mminf.qskos4j.result.CollectionResult;
 import at.ac.univie.mminf.qskos4j.util.IssueDescriptor.IssueType;
+import fr.sparna.validator.IssueDescription.IssueLevel;
 
 public class Process {
 	private final Logger logger = LoggerFactory.getLogger(Process.class);
@@ -66,7 +67,7 @@ public class Process {
 
 
 			if(issue.getIssueDescriptor().getType()==IssueType.ANALYTICAL){
-
+				IssueDescription desc = ValidatorConfig.getInstance().getApplicationData().findIssueDescriptionById(issue.getIssueDescriptor().getId());
 
 				System.out.println("issue class: "+issue.getResult().getClass());
 				SkosError error=new SkosError();
@@ -76,6 +77,9 @@ public class Process {
 				String occurrenceaccount = "";
 				if (issue.getResult().isProblematic()) {
 					stateText = "FAIL";
+					if(desc.getLevel() == IssueLevel.WARNING) {
+						stateText = "WARNING";
+					}
 					error.setSuccess(false);
 					occurrenceCountFail++;
 					try{
@@ -93,7 +97,7 @@ public class Process {
 				error.setState(stateText);
 				
 				// find issue's description in user language
-				IssueDescription desc = ValidatorConfig.getInstance().getApplicationData().findIssueDescriptionById(issue.getIssueDescriptor().getId());
+				
 				error.setDescription(desc.getDescriptionByLang(lang));
 				error.setRuleName(desc.getLabelByLang(lang));
 				error.setLevel(desc.getLevel());
@@ -174,20 +178,20 @@ public class Process {
 					else if(issue.getResult() instanceof CollectionResult<?>) {
 						CollectionResult collectionResult = (CollectionResult)issue.getResult();
 						Collection<?> collection = (Collection<?>)collectionResult.getData();
+						
 						collection.forEach(item-> {
 							
 							if(item instanceof IRI) {
 								messages.add("<a href=\""+item.toString()+"\" target=\"_blank\">"+item.toString()+"</a>");
 							} else if(item instanceof LabelConflict) {
-								// messages.add(item.toString());		
 
-								// TODO : improve class LabelConflict to get our hand on the inner LabeledResource to get the label
 								LabelConflict aConflict = (LabelConflict)item;
 								StringBuffer buffer = new StringBuffer();
+								// le literal dupliqué
 								Literal l = aConflict.getConflicts().iterator().next().getLiteral();
 								buffer.append(l+" : ");
-								aConflict.getAffectedResources().stream().forEach(anAffectedResource-> {
-									buffer.append("<a href=\""+anAffectedResource.toString()+"\" target=\"_blank\">"+anAffectedResource.toString()+"</a>"+", ");
+								aConflict.getConflicts().stream().forEach(aLabeledConcept -> {
+									buffer.append("<a href=\""+aLabeledConcept.getConcept().toString()+"\" target=\"_blank\">"+aLabeledConcept.getConcept().toString()+"</a>"+" ("+aLabeledConcept.getLabelType().getUsualPrefixedDisplayUri()+")"+", ");
 								});
 								buffer.delete(buffer.length()-2, buffer.length());
 								messages.add(buffer.toString());
@@ -195,6 +199,7 @@ public class Process {
 							} else if (item instanceof Collection) {
 								// collections inside a collection, case of "disconnected concept clusters"
 								StringBuffer buffer = new StringBuffer();
+								buffer.append("Cluster : ");
 								Collection c = (Collection)item;								
 								c.stream().forEach(elmt -> {
 									if(elmt instanceof IRI) {
@@ -209,6 +214,7 @@ public class Process {
 							} else {
 								messages.add(item.toString());
 							}
+							
 						}					
 								);
 					} else {

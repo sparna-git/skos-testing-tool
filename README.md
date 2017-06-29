@@ -1,29 +1,16 @@
-# README #
+This is a web frontend for [qSKOS](https://github.com/cmader/qSKOS). It allows to assess the quality of SKOS or SKOS-XL vocabularies. It allows to easily submit a file to be validated, and produces a report result page.
 
-This README would normally document whatever steps are necessary to get your application up and running.
 
-### What is this repository for? ###
-
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
-
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
 
 ### Contribution guidelines ###
 
-* Writing tests
-* Code review
-* Other guidelines
+* If you spot a problem or need a specific feature, please [file an issue](https://github.com/tfrancart/skos-validator/issues).
 
-### Who do I talk to? ###
+### Who are you ? ###
 
-* Repo owner or admin
-* Other community or team contact
+*  [qSKOS](https://github.com/cmader/qSKOS) is developped by Christian Mader.
+* This frontend is developped by [Sparna](http://www.sparna.fr).
+
+### Other
+
+A [similar service](http://qskos.poolparty.biz) (although not as cool as this one :-) ) is operated by [PoolParty](https://www.poolparty.biz/).
