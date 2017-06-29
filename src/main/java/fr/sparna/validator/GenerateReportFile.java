@@ -126,7 +126,7 @@ public class GenerateReportFile {
 	        header += "\nDescription: " +desc.getDescriptionByLang(lang);
 
 	        if (weblink != null) {
-	            header += "\nDetailed information: " +weblink.toString();
+	            header += "\ninformations: " +weblink.toString();
 	        }
 	        return header;
 	    }

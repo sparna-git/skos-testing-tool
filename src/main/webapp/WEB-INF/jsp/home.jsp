@@ -129,12 +129,17 @@
 					</div><!-- /.form-group -->
 	
 					<br />
-					<div class="col-sm-offset-3 col-sm-8">
-					<label><input type="radio" value="html" name="report"><fmt:message key="reportHtml"/></label>
-					<label ><input type="radio" value="text" name="report"><fmt:message key="reportText"/></label>
+					<div class="form-group">
+						<label class="col-sm-offset-1 col-sm-2 control-label" for="source-url"> <fmt:message key="format" /></label>
+						<div class="col-sm-8">
+							<select class="dropdown form-control" name="report">
+								<option value="html" selected><fmt:message key="reportHtml"/></option>
+								<option value="text" ><fmt:message key="reportText"/></option>
+							</select>
+						</div>
 					</div>
 					<br />
-					<br />
+				
 					<div class="col-sm-offset-3 col-sm-8">
 						<button class="btn-lg btn-primary" type="submit" onclick="choice()">
 							<fmt:message key="valid" />

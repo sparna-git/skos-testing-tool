@@ -145,7 +145,6 @@ public class SkosValidatorController {
 			}
 		}catch (Exception e) {
 			doError(request,e.getMessage());
-			e.printStackTrace();
 		}
 		return null;
 }

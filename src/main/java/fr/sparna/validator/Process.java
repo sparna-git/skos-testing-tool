@@ -68,8 +68,6 @@ public class Process {
 
 			if(issue.getIssueDescriptor().getType()==IssueType.ANALYTICAL){
 				IssueDescription desc = ValidatorConfig.getInstance().getApplicationData().findIssueDescriptionById(issue.getIssueDescriptor().getId());
-
-				System.out.println("issue class: "+issue.getResult().getClass());
 				SkosError error=new SkosError();
 				error.setId(issue.getIssueDescriptor().getId());
 
