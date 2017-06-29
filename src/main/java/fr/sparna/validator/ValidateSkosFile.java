@@ -62,9 +62,7 @@ public class ValidateSkosFile {
 		r.initialize();
 		factory=r.getValueFactory();
 		// load some data in the repository
-		RepositoryConnection c = r.getConnection();
-		
-		try {
+		try(RepositoryConnection c = r.getConnection()) {
 
 			c.add(
 					f, 
@@ -79,8 +77,6 @@ public class ValidateSkosFile {
 
 			return runQSkos(c);
 
-		} finally {
-			try { c.close(); } catch(Exception ignore) {}
 		}
 	}
 	
@@ -101,41 +97,44 @@ public class ValidateSkosFile {
 		r.initialize();
 		factory=r.getValueFactory();
 		// load some data in the repository
-		RepositoryConnection c = r.getConnection();
-		try {
+		try(RepositoryConnection c = r.getConnection();) {
 
+			logger.info("Loading data in the repository...");
 			c.add(
 					input, 
 					RDF.NAMESPACE,
 					format
 					);
 
-			// TODO : avoir une copie locale de l'ontologie SKOS
+			logger.info("Loading SKOS ontology...");
 			c.add(
 					new URL(SKOS_FILE),
 					SkosOntology.SKOS_BASE_IRI,
 					RDFFormat.RDFXML,
 					factory.createIRI(SkosOntology.SKOS_ONTO_IRI));
 			
+			logger.info("Infer SKOS-XL...");
 			//prendre en compte les libellés skos-xl
 			String update1 = "PREFIX skos:<http://www.w3.org/2004/02/skos/core#>"
 							+"PREFIX skosxl:<http://www.w3.org/2008/05/skos-xl#>"
 							+ "INSERT {	?x skos:prefLabel ?y} "
 								+ "WHERE {?x skosxl:prefLabel/skosxl:literalForm ?y}";
+
 			Update u1=c.prepareUpdate(QueryLanguage.SPARQL, update1);
+
 			u1.execute();
 			
 			String update2 = "PREFIX skos:<http://www.w3.org/2004/02/skos/core#>"
 							+"PREFIX skosxl:<http://www.w3.org/2008/05/skos-xl#>"
 							+ "INSERT {	?x skos:altLabel ?y} "
 								+ "WHERE {?x skosxl:altLabel/skosxl:literalForm ?y}";
+
 			Update u2=c.prepareUpdate(QueryLanguage.SPARQL, update2);
 			u2.execute();
 			
+			logger.info("Run qSKOS...");
 			return runQSkos(c);
 
-		} finally {
-			try { c.close(); } catch(Exception ignore) {}
 		}
 	}
 	
