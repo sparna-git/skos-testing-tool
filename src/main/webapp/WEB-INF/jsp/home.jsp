@@ -130,27 +130,19 @@
 	
 					<br />
 					<div class="col-sm-offset-3 col-sm-8">
+					<label><input type="radio" value="html" name="report"><fmt:message key="reportHtml"/></label>
+					<label ><input type="radio" value="text" name="report"><fmt:message key="reportText"/></label>
+					</div>
+					<br />
+					<br />
+					<div class="col-sm-offset-3 col-sm-8">
 						<button class="btn-lg btn-primary" type="submit" onclick="choice()">
 							<fmt:message key="valid" />
 						</button>
 					</div>
+				</div>			
 				</div>
-				
-				<div class="col-sm-offset-3 col-sm-8">
-					<label><input type="radio" value="html" name="report"><fmt:message key="reportHtml"/></label>
-					<label ><input type="radio" value="text" name="report"><fmt:message key="reportText"/></label>
-				</div>
-				<br />
-				<br />
-				<div class="col-sm-offset-3 col-sm-8">
-					<button class="btn-lg btn-primary" type="submit" onclick="choice()">
-						<fmt:message key="valid" />
-					</button>
-				</div>
-
-				
-				</div>
-			</div>
+			
 	
 	
 			<div class="panel-group" id="myAccordion">
