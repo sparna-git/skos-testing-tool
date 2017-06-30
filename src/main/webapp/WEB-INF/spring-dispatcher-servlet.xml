@@ -23,7 +23,49 @@
 	<!-- Maps /** to the DefaultServletHandler -->
 	<mvc:default-servlet-handler />
 	
-	<mvc:annotation-driven />
+	<!-- ***** Content Negociation ***** -->
+
+	<!-- The ContentNegociationManager defines our content negociation strategy, for the simple APIs -->
+	<bean id="ContentNegociationManager"
+		class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+		<!-- Indicates the content negociation based on file extension will _not_ work -->
+		<property name="favorPathExtension" value="false"/>
+		<!-- Indicates the content negociation based on "format" parameter will work -->
+		<property name="favorParameter" value="true"/>
+		<property name="parameterName" value="format"/>
+		<!-- Indicates we DO want to work based on Accept header -->
+		<property name="ignoreAcceptHeader" value="false" />
+		<!-- The default content type we wish to use -->
+		<property name="defaultContentType" value="text/html" />
+		<property name="useJaf" value="false"/>
+
+		<!-- Lists the media-types supported by our content-negociation, with their corresponding file extension -->
+		<property name="mediaTypes">
+			<map>
+				<entry key="html" value="text/html" />
+				<entry key="txt" value="text/plain" />
+				<entry key="ttl" value="text/turtle" />
+				<entry key="rdf" value="application/rdf+xml" />
+			</map>
+		</property>
+	</bean>
+	
+	<!-- This will automatically switch on the default httpmessageconverters -->
+	<mvc:annotation-driven content-negotiation-manager="ContentNegociationManager">
+		<mvc:message-converters register-defaults="true">
+			<!-- Associates Message converters to some media types registered above in the ContentNegociationManager -->
+			<bean class="fr.sparna.rdf.skos.testtool.api.RdfMessageConverter">
+				<constructor-arg name="mimeType" value="application/rdf+xml" />
+				<property name="supportedMediaTypes" value="application/rdf+xml" />
+			</bean>
+			<bean class="fr.sparna.rdf.skos.testtool.api.RdfMessageConverter">
+				<constructor-arg name="mimeType" value="text/turtle" />
+				<property name="supportedMediaTypes" value="text/turtle" />
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	
+	<!-- / Content Negociation --> 
 
 	<!-- 	Resolves the view names to JSP in the /WEB-INF/jsp/ folder 
 			(eg. if Controller returns view name "edit", the jsp /WEB-INF/jsp/edit.jsp will ba called)
@@ -37,7 +79,8 @@
 
 	<bean id="multipartResolver"  
         class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
-    </bean>
+    </bean>    
+    
   	<bean id="ValidatorConfig" class="fr.sparna.rdf.skos.testtool.TestToolConfig" factory-method="getInstance" />
 	<bean id="applicationData" class="fr.sparna.rdf.skos.testtool.ApplicationData">
 		

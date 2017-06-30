@@ -28,17 +28,17 @@ The SKOS testing tool is a web frontend for [qSKOS](https://github.com/cmader/qS
 
     e.g. [http://labs.sparna.fr/skos-testing-tool/test?url=http://publications.europa.eu/mdr/resource/authority/continent/skos/continents-skos.rdf&rules=ml,mri,ncl,oc](http://labs.sparna.fr/skos-testing-tool/test?url=http://publications.europa.eu/mdr/resource/authority/continent/skos/continents-skos.rdf&rules=ml,mri,ncl,oc)
 
-- To customise the output report format, use either the "Accept" header, or the "format" URL parameter; if present, the "format" URL parameter takes precedence; they both can take the following values :
+- To customise the output report format, use either the "Accept" header, or the "format" URL parameter; if present, the "format" URL parameter takes precedence; it can take the following value
 
-  - text/html for the HTML report format;
+  - "html" for the HTML report format ("text/html" in the Accept header)
 
-  - text/plain for the text report format;
+  - "txt" for the text report format ("text/plain" in the Accept header);
 
-  - application/rdf+xml for the RDF [DQV](https://www.w3.org/TR/vocab-dqv/) report format in RDF/XML;
+  - "rdf" for the RDF [DQV](https://www.w3.org/TR/vocab-dqv/) report format in RDF/XML ("application/rdf+xml" in the Accept header);
 
-  - text/turtle for the RDF [DQV](https://www.w3.org/TR/vocab-dqv/) report format in Turtle;
+  - "ttl" for the RDF [DQV](https://www.w3.org/TR/vocab-dqv/) report format in Turtle ("text/turtle" in the Accept header);
 
-    e.g. http://labs.sparna.fr/skos-testing-tool/test?url=http://publications.europa.eu/mdr/resource/authority/continent/skos/continents-skos.rdf&format=text/turtle
+    e.g. http://labs.sparna.fr/skos-testing-tool/test?url=http://publications.europa.eu/mdr/resource/authority/continent/skos/continents-skos.rdf&format=ttl
 
 - To customise the output report language, use either the "Accept-language" header or the "lang" URL parameter; if present, the "lang" URL parameter takes precedence; they can take the following valuee :
 

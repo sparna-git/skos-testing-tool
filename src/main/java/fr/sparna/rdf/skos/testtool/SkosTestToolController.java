@@ -82,7 +82,7 @@ public class SkosTestToolController {
 			@RequestParam(value="lang", required=false) String lang,
 			HttpServletRequest request,
 			HttpServletResponse response
-			) throws RepositoryException, MalformedURLException {
+	) throws RepositoryException, MalformedURLException {
 
 		logger.info("validate : "+"source="+sourceString+",url="+url+",choice="+choice+",report="+report+",lang="+lang);
 		
