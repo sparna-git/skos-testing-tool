@@ -1,6 +1,6 @@
 # SKOS Testing Tool
 
-The SKOS testing tool is live at [**http://labs.sparna.fr/skos-testting-tool**](http://labs.sparna.fr/skos-testting-tool).
+The SKOS testing tool is live at **http://labs.sparna.fr/skos-testing-tool**
 
 The SKOS testing tool is a web frontend for [qSKOS](https://github.com/cmader/qSKOS). It allows to assess the quality of SKOS or SKOS-XL vocabularies, by submitting a file to be validated or by validating a SKOS file published at a given URL.
 
