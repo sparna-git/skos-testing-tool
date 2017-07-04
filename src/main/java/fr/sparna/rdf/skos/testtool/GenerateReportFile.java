@@ -29,20 +29,22 @@ public class GenerateReportFile {
 	
 	protected String lang;
 	
-	protected String filename;
+	protected ReportDisplay data;
 	
-	  public GenerateReportFile(Collection<Issue> issues, String lang,String filename) {
+	  public GenerateReportFile(Collection<Issue> issues, String lang,ReportDisplay data) {
 		super();
 		this.issues = issues;
 		this.lang = lang;
-		this.filename=filename;
+		this.data=data;
 	}
 
 	private String createReportSummary() throws IOException {
 	        StringBuffer summary = new StringBuffer();
 	        String issuedDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
-	        summary.append("********"+filename+" "+issuedDate+"*************\n\n\n");
-	        
+	        summary.append("********"+data.getFileName()+" "+issuedDate+"*************\n\n\n");
+	        summary.append("url : "+data.getUrlconvert());
+	        summary.append("\n");
+	        summary.append("\n");
 	        for (Issue issue : issues) {
 	        	// skip statistical issues
 	        	if(issue.getIssueDescriptor().getType() == IssueType.ANALYTICAL) {

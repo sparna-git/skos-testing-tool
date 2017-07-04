@@ -22,6 +22,16 @@
 
 	<!-- Maps /** to the DefaultServletHandler -->
 	<mvc:default-servlet-handler />
+
+	<!-- 	Resolves the view names to JSP in the /WEB-INF/jsp/ folder 
+			(eg. if Controller returns view name "edit", the jsp /WEB-INF/jsp/edit.jsp will ba called)
+	-->
+	<bean	id="viewResolver"
+			class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
+    	<property name="prefix" value="/WEB-INF/jsp/" />
+        <property name="suffix" value=".jsp" />
+        <property name="order" value="1" />
+    </bean>
 	
 	<!-- ***** Content Negociation ***** -->
 
@@ -50,6 +60,8 @@
 		</property>
 	</bean>
 	
+	<!-- Cette partie est prise en compte seulement si on a mis l'annotation @ResponseBody
+	sur les méthodes du Controller -->
 	<!-- This will automatically switch on the default httpmessageconverters -->
 	<mvc:annotation-driven content-negotiation-manager="ContentNegociationManager">
 		<mvc:message-converters register-defaults="true">
@@ -67,15 +79,7 @@
 	
 	<!-- / Content Negociation --> 
 
-	<!-- 	Resolves the view names to JSP in the /WEB-INF/jsp/ folder 
-			(eg. if Controller returns view name "edit", the jsp /WEB-INF/jsp/edit.jsp will ba called)
-	-->
-	<bean	id="viewResolver"
-			class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
-    	<property name="prefix" value="/WEB-INF/jsp/" />
-        <property name="suffix" value=".jsp" />
-        <property name="order" value="1" />
-    </bean>
+
 
 	<bean id="multipartResolver"  
         class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  

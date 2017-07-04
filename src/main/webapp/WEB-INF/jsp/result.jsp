@@ -76,6 +76,7 @@ $(function() {
 			</fmt:message>
 		  	<p>${value}</p>
 		  	<p>${validate}</p>
+		  	<strong><fmt:message key="result.urlconvert" /></strong>${data.urlconvert}
 		  	<p class="hidden-print"><span id="print"></span></p>
 		  	</div>
 		</div>

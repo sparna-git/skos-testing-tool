@@ -50,7 +50,6 @@
 		
 	}	
 	
-	
 </script>
 <style>
 .table-outer {
@@ -143,7 +142,10 @@
 						<div class="col-sm-2">
 							<select class="dropdown form-control" name="report">
 								<option value="html" selected><fmt:message key="home.reportHtml"/></option>
-								<option value="text" ><fmt:message key="home.reportText"/></option>
+								<option value="rdf" ><fmt:message key="home.reportRdf"/></option>
+								<option value="ttl" ><fmt:message key="home.reportTtl"/></option>
+								<option value="txt" ><fmt:message key="home.reportText"/></option>
+								
 							</select>
 						</div>
 					</div>

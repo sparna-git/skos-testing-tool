@@ -10,10 +10,14 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
-
+import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import org.eclipse.rdf4j.RDF4JException;
+import org.eclipse.rdf4j.model.Model;
+import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.model.impl.LinkedHashModel;
+import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
 import org.eclipse.rdf4j.repository.RepositoryException;
 import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.Rio;
@@ -26,6 +30,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import at.ac.univie.mminf.qskos4j.issues.Issue;
+import at.ac.univie.mminf.qskos4j.util.IssueDescriptor.IssueType;
+import fr.sparna.rdf.skos.testtool.api.QDVReport;
 
 @Controller
 public class SkosTestToolController {
@@ -38,7 +44,9 @@ public class SkosTestToolController {
 	}
 	private enum REPORT_TYPE {
 		HTML,
-		TEXT
+		TXT,
+		RDF,
+		TTL
 	}
 	/**
 	 * 
@@ -66,7 +74,7 @@ public class SkosTestToolController {
 	 * @throws RepositoryException
 	 * @throws MalformedURLException
 	 */
-	@RequestMapping(value = {"result","validate"})
+	@RequestMapping(value = {"result"})
 	public ModelAndView uploadResult(
 			//source : utl ou html
 			@RequestParam(value="source", required=true) String sourceString,
@@ -77,29 +85,29 @@ public class SkosTestToolController {
 			//règles séparées par des virgules
 			@RequestParam(value="rules", required=true) String choice,
 			//type de rapport : html ou text
-			@RequestParam(value="report", required=false) String report,
-			//language (fr or en) du fichier url à valider en get
-			@RequestParam(value="lang", required=false) String lang,
+			@RequestParam(value="report", required=true) String report,
 			HttpServletRequest request,
 			HttpServletResponse response
-	) throws RepositoryException, MalformedURLException {
+			) throws RepositoryException, MalformedURLException {
 
-		logger.info("validate : "+"source="+sourceString+",url="+url+",choice="+choice+",report="+report+",lang="+lang);
-		
+		logger.info("validate : "+"source="+sourceString+",url="+url+",choice="+choice+",report="+report);
+
 		long start = System.currentTimeMillis();
-
+		URL baseURL = new URL("http://"+request.getServerName()+((request.getServerPort() != 80)?":"+request.getServerPort():"")+request.getContextPath());
 		//récupérer la session
 		SessionData sessionData=SessionData.retrieve(request.getSession());
 
 		ReportDisplay data = new ReportDisplay();
+
 		data.setChoiceList(Arrays.asList(choice.split(",")));
 
 		ExecuteQSkos skos=new ExecuteQSkos(choice);	
 
 		Collection<Issue> qSkosResult = null;
-		if(lang==null){
-			lang=sessionData.getUserLocale();
-		}
+
+		String lang=sessionData.getUserLocale();
+
+		Model m = new LinkedHashModel();
 
 		try {
 			switch(SOURCE_TYPE.valueOf(sourceString.toUpperCase())) {
@@ -111,6 +119,8 @@ public class SkosTestToolController {
 			}
 
 			case URL: {
+				String urlconvert=baseURL.toString()+"/test?url="+url+"&rules="+choice+"&format="+report+"&lang="+lang;
+				data.setUrlconvert(urlconvert);
 				if(url.isEmpty()){
 					return doError(request,"url empty (vide)"); 
 				}
@@ -126,18 +136,19 @@ public class SkosTestToolController {
 					return doError(request, e.getMessage()); 
 				}
 			}
+
 			}
 
 			switch(REPORT_TYPE.valueOf(report.toUpperCase())){
 
-			case TEXT:   {
+			case TXT:   {
 				//générer le rapport
-				GenerateReportFile reportfile=new GenerateReportFile(qSkosResult,sessionData.getUserLocale(),data.getFileName());
+				GenerateReportFile reportfile=new GenerateReportFile(qSkosResult,sessionData.getUserLocale(),data);
 				response.setContentType("text/plain; charset=utf-8");
 				reportfile.outputIssuesReport(response.getOutputStream());
 				break;
 			}
-			
+
 			case HTML :
 			default : {
 				doResult(skos.getRulesNumber(),lang,qSkosResult,data);
@@ -147,58 +158,88 @@ public class SkosTestToolController {
 				data.setExecutionTime(timeMilli/1000d);
 				return new ModelAndView("result", ReportDisplay.KEY, data);
 			}
-			
+
+			case RDF:{
+				//generate rdf file with qdv
+				dqv(qSkosResult,data,lang,m);
+				Rio.write(m,response.getOutputStream(), RDFFormat.RDFXML);
+				break;
+			}
+
+			case TTL:{
+				//generate ttl file with qdv
+				dqv(qSkosResult,data,lang,m);
+				Rio.write(m,response.getOutputStream(), RDFFormat.TURTLE);
+				break;
+			}
+
 			}
 		}catch (Exception e) {
 			doError(request,e.getMessage());
 		}
 		return null;
-}
-
-		/**
-		 * 
-		 * @param request
-		 * @param message
-		 * @return
-		 */
-		protected ModelAndView doError(
-				HttpServletRequest request,
-				String message
-				) {
-			HomeDisplay data = new HomeDisplay();
-			data.setMsg(message);
-			request.setAttribute(HomeDisplay.KEY, data);
-			return new ModelAndView("home");
-		}
-
-		/**
-		 * 
-		 * @param nbrules
-		 * @param lang
-		 * @param qSkosResult
-		 * @param data
-		 * @throws IOException
-		 */
-
-		private void doResult(
-				Integer nbrules, 
-				String lang, 
-				Collection<Issue> qSkosResult, 
-				ReportDisplay data
-				) throws IOException {
-			//récupérer le nombre total des règles à vérifier
-			data.setRulesNumber(nbrules-3);
-			//récupérer le resultat de la vérification des règles
-			IssueConverter process = new IssueConverter(lang);
-			data.setErrorList(process.createReport(qSkosResult));
-			//récupérer les règles non vérifiées
-			data.setRulesFail(process.getRulesFail());
-			//récupérer le nombre de collection, concept et conceptscheme
-			data.setAllcollections(process.getAllcollection());
-			data.setAllconcepts(process.getAllconcepts());
-			data.setAllconceptschemes(process.getAllconceptscheme());
-			String issuedDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
-			data.setIssueDate(issuedDate);
-		}
-
 	}
+
+	/**
+	 * 
+	 * @param request
+	 * @param message
+	 * @return
+	 */
+	protected ModelAndView doError(
+			HttpServletRequest request,
+			String message
+			) {
+		HomeDisplay data = new HomeDisplay();
+		data.setMsg(message);
+		request.setAttribute(HomeDisplay.KEY, data);
+		return new ModelAndView("home");
+	}
+
+	/**
+	 * 
+	 * @param nbrules
+	 * @param lang
+	 * @param qSkosResult
+	 * @param data
+	 * @throws IOException
+	 */
+
+	private void doResult(
+			Integer nbrules, 
+			String lang, 
+			Collection<Issue> qSkosResult, 
+			ReportDisplay data
+			) throws IOException {
+		//récupérer le nombre total des règles à vérifier
+		data.setRulesNumber(nbrules-3);
+		//récupérer le resultat de la vérification des règles
+		IssueConverter process = new IssueConverter(lang);
+		data.setErrorList(process.createReport(qSkosResult));
+		//récupérer les règles non vérifiées
+		data.setRulesFail(process.getRulesFail());
+		//récupérer le nombre de collection, concept et conceptscheme
+		data.setAllcollections(process.getAllcollection());
+		data.setAllconcepts(process.getAllconcepts());
+		data.setAllconceptschemes(process.getAllconceptscheme());
+		String issuedDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
+		data.setIssueDate(issuedDate);
+	}
+
+	private void dqv(Collection<Issue> qSkosResult,ReportDisplay data, String lang, Model m) throws RDF4JException, IOException{
+
+		ValueFactory factory = SimpleValueFactory.getInstance();
+		QDVReport qdv=new QDVReport(data.getFileName(),lang);
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date date = new Date();
+		String dates = dateFormat.format(date);
+		String key = UUID.randomUUID().toString();
+
+		for (Issue issue : qSkosResult) {
+			if(issue.getIssueDescriptor().getType()==IssueType.ANALYTICAL){
+				qdv.writeDQVReport(issue,m,factory,dates,key);
+			}
+		}
+	}
+
+}

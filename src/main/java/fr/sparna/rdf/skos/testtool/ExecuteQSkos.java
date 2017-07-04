@@ -24,6 +24,7 @@ import org.slf4j.LoggerFactory;
 
 import at.ac.univie.mminf.qskos4j.QSkos;
 import at.ac.univie.mminf.qskos4j.issues.Issue;
+import at.ac.univie.mminf.qskos4j.util.IssueDescriptor.IssueType;
 import at.ac.univie.mminf.qskos4j.util.vocab.SkosOntology;
 
 
@@ -36,6 +37,8 @@ public class ExecuteQSkos {
 	protected Integer rulesNumber;
 	
 	private ValueFactory factory = null;
+	
+	protected RepositoryConnection qskosRepositoryConnection;
 	
 	//protected long collectionNumber;
 	
@@ -125,16 +128,20 @@ public class ExecuteQSkos {
 		
 		// instantiation
 		QSkos qskos = new QSkos();
+		this.qskosRepositoryConnection=c;
 		qskos.setRepositoryConnection(c);
 		
 		//cs(allconceptscheme), cc(all collection), ac(find all concepts)
 		Collection<Issue> issues = qskos.getIssues(rules+",cs,cc,ac");
-		
+
 		int issueNumber = 0;
 		Iterator<Issue> issueIt = issues.iterator();
 		while (issueIt.hasNext()) {
 			Issue issue = issueIt.next();
 			issueNumber++;
+			if(issue.getIssueDescriptor().getType()==IssueType.ANALYTICAL){
+							
+			}
 			logger.info("Processing issue " + issueNumber + " of " + issues.size() + " (" + issue.getIssueDescriptor().getName() + ")");
 			issue.getResult();
 		}
@@ -150,6 +157,16 @@ public class ExecuteQSkos {
 
 	public Integer getRulesNumber() {
 		return rulesNumber;
+	}
+
+
+	public RepositoryConnection getQskosRepositoryConnection() {
+		return qskosRepositoryConnection;
+	}
+
+
+	public void setQskosRepositoryConnection(RepositoryConnection qskosRepositoryConnection) {
+		this.qskosRepositoryConnection = qskosRepositoryConnection;
 	}
 	
 	

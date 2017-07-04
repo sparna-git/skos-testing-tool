@@ -31,6 +31,8 @@ public class ReportDisplay {
 	protected String fileName;
 	
 	protected String issueDate;
+	
+	protected String urlconvert;
 
 	public static final String KEY = ReportDisplay.class.getCanonicalName();
 
@@ -118,6 +120,14 @@ public class ReportDisplay {
 
 	public void setIssueDate(String issuedate) {
 		this.issueDate = issuedate;
+	}
+
+	public String getUrlconvert() {
+		return urlconvert;
+	}
+
+	public void setUrlconvert(String urlconvert) {
+		this.urlconvert = urlconvert;
 	}
 
 	
