@@ -90,7 +90,7 @@ public class DQVReport {
 		IRI measure= f.createIRI(nex+issue.getIssueDescriptor().getName().replace(" ", "")+"#"+key);
 		model.add(measure, ptype, f.createIRI(ndqv+"QualityMeasurement"));
 
-		if (this.computedOn.startsWith("http://"))		model.add(measure, pcomputedOn,f.createIRI(this.computedOn));
+		if (this.computedOn.startsWith("http://") || this.computedOn.startsWith("https://"))model.add(measure, pcomputedOn,f.createIRI(this.computedOn));
 		else {
 			Value datasetPath = f.createLiteral(this.computedOn, XMLSchema.STRING);
 			model.add(measure, pcomputedOn,datasetPath);
