@@ -139,7 +139,7 @@
 					<br />
 					<div class="form-group">
 						<label class="col-sm-offset-1 col-sm-2 control-label" for="source-url"> <fmt:message key="home.format" /></label>
-						<div class="col-sm-2">
+						<div class="col-sm-3">
 							<select class="dropdown form-control" name="report">
 								<option value="html" selected><fmt:message key="home.reportHtml"/></option>
 								<option value="rdf" ><fmt:message key="home.reportRdf"/></option>

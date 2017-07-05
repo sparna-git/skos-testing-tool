@@ -31,7 +31,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import at.ac.univie.mminf.qskos4j.issues.Issue;
 import at.ac.univie.mminf.qskos4j.util.IssueDescriptor.IssueType;
-import fr.sparna.rdf.skos.testtool.api.QDVReport;
+import fr.sparna.rdf.skos.testtool.api.DQVReport;
 
 @Controller
 public class SkosTestToolController {
@@ -108,6 +108,7 @@ public class SkosTestToolController {
 		String lang=sessionData.getUserLocale();
 
 		Model m = new LinkedHashModel();
+		ValueFactory factory= SimpleValueFactory.getInstance();
 
 		try {
 			switch(SOURCE_TYPE.valueOf(sourceString.toUpperCase())) {
@@ -138,7 +139,8 @@ public class SkosTestToolController {
 			}
 
 			}
-
+			
+			
 			switch(REPORT_TYPE.valueOf(report.toUpperCase())){
 
 			case TXT:   {
@@ -157,19 +159,20 @@ public class SkosTestToolController {
 				//récupérer le temps d'éxécution des tâches
 				data.setExecutionTime(timeMilli/1000d);
 				return new ModelAndView("result", ReportDisplay.KEY, data);
+			
 			}
 
 			case RDF:{
 				//generate rdf file with qdv
-				dqv(qSkosResult,data,lang,m);
-				Rio.write(m,response.getOutputStream(), RDFFormat.RDFXML);
+				DQVReport dqv=new DQVReport(data.getFileName(),lang,m,factory);
+				Rio.write(dqv.dqvout(qSkosResult),response.getOutputStream(), RDFFormat.RDFXML);
 				break;
 			}
 
 			case TTL:{
 				//generate ttl file with qdv
-				dqv(qSkosResult,data,lang,m);
-				Rio.write(m,response.getOutputStream(), RDFFormat.TURTLE);
+				DQVReport dqv=new DQVReport(data.getFileName(),lang,m,factory);
+				Rio.write(dqv.dqvout(qSkosResult),response.getOutputStream(), RDFFormat.TURTLE);
 				break;
 			}
 
@@ -226,20 +229,6 @@ public class SkosTestToolController {
 		data.setIssueDate(issuedDate);
 	}
 
-	private void dqv(Collection<Issue> qSkosResult,ReportDisplay data, String lang, Model m) throws RDF4JException, IOException{
-
-		ValueFactory factory = SimpleValueFactory.getInstance();
-		QDVReport qdv=new QDVReport(data.getFileName(),lang);
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		Date date = new Date();
-		String dates = dateFormat.format(date);
-		String key = UUID.randomUUID().toString();
-
-		for (Issue issue : qSkosResult) {
-			if(issue.getIssueDescriptor().getType()==IssueType.ANALYTICAL){
-				qdv.writeDQVReport(issue,m,factory,dates,key);
-			}
-		}
-	}
+	
 
 }

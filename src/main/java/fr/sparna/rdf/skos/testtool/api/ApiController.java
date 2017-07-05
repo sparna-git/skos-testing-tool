@@ -11,9 +11,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.eclipse.rdf4j.model.Model;
 import org.eclipse.rdf4j.model.ValueFactory;
 import org.eclipse.rdf4j.model.impl.LinkedHashModel;
@@ -29,8 +30,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
 import at.ac.univie.mminf.qskos4j.issues.Issue;
-import at.ac.univie.mminf.qskos4j.util.IssueDescriptor.IssueType;
 import fr.sparna.rdf.skos.testtool.ExecuteQSkos;
 import fr.sparna.rdf.skos.testtool.GenerateReportFile;
 import fr.sparna.rdf.skos.testtool.IssueConverter;
@@ -157,7 +158,7 @@ public class ApiController {
 			) throws RepositoryException, UnsupportedEncodingException, IOException {
 		logger.info("test in application/rdf+xml or text/turtle : "+"url="+url+",rules="+rules+",lang="+lang);
 		Model m = new LinkedHashModel();
-		ValueFactory factory = SimpleValueFactory.getInstance();
+		ValueFactory factory= SimpleValueFactory.getInstance();
 		List<IssueDescription>issuelist=TestToolConfig.getInstance().getApplicationData().getIssueDescriptions();
 		List<String>list=new ArrayList<String>();
 		
@@ -191,19 +192,8 @@ public class ApiController {
 		InputStream in = new DataInputStream(new BufferedInputStream(dataUrl.openStream()));
 		Collection<Issue> qSkosResult = skos.validate(in, Rio.getWriterFormatForFileName(url).orElse(RDFFormat.RDFXML));
 		//generate rdf file with qdv
-		QDVReport qdv=new QDVReport(url,lang);
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		Date date = new Date();
-		String dates = dateFormat.format(date);
-		String key = UUID.randomUUID().toString();
-		for (Issue issue : qSkosResult) {
-			if(issue.getIssueDescriptor().getType()==IssueType.ANALYTICAL){
-				
-				qdv.writeDQVReport(issue,m,factory,dates,key);
-			}
-		}
-		
-		return m;
+		DQVReport dqv=new DQVReport(url,lang,m,factory);
+		return dqv.dqvout(qSkosResult);
 	}
 
 	/**

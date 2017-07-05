@@ -60,7 +60,8 @@ $(function() {
 			   <fmt:param value="${data.fileName}"/>
 			   <fmt:param value="${data.issueDate}"/>
 			</fmt:message>
-			<h5>${filevalidated}</h5>
+			<h5>${filevalidated}  &nbsp;&nbsp;<a class="btn btn-default pull-right" href="home"><fmt:message key="result.newtest" /></a></h5>
+			
 		  </div>
 		  <div class="panel-body">
 		  	
@@ -76,8 +77,13 @@ $(function() {
 			</fmt:message>
 		  	<p>${value}</p>
 		  	<p>${validate}</p>
-		  	<strong><fmt:message key="result.urlconvert" /></strong>${data.urlconvert}
-		  	<p class="hidden-print"><span id="print"></span></p>
+		  		<p class="hidden-print">
+		  			<span id="print"></span>
+		  			 &nbsp;|&nbsp;
+		  			<c:if test="${data.urlconvert!=null}">
+		  				<a href="${data.urlconvert}"><span class="glyphicon glyphicon-link"><fmt:message key="result.urlconvert" /></span></a>
+		  			</c:if>
+		  		</p>
 		  	</div>
 		</div>
 		<table id="table" data-show-print="true"
