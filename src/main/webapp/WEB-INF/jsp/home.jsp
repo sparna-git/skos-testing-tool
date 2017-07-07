@@ -66,7 +66,7 @@
 }
 </style>
 </head>
-<body style="">
+<body style="background-color: #fbfcfa;">
 	<a  href="https://github.com/tfrancart/skos-testing-tool">
 		<img style="position: absolute; top: 0; right: 0; border: 0;z-index:1000;" 
 		src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/

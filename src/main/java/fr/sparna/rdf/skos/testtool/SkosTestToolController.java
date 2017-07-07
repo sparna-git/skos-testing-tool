@@ -120,7 +120,7 @@ public class SkosTestToolController {
 			}
 
 			case URL: {
-				String urlconvert=baseURL.toString()+"/test?url="+url+"&rules="+choice+"&format="+report+"&lang="+lang;
+				String urlconvert=baseURL.toString()+"/test?url="+url+"&rules="+choice+"&format="+report;
 				data.setUrlconvert(urlconvert);
 				if(url.isEmpty()){
 					return doError(request,"url empty (vide)"); 
@@ -165,6 +165,7 @@ public class SkosTestToolController {
 			case RDF:{
 				//generate rdf file with qdv
 				DQVReport dqv=new DQVReport(data.getFileName(),lang,m,factory);
+				response.setContentType("application/rdf+xml");
 				Rio.write(dqv.dqvout(qSkosResult),response.getOutputStream(), RDFFormat.RDFXML);
 				break;
 			}
@@ -172,6 +173,7 @@ public class SkosTestToolController {
 			case TTL:{
 				//generate ttl file with qdv
 				DQVReport dqv=new DQVReport(data.getFileName(),lang,m,factory);
+				response.setContentType("text/turtle");
 				Rio.write(dqv.dqvout(qSkosResult),response.getOutputStream(), RDFFormat.TURTLE);
 				break;
 			}

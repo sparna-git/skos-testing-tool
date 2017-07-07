@@ -41,7 +41,7 @@ $(function() {
 });
 </script>
 </head>
-<body id="resultpage">
+<body id="resultpage" style="background-color: #fbfcfa;">
 	<jsp:include page="header.jsp" />
 	<div class="navigation hidden-print">
 		<ul id="sidebar" class="list-group">
@@ -55,13 +55,14 @@ $(function() {
 	</div>
 	<div class="container" id="result-container">
 		<div  id="exe" class="panel panel-default">
-		  <div class="panel-heading">
+		  <div class="panel-heading" style="min-height:60px;">
 		  	<fmt:message key="result.file.validate" var="filevalidated" >
 			   <fmt:param value="${data.fileName}"/>
 			   <fmt:param value="${data.issueDate}"/>
 			</fmt:message>
-			<h5>${filevalidated}  &nbsp;&nbsp;<a class="btn btn-default pull-right" href="home"><fmt:message key="result.newtest" /></a></h5>
-			
+			&nbsp;
+			<h5 class="pull-left">${filevalidated}</h5>
+			<a class="btn btn-default hidden-print pull-right" href="home"><fmt:message key="result.newtest" /></a>
 		  </div>
 		  <div class="panel-body">
 		  	
@@ -79,9 +80,9 @@ $(function() {
 		  	<p>${validate}</p>
 		  		<p class="hidden-print">
 		  			<span id="print"></span>
-		  			 &nbsp;|&nbsp;
 		  			<c:if test="${data.urlconvert!=null}">
-		  				<a href="${data.urlconvert}"><span class="glyphicon glyphicon-link"><fmt:message key="result.urlconvert" /></span></a>
+		  				 &nbsp;|&nbsp;
+		  				<a href="${data.urlconvert}"><span class="glyphicon glyphicon-link"></span>&nbsp;<fmt:message key="result.urlconvert" /></a>
 		  			</c:if>
 		  		</p>
 		  	</div>

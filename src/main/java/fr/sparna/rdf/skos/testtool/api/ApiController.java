@@ -56,7 +56,7 @@ public class ApiController {
 			@RequestParam(value="rules", required=false) String rules,
 			//language (fr or en) du fichier url à valider en get
 			@RequestParam(value="lang", required=false) String lang,
-			//language (fr or en) du fichier url à valider en get
+			// format de retour
 			@RequestParam(value="format", required=false) String format,
 			// Entête language
 			@RequestHeader(name="Accept-Language") String headerlang,
@@ -71,10 +71,12 @@ public class ApiController {
 		URL baseURL = new URL("http://"+request.getServerName()+((request.getServerPort() != 80)?":"+request.getServerPort():"")+request.getContextPath());
 		ReportDisplay data = new ReportDisplay();
 		List<IssueDescription>issuelist=TestToolConfig.getInstance().getApplicationData().getIssueDescriptions();
+		
 		List<String>list=new ArrayList<String>();
 		String r="";
+		
 		//default rules
-		if(rules.equals("default")){
+		if(rules == null || rules.equals("default")){
 			for (IssueDescription element : issuelist) {
 				if(element.isChecked()){
 					list.add(element.getId());
@@ -82,13 +84,9 @@ public class ApiController {
 				}
 			}
 			rules=r;
-
-		}else if(rules.equals("all")){
-			//all rules
+		//all rules
+		} else if(rules.equals("all")) {
 			for (IssueDescription element : issuelist) {
-				if(!element.isChecked()){
-					element.setChecked(true);
-				}
 				list.add(element.getId());
 				r=r+element.getId()+",";
 			}
@@ -99,18 +97,21 @@ public class ApiController {
 		ExecuteQSkos skos=new ExecuteQSkos(rules);	
 		Collection<Issue> qSkosResult = null;
 
+		// if unspecified lang, take the one in the header
 		if(lang==null){
 			lang=headerlang;
 		}
+		
 		if(lang.startsWith("fr")){
 			lang="fr";
-		}else{
+		} else {
 			lang="en";
 		}
+		
 		if(format==null){
 			format=accept;
 		}
-		String urlconvert=baseURL.toString()+"/test?url="+url+"&rules="+rules+"&format="+format+"&lang="+lang;
+		String urlconvert=baseURL.toString()+"/test?url="+url+"&rules="+rules+"&format="+format;
 		data.setUrlconvert(urlconvert);
 		try {
 			URL dataUrl = new URL(url);
@@ -164,7 +165,7 @@ public class ApiController {
 		
 		String r="";
 		//default rules
-		if(rules.equals("default")){
+		if(rules==null || rules.equals("default")){
 			for (IssueDescription element : issuelist) {
 				if(element.isChecked()){
 					list.add(element.getId());
@@ -176,9 +177,6 @@ public class ApiController {
 		}else if(rules.equals("all")){
 			//all rules
 			for (IssueDescription element : issuelist) {
-				if(!element.isChecked()){
-					element.setChecked(true);
-				}
 				list.add(element.getId());
 				r=r+element.getId()+",";
 			}

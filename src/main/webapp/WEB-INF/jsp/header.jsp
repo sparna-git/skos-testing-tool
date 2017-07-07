@@ -10,7 +10,7 @@
 	value="${sessionScope['fr.sparna.rdf.skos.testtool.SessionData'].userLocale}" />
 <fmt:setBundle basename="fr.sparna.rdf.skos.testtool.properties.Bundle"/>
 
-<nav class="navbar navbar-default hidden-print">
+<nav class="navbar navbar-default hidden-print" style="background-color: #ffffff;">
 
 	<div class="container-fluid">
 		<div class="navbar-header">
