@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.Statement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,6 +20,7 @@ import at.ac.univie.mminf.qskos4j.issues.language.util.NoCommonLanguagesResult;
 import at.ac.univie.mminf.qskos4j.issues.relations.UnidirectionallyRelatedConceptsResult;
 import at.ac.univie.mminf.qskos4j.result.CollectionResult;
 import at.ac.univie.mminf.qskos4j.util.IssueDescriptor.IssueType;
+import at.ac.univie.mminf.qskos4j.util.Pair;
 import fr.sparna.rdf.skos.testtool.IssueDescription.IssueLevel;
 
 public class IssueConverter {
@@ -209,7 +211,35 @@ public class IssueConverter {
 								});
 								buffer.delete(buffer.length()-2, buffer.length());
 								messages.add(buffer.toString());
-							} else {
+							} else if (item instanceof Pair) {
+								// hr hierarchical redundancy
+								Pair p = (Pair)item;
+								if(p.getFirst() instanceof IRI) {
+									StringBuffer buffer = new StringBuffer();
+									buffer.append("[ ");
+									buffer.append("<a href=\""+p.getFirst().toString()+"\" target=\"_blank\">"+p.getFirst().toString()+"</a>");
+									buffer.append(" - ");
+									buffer.append("<a href=\""+p.getSecond().toString()+"\" target=\"_blank\">"+p.getSecond().toString()+"</a>");
+									buffer.append(" ]");
+									messages.add(buffer.toString());
+								} else {
+									messages.add(p.toString());
+								}
+							} else if (item instanceof Statement) {
+								// mrl - mapping relation misuse
+								Statement s = (Statement)item;
+								StringBuffer buffer = new StringBuffer();
+								buffer.append("<");
+								buffer.append("<a href=\""+s.getSubject()+"\" target=\"_blank\">"+s.getSubject()+"</a>");
+								buffer.append("> <");
+								buffer.append("<a href=\""+s.getPredicate()+"\" target=\"_blank\">"+s.getPredicate()+"</a>");
+								buffer.append("> <");
+								buffer.append("<a href=\""+s.getObject()+"\" target=\"_blank\">"+s.getObject()+"</a>");
+								buffer.append(">");
+								messages.add(buffer.toString());
+							}
+							 else {
+								System.out.println(item.getClass().getName());
 								messages.add(item.toString());
 							}
 							

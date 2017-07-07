@@ -97,7 +97,7 @@
 					<div class="form-group">
 						<div class="col-sm-1" style="text-align:right">
 							<input type="radio" name="source" id="source-file"
-								value="file" onchange="enabledInput('file')" />
+								value="file" onchange="enabledInput('file')" checked />
 						</div>
 							<label class="col-sm-2 control-label" for="source-file"> <fmt:message key="home.localFile" />
 						</label>
@@ -133,6 +133,7 @@
 							<input type="text" id="url" name="url" value=""
 								placeholder="http://..." class="form-control"
 								onchange="enabledInput('url');" /> 
+							<span class="help-block"><fmt:message key="home.remoteUrl.help" /></span>
 						</div>
 					</div><!-- /.form-group -->
 	
