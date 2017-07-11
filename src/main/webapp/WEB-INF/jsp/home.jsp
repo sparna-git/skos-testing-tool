@@ -95,28 +95,28 @@
 				
 				<div class="panel-body">
 					<div class="form-group">
-						<div class="col-sm-1" style="text-align:right">
-							<input type="radio" name="source" id="source-file"
-								value="file" onchange="enabledInput('file')" checked />
-						</div>
-							<label class="col-sm-2 control-label" for="source-file"> <fmt:message key="home.localFile" />
+						<label class="col-sm-3 control-label" for="source-file"> <fmt:message key="home.localFile" />
 						</label>
 						<div class="col-sm-8">
-							<div class="fileinput fileinput-new input-group "
+							<div class="fileinput fileinput-new input-group"
 								data-provides="fileinput" id="files">
 		
+								<span class="input-group-addon">
+							        <input type="radio" name="source" id="source-file"
+								value="file" onchange="enabledInput('file')" checked />
+							    </span>
 								<div class="form-control" data-trigger="fileinput">
-									<i class="glyphicon glyphicon-file fileinput-exists"></i> <span
-										class="fileinput-filename"></span>
+									<i class="glyphicon glyphicon-file fileinput-exists"></i>
+									<span class="fileinput-filename"></span>
 								</div>
-								<span class="input-group-addon btn btn-default btn-file"> <span
-									class="fileinput-new"> <fmt:message key="home.file" /></span> <span
-									class="fileinput-exists"><fmt:message key="home.change" /></span><input
-									onchange="enabledInput('file');" type="file" id="file" required
-									name="file">
-								</span> <a href="#"
-									class="input-group-addon btn btn-default fileinput-exists"
-									data-dismiss="fileinput"><fmt:message key="home.remove" /> </a>
+								<span class="input-group-addon btn btn-default btn-file">
+									<span class="fileinput-new"> <fmt:message key="home.file" /></span>
+									<span class="fileinput-exists"><fmt:message key="home.change" /></span>
+									<input onchange="enabledInput('file');" type="file" id="file" required name="file" />
+								</span> 
+								<a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">
+									<fmt:message key="home.remove" />
+								</a>
 									
 							</div>
 							<span class="help-block"><fmt:message key="home.file.help" /></span>
@@ -124,22 +124,25 @@
 					</div><!-- /.form-group -->
 		
 					<div class="form-group">
-						<div class="col-sm-1" style="text-align:right">
-							<input type="radio" name="source" id="source-url"
-								value="url" onchange="enabledInput('url')" />
-						</div>
-							<label class="col-sm-2 control-label" for="source-url"> <fmt:message key="home.remoteUrl" /></label>
+						<label class="col-sm-3 control-label" for="source-url"> <fmt:message key="home.remoteUrl" /></label>
 						<div class="col-sm-8">
-							<input type="text" id="url" name="url" value=""
-								placeholder="http://..." class="form-control"
-								onchange="enabledInput('url');" /> 
+							<div class="input-group">
+								<span class="input-group-addon">
+							        <input type="radio" name="source" id="source-url"
+								value="url" onchange="enabledInput('url')" />
+							    </span>
+								<input type="text" id="url" name="url" value=""
+								placeholder=" http://..." class="form-control"
+								onchange="enabledInput('url');" />
+							</div>
+							 
 							<span class="help-block"><fmt:message key="home.remoteUrl.help" /></span>
 						</div>
 					</div><!-- /.form-group -->
 	
 					<br />
 					<div class="form-group">
-						<label class="col-sm-offset-1 col-sm-2 control-label" for="source-url"> <fmt:message key="home.format" /></label>
+						<label class="col-sm-3 control-label" for="source-url"> <fmt:message key="home.format" /></label>
 						<div class="col-sm-3">
 							<select class="dropdown form-control" name="report">
 								<option value="html" selected><fmt:message key="home.reportHtml"/></option>
@@ -175,7 +178,56 @@
 					<div id="collapse1" class="panel-collapse collapse in">
 						<div class="panel-body">
 							<c:forEach items="${applicationData.issueDescriptions}" var="rule">
-								<div class="form-group">
+								<div class="col-sm-1" style="text-align: right;"><strong>${rule.id}</strong></div>
+								<div class="form-group col-sm-11">
+									<div class="input-group">
+										<span class="input-group-addon">
+									        <input class="ruleCheckbox" type="checkbox" name="rule${compteur}"
+											id="rule${compteur}" value="${rule.id}"
+											<c:if test="${rule.checked==true}"> checked</c:if>> 
+									    </span>
+										<span class="form-control">
+											<c:choose>
+											<c:when test="${sessionData.userLocale== 'fr'}">
+												<c:forEach items="${rule.lbconcept}" var="label">
+													<c:if test="${label.key=='fr'}">
+														<a href="${rule.link}" target="_blank">${label.value}</a>
+													</c:if>
+												</c:forEach>
+											</c:when>
+											<c:when test="${sessionData.userLocale == 'en'}">
+												<c:forEach items="${rule.lbconcept}" var="label">
+													<c:if test="${label.key=='en'}">
+														<a href="${rule.link}" target="_blank">${label.value}</a>
+													</c:if>
+												</c:forEach>
+											</c:when>
+											<c:otherwise></c:otherwise>
+										</c:choose>										
+										</span>
+									</div>
+									<span
+										class="help-block"> <c:choose>
+											<c:when test="${sessionData.userLocale== 'fr'}">
+												<c:forEach items="${rule.description}" var="desc">
+													<c:if test="${desc.key=='fr'}">
+																	${desc.value}
+																</c:if>
+												</c:forEach>
+											</c:when>
+											<c:when test="${sessionData.userLocale == 'en'}">
+												<c:forEach items="${rule.description}" var="desc">
+													<c:if test="${desc.key=='en'}">
+																	${desc.value}
+																</c:if>
+												</c:forEach>
+											</c:when>
+											<c:otherwise></c:otherwise>
+										</c:choose>
+
+									</span>
+							
+									<!--
 									<c:set var="compteur" scope="session" value="${compteur+1}" />
 									<label class="col-sm-3"> <c:choose>
 											<c:when test="${sessionData.userLocale== 'fr'}">
@@ -218,8 +270,8 @@
 											</c:choose>
 	
 										</span>
-									</div>
-	
+									</div>	
+									 -->
 								</div>
 							</c:forEach>
 						</div>

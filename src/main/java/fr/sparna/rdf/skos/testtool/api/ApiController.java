@@ -39,6 +39,7 @@ import fr.sparna.rdf.skos.testtool.IssueDescription;
 import fr.sparna.rdf.skos.testtool.ReportDisplay;
 import fr.sparna.rdf.skos.testtool.SkosTestToolController;
 import fr.sparna.rdf.skos.testtool.TestToolConfig;
+import fr.sparna.web.BaseURL;
 
 @Controller
 public class ApiController {
@@ -68,7 +69,6 @@ public class ApiController {
 		logger.info("test in text/html or text/plain : "+"url="+url+",rules="+rules+",lang="+lang);
 
 		long start = System.currentTimeMillis();
-		URL baseURL = new URL("http://"+request.getServerName()+((request.getServerPort() != 80)?":"+request.getServerPort():"")+request.getContextPath());
 		ReportDisplay data = new ReportDisplay();
 		List<IssueDescription>issuelist=TestToolConfig.getInstance().getApplicationData().getIssueDescriptions();
 		
@@ -111,7 +111,7 @@ public class ApiController {
 		if(format==null){
 			format=accept;
 		}
-		String urlconvert=baseURL.toString()+"/test?url="+url+"&rules="+rules+"&format="+format;
+		String urlconvert= BaseURL.buildBaseURL(request).toString()+"/test?url="+url+"&rules="+rules+"&format="+format;
 		data.setUrlconvert(urlconvert);
 		try {
 			URL dataUrl = new URL(url);

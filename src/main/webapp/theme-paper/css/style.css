@@ -29,6 +29,9 @@ footer{
 	text-align:left;
 }
 
+.input-group-addon:not(.btn) {
+	background-color: #f5f5f5;
+}
 
 
 /** Page de résultat **/
