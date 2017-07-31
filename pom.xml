@@ -5,7 +5,7 @@
 
 	<groupId>fr.sparna.skos-testing-tool</groupId>
 	<artifactId>skos-testing-tool</artifactId>
-	<version>0.8.0</version>
+	<version>0.8.1</version>
 	<packaging>war</packaging>
 
 	<name>skos-testing-tool</name>
