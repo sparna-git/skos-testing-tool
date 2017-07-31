@@ -81,7 +81,7 @@
 		<c:if test="${data.msg!=null}">
 			<div class="alert alert-danger">
 				<em> ${data.msg} </em>
-			</div>c	
+			</div>
 		</c:if>
 	
 		<em style="font-size: larger;"><fmt:message key="app.description"/></em><br><br>
