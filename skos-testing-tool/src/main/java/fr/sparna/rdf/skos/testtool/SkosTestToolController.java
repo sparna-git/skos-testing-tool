@@ -4,8 +4,10 @@ import java.io.BufferedInputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Collection;
@@ -127,9 +129,13 @@ public class SkosTestToolController {
 				}
 				try {
 					URL dataUrl = new URL(url);
-					InputStream in = new DataInputStream(new BufferedInputStream(dataUrl.openStream()));
-					qSkosResult = skos.validate(in, Rio.getWriterFormatForFileName(url).orElse(RDFFormat.RDFXML));
-
+					HttpURLConnection connection = (HttpURLConnection)dataUrl.openConnection();
+					// still add a "*; q=.2" to make sure we don't miss anything
+					// in the worst case we will get an HTMl representation and the parsing will fail with an error message for the user
+					connection.setRequestProperty("Accept", "application/rdf+xml, text/turtle, application/trig, *; q=.2");
+					try(InputStream in = new DataInputStream(new BufferedInputStream(connection.getInputStream()))) {
+						qSkosResult = skos.validate(in, Rio.getWriterFormatForFileName(url).orElse(RDFFormat.RDFXML));
+					}					
 					data.setFileName(url);
 
 				} catch (Exception e) {
