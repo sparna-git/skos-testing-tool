@@ -186,7 +186,8 @@ public class SkosTestToolController {
 
 			}
 		}catch (Exception e) {
-			doError(request,e.getMessage());
+			e.printStackTrace();
+			return doError(request,e.getMessage());
 		}
 		return null;
 	}
@@ -203,8 +204,7 @@ public class SkosTestToolController {
 			) {
 		HomeDisplay data = new HomeDisplay();
 		data.setMsg(message);
-		request.setAttribute(HomeDisplay.KEY, data);
-		return new ModelAndView("home");
+		return new ModelAndView("home", HomeDisplay.KEY, data);
 	}
 
 	/**
