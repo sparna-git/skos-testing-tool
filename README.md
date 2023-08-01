@@ -1,6 +1,6 @@
 # SKOS Testing Tool
 
-The SKOS testing tool is live at **http://labs.sparna.fr/skos-testing-tool**
+The SKOS testing tool is live at **https://skos-play.sparna.fr/skos-testing-tool/**
 
 The SKOS testing tool is a web frontend for [qSKOS](https://github.com/cmader/qSKOS). It allows to assess the quality of SKOS or SKOS-XL vocabularies, by submitting a file to be validated or by validating a SKOS file published at a given URL.
 
@@ -26,7 +26,7 @@ The SKOS testing tool is a web frontend for [qSKOS](https://github.com/cmader/qS
 
   - use the value "all" to check all the rules in the application;
 
-    e.g. [http://labs.sparna.fr/skos-testing-tool/test?url=http://publications.europa.eu/mdr/resource/authority/continent/skos/continents-skos.rdf&rules=ml,mri,ncl,oc](http://labs.sparna.fr/skos-testing-tool/test?url=http://publications.europa.eu/mdr/resource/authority/continent/skos/continents-skos.rdf&rules=ml,mri,ncl,oc)
+    e.g. [https://skos-play.sparna.fr/skos-testing-tool/test?url=http://publications.europa.eu/mdr/resource/authority/continent/skos/continents-skos.rdf&rules=ml,mri,ncl,oc](https://skos-play.sparna.fr/skos-testing-tool/test?url=http://publications.europa.eu/mdr/resource/authority/continent/skos/continents-skos.rdf&rules=ml,mri,ncl,oc)
 
 - To customise the output report format, use either the "Accept" header, or the "format" URL parameter; if present, the "format" URL parameter takes precedence; it can take the following value
 
@@ -52,7 +52,7 @@ The SKOS testing tool is a web frontend for [qSKOS](https://github.com/cmader/qS
 
 ### Contribution guidelines ###
 
-* If you spot a problem or need a specific feature, please [file an issue](https://github.com/tfrancart/skos-validator/issues).
+* If you spot a problem or need a specific feature, please file an issue here.
 
 ### Who are you ? ###
 
