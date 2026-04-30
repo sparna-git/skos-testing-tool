@@ -1,0 +1,1 @@
+mvn install:install-file -Dfile=qSKOS-2.0.3.jar -DpomFile=pom.xml
