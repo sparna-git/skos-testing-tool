@@ -46,7 +46,9 @@
 					</c:choose>
 				</ul>
 			</li>
-			
+			<li>
+				<a class="nav-link" href="https://github.com/sparna-git/skos-testing-tool"><i class="fa-brands fa-github"></i></a>
+			</li>
 		</ul>
 	</div>
 	

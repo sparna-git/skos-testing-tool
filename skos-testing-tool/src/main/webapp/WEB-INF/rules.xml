@@ -351,7 +351,7 @@
 		</constructor-arg>
 		<constructor-arg name="link"
 			value="https://github.com/cmader/qSKOS/wiki/Quality-Issues#Undefined_SKOS_Resources" />
-		<constructor-arg name="checked" value="true" />
+		<constructor-arg name="checked" value="false" />
 		<property name="level" value="DANGER" />
 	</bean>
 	<bean id="issue-mol" class="fr.sparna.rdf.skos.testtool.IssueDescription">

@@ -22,9 +22,10 @@
 <title><fmt:message key="menu.brand"/></title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-<link href="resources/jasny-bootstrap/css/jasny-bootstrap.min.css"
-	rel="stylesheet" />
+<link href="resources/jasny-bootstrap/css/jasny-bootstrap.min.css" rel="stylesheet" />
 <link href="resources/css/style.css" rel="stylesheet" />
+<!-- Font Awesome -->
+<link rel="stylesheet" href="resources/fa/css/all.min.css" />
 <script src="resources/js/jquery-1.11.3.js"></script>
 <script src="resources/bootstrap/js/bootstrap.min.js"></script>
 <script src="resources/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
@@ -67,13 +68,6 @@
 </style>
 </head>
 <body style="background-color: #fbfcfa;">
-	<a  href="https://github.com/tfrancart/skos-testing-tool">
-		<img style="position: absolute; top: 0; right: 0; border: 0;z-index:1000;" 
-		src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/
-		68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f6
-		66f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" 
-		data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png">
-	</a>
 	<jsp:include page="header.jsp" />
 	
 	<div class="container">
@@ -210,16 +204,12 @@
 										class="help-block"> <c:choose>
 											<c:when test="${sessionData.userLocale== 'fr'}">
 												<c:forEach items="${rule.description}" var="desc">
-													<c:if test="${desc.key=='fr'}">
-																	${desc.value}
-																</c:if>
+													<c:if test="${desc.key=='fr'}">${desc.value}</c:if>
 												</c:forEach>
 											</c:when>
 											<c:when test="${sessionData.userLocale == 'en'}">
 												<c:forEach items="${rule.description}" var="desc">
-													<c:if test="${desc.key=='en'}">
-																	${desc.value}
-																</c:if>
+													<c:if test="${desc.key=='en'}">${desc.value}</c:if>
 												</c:forEach>
 											</c:when>
 											<c:otherwise></c:otherwise>

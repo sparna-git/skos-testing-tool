@@ -13,8 +13,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.UUID;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import org.eclipse.rdf4j.RDF4JException;
 import org.eclipse.rdf4j.model.Model;
 import org.eclipse.rdf4j.model.ValueFactory;
@@ -34,6 +32,8 @@ import org.springframework.web.servlet.ModelAndView;
 import at.ac.univie.mminf.qskos4j.issues.Issue;
 import at.ac.univie.mminf.qskos4j.util.IssueDescriptor.IssueType;
 import fr.sparna.rdf.skos.testtool.api.DQVReport;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Controller
 public class SkosTestToolController {

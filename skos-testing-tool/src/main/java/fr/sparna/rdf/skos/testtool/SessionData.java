@@ -1,6 +1,6 @@
 package fr.sparna.rdf.skos.testtool;
 
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Data stored in the user session

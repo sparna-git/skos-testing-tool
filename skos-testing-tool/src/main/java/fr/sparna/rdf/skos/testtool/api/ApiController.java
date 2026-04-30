@@ -12,8 +12,6 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.eclipse.rdf4j.model.Model;
 import org.eclipse.rdf4j.model.ValueFactory;
@@ -40,6 +38,8 @@ import fr.sparna.rdf.skos.testtool.ReportDisplay;
 import fr.sparna.rdf.skos.testtool.SkosTestToolController;
 import fr.sparna.rdf.skos.testtool.TestToolConfig;
 import fr.sparna.web.BaseURL;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Controller
 public class ApiController {
